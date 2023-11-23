@@ -1,0 +1,4 @@
+notebook
+langchain
+openai
+tiktoken
