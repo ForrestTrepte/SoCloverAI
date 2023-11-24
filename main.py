@@ -1,14 +1,18 @@
-import random
-from board import get_random_pair
-from m01_direct import m01_basic
-from llm import set_trial, dump_cache_stats_since_last_call
-from results import Clue, Configuration, Results, Evaluations
 import os
+import random
+
+import numpy as np
+
+from board import get_random_pair
+from llm import dump_cache_stats_since_last_call, set_trial
+from m01_direct import m01_basic
+from results import Clue, Configuration, Evaluations, Results
 
 trials = 10
 methods = [m01_basic]
 temperatures = [0.0, 0.5, 0.9]
 evaluation_filename = "evaluations.json"
+percentiles = [0, 1, 5, 10, 50, 90, 95, 99, 100]
 
 
 def generate(trials, methods):
@@ -40,28 +44,37 @@ def generate_clue(method, temperature, trial):
 
 
 def evaluate(results):
-    is_scored = False
-    while not is_scored:
-        is_scored = ensure_scores(results)
-        if is_scored:
+    evaluations_dict = None
+    while True:
+        evaluations_dict = get_completed_evaluations_dict(results)
+        if evaluations_dict:
             break
         print("Please evaluate the clues with null scores in {evaluation_filename}")
         input("Press enter when done")
 
+    print("Evaluating results")
+    score_results(results, evaluations_dict)
+    evaluate_results(results)
 
-def ensure_scores(results):
-    evaluations = load_evaluations_dict()
+
+def get_completed_evaluations_dict(results):
+    evaluations_dict = load_evaluations_dict()
     is_scored = True
     for configuration in results.configurations:
         for clue in configuration.trials:
             clue_tuple = clue.as_tuple()
-            if clue_tuple in evaluations and evaluations[clue_tuple] is not None:
+            if (
+                clue_tuple in evaluations_dict
+                and evaluations_dict[clue_tuple] is not None
+            ):
                 continue
             else:
-                evaluations[clue_tuple] = None
+                evaluations_dict[clue_tuple] = None
                 is_scored = False
-    save_evaluations_dict(evaluations)
-    return is_scored
+    save_evaluations_dict(evaluations_dict)
+    if not is_scored:
+        return None
+    return evaluations_dict
 
 
 def load_evaluations_dict():
@@ -85,6 +98,32 @@ def save_evaluations_dict(evaluations_dict):
         evaluations_pydantic.clues.append(clue)
     with open(evaluation_filename, "w") as f:
         f.write(evaluations_pydantic.model_dump_json(indent=2))
+
+
+def score_results(results, evaluations_dict):
+    for configuration in results.configurations:
+        for clue in configuration.trials:
+            clue_tuple = clue.as_tuple()
+            clue.Score = evaluations_dict[clue_tuple]
+
+
+def evaluate_results(results):
+    for configuration in results.configurations:
+        evaluate_configuration(configuration)
+
+
+def evaluate_configuration(configuration):
+    print(
+        f"Method, Temperature, {', '.join([f'{percentile}%' for percentile in percentiles])}"
+    )
+    scores = [clue.Score for clue in configuration.trials]
+    percentile_scores = [
+        np.percentile(scores, percentile) for percentile in percentiles
+    ]
+    percentile_scores_str = [f"{score:.2f}" for score in percentile_scores]
+    print(
+        f"{configuration.method}, {configuration.temperature}, {', '.join(percentile_scores_str)}"
+    )
 
 
 if __name__ == "__main__":
