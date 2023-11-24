@@ -1,0 +1,184 @@
+{
+  "clues": [
+    {
+      "Word0": "attic",
+      "Word1": "table",
+      "Clue": "furniture",
+      "Score": 2.0
+    },
+    {
+      "Word0": "book",
+      "Word1": "punch",
+      "Clue": "cover",
+      "Score": 1.0
+    },
+    {
+      "Word0": "bug",
+      "Word1": "mushroom",
+      "Clue": "beetle",
+      "Score": 2.0
+    },
+    {
+      "Word0": "chocolate",
+      "Word1": "circus",
+      "Clue": "carnival",
+      "Score": 2.0
+    },
+    {
+      "Word0": "dough",
+      "Word1": "skate",
+      "Clue": "knead",
+      "Score": 1.0
+    },
+    {
+      "Word0": "finger",
+      "Word1": "truck",
+      "Clue": "delivery",
+      "Score": 1.0
+    },
+    {
+      "Word0": "game",
+      "Word1": "attic",
+      "Clue": "monopoly",
+      "Score": 4.0
+    },
+    {
+      "Word0": "genius",
+      "Word1": "game",
+      "Clue": "brainy",
+      "Score": 2.0
+    },
+    {
+      "Word0": "genius",
+      "Word1": "punch",
+      "Clue": "smartstrike",
+      "Score": 3.0
+    },
+    {
+      "Word0": "genius",
+      "Word1": "sand",
+      "Clue": "einstein",
+      "Score": 1.0
+    },
+    {
+      "Word0": "jewel",
+      "Word1": "canvas",
+      "Clue": "masterpiece",
+      "Score": 3.0
+    },
+    {
+      "Word0": "kitchen",
+      "Word1": "church",
+      "Clue": "sanctuary",
+      "Score": 2.0
+    },
+    {
+      "Word0": "kitchen",
+      "Word1": "circus",
+      "Clue": "juggling",
+      "Score": 1.0
+    },
+    {
+      "Word0": "ladder",
+      "Word1": "round",
+      "Clue": "step",
+      "Score": 1.0
+    },
+    {
+      "Word0": "mushroom",
+      "Word1": "summit",
+      "Clue": "fungi",
+      "Score": 1.0
+    },
+    {
+      "Word0": "night",
+      "Word1": "tree",
+      "Clue": "nocturnal",
+      "Score": 1.0
+    },
+    {
+      "Word0": "note",
+      "Word1": "pilot",
+      "Clue": "cockpit",
+      "Score": 2.0
+    },
+    {
+      "Word0": "oven",
+      "Word1": "school",
+      "Clue": "bake",
+      "Score": 3.0
+    },
+    {
+      "Word0": "pair",
+      "Word1": "chocolate",
+      "Clue": "fondue",
+      "Score": 1.0
+    },
+    {
+      "Word0": "pair",
+      "Word1": "water",
+      "Clue": "aquatic",
+      "Score": 1.0
+    },
+    {
+      "Word0": "pilot",
+      "Word1": "hard",
+      "Clue": "cockpit",
+      "Score": 4.0
+    },
+    {
+      "Word0": "pilot",
+      "Word1": "mushroom",
+      "Clue": "cockpit",
+      "Score": 1.0
+    },
+    {
+      "Word0": "poison",
+      "Word1": "round",
+      "Clue": "toxic",
+      "Score": 1.0
+    },
+    {
+      "Word0": "protect",
+      "Word1": "note",
+      "Clue": "safeguard",
+      "Score": 2.0
+    },
+    {
+      "Word0": "punch",
+      "Word1": "jewel",
+      "Clue": "knuckle",
+      "Score": 3.0
+    },
+    {
+      "Word0": "punch",
+      "Word1": "pair",
+      "Clue": "fruit",
+      "Score": 2.0
+    },
+    {
+      "Word0": "queen",
+      "Word1": "diamond",
+      "Clue": "monarchy",
+      "Score": 2.0
+    },
+    {
+      "Word0": "queen",
+      "Word1": "finger",
+      "Clue": "royalty",
+      "Score": 1.0
+    },
+    {
+      "Word0": "soup",
+      "Word1": "sand",
+      "Clue": "chowder",
+      "Score": 1.0
+    },
+    {
+      "Word0": "truck",
+      "Word1": "ladder",
+      "Clue": "fireman",
+      "Score": 3.0
+    }
+  ]
+}
