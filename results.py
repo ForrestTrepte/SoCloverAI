@@ -9,7 +9,10 @@ class Clue(BaseModel):
     Score: Optional[float] = None
 
     def as_tuple(self):
-        return (self.Word0, self.Word1, self.Clue)
+        if self.Word0 < self.Word1:
+            return (self.Word0, self.Word1, self.Clue)
+        else:
+            return (self.Word1, self.Word0, self.Clue)
 
     @classmethod
     def from_tuple(cls, tuple):
