@@ -1,2 +1,2 @@
-def m01_direct(board):
-    return ["cat", "fish", "dog", "bird"]
+def m01_basic(board):
+    return "xyz"
