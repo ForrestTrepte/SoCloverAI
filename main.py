@@ -1,7 +1,10 @@
 import os
 import random
 
+import matplotlib.pyplot as plt
 import numpy as np
+import pandas as pd
+import seaborn as sns
 
 from board import get_random_pair
 from llm import dump_cache_stats_since_last_call, set_trial
@@ -12,7 +15,7 @@ trials = 10
 methods = [m01_basic]
 temperatures = [0.0, 0.5, 0.9]
 evaluation_filename = "evaluations.json"
-percentiles = [0, 1, 5, 10, 50, 90, 95, 99, 100]
+percentiles = [10, 50, 90]
 
 
 def generate(trials, methods):
@@ -110,6 +113,7 @@ def score_results(results, evaluations_dict):
 def evaluate_results(results):
     for configuration in results.configurations:
         evaluate_configuration(configuration)
+    evaluate_results_boxplot(results)
 
 
 def evaluate_configuration(configuration):
@@ -124,6 +128,20 @@ def evaluate_configuration(configuration):
     print(
         f"{configuration.method}, {configuration.temperature}, {', '.join(percentile_scores_str)}"
     )
+
+
+def evaluate_results_boxplot(results):
+    scores = {}
+    for configuration in results.configurations:
+        scores[f"{configuration.method} t{configuration.temperature}"] = [
+            clue.Score for clue in configuration.trials
+        ]
+    df = pd.DataFrame(scores)
+    plt.figure(figsize=(10, 6))
+    sns.boxplot(data=df)
+    plt.title("Clue Scores by Method and Temperature")
+    plt.ylabel("Score")
+    plt.show()
 
 
 if __name__ == "__main__":

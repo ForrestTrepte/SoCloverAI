@@ -9,6 +9,8 @@ langchain = "*"
 openai = "*"
 tiktoken = "*"
 pytest = "*"
+matplotlib = "*"
+seaborn = "*"
 
 [dev-packages]
 
