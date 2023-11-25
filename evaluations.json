@@ -13,6 +13,12 @@
       "Score": 2.0
     },
     {
+      "Word0": "attic",
+      "Word1": "table",
+      "Clue": "storage",
+      "Score": 2.0
+    },
+    {
       "Word0": "book",
       "Word1": "punch",
       "Clue": "cover",
@@ -39,8 +45,20 @@
     {
       "Word0": "chocolate",
       "Word1": "pair",
+      "Clue": "dessert",
+      "Score": 1.0
+    },
+    {
+      "Word0": "chocolate",
+      "Word1": "pair",
       "Clue": "fondue",
       "Score": 1.0
+    },
+    {
+      "Word0": "chocolate",
+      "Word1": "pair",
+      "Clue": "truffle",
+      "Score": 3.0
     },
     {
       "Word0": "church",
@@ -57,14 +75,44 @@
     {
       "Word0": "diamond",
       "Word1": "queen",
+      "Clue": "crown",
+      "Score": 3.0
+    },
+    {
+      "Word0": "diamond",
+      "Word1": "queen",
       "Clue": "monarchy",
       "Score": 2.0
+    },
+    {
+      "Word0": "diamond",
+      "Word1": "queen",
+      "Clue": "royalty",
+      "Score": 3.0
     },
     {
       "Word0": "dough",
       "Word1": "skate",
       "Clue": "knead",
       "Score": 1.0
+    },
+    {
+      "Word0": "dough",
+      "Word1": "skate",
+      "Clue": "kneadboard",
+      "Score": 3.0
+    },
+    {
+      "Word0": "dough",
+      "Word1": "skate",
+      "Clue": "kneadboards",
+      "Score": 3.0
+    },
+    {
+      "Word0": "dough",
+      "Word1": "skate",
+      "Clue": "roll",
+      "Score": 4.0
     },
     {
       "Word0": "finger",
@@ -83,6 +131,24 @@
       "Word1": "genius",
       "Clue": "brainy",
       "Score": 2.0
+    },
+    {
+      "Word0": "genius",
+      "Word1": "punch",
+      "Clue": "brainy",
+      "Score": 1.0
+    },
+    {
+      "Word0": "genius",
+      "Word1": "punch",
+      "Clue": "smartforce",
+      "Score": 2.0
+    },
+    {
+      "Word0": "genius",
+      "Word1": "punch",
+      "Clue": "smartknock",
+      "Score": 1.0
     },
     {
       "Word0": "genius",
@@ -121,6 +187,12 @@
       "Score": 3.0
     },
     {
+      "Word0": "ladder",
+      "Word1": "truck",
+      "Clue": "firetruck",
+      "Score": 0.0
+    },
+    {
       "Word0": "mushroom",
       "Word1": "pilot",
       "Clue": "cockpit",
@@ -131,6 +203,12 @@
       "Word1": "summit",
       "Clue": "fungi",
       "Score": 1.0
+    },
+    {
+      "Word0": "mushroom",
+      "Word1": "summit",
+      "Clue": "toadstool",
+      "Score": 3.0
     },
     {
       "Word0": "night",
@@ -155,6 +233,12 @@
       "Word1": "school",
       "Clue": "bake",
       "Score": 3.0
+    },
+    {
+      "Word0": "pair",
+      "Word1": "punch",
+      "Clue": "boxing",
+      "Score": 1.0
     },
     {
       "Word0": "pair",
