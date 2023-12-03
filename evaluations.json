@@ -51,6 +51,12 @@
     {
       "Word0": "chocolate",
       "Word1": "pair",
+      "Clue": "easter",
+      "Score": 1.0
+    },
+    {
+      "Word0": "chocolate",
+      "Word1": "pair",
       "Clue": "fondue",
       "Score": 1.0
     },
@@ -58,6 +64,12 @@
       "Word0": "chocolate",
       "Word1": "pair",
       "Clue": "truffle",
+      "Score": 3.0
+    },
+    {
+      "Word0": "chocolate",
+      "Word1": "pair",
+      "Clue": "valentine",
       "Score": 3.0
     },
     {
@@ -93,6 +105,12 @@
     {
       "Word0": "dough",
       "Word1": "skate",
+      "Clue": "bakery",
+      "Score": 1.0
+    },
+    {
+      "Word0": "dough",
+      "Word1": "skate",
       "Clue": "knead",
       "Score": 1.0
     },
@@ -107,6 +125,18 @@
       "Word1": "skate",
       "Clue": "kneadboards",
       "Score": 3.0
+    },
+    {
+      "Word0": "dough",
+      "Word1": "skate",
+      "Clue": "pizza",
+      "Score": 1.0
+    },
+    {
+      "Word0": "dough",
+      "Word1": "skate",
+      "Clue": "rink",
+      "Score": 1.0
     },
     {
       "Word0": "dough",
@@ -135,7 +165,19 @@
     {
       "Word0": "genius",
       "Word1": "punch",
+      "Clue": "Einstein",
+      "Score": 1.0
+    },
+    {
+      "Word0": "genius",
+      "Word1": "punch",
       "Clue": "brainy",
+      "Score": 1.0
+    },
+    {
+      "Word0": "genius",
+      "Word1": "punch",
+      "Clue": "einstein",
       "Score": 1.0
     },
     {
@@ -155,6 +197,12 @@
       "Word1": "punch",
       "Clue": "smartstrike",
       "Score": 3.0
+    },
+    {
+      "Word0": "genius",
+      "Word1": "punch",
+      "Clue": "smartypants",
+      "Score": 1.0
     },
     {
       "Word0": "genius",
@@ -179,6 +227,12 @@
       "Word1": "round",
       "Clue": "step",
       "Score": 1.0
+    },
+    {
+      "Word0": "ladder",
+      "Word1": "truck",
+      "Clue": "firefighter",
+      "Score": 4.0
     },
     {
       "Word0": "ladder",
@@ -237,6 +291,12 @@
     {
       "Word0": "pair",
       "Word1": "punch",
+      "Clue": "boxer",
+      "Score": 4.0
+    },
+    {
+      "Word0": "pair",
+      "Word1": "punch",
       "Clue": "boxing",
       "Score": 1.0
     },
@@ -244,6 +304,12 @@
       "Word0": "pair",
       "Word1": "punch",
       "Clue": "fruit",
+      "Score": 2.0
+    },
+    {
+      "Word0": "pair",
+      "Word1": "punch",
+      "Clue": "knockout",
       "Score": 2.0
     },
     {
