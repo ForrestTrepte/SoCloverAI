@@ -3,17 +3,15 @@ from typing import List, Optional
 
 
 class Rating(BaseModel):
-    Score: float
-    Legal: float
+    Score: Optional[float]
+    Legal: Optional[float]
 
 
 class Clue(BaseModel):
     Word0: str
     Word1: str
     Clue: str
-    Score: Optional[float] = None
-    Legal: Optional[float] = None
-    Rating: Optional[Rating] = None
+    Rating: Rating = Rating(Score=None, Legal=None)
 
     def as_tuple(self):
         if self.Word0 < self.Word1:

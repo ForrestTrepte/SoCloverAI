@@ -4,8 +4,6 @@
       "Word0": "attic",
       "Word1": "game",
       "Clue": "monopoly",
-      "Score": null,
-      "Legal": null,
       "Rating": {
         "Score": 4.0,
         "Legal": 2.0
@@ -15,8 +13,6 @@
       "Word0": "attic",
       "Word1": "table",
       "Clue": "furniture",
-      "Score": null,
-      "Legal": null,
       "Rating": {
         "Score": 2.0,
         "Legal": 2.0
@@ -26,8 +22,6 @@
       "Word0": "attic",
       "Word1": "table",
       "Clue": "lofturniture",
-      "Score": null,
-      "Legal": null,
       "Rating": {
         "Score": 3.0,
         "Legal": 1.0
@@ -37,8 +31,6 @@
       "Word0": "attic",
       "Word1": "table",
       "Clue": "storage",
-      "Score": null,
-      "Legal": null,
       "Rating": {
         "Score": 2.0,
         "Legal": 2.0
@@ -48,8 +40,6 @@
       "Word0": "book",
       "Word1": "punch",
       "Clue": "cover",
-      "Score": null,
-      "Legal": null,
       "Rating": {
         "Score": 1.0,
         "Legal": 2.0
@@ -59,8 +49,6 @@
       "Word0": "bug",
       "Word1": "mushroom",
       "Clue": "beetle",
-      "Score": null,
-      "Legal": null,
       "Rating": {
         "Score": 2.0,
         "Legal": 2.0
@@ -70,8 +58,6 @@
       "Word0": "canvas",
       "Word1": "jewel",
       "Clue": "masterpiece",
-      "Score": null,
-      "Legal": null,
       "Rating": {
         "Score": 3.0,
         "Legal": 2.0
@@ -81,8 +67,6 @@
       "Word0": "chocolate",
       "Word1": "circus",
       "Clue": "carnival",
-      "Score": null,
-      "Legal": null,
       "Rating": {
         "Score": 2.0,
         "Legal": 2.0
@@ -92,8 +76,6 @@
       "Word0": "chocolate",
       "Word1": "pair",
       "Clue": "confectionery",
-      "Score": null,
-      "Legal": null,
       "Rating": {
         "Score": 1.0,
         "Legal": 2.0
@@ -103,8 +85,6 @@
       "Word0": "chocolate",
       "Word1": "pair",
       "Clue": "dessert",
-      "Score": null,
-      "Legal": null,
       "Rating": {
         "Score": 1.0,
         "Legal": 2.0
@@ -114,8 +94,6 @@
       "Word0": "chocolate",
       "Word1": "pair",
       "Clue": "easter",
-      "Score": null,
-      "Legal": null,
       "Rating": {
         "Score": 1.0,
         "Legal": 2.0
@@ -125,8 +103,6 @@
       "Word0": "chocolate",
       "Word1": "pair",
       "Clue": "fondue",
-      "Score": null,
-      "Legal": null,
       "Rating": {
         "Score": 1.0,
         "Legal": 2.0
@@ -136,8 +112,6 @@
       "Word0": "chocolate",
       "Word1": "pair",
       "Clue": "fondueregret",
-      "Score": null,
-      "Legal": null,
       "Rating": {
         "Score": 1.0,
         "Legal": 0.0
@@ -147,8 +121,6 @@
       "Word0": "chocolate",
       "Word1": "pair",
       "Clue": "truffle",
-      "Score": null,
-      "Legal": null,
       "Rating": {
         "Score": 3.0,
         "Legal": 2.0
@@ -158,8 +130,6 @@
       "Word0": "chocolate",
       "Word1": "pair",
       "Clue": "truffles",
-      "Score": null,
-      "Legal": null,
       "Rating": {
         "Score": 3.0,
         "Legal": 2.0
@@ -169,8 +139,6 @@
       "Word0": "chocolate",
       "Word1": "pair",
       "Clue": "valentine",
-      "Score": null,
-      "Legal": null,
       "Rating": {
         "Score": 3.0,
         "Legal": 2.0
@@ -180,8 +148,6 @@
       "Word0": "church",
       "Word1": "kitchen",
       "Clue": "sanctuary",
-      "Score": null,
-      "Legal": null,
       "Rating": {
         "Score": 2.0,
         "Legal": 2.0
@@ -191,8 +157,6 @@
       "Word0": "circus",
       "Word1": "kitchen",
       "Clue": "juggling",
-      "Score": null,
-      "Legal": null,
       "Rating": {
         "Score": 1.0,
         "Legal": 2.0
@@ -202,8 +166,6 @@
       "Word0": "diamond",
       "Word1": "queen",
       "Clue": "crown",
-      "Score": null,
-      "Legal": null,
       "Rating": {
         "Score": 3.0,
         "Legal": 2.0
@@ -213,8 +175,6 @@
       "Word0": "diamond",
       "Word1": "queen",
       "Clue": "monarch",
-      "Score": null,
-      "Legal": null,
       "Rating": {
         "Score": 3.0,
         "Legal": 2.0
@@ -224,8 +184,6 @@
       "Word0": "diamond",
       "Word1": "queen",
       "Clue": "monarchy",
-      "Score": null,
-      "Legal": null,
       "Rating": {
         "Score": 2.0,
         "Legal": 2.0
@@ -235,8 +193,6 @@
       "Word0": "diamond",
       "Word1": "queen",
       "Clue": "royalty",
-      "Score": null,
-      "Legal": null,
       "Rating": {
         "Score": 3.0,
         "Legal": 2.0
@@ -246,8 +202,6 @@
       "Word0": "dough",
       "Word1": "skate",
       "Clue": "bakery",
-      "Score": null,
-      "Legal": null,
       "Rating": {
         "Score": 1.0,
         "Legal": 2.0
@@ -257,8 +211,6 @@
       "Word0": "dough",
       "Word1": "skate",
       "Clue": "knead",
-      "Score": null,
-      "Legal": null,
       "Rating": {
         "Score": 1.0,
         "Legal": 2.0
@@ -268,8 +220,6 @@
       "Word0": "dough",
       "Word1": "skate",
       "Clue": "kneadboard",
-      "Score": null,
-      "Legal": null,
       "Rating": {
         "Score": 3.0,
         "Legal": 2.0
@@ -279,8 +229,6 @@
       "Word0": "dough",
       "Word1": "skate",
       "Clue": "kneadboards",
-      "Score": null,
-      "Legal": null,
       "Rating": {
         "Score": 3.0,
         "Legal": 2.0
@@ -290,8 +238,6 @@
       "Word0": "dough",
       "Word1": "skate",
       "Clue": "pizza",
-      "Score": null,
-      "Legal": null,
       "Rating": {
         "Score": 1.0,
         "Legal": 2.0
@@ -301,8 +247,6 @@
       "Word0": "dough",
       "Word1": "skate",
       "Clue": "rink",
-      "Score": null,
-      "Legal": null,
       "Rating": {
         "Score": 1.0,
         "Legal": 2.0
@@ -312,8 +256,6 @@
       "Word0": "dough",
       "Word1": "skate",
       "Clue": "roll",
-      "Score": null,
-      "Legal": null,
       "Rating": {
         "Score": 4.0,
         "Legal": 2.0
@@ -323,8 +265,6 @@
       "Word0": "dough",
       "Word1": "skate",
       "Clue": "roller",
-      "Score": null,
-      "Legal": null,
       "Rating": {
         "Score": 4.0,
         "Legal": 2.0
@@ -334,8 +274,6 @@
       "Word0": "dough",
       "Word1": "skate",
       "Clue": "rollerblade",
-      "Score": null,
-      "Legal": null,
       "Rating": {
         "Score": 1.0,
         "Legal": 2.0
@@ -345,8 +283,6 @@
       "Word0": "finger",
       "Word1": "queen",
       "Clue": "royal",
-      "Score": null,
-      "Legal": null,
       "Rating": {
         "Score": 1.0,
         "Legal": 2.0
@@ -356,8 +292,6 @@
       "Word0": "finger",
       "Word1": "queen",
       "Clue": "royalty",
-      "Score": null,
-      "Legal": null,
       "Rating": {
         "Score": 1.0,
         "Legal": 2.0
@@ -367,8 +301,6 @@
       "Word0": "finger",
       "Word1": "truck",
       "Clue": "delivery",
-      "Score": null,
-      "Legal": null,
       "Rating": {
         "Score": 1.0,
         "Legal": 2.0
@@ -378,8 +310,6 @@
       "Word0": "game",
       "Word1": "genius",
       "Clue": "brainy",
-      "Score": null,
-      "Legal": null,
       "Rating": {
         "Score": 2.0,
         "Legal": 2.0
@@ -389,8 +319,6 @@
       "Word0": "genius",
       "Word1": "punch",
       "Clue": "Einstein",
-      "Score": null,
-      "Legal": null,
       "Rating": {
         "Score": 1.0,
         "Legal": 2.0
@@ -400,8 +328,6 @@
       "Word0": "genius",
       "Word1": "punch",
       "Clue": "brainy",
-      "Score": null,
-      "Legal": null,
       "Rating": {
         "Score": 1.0,
         "Legal": 2.0
@@ -411,8 +337,6 @@
       "Word0": "genius",
       "Word1": "punch",
       "Clue": "einstein",
-      "Score": null,
-      "Legal": null,
       "Rating": {
         "Score": 1.0,
         "Legal": 2.0
@@ -422,8 +346,6 @@
       "Word0": "genius",
       "Word1": "punch",
       "Clue": "smartforce",
-      "Score": null,
-      "Legal": null,
       "Rating": {
         "Score": 2.0,
         "Legal": 1.0
@@ -433,8 +355,6 @@
       "Word0": "genius",
       "Word1": "punch",
       "Clue": "smartknock",
-      "Score": null,
-      "Legal": null,
       "Rating": {
         "Score": 1.0,
         "Legal": 0.0
@@ -444,8 +364,6 @@
       "Word0": "genius",
       "Word1": "punch",
       "Clue": "smartstrike",
-      "Score": null,
-      "Legal": null,
       "Rating": {
         "Score": 3.0,
         "Legal": 1.0
@@ -455,8 +373,6 @@
       "Word0": "genius",
       "Word1": "punch",
       "Clue": "smartypants",
-      "Score": null,
-      "Legal": null,
       "Rating": {
         "Score": 1.0,
         "Legal": 2.0
@@ -466,8 +382,6 @@
       "Word0": "genius",
       "Word1": "sand",
       "Clue": "einstein",
-      "Score": null,
-      "Legal": null,
       "Rating": {
         "Score": 1.0,
         "Legal": 2.0
@@ -477,8 +391,6 @@
       "Word0": "hard",
       "Word1": "pilot",
       "Clue": "cockpit",
-      "Score": null,
-      "Legal": null,
       "Rating": {
         "Score": 4.0,
         "Legal": 2.0
@@ -488,8 +400,6 @@
       "Word0": "jewel",
       "Word1": "punch",
       "Clue": "knuckle",
-      "Score": null,
-      "Legal": null,
       "Rating": {
         "Score": 3.0,
         "Legal": 2.0
@@ -499,8 +409,6 @@
       "Word0": "ladder",
       "Word1": "round",
       "Clue": "step",
-      "Score": null,
-      "Legal": null,
       "Rating": {
         "Score": 1.0,
         "Legal": 2.0
@@ -510,8 +418,6 @@
       "Word0": "ladder",
       "Word1": "truck",
       "Clue": "firefighter",
-      "Score": null,
-      "Legal": null,
       "Rating": {
         "Score": 4.0,
         "Legal": 2.0
@@ -521,8 +427,6 @@
       "Word0": "ladder",
       "Word1": "truck",
       "Clue": "firehouse",
-      "Score": null,
-      "Legal": null,
       "Rating": {
         "Score": 3.0,
         "Legal": 22.0
@@ -532,8 +436,6 @@
       "Word0": "ladder",
       "Word1": "truck",
       "Clue": "fireman",
-      "Score": null,
-      "Legal": null,
       "Rating": {
         "Score": 3.0,
         "Legal": 2.0
@@ -543,8 +445,6 @@
       "Word0": "ladder",
       "Word1": "truck",
       "Clue": "firetruck",
-      "Score": null,
-      "Legal": null,
       "Rating": {
         "Score": 0.0,
         "Legal": 0.0
@@ -554,8 +454,6 @@
       "Word0": "mushroom",
       "Word1": "pilot",
       "Clue": "cockpit",
-      "Score": null,
-      "Legal": null,
       "Rating": {
         "Score": 1.0,
         "Legal": 2.0
@@ -565,8 +463,6 @@
       "Word0": "mushroom",
       "Word1": "summit",
       "Clue": "forage",
-      "Score": null,
-      "Legal": null,
       "Rating": {
         "Score": 1.0,
         "Legal": 2.0
@@ -576,8 +472,6 @@
       "Word0": "mushroom",
       "Word1": "summit",
       "Clue": "fungi",
-      "Score": null,
-      "Legal": null,
       "Rating": {
         "Score": 1.0,
         "Legal": 2.0
@@ -587,8 +481,6 @@
       "Word0": "mushroom",
       "Word1": "summit",
       "Clue": "fungi-conference",
-      "Score": null,
-      "Legal": null,
       "Rating": {
         "Score": 3.0,
         "Legal": 0.0
@@ -598,8 +490,6 @@
       "Word0": "mushroom",
       "Word1": "summit",
       "Clue": "toadstool",
-      "Score": null,
-      "Legal": null,
       "Rating": {
         "Score": 3.0,
         "Legal": 2.0
@@ -609,8 +499,6 @@
       "Word0": "night",
       "Word1": "tree",
       "Clue": "nocturnal",
-      "Score": null,
-      "Legal": null,
       "Rating": {
         "Score": 1.0,
         "Legal": 2.0
@@ -620,8 +508,6 @@
       "Word0": "note",
       "Word1": "pilot",
       "Clue": "cockpit",
-      "Score": null,
-      "Legal": null,
       "Rating": {
         "Score": 2.0,
         "Legal": 2.0
@@ -631,8 +517,6 @@
       "Word0": "note",
       "Word1": "protect",
       "Clue": "safeguard",
-      "Score": null,
-      "Legal": null,
       "Rating": {
         "Score": 2.0,
         "Legal": 2.0
@@ -642,8 +526,6 @@
       "Word0": "oven",
       "Word1": "school",
       "Clue": "bake",
-      "Score": null,
-      "Legal": null,
       "Rating": {
         "Score": 3.0,
         "Legal": 2.0
@@ -653,8 +535,6 @@
       "Word0": "pair",
       "Word1": "punch",
       "Clue": "boxer",
-      "Score": null,
-      "Legal": null,
       "Rating": {
         "Score": 4.0,
         "Legal": 2.0
@@ -664,8 +544,6 @@
       "Word0": "pair",
       "Word1": "punch",
       "Clue": "boxing",
-      "Score": null,
-      "Legal": null,
       "Rating": {
         "Score": 1.0,
         "Legal": 2.0
@@ -675,8 +553,6 @@
       "Word0": "pair",
       "Word1": "punch",
       "Clue": "fruit",
-      "Score": null,
-      "Legal": null,
       "Rating": {
         "Score": 2.0,
         "Legal": 2.0
@@ -686,8 +562,6 @@
       "Word0": "pair",
       "Word1": "punch",
       "Clue": "knockout",
-      "Score": null,
-      "Legal": null,
       "Rating": {
         "Score": 2.0,
         "Legal": 2.0
@@ -697,8 +571,6 @@
       "Word0": "pair",
       "Word1": "water",
       "Clue": "aquatic",
-      "Score": null,
-      "Legal": null,
       "Rating": {
         "Score": 1.0,
         "Legal": 2.0
@@ -708,8 +580,6 @@
       "Word0": "poison",
       "Word1": "round",
       "Clue": "toxic",
-      "Score": null,
-      "Legal": null,
       "Rating": {
         "Score": 1.0,
         "Legal": 2.0
@@ -719,8 +589,6 @@
       "Word0": "sand",
       "Word1": "soup",
       "Clue": "chowder",
-      "Score": null,
-      "Legal": null,
       "Rating": {
         "Score": 1.0,
         "Legal": 2.0

@@ -53,7 +53,6 @@ def load_evaluations_dict():
         evaluations_pydantic = Evaluations(clues=[])
     evaluations_dict = {}
     for clue in evaluations_pydantic.clues:
-        clue.Rating = Rating(Score=clue.Score, Legal=clue.Legal)
         evaluations_dict[clue.as_tuple()] = clue.Rating
     return evaluations_dict
 
@@ -65,14 +64,16 @@ def save_evaluations_dict(evaluations_dict):
         clue.Rating = rating
         evaluations_pydantic.clues.append(clue)
     with open(evaluation_filename, "w") as f:
-        f.write(evaluations_pydantic.model_dump_json(indent=2))
+        f.write(
+            evaluations_pydantic.model_dump_json(indent=2, exclude={"Score", "Legal"})
+        )
 
 
 def score_results(results, evaluations_dict):
     for configuration in results.configurations:
         for clue in configuration.trials:
             clue_tuple = clue.as_tuple()
-            clue.Score = evaluations_dict[clue_tuple].Score
+            clue.Rating = evaluations_dict[clue_tuple]
 
 
 def evaluate_results(results):
@@ -85,7 +86,7 @@ def evaluate_results(results):
 
 
 def evaluate_configuration(configuration):
-    scores = [clue.Score for clue in configuration.trials]
+    scores = [clue.Rating.Score for clue in configuration.trials]
     percentile_scores = [
         np.percentile(scores, percentile) for percentile in percentiles
     ]
@@ -99,7 +100,7 @@ def evaluate_results_boxplot(results):
     scores = {}
     for configuration in results.configurations:
         scores[f"{configuration.method} t{configuration.temperature}"] = [
-            clue.Score for clue in configuration.trials
+            clue.Rating.Score for clue in configuration.trials
         ]
     df = pd.DataFrame(scores)
     plt.figure(figsize=(10, 6))
