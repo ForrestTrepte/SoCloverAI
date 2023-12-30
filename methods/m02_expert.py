@@ -1,6 +1,7 @@
 from llm import predict
 
 template = """
+You are an expert in wordplay and language puzzles.
 You are playing the game So Clover. Create clues for the following word pair:
 {word0} {word1}
 
@@ -15,6 +16,6 @@ Use lowercase unless it is a proper noun or if capitalizing the word would help 
 """
 
 
-def m01_basic(temperature, pair):
+def generate(temperature, pair):
     prediction = predict(temperature, template, word0=pair[0], word1=pair[1])
     return prediction

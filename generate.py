@@ -2,10 +2,10 @@ import random
 
 from board import get_random_pair
 from llm import dump_cache_stats_since_last_call, set_trial
-from m01_direct import m01_basic
+from methods import m01_direct, m02_expert
 from results import Clue, Configuration, Results
 
-methods = [m01_basic]
+methods = [m01_direct.generate, m02_expert.generate]
 temperatures = [0.0, 0.5, 0.9]
 trials = 3
 pairs_per_trial = 10
@@ -17,7 +17,11 @@ def generate():
 
     configurations = []
     for method in methods:
-        print(f"Generating {method.__name__}")
+        method_name = method.__module__
+        methods_prefix = "methods."
+        if method_name.startswith(methods_prefix):
+            method_name = method_name[len(methods_prefix) :]
+        print(f"Generating {method_name}")
         for temperature in temperatures:
             print(f"  Temperature {temperature}")
             clues = []
@@ -28,7 +32,7 @@ def generate():
                     clue = generate_clue(method, temperature, test_pair)
                     clues.append(clue)
             configuration = Configuration(
-                method=method.__name__, temperature=temperature, trials=clues
+                method=method_name, temperature=temperature, trials=clues
             )
             configurations.append(configuration)
     dump_cache_stats_since_last_call()

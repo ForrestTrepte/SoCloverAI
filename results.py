@@ -7,6 +7,7 @@ class Clue(BaseModel):
     Word1: str
     Clue: str
     Score: Optional[float] = None
+    Legal: Optional[float] = None
 
     def as_tuple(self):
         if self.Word0 < self.Word1:
