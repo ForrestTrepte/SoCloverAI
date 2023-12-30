@@ -6,6 +6,16 @@ class Rating(BaseModel):
     Score: Optional[float]
     Legal: Optional[float]
 
+    def get_adjusted_score(self):
+        if self.Legal >= 2:
+            return self.Score
+        elif self.Legal >= 1:
+            # Allow questionably legal clues to score at most 2.0
+            return min(self.Score, 2.0)
+        else:
+            # Penalize illegal clues
+            return -1.0
+
 
 class Clue(BaseModel):
     Word0: str

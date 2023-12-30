@@ -84,7 +84,7 @@ def evaluate_results(results):
 
 
 def evaluate_configuration(configuration):
-    scores = [clue.Rating.Score for clue in configuration.trials]
+    scores = [clue.Rating.get_adjusted_score() for clue in configuration.trials]
     percentile_scores = [
         np.percentile(scores, percentile) for percentile in percentiles
     ]
@@ -98,7 +98,7 @@ def evaluate_results_boxplot(results):
     scores = {}
     for configuration in results.configurations:
         scores[f"{configuration.method} t{configuration.temperature}"] = [
-            clue.Rating.Score for clue in configuration.trials
+            clue.Rating.get_adjusted_score() for clue in configuration.trials
         ]
     df = pd.DataFrame(scores)
     plt.figure(figsize=(10, 6))
