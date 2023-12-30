@@ -64,9 +64,7 @@ def save_evaluations_dict(evaluations_dict):
         clue.Rating = rating
         evaluations_pydantic.clues.append(clue)
     with open(evaluation_filename, "w") as f:
-        f.write(
-            evaluations_pydantic.model_dump_json(indent=2, exclude={"Score", "Legal"})
-        )
+        f.write(evaluations_pydantic.model_dump_json(indent=2))
 
 
 def score_results(results, evaluations_dict):
