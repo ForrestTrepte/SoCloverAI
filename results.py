@@ -2,12 +2,18 @@ from pydantic import BaseModel
 from typing import List, Optional
 
 
+class Rating(BaseModel):
+    Score: float
+    Legal: float
+
+
 class Clue(BaseModel):
     Word0: str
     Word1: str
     Clue: str
     Score: Optional[float] = None
     Legal: Optional[float] = None
+    Rating: Optional[Rating] = None
 
     def as_tuple(self):
         if self.Word0 < self.Word1:

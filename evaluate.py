@@ -5,7 +5,7 @@ import numpy as np
 import pandas as pd
 import seaborn as sns
 
-from results import Clue, Evaluations
+from results import Rating, Clue, Evaluations
 
 evaluation_filename = "evaluations.json"
 percentiles = [10, 50, 90]
@@ -53,15 +53,16 @@ def load_evaluations_dict():
         evaluations_pydantic = Evaluations(clues=[])
     evaluations_dict = {}
     for clue in evaluations_pydantic.clues:
-        evaluations_dict[clue.as_tuple()] = clue.Score
+        clue.Rating = Rating(Score=clue.Score, Legal=clue.Legal)
+        evaluations_dict[clue.as_tuple()] = clue.Rating
     return evaluations_dict
 
 
 def save_evaluations_dict(evaluations_dict):
     evaluations_pydantic = Evaluations(clues=[])
-    for clue_tuple, score in sorted(evaluations_dict.items()):
+    for clue_tuple, rating in sorted(evaluations_dict.items()):
         clue = Clue.from_tuple(clue_tuple)
-        clue.Score = score
+        clue.Rating = rating
         evaluations_pydantic.clues.append(clue)
     with open(evaluation_filename, "w") as f:
         f.write(evaluations_pydantic.model_dump_json(indent=2))
@@ -71,7 +72,7 @@ def score_results(results, evaluations_dict):
     for configuration in results.configurations:
         for clue in configuration.trials:
             clue_tuple = clue.as_tuple()
-            clue.Score = evaluations_dict[clue_tuple]
+            clue.Score = evaluations_dict[clue_tuple].Score
 
 
 def evaluate_results(results):
