@@ -105,4 +105,5 @@ def evaluate_results_boxplot(results):
     sns.boxplot(data=df)
     plt.title("Clue Scores by Method and Temperature")
     plt.ylabel("Score")
+    plt.xticks(rotation=90)
     plt.show()

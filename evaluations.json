@@ -426,6 +426,15 @@
     {
       "Word0": "ladder",
       "Word1": "truck",
+      "Clue": "firefighting",
+      "Rating": {
+        "Score": 4.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "ladder",
+      "Word1": "truck",
       "Clue": "firehouse",
       "Rating": {
         "Score": 4.0,
@@ -556,6 +565,15 @@
       "Rating": {
         "Score": 2.0,
         "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "pair",
+      "Word1": "punch",
+      "Clue": "fruitbox",
+      "Rating": {
+        "Score": 2.0,
+        "Legal": 1.0
       }
     },
     {

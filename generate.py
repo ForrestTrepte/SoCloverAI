@@ -2,10 +2,10 @@ import random
 
 from board import get_random_pair
 from llm import dump_cache_stats_since_last_call, set_trial
-from methods import m01_direct, m02_expert
+from methods import m01_direct, m02_expert, m03_clue_criteria
 from results import Clue, Configuration, Results
 
-methods = [m01_direct.generate, m02_expert.generate]
+methods = [m01_direct.generate, m02_expert.generate, m03_clue_criteria.generate]
 temperatures = [0.0, 0.5, 0.9]
 trials = 3
 pairs_per_trial = 10
