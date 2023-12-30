@@ -36,7 +36,7 @@ def get_completed_evaluations_dict(results):
             ):
                 continue
             else:
-                evaluations_dict[clue_tuple] = None
+                evaluations_dict[clue_tuple] = Rating(Score=None, Legal=None)
                 is_scored = False
     save_evaluations_dict(evaluations_dict)
     if not is_scored:
