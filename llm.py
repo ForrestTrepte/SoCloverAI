@@ -38,9 +38,16 @@ def predict(temperature, template, **kwargs):
     return result
 
 
+pattern = re.compile(r"Best: (.*)")
+
+
 def parse_output(output):
-    pattern = re.compile(r"Best: (.*)")
     match = pattern.search(output)
     if match:
         return match.group(1)
+    split_output = output.split()
+    if len(split_output) == 1:
+        print(f"Invalid output format: {output}")
+        return split_output[0]
+    print(f"Invalid output: {output}")
     return None

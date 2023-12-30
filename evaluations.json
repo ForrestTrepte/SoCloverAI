@@ -75,6 +75,15 @@
     {
       "Word0": "chocolate",
       "Word1": "pair",
+      "Clue": "Easter",
+      "Rating": {
+        "Score": 1.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "chocolate",
+      "Word1": "pair",
       "Clue": "confectionery",
       "Rating": {
         "Score": 1.0,
@@ -85,6 +94,15 @@
       "Word0": "chocolate",
       "Word1": "pair",
       "Clue": "dessert",
+      "Rating": {
+        "Score": 1.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "chocolate",
+      "Word1": "pair",
+      "Clue": "duo",
       "Rating": {
         "Score": 1.0,
         "Legal": 2.0
@@ -345,6 +363,15 @@
     {
       "Word0": "genius",
       "Word1": "punch",
+      "Clue": "smartass",
+      "Rating": {
+        "Score": 1.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "genius",
+      "Word1": "punch",
       "Clue": "smartforce",
       "Rating": {
         "Score": 2.0,
@@ -463,6 +490,15 @@
       "Word0": "mushroom",
       "Word1": "pilot",
       "Clue": "cockpit",
+      "Rating": {
+        "Score": 1.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "mushroom",
+      "Word1": "summit",
+      "Clue": "diplomacy",
       "Rating": {
         "Score": 1.0,
         "Legal": 2.0
