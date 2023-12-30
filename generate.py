@@ -1,3 +1,5 @@
+import importlib
+import os
 import random
 
 from board import get_random_pair
@@ -5,10 +7,18 @@ from llm import dump_cache_stats_since_last_call, set_trial
 from methods import m01_direct, m02_expert, m03_clue_criteria
 from results import Clue, Configuration, Results
 
-methods = [m01_direct.generate, m02_expert.generate, m03_clue_criteria.generate]
 temperatures = [0.0, 0.5, 0.9]
 trials = 3
 pairs_per_trial = 10
+
+# Get all generate functions from the methods folder
+methods = []
+for filename in os.listdir("methods"):
+    if filename.startswith("m") and filename.endswith(".py"):
+        module_name = filename[:-3]
+        module = importlib.import_module(f"methods.{module_name}")
+        method = getattr(module, "generate")
+        methods.append(method)
 
 
 def generate():
