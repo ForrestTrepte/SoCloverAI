@@ -1,6 +1,7 @@
 from llm import predict
 
 template = """
+You are an expert in wordplay and language puzzles.
 You are playing the game So Clover. Create clues for the following word pair:
 {word0} {word1}
 
@@ -12,6 +13,11 @@ It cannot be a made up word. It should be in a dictionary or be in common use in
 For example, brand names, names of people, acronyms, numbers, and onomatopoeia are OK.
 Your word cannot be in the same family or contain the words from the word pair.
 Use lowercase unless it is a proper noun or if capitalizing the word would help the guesser understand the clue.
+
+Try to select a clue that is closely related to BOTH words in the word pair. It should not be too general or too specific to only one of the words.
+Your clue can be:
+1. Related to both words when both words are used together.
+or 2. Related to each word individually, even if it is using a different meaning of the clue for each word.
 
 Examples of good clues:
 1. sheep clothing

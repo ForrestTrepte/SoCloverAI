@@ -84,6 +84,15 @@
     {
       "Word0": "chocolate",
       "Word1": "pair",
+      "Clue": "bonbon",
+      "Rating": {
+        "Score": 4.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "chocolate",
+      "Word1": "pair",
       "Clue": "confectionery",
       "Rating": {
         "Score": 1.0,
@@ -298,6 +307,33 @@
       }
     },
     {
+      "Word0": "dough",
+      "Word1": "skate",
+      "Clue": "rolling",
+      "Rating": {
+        "Score": 4.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "finger",
+      "Word1": "queen",
+      "Clue": "monarchy",
+      "Rating": {
+        "Score": 1.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "finger",
+      "Word1": "queen",
+      "Clue": "ring",
+      "Rating": {
+        "Score": 3.0,
+        "Legal": 2.0
+      }
+    },
+    {
       "Word0": "finger",
       "Word1": "queen",
       "Clue": "royal",
@@ -384,6 +420,15 @@
       "Clue": "smartknock",
       "Rating": {
         "Score": 1.0,
+        "Legal": 0.0
+      }
+    },
+    {
+      "Word0": "genius",
+      "Word1": "punch",
+      "Clue": "smartpunch",
+      "Rating": {
+        "Score": 0.0,
         "Legal": 0.0
       }
     },
@@ -508,6 +553,15 @@
       "Word0": "mushroom",
       "Word1": "summit",
       "Clue": "forage",
+      "Rating": {
+        "Score": 1.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "mushroom",
+      "Word1": "summit",
+      "Clue": "foraging",
       "Rating": {
         "Score": 1.0,
         "Legal": 2.0
