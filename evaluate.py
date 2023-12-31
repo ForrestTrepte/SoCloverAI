@@ -80,7 +80,10 @@ def evaluate_results(results):
     )
     for configuration in results.configurations:
         evaluate_configuration(configuration)
-    evaluate_results_boxplot(results)
+
+    plot_results(results, "average_bar")
+    plot_results(results, "box")
+    plot_results(results, "violin")
 
 
 def evaluate_configuration(configuration):
@@ -94,16 +97,31 @@ def evaluate_configuration(configuration):
     )
 
 
-def evaluate_results_boxplot(results):
-    scores = {}
+def plot_results(results, plot_type):
+    # Prepare dataframe with method and score columns
+    df_scores = []
     for configuration in results.configurations:
-        scores[f"{configuration.method} t{configuration.temperature}"] = [
-            clue.Rating.get_adjusted_score() for clue in configuration.trials
-        ]
-    df = pd.DataFrame(scores)
+        method_name = f"{configuration.method} t{configuration.temperature}"
+        for clue in configuration.trials:
+            df_scores.append(
+                {"Method": method_name, "Score": clue.Rating.get_adjusted_score()}
+            )
+    df = pd.DataFrame(df_scores)
+
+    # Plot based on the selected plot type
     plt.figure(figsize=(10, 6))
-    sns.boxplot(data=df)
-    plt.title("Clue Scores by Method and Temperature")
+    if plot_type == "box":
+        sns.boxplot(x="Method", y="Score", data=df)
+        plt.title("Clue Scores Distribution by Method and Temperature (box)")
+    elif plot_type == "violin":
+        sns.violinplot(x="Method", y="Score", data=df)
+        plt.title("Clue Scores Distribution by Method and Temperature (violin)")
+    elif plot_type == "average_bar":
+        # Calculate the averages for each method
+        df_avg = df.groupby("Method", as_index=False).mean()
+        sns.barplot(x="Method", y="Score", data=df_avg)
+        plt.title("Average Clue Scores by Method and Temperature")
+
     plt.ylabel("Score")
     plt.xticks(rotation=90)
     plt.show()
