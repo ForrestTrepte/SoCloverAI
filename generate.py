@@ -4,7 +4,6 @@ import random
 
 from board import get_random_pair
 from llm import dump_cache_stats_since_last_call, set_trial
-from methods import m01_direct, m02_expert, m03_clue_criteria
 from results import Clue, Configuration, Results
 
 temperatures = [0.0, 0.5, 0.9]
