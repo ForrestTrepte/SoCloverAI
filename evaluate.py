@@ -101,27 +101,40 @@ def plot_results(results, plot_type):
     # Prepare dataframe with method and score columns
     df_scores = []
     for configuration in results.configurations:
-        method_name = f"{configuration.method} t{configuration.temperature}"
+        method_temperature_name = f"{configuration.method} t{configuration.temperature}"
         for clue in configuration.trials:
             df_scores.append(
-                {"Method": method_name, "Score": clue.Rating.get_adjusted_score()}
+                {
+                    "Method": method_temperature_name,
+                    "Score": clue.Rating.get_adjusted_score(),
+                    "Method Group": configuration.method,
+                }
             )
     df = pd.DataFrame(df_scores)
+
+    # Generate a color palette
+    methods_unique = df["Method Group"].unique()
+    palette = sns.color_palette("hsv", len(methods_unique))  # Generate a color palette
 
     # Plot based on the selected plot type
     plt.figure(figsize=(10, 6))
     if plot_type == "box":
-        sns.boxplot(x="Method", y="Score", data=df)
+        sns.boxplot(x="Method", y="Score", data=df, palette=palette, hue="Method Group")
         plt.title("Clue Scores Distribution by Method and Temperature (box)")
     elif plot_type == "violin":
-        sns.violinplot(x="Method", y="Score", data=df)
+        sns.violinplot(
+            x="Method", y="Score", data=df, palette=palette, hue="Method Group"
+        )
         plt.title("Clue Scores Distribution by Method and Temperature (violin)")
     elif plot_type == "average_bar":
         # Calculate the averages for each method
-        df_avg = df.groupby("Method", as_index=False).mean()
-        sns.barplot(x="Method", y="Score", data=df_avg)
+        df_avg = df.groupby(["Method", "Method Group"])["Score"].mean().reset_index()
+        sns.barplot(
+            x="Method", y="Score", data=df_avg, palette=palette, hue="Method Group"
+        )
         plt.title("Average Clue Scores by Method and Temperature")
 
+    plt.legend().remove()
     plt.ylabel("Score")
     plt.xticks(rotation=90)
     plt.show()
