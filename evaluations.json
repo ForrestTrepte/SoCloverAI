@@ -55,6 +55,15 @@
       }
     },
     {
+      "Word0": "attic",
+      "Word1": "table",
+      "Clue": "vintage",
+      "Rating": {
+        "Score": 3.0,
+        "Legal": 2.0
+      }
+    },
+    {
       "Word0": "book",
       "Word1": "punch",
       "Clue": "cover",
@@ -105,6 +114,15 @@
       "Clue": "bonbon",
       "Rating": {
         "Score": 4.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "chocolate",
+      "Word1": "pair",
+      "Clue": "box",
+      "Rating": {
+        "Score": 2.0,
         "Legal": 2.0
       }
     },
@@ -174,6 +192,15 @@
     {
       "Word0": "chocolate",
       "Word1": "pair",
+      "Clue": "romance",
+      "Rating": {
+        "Score": 4.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "chocolate",
+      "Word1": "pair",
       "Clue": "truffle",
       "Rating": {
         "Score": 3.0,
@@ -228,6 +255,15 @@
     {
       "Word0": "diamond",
       "Word1": "queen",
+      "Clue": "card",
+      "Rating": {
+        "Score": 4.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "diamond",
+      "Word1": "queen",
       "Clue": "crown",
       "Rating": {
         "Score": 3.0,
@@ -258,6 +294,15 @@
       "Clue": "regal",
       "Rating": {
         "Score": 2.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "diamond",
+      "Word1": "queen",
+      "Clue": "royal",
+      "Rating": {
+        "Score": 3.0,
         "Legal": 2.0
       }
     },
@@ -375,6 +420,15 @@
       "Clue": "rolling",
       "Rating": {
         "Score": 4.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "finger",
+      "Word1": "queen",
+      "Clue": "jewelry",
+      "Rating": {
+        "Score": 3.0,
         "Legal": 2.0
       }
     },
@@ -606,6 +660,15 @@
     {
       "Word0": "hard",
       "Word1": "pilot",
+      "Clue": "license",
+      "Rating": {
+        "Score": 2.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "hard",
+      "Word1": "pilot",
       "Clue": "simulator",
       "Rating": {
         "Score": 2.0,
@@ -703,6 +766,24 @@
       }
     },
     {
+      "Word0": "ladder",
+      "Word1": "truck",
+      "Clue": "rescue",
+      "Rating": {
+        "Score": 3.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "ladder",
+      "Word1": "truck",
+      "Clue": "utility",
+      "Rating": {
+        "Score": 3.0,
+        "Legal": 2.0
+      }
+    },
+    {
       "Word0": "mushroom",
       "Word1": "pilot",
       "Clue": "cockpit",
@@ -723,7 +804,43 @@
     {
       "Word0": "mushroom",
       "Word1": "summit",
+      "Clue": "cap",
+      "Rating": {
+        "Score": 2.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "mushroom",
+      "Word1": "summit",
+      "Clue": "caps",
+      "Rating": {
+        "Score": 1.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "mushroom",
+      "Word1": "summit",
+      "Clue": "conference",
+      "Rating": {
+        "Score": 1.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "mushroom",
+      "Word1": "summit",
       "Clue": "diplomacy",
+      "Rating": {
+        "Score": 1.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "mushroom",
+      "Word1": "summit",
+      "Clue": "elevated",
       "Rating": {
         "Score": 1.0,
         "Legal": 2.0
@@ -780,6 +897,15 @@
       "Clue": "nature",
       "Rating": {
         "Score": 3.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "mushroom",
+      "Word1": "summit",
+      "Clue": "peak",
+      "Rating": {
+        "Score": 2.0,
         "Legal": 2.0
       }
     },
@@ -906,6 +1032,15 @@
       "Clue": "knockout",
       "Rating": {
         "Score": 2.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "pair",
+      "Word1": "punch",
+      "Clue": "sparring",
+      "Rating": {
+        "Score": 3.0,
         "Legal": 2.0
       }
     },
