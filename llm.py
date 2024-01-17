@@ -1,14 +1,19 @@
-import langchain
-from langchain import LLMChain, PromptTemplate
-from langchain.chat_models import ChatOpenAI
-import simple_llm_cache
-import llm_cache_stats_wrapper
+import logging
 import os
 import re
 
+import langchain
+from langchain import LLMChain, PromptTemplate
+from langchain.chat_models import ChatOpenAI
+
+import llm_cache_stats_wrapper
+import simple_llm_cache
+
+logger = logging.getLogger("SoCloverAI")
+
 # In order to make it easy to run work projects and personal AI experiments, override OPENAI_API_KEY with the value of OPENAI_API_KEY_PERSONAL if it is set.
 if "OPENAI_API_KEY_PERSONAL" in os.environ:
-    print("Using key from OPENAI_API_KEY_PERSONAL environment variable")
+    logger.info("Using key from OPENAI_API_KEY_PERSONAL environment variable")
     os.environ["OPENAI_API_KEY"] = os.environ["OPENAI_API_KEY_PERSONAL"]
 
 langchain.llm_cache = llm_cache_stats_wrapper.LlmCacheStatsWrapper(
@@ -23,7 +28,7 @@ def set_trial(trial):
 
 
 def dump_cache_stats_since_last_call():
-    print(langchain.llm_cache.get_cache_stats_summary())
+    logger.info(langchain.llm_cache.get_cache_stats_summary())
     langchain.llm_cache.clear_cache_stats()
 
 
@@ -34,20 +39,39 @@ def predict(temperature, template, **kwargs):
     llm = ChatOpenAI(temperature=temperature, model_name=model_name)
     chain = LLMChain(llm=llm, prompt=prompt, verbose=False)
     output = chain.predict(**kwargs)
-    result = parse_output(output)
+    logger.debug(output)
+    candidates = parse_candidates(output)
+    best = parse_best(output)
+    try:
+        candidates.remove(best)
+    except ValueError:
+        pass  # OK if candidates doesn't contain best
+    result = [best] + candidates
+    return result
+
+
+def parse_candidates(output):
+    result = []
+    for line in output.splitlines():
+        if not line.startswith("Candidates:"):
+            continue
+        candidates_str = line[len("Candidates: ") :]
+        candidates = candidates_str.split(",")
+        candidates = [candidate.strip() for candidate in candidates]
+        result += candidates
     return result
 
 
 pattern = re.compile(r"Best: (.*)")
 
 
-def parse_output(output):
+def parse_best(output):
     match = pattern.search(output)
     if match:
         return match.group(1)
     split_output = output.split()
     if len(split_output) == 1:
-        print(f"Invalid output format: {output}")
+        logger.info(f"Invalid output format: {output}")
         return split_output[0]
-    print(f"Invalid output: {output}")
+    logger.info(f"Invalid output: {output}")
     return None

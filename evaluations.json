@@ -273,6 +273,15 @@
     {
       "Word0": "diamond",
       "Word1": "queen",
+      "Clue": "jewel",
+      "Rating": {
+        "Score": 4.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "diamond",
+      "Word1": "queen",
       "Clue": "monarch",
       "Rating": {
         "Score": 3.0,
@@ -294,6 +303,15 @@
       "Clue": "regal",
       "Rating": {
         "Score": 2.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "diamond",
+      "Word1": "queen",
+      "Clue": "regalia",
+      "Rating": {
+        "Score": 3.0,
         "Legal": 2.0
       }
     },
@@ -426,6 +444,15 @@
     {
       "Word0": "finger",
       "Word1": "queen",
+      "Clue": "jewel",
+      "Rating": {
+        "Score": 3.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "finger",
+      "Word1": "queen",
       "Clue": "jewelry",
       "Rating": {
         "Score": 3.0,
@@ -507,10 +534,28 @@
     {
       "Word0": "genius",
       "Word1": "punch",
+      "Clue": "clever boxer",
+      "Rating": {
+        "Score": 0.0,
+        "Legal": 0.0
+      }
+    },
+    {
+      "Word0": "genius",
+      "Word1": "punch",
       "Clue": "einstein",
       "Rating": {
         "Score": 1.0,
         "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "genius",
+      "Word1": "punch",
+      "Clue": "intellectualknockout",
+      "Rating": {
+        "Score": 0.0,
+        "Legal": 0.0
       }
     },
     {
@@ -561,6 +606,15 @@
     {
       "Word0": "genius",
       "Word1": "punch",
+      "Clue": "punchline",
+      "Rating": {
+        "Score": 0.0,
+        "Legal": 0.0
+      }
+    },
+    {
+      "Word0": "genius",
+      "Word1": "punch",
       "Clue": "smartass",
       "Rating": {
         "Score": 1.0,
@@ -581,7 +635,7 @@
       "Word1": "punch",
       "Clue": "smartknock",
       "Rating": {
-        "Score": 1.0,
+        "Score": 0.0,
         "Legal": 0.0
       }
     },
@@ -618,6 +672,15 @@
       "Clue": "einstein",
       "Rating": {
         "Score": 1.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "hard",
+      "Word1": "pilot",
+      "Clue": "challenge",
+      "Rating": {
+        "Score": 2.0,
         "Legal": 2.0
       }
     },
@@ -663,6 +726,15 @@
       "Clue": "license",
       "Rating": {
         "Score": 2.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "hard",
+      "Word1": "pilot",
+      "Clue": "simulation",
+      "Rating": {
+        "Score": 3.0,
         "Legal": 2.0
       }
     },
@@ -795,6 +867,15 @@
     {
       "Word0": "mushroom",
       "Word1": "summit",
+      "Clue": "\"alpine\"",
+      "Rating": {
+        "Score": 2.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "mushroom",
+      "Word1": "summit",
       "Clue": "alpine",
       "Rating": {
         "Score": 2.0,
@@ -849,6 +930,15 @@
     {
       "Word0": "mushroom",
       "Word1": "summit",
+      "Clue": "elevation",
+      "Rating": {
+        "Score": 1.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "mushroom",
+      "Word1": "summit",
       "Clue": "forage",
       "Rating": {
         "Score": 1.0,
@@ -888,6 +978,15 @@
       "Clue": "gathering",
       "Rating": {
         "Score": 4.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "mushroom",
+      "Word1": "summit",
+      "Clue": "meeting",
+      "Rating": {
+        "Score": 1.0,
         "Legal": 2.0
       }
     },
@@ -988,6 +1087,15 @@
       "Rating": {
         "Score": 1.0,
         "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "pair",
+      "Word1": "punch",
+      "Clue": "boxingduo",
+      "Rating": {
+        "Score": 0.0,
+        "Legal": 0.0
       }
     },
     {

@@ -1,3 +1,4 @@
+import logging
 import os
 
 import matplotlib.pyplot as plt
@@ -5,8 +6,9 @@ import numpy as np
 import pandas as pd
 import seaborn as sns
 
-from results import Rating, Clue, Evaluations
+from results import Clue, Evaluations, Rating
 
+logger = logging.getLogger("SoCloverAI")
 evaluation_filename = "evaluations.json"
 percentiles = [10, 50, 90]
 
@@ -17,7 +19,9 @@ def evaluate(results):
         evaluations_dict = get_completed_evaluations_dict(results)
         if evaluations_dict:
             break
-        print(f"Please evaluate the clues with null scores in {evaluation_filename}")
+        logger.info(
+            f"Please evaluate the clues with null scores in {evaluation_filename}"
+        )
         input("Press enter when done")
 
     score_results(results, evaluations_dict)
@@ -75,7 +79,7 @@ def score_results(results, evaluations_dict):
 
 
 def evaluate_results(results):
-    print(
+    logger.info(
         f"Method, Temperature, {', '.join([f'{percentile}%' for percentile in percentiles])}"
     )
     for configuration in results.configurations:
@@ -92,7 +96,7 @@ def evaluate_configuration(configuration):
         np.percentile(scores, percentile) for percentile in percentiles
     ]
     percentile_scores_str = [f"{score:.2f}" for score in percentile_scores]
-    print(
+    logger.info(
         f"{configuration.method}, {configuration.temperature}, {', '.join(percentile_scores_str)}"
     )
 
