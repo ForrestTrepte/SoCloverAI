@@ -10,28 +10,45 @@ from log_to_file import log_to_file
 from results import Clue, Configuration, Results
 
 logger = logging.getLogger("SoCloverAI")
-temperatures = [0.0, 0.5, 0.9]
-trials = 3
-pairs_per_trial = 10
 
-# Get all generate functions from the methods folder
-methods = []
-for filename in sorted(
-    os.listdir("methods"), reverse=True
-):  # reverse order to see results being generated for latest methods first
-    if filename.startswith("m") and filename.endswith(".py"):
+
+def clear_logs():
+    if os.path.isdir("logs"):
+        shutil.rmtree("logs")
+
+
+def get_methods(allowed_prefixes):
+    """Get all generate functions from the methods folder"""
+    methods = []
+    for filename in sorted(
+        os.listdir("methods"), reverse=True
+    ):  # reverse order to see results being generated for latest methods first
+        if not filename.startswith("m") or not filename.endswith(".py"):
+            continue
+        if allowed_prefixes:
+            if not any(filename.startswith(prefix) for prefix in allowed_prefixes):
+                continue
         module_name = filename[:-3]
         module = importlib.import_module(f"methods.{module_name}")
         method = getattr(module, "generate")
         methods.append(method)
+    return methods
 
 
-def generate():
+def generate_with_standard_settings():
+    """Generate with standard settings and random words for development and evaluation of methods."""
+    temperatures = [0.0, 0.5, 0.9]
+    trials = 3
+    pairs_per_trial = 10
     random.seed("Clover")
     test_pairs = [get_random_pair() for _ in range(pairs_per_trial)]
+    methods = get_methods(allowed_prefixes=None)
+    results = generate(test_pairs, temperatures, trials, methods)
+    return results
 
-    if os.path.isdir("logs"):
-        shutil.rmtree("logs")
+
+def generate(test_pairs, temperatures, trials, methods):
+    random.seed("Clover")
 
     configurations = []
     for method in methods:

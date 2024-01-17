@@ -1,6 +1,7 @@
 from evaluate import evaluate
-from generate import generate
+import generate import generate_with_standard_settings, clear_logs
 
 if __name__ == "__main__":
-    results = generate()
+    clear_logs()
+    results = generate_with_standard_settings()
     evaluate(results)
