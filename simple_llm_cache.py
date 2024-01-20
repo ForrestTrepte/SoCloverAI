@@ -1,10 +1,13 @@
 import json
 import os
 from typing import Any, Dict, List, Optional
-from langchain.cache import InMemoryCache, RETURN_VAL_TYPE
+
+from langchain.cache import InMemoryCache
 from langchain.load.dump import dumps
 from langchain.load.load import loads
 from langchain.schema import Generation
+from langchain_core.caches import RETURN_VAL_TYPE
+
 
 class SimpleLlmCache(InMemoryCache):
     """Cache that stores things in memory and persists to a JSON text file."""
@@ -17,7 +20,7 @@ class SimpleLlmCache(InMemoryCache):
         self._trial = 0
         self._filename = filename
         try:
-            with open(self._filename, 'r') as f:
+            with open(self._filename, "r") as f:
                 self._cache = json.load(f)
         except FileNotFoundError:
             pass
@@ -40,7 +43,7 @@ class SimpleLlmCache(InMemoryCache):
             The string key.
         """
         return f"trial {self._trial} ::: {prompt} ::: {llm_string})"
-    
+
     def lookup(self, prompt: str, llm_string: str) -> Optional[RETURN_VAL_TYPE]:
         """
         Look up based on prompt and llm_string.
@@ -75,7 +78,7 @@ class SimpleLlmCache(InMemoryCache):
         for generation in return_val:
             generations.append(dumps(generation))
         self._cache[key] = generations
-        with open(self._filename, 'w') as f:
+        with open(self._filename, "w") as f:
             json.dump(self._cache, f, indent=4)
 
     def clear(self) -> None:

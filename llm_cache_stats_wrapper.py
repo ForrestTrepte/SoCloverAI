@@ -1,17 +1,19 @@
 from typing import Any, Dict, List, Optional
-from langchain.cache import BaseCache, RETURN_VAL_TYPE
+from langchain_core.caches import BaseCache, RETURN_VAL_TYPE
 from collections import defaultdict
 import tiktoken
 import re
 
+
 class LlmCacheStatsWrapper:
     """Wrapper for an LLM cache that tracks the number of cache hits and tokens used."""
+
     class Stat:
         def __init__(self):
             self.count = 0
             self.input_tokens = 0
             self.output_tokens = 0
-        
+
         def add_tokens(self, input_tokens, output_tokens):
             self.count += 1
             self.input_tokens += input_tokens
@@ -28,7 +30,9 @@ class LlmCacheStatsWrapper:
         self.inner_cache = inner_cache
         self.cache_hits_by_model_name = defaultdict(self.Stat)
         self.cache_misses_by_model_name = defaultdict(self.Stat)
-        self.model_name_re = re.compile(r"'model_name',\s*'(?P<model_name_format_1>[^']+)'|\"model_name\":\s*\"(?P<model_name_format_2>[^\"]+)\"")
+        self.model_name_re = re.compile(
+            r"'model_name',\s*'(?P<model_name_format_1>[^']+)'|\"model_name\":\s*\"(?P<model_name_format_2>[^\"]+)\""
+        )
         self.encodings = {}
 
     def lookup(self, prompt: str, llm_string: str) -> Optional[RETURN_VAL_TYPE]:
@@ -63,7 +67,9 @@ class LlmCacheStatsWrapper:
         model_name_match = self.model_name_re.search(llm_string)
         if not model_name_match:
             raise ValueError(f"Could not find model_name in llm_string: {llm_string}")
-        model_name = model_name_match.group('model_name_format_1') or model_name_match.group('model_name_format_2')
+        model_name = model_name_match.group(
+            "model_name_format_1"
+        ) or model_name_match.group("model_name_format_2")
         if model_name not in self.encodings:
             self.encodings[model_name] = tiktoken.encoding_for_model(model_name)
         encoding = self.encodings[model_name]
@@ -73,7 +79,11 @@ class LlmCacheStatsWrapper:
         for generation in result:
             output_tokens += len(encoding.encode(generation.text))
 
-        (self.cache_hits_by_model_name[model_name] if is_hit else self.cache_misses_by_model_name[model_name]).add_tokens(input_tokens, output_tokens)
+        (
+            self.cache_hits_by_model_name[model_name]
+            if is_hit
+            else self.cache_misses_by_model_name[model_name]
+        ).add_tokens(input_tokens, output_tokens)
 
     def clear_cache_stats(self):
         self.cache_hits_by_model_name = defaultdict(self.Stat)
@@ -103,7 +113,7 @@ class LlmCacheStatsWrapper:
         except ValueError as e:
             result += f"           Can't estimate cost: {e}\n"
         return result
-    
+
     # from https://openai.com/pricing as of 11/7/23
     # (input cost, output cost) in USD per 1000 tokens
     _token_cost_by_model = {
@@ -121,5 +131,8 @@ class LlmCacheStatsWrapper:
             raise ValueError(f"Unknown model name: {model_name}")
 
         token_cost = cls._token_cost_by_model[model_name]
-        cost = (cache_misses.input_tokens * token_cost[0] + cache_misses.output_tokens * token_cost[1]) / 1000.0
+        cost = (
+            cache_misses.input_tokens * token_cost[0]
+            + cache_misses.output_tokens * token_cost[1]
+        ) / 1000.0
         return cost

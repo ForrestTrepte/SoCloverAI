@@ -3,8 +3,9 @@ import os
 import re
 
 import langchain
-from langchain import LLMChain, PromptTemplate
-from langchain.chat_models import ChatOpenAI
+from langchain.chains import LLMChain
+from langchain.prompts import PromptTemplate
+from langchain_openai import ChatOpenAI
 
 import llm_cache_stats_wrapper
 import simple_llm_cache
