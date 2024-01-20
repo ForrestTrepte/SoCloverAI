@@ -73,20 +73,11 @@ def get_words_sorted_by_frequency():
         if is_valid_word(word):
             word_frequencies.append((word, model.get_vecattr(word, "count")))
         else:
-            invalid_words.append((word, model.get_vecattr(word, "count")))
+            invalid_words.append(word)
 
     logger.info(f"Loaded {len(word_frequencies)} valid words")
-    logger.info(f"Checking {len(invalid_words)} invalid words")
-    possible_candidates = []
-    for word, frequency in invalid_words:
-        non_alpha_chars = {char for char in word if not char.isalpha()}
-        invalid_chars = non_alpha_chars - {"-", "_", "."}
-        if len(invalid_chars) > 0:
-            continue
-        possible_candidate = word.replace("_", "-").replace(".", "")
-        possible_candidates.append((possible_candidate, frequency))
-    logger.info(f"Checking {len(possible_candidates)} fixed-up candidates")
-    logger.info((", ").join([word for word, _ in possible_candidates]))
+    logger.info(f"Filtered out {len(invalid_words)} invalid words")
+    logger.info((", ").join(invalid_words))
 
     # The model is already sorted, but we'll sort again just in case the model changes in the future
     sorted_word_frequencies = sorted(word_frequencies, key=lambda x: x[1], reverse=True)
@@ -98,8 +89,18 @@ def get_words_sorted_by_frequency():
 
 
 def is_valid_word(word):
-    if len(word) == "$":
-        return True
+    if contains_problematic_characters(word):
+        return False
     if not word.isalpha():
+        if len(word) == 1:
+            return True  # accept a single symbol (e.g. $)
         return False
     return True
+
+
+def contains_problematic_characters(input_string, encoding="cp1252"):
+    try:
+        input_string.encode(encoding)
+        return False
+    except UnicodeEncodeError as e:
+        return True
