@@ -1,4 +1,4 @@
-Words = [
+CloverWords = [
     "game",
     "canvas",
     "punch",
