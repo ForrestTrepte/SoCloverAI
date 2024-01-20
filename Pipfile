@@ -12,6 +12,7 @@ pytest = "*"
 matplotlib = "*"
 seaborn = "*"
 langchain-openai = "*"
+gensim = "*"
 
 [dev-packages]
 
