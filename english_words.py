@@ -102,9 +102,10 @@ def get_common_word_embeddings(count):
         embeddings_stacked = embeddings_data["embeddings"]
         if len(embeddings_stacked) >= maximum_common_word_embeddings:
             is_loaded = True
-        logger.info(
-            f"Setting maximum_common_word_embeddings has increased. Regenerating {word_embeddings_filepath}"
-        )
+        else:
+            logger.info(
+                f"Setting maximum_common_word_embeddings has increased. Regenerating {word_embeddings_filepath}"
+            )
 
     if not is_loaded:
         logger.info(f"Getting embeddings")

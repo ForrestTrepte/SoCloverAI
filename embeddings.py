@@ -24,12 +24,26 @@ def get_embeddings(documents):
 class WordEmbeddings:
     def __init__(self, words, embeddings):
         assert len(words) == len(embeddings)
-        self.words = words
+        self.words = np.array(words)
         self.embeddings = embeddings
 
-    def find_near(self, word, count):
-        # TODO: Implement this
-        return self.words[:count]
+    def find_near(self, target_embedding, count):
+        target_embedding_column_vector = np.array([target_embedding]).T
+
+        # Use matrix multiplication to calculate the dot product with all the word embeddings
+        dot_products = self.embeddings @ target_embedding_column_vector
+
+        # Get indices from descending sort of the dot products, flattened to 1d, slice to count elements
+        nearest_indices = np.argsort(-dot_products, axis=0).flatten()[:count]
+
+        # Get the words and distances for the nearest indices
+        nearest_words = self.words[nearest_indices]
+        nearest_dot_products = dot_products[nearest_indices].flatten()
+        # cos distance = 1 - dot product (if embeddings are normalized, which they are)
+        nearest_cos_distances = 1 - nearest_dot_products
+
+        result = list(zip(nearest_words, nearest_cos_distances))
+        return result
 
 
 def is_normalized(embedding):
