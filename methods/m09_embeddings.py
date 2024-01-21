@@ -1,6 +1,6 @@
 import logging
 
-from english_words import get_common_words
+from english_words import get_common_words, get_common_word_embeddings
 from embeddings import get_embeddings
 
 logger = logging.getLogger("SoCloverAI")
@@ -15,8 +15,9 @@ def generate(temperature, pair):
     ]
     pair_embeddings = get_embeddings(documents)
 
-    common_words = get_common_words(60000)
-    common_words_embeddings = get_embeddings(common_words)
+    common_words_count = 60000
+    common_words = get_common_words(common_words_count)
+    common_words_embeddings = get_common_word_embeddings(common_words_count)
 
     # TODO: Search for words with embeddings related to the word pair and use those as clues
 

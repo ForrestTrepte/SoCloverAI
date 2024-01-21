@@ -162,3 +162,5 @@ cython_debug/
 # Don't check in data files from external sources
 /downloaded_data_files/
 
+# Word embeddings file is ignored because it is too large for github and can be regenerated
+/words_by_frequency_embeddings.npz

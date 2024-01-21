@@ -2,9 +2,13 @@ import json
 import logging
 import os
 
+import numpy as np
 from gensim.models import KeyedVectors, Word2Vec
 
+from embeddings import get_embeddings
+
 maximum_common_words = 200000
+maximum_common_word_embeddings = 60000
 logger = logging.getLogger("SoCloverAI")
 project_root = os.path.dirname(os.path.realpath(__file__))
 
@@ -86,3 +90,27 @@ def contains_problematic_characters(input_string, encoding="cp1252"):
         return False
     except UnicodeEncodeError as e:
         return True
+
+
+def get_common_word_embeddings(count):
+    assert count <= maximum_common_word_embeddings
+    common_words = get_common_words(maximum_common_word_embeddings)
+    word_embeddings_filepath = f"{project_root}/words_by_frequency_embeddings.npz"
+    if os.path.exists(word_embeddings_filepath):
+        embeddings_data = np.load(word_embeddings_filepath)
+        embeddings_stacked = embeddings_data["embeddings"]
+        if len(embeddings_stacked) >= maximum_common_word_embeddings:
+            return embeddings_stacked[:count]
+        logger.info(
+            f"Setting maximum_common_word_embeddings has increased. Regenerating {word_embeddings_filepath}"
+        )
+
+    logger.info(f"Getting embeddings")
+    embeddings = get_embeddings(common_words)
+    assert len(common_words) == len(embeddings)
+    embeddings_stacked = np.stack(embeddings)
+
+    logger.info(f"Saving {word_embeddings_filepath}")
+    np.savez(word_embeddings_filepath, embeddings=embeddings_stacked)
+    logger.info(f"Saved {word_embeddings_filepath}")
+    return embeddings_stacked[:count]

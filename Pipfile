@@ -15,6 +15,7 @@ langchain-openai = "*"
 gensim = "*"
 
 [dev-packages]
+snakeviz = "*"
 
 [requires]
 python_version = "3.10"
