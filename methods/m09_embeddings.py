@@ -19,6 +19,7 @@ def generate(temperature, pair):
     common_words = get_common_words(common_words_count)
     common_words_embeddings = get_common_word_embeddings(common_words_count)
 
+    candidates = common_words_embeddings.find_near(documents[0], 10)
     # TODO: Search for words with embeddings related to the word pair and use those as clues
 
     return ["boxing"]
