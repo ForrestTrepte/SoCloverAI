@@ -1,11 +1,15 @@
 import logging
 import os
-import numpy as np
 
+import numpy as np
 from langchain.embeddings import CacheBackedEmbeddings
 from langchain.storage import LocalFileStore
 from langchain_openai import OpenAIEmbeddings
 
+from init_openai import init_openai
+
+logger = logging.getLogger("SoCloverAI")
+init_openai()
 project_root = os.path.dirname(os.path.realpath(__file__))
 embeddings_model = OpenAIEmbeddings(model="text-embedding-ada-002")
 embeddings_store = LocalFileStore(f"{project_root}/embeddings-cache")

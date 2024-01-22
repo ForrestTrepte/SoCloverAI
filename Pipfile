@@ -13,6 +13,7 @@ matplotlib = "*"
 seaborn = "*"
 langchain-openai = "*"
 gensim = "*"
+word-forms = "*"
 
 [dev-packages]
 snakeviz = "*"

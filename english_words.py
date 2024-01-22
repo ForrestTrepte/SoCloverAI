@@ -4,8 +4,9 @@ import os
 
 import numpy as np
 from gensim.models import KeyedVectors, Word2Vec
+from word_forms.word_forms import get_word_forms
 
-from embeddings import get_embeddings, WordEmbeddings
+from embeddings import WordEmbeddings, get_embeddings
 
 maximum_common_words = 200000
 maximum_common_word_embeddings = 60000
@@ -118,4 +119,22 @@ def get_common_word_embeddings(count):
         logger.info(f"Saved {word_embeddings_filepath}")
 
     result = WordEmbeddings(common_words[:count], embeddings_stacked[:count])
+    return result
+
+
+def remove_word_forms_of(base_word, words_to_remove_from):
+    def is_any_word_form_in(word_forms, word):
+        for word_form in word_forms:
+            if word_form.lower() in word.lower():
+                return True
+        return False
+
+    word_forms_by_type = get_word_forms(base_word)
+    word_forms = set.union(*word_forms_by_type.values())
+    result = []
+    for word in words_to_remove_from:
+        if is_any_word_form_in(word_forms, word):
+            continue
+        result.append(word)
+
     return result

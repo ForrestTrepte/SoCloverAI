@@ -1,6 +1,10 @@
 import logging
 
-from english_words import get_common_words, get_common_word_embeddings
+from english_words import (
+    get_common_words,
+    get_common_word_embeddings,
+    remove_word_forms_of,
+)
 from embeddings import get_embeddings
 
 logger = logging.getLogger("SoCloverAI")
@@ -52,5 +56,10 @@ def generate(temperature, pair):
             all_candidates.add(candidate, distance)
 
     sorted_candidates = all_candidates.get_sorted_candidates()
-    result = [candidate for candidate, _ in sorted_candidates]
-    return result
+    sorted_candidate_words = [candidate for candidate, _ in sorted_candidates]
+
+    valid_candidates = sorted_candidate_words
+    valid_candidates = remove_word_forms_of(pair[0], valid_candidates)
+    valid_candidates = remove_word_forms_of(pair[1], valid_candidates)
+
+    return valid_candidates
