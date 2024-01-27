@@ -1,5 +1,6 @@
 import logging
 import os
+from typing import Optional
 
 logger = logging.getLogger("SoCloverAI")
 logger.setLevel(logging.DEBUG)
@@ -14,7 +15,7 @@ if not logger.handlers:
 file_handler = None
 
 
-def log_to_file(filename):
+def log_to_file(filename: Optional[str]) -> None:
     global file_handler
     if file_handler:
         logger.removeHandler(file_handler)

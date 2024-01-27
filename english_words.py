@@ -1,10 +1,11 @@
 import json
 import logging
 import os
+from typing import List, Tuple
 
 import numpy as np
-from gensim.models import KeyedVectors, Word2Vec
-from word_forms.word_forms import get_word_forms
+from gensim.models import KeyedVectors, Word2Vec  # type: ignore
+from word_forms.word_forms import get_word_forms  # type: ignore
 
 from embeddings import WordEmbeddings, get_embeddings
 
@@ -14,21 +15,24 @@ logger = logging.getLogger("SoCloverAI")
 project_root = os.path.dirname(os.path.realpath(__file__))
 
 
-def get_common_words(count):
+def get_common_words(count: int) -> List[str]:
     assert count <= maximum_common_words
     sorted_words = get_words_sorted_by_frequency()
     return sorted_words[:count]
 
 
-def get_words_sorted_by_frequency():
+def get_words_sorted_by_frequency() -> List[str]:
     # Load a list of the most common words in English
     word_frequency_filepath = f"{project_root}/words_by_frequency.json"
     if os.path.exists(word_frequency_filepath):
         with open(word_frequency_filepath, "r") as f:
-            sorted_words = json.load(f)
+            loaded_sorted_words = json.load(f)
+            assert isinstance(loaded_sorted_words, list)
+            assert all(isinstance(word, str) for word in loaded_sorted_words)
+
             # sanity check, if this changes we should delete words_by_frequency.json so it can be regenerated
-            if len(sorted_words) >= maximum_common_words:
-                return sorted_words
+            if len(loaded_sorted_words) >= maximum_common_words:
+                return loaded_sorted_words
             logger.info(
                 f"Setting maximum_common_words has increased. Regenerating {word_frequency_filepath}"
             )
@@ -44,7 +48,7 @@ def get_words_sorted_by_frequency():
     logger.info(f"Loading {model_filename}")
     model = KeyedVectors.load_word2vec_format(model_filename, binary=True)
 
-    word_frequencies = []
+    word_frequencies: List[Tuple[str, int]] = []
     invalid_words = []
     for word in model.index_to_key:
         if len(word_frequencies) >= maximum_common_words:
@@ -67,15 +71,17 @@ def get_words_sorted_by_frequency():
     )
 
     # The model is already sorted, but we'll sort again just in case the model changes in the future
-    sorted_word_frequencies = sorted(word_frequencies, key=lambda x: x[1], reverse=True)
+    sorted_word_frequencies: List[Tuple[str, int]] = sorted(
+        word_frequencies, key=lambda x: x[1], reverse=True
+    )
 
-    sorted_words = [word for word, _ in sorted_word_frequencies]
+    sorted_words: List[str] = [word for word, _ in sorted_word_frequencies]
     with open(word_frequency_filepath, "w") as f:
         json.dump(sorted_words, f, indent=2)
     return sorted_words
 
 
-def is_valid_word(word):
+def is_valid_word(word: str) -> bool:
     if contains_problematic_characters(word):
         return False
     if not word.isalpha():
@@ -85,7 +91,9 @@ def is_valid_word(word):
     return True
 
 
-def contains_problematic_characters(input_string, encoding="cp1252"):
+def contains_problematic_characters(
+    input_string: str, encoding: str = "cp1252"
+) -> bool:
     try:
         input_string.encode(encoding)
         return False
@@ -93,7 +101,7 @@ def contains_problematic_characters(input_string, encoding="cp1252"):
         return True
 
 
-def get_common_word_embeddings(count):
+def get_common_word_embeddings(count: int) -> WordEmbeddings:
     assert count <= maximum_common_word_embeddings
     common_words = get_common_words(maximum_common_word_embeddings)
     word_embeddings_filepath = f"{project_root}/words_by_frequency_embeddings.npz"
@@ -122,8 +130,8 @@ def get_common_word_embeddings(count):
     return result
 
 
-def remove_word_forms_of(base_word, words_to_remove_from):
-    def is_any_word_form_in(word_forms, word):
+def remove_word_forms_of(base_word: str, words_to_remove_from: List[str]) -> List[str]:
+    def is_any_word_form_in(word_forms: List[str], word: str) -> bool:
         for word_form in word_forms:
             if word_form.lower() in word.lower():
                 return True
@@ -144,7 +152,11 @@ def remove_word_forms_of(base_word, words_to_remove_from):
     return result
 
 
-def get_word_forms_list(base_word):
+def get_word_forms_list(base_word: str) -> List[str]:
     word_forms_by_type = get_word_forms(base_word)
+    assert isinstance(word_forms_by_type, dict)
+    assert all(
+        isinstance(word_forms, set) for word_forms in word_forms_by_type.values()
+    )
     word_forms = set.union(*word_forms_by_type.values())
-    return word_forms
+    return list(word_forms)

@@ -1,22 +1,23 @@
 import logging
 import os
+from typing import Dict, Optional, Tuple
 
 import matplotlib.pyplot as plt
 import numpy as np
-import pandas as pd
-import seaborn as sns
+import pandas as pd  # type: ignore
+import seaborn as sns  # type: ignore
 
-from results import Clue, Evaluations, Rating
+from results import Clue, Configuration, Evaluations, Rating, Results
 
 logger = logging.getLogger("SoCloverAI")
 evaluation_filename = "evaluations.json"
 percentiles = [10, 50, 90]
 
 
-def evaluate(results):
+def evaluate(results: Results) -> None:
     evaluations_dict = None
     while True:
-        evaluations_dict = get_completed_evaluations_dict(results)
+        evaluations_dict = get_evaluations_dict_if_completed(results)
         if evaluations_dict:
             break
         logger.info(
@@ -28,7 +29,9 @@ def evaluate(results):
     evaluate_results(results)
 
 
-def get_completed_evaluations_dict(results):
+def get_evaluations_dict_if_completed(
+    results: Results,
+) -> Optional[Dict[Tuple[str, str, str], Rating]]:
     evaluations_dict = load_evaluations_dict()
     is_scored = True
     for configuration in results.configurations:
@@ -48,7 +51,7 @@ def get_completed_evaluations_dict(results):
     return evaluations_dict
 
 
-def load_evaluations_dict():
+def load_evaluations_dict() -> Dict[Tuple[str, str, str], Rating]:
     if os.path.isfile(evaluation_filename):
         with open(evaluation_filename, "r") as f:
             evaluations_json = f.read()
@@ -61,7 +64,7 @@ def load_evaluations_dict():
     return evaluations_dict
 
 
-def save_evaluations_dict(evaluations_dict):
+def save_evaluations_dict(evaluations_dict: Dict[Tuple[str, str, str], Rating]) -> None:
     evaluations_pydantic = Evaluations(clues=[])
     for clue_tuple, rating in sorted(evaluations_dict.items()):
         clue = Clue.from_tuple(clue_tuple)
@@ -71,14 +74,16 @@ def save_evaluations_dict(evaluations_dict):
         f.write(evaluations_pydantic.model_dump_json(indent=2))
 
 
-def score_results(results, evaluations_dict):
+def score_results(
+    results: Results, evaluations_dict: Dict[Tuple[str, str, str], Rating]
+) -> None:
     for configuration in results.configurations:
         for clue in configuration.trials:
             clue_tuple = clue.as_tuple()
             clue.Rating = evaluations_dict[clue_tuple]
 
 
-def evaluate_results(results):
+def evaluate_results(results: Results) -> None:
     logger.info(
         f"Method, Temperature, {', '.join([f'{percentile}%' for percentile in percentiles])}"
     )
@@ -90,7 +95,7 @@ def evaluate_results(results):
     plot_results(results, "violin")
 
 
-def evaluate_configuration(configuration):
+def evaluate_configuration(configuration: Configuration) -> None:
     scores = [clue.Rating.get_adjusted_score() for clue in configuration.trials]
     percentile_scores = [
         np.percentile(scores, percentile) for percentile in percentiles
@@ -101,7 +106,7 @@ def evaluate_configuration(configuration):
     )
 
 
-def plot_results(results, plot_type):
+def plot_results(results: Results, plot_type: str) -> None:
     # Prepare dataframe with method and score columns
     df_scores = []
     for configuration in results.configurations:

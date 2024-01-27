@@ -1,5 +1,6 @@
 import logging
 import os
+from typing import List, Tuple
 
 import numpy as np
 from langchain.embeddings import CacheBackedEmbeddings
@@ -18,7 +19,7 @@ embedder = CacheBackedEmbeddings.from_bytes_store(
 )
 
 
-def get_embeddings(documents):
+def get_embeddings(documents: List[str]) -> List[List[float]]:
     embeddings = embedder.embed_documents(documents)
     for embedding in embeddings:
         assert is_normalized(embedding)
@@ -26,12 +27,14 @@ def get_embeddings(documents):
 
 
 class WordEmbeddings:
-    def __init__(self, words, embeddings):
+    def __init__(self, words: List[str], embeddings: List[List[float]]) -> None:
         assert len(words) == len(embeddings)
         self.words = np.array(words)
         self.embeddings = embeddings
 
-    def find_near(self, target_embeddings, count):
+    def find_near(
+        self, target_embeddings: List[List[float]], count: int
+    ) -> List[Tuple[str, float]]:
         # TODO: Can this replace find_near by accepting a single embedding in the list?
         distances_by_target = []
         for target_embedding in target_embeddings:
@@ -58,7 +61,7 @@ class WordEmbeddings:
         return result
 
 
-def is_normalized(embedding):
+def is_normalized(embedding: List[float]) -> bool:
     norm = np.linalg.norm(embedding)
-    is_normalized = np.isclose(norm, 1.0)
+    is_normalized: bool = np.isclose(norm, 1.0)
     return is_normalized

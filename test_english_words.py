@@ -1,7 +1,7 @@
 from english_words import remove_word_forms_of
 
 
-def test_remove_word_forms_of():
+def test_remove_word_forms_of() -> None:
     removed0 = remove_word_forms_of(
         "apple", ["apple", "apples", "applesauce", "banana", "bananas"]
     )

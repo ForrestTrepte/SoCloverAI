@@ -4,7 +4,7 @@ from board import get_random_pair, get_random_board
 from clover_words import CloverWords
 
 
-def test_get_random_pair():
+def test_get_random_pair() -> None:
     random.seed("Clover")
     pair = get_random_pair()
     assert pair[0] != pair[1]
@@ -12,7 +12,7 @@ def test_get_random_pair():
     assert pair[1] in CloverWords
 
 
-def test_get_random_board():
+def test_get_random_board() -> None:
     random.seed("Clover")
     board = get_random_board()
     assert len(board.pairs) == 4

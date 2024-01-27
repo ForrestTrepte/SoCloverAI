@@ -5,19 +5,20 @@ import tiktoken
 import re
 
 
+class Stat:
+    def __init__(self) -> None:
+        self.count = 0
+        self.input_tokens = 0
+        self.output_tokens = 0
+
+    def add_tokens(self, input_tokens: int, output_tokens: int) -> None:
+        self.count += 1
+        self.input_tokens += input_tokens
+        self.output_tokens += output_tokens
+
+
 class LlmCacheStatsWrapper:
     """Wrapper for an LLM cache that tracks the number of cache hits and tokens used."""
-
-    class Stat:
-        def __init__(self):
-            self.count = 0
-            self.input_tokens = 0
-            self.output_tokens = 0
-
-        def add_tokens(self, input_tokens, output_tokens):
-            self.count += 1
-            self.input_tokens += input_tokens
-            self.output_tokens += output_tokens
 
     def __init__(self, inner_cache: BaseCache) -> None:
         """
@@ -28,12 +29,12 @@ class LlmCacheStatsWrapper:
             encoding: The encoding used by the model.
         """
         self.inner_cache = inner_cache
-        self.cache_hits_by_model_name = defaultdict(self.Stat)
-        self.cache_misses_by_model_name = defaultdict(self.Stat)
+        self.cache_hits_by_model_name: Dict[str, Stat] = defaultdict(Stat)
+        self.cache_misses_by_model_name: Dict[str, Stat] = defaultdict(Stat)
         self.model_name_re = re.compile(
             r"'model_name',\s*'(?P<model_name_format_1>[^']+)'|\"model_name\":\s*\"(?P<model_name_format_2>[^\"]+)\""
         )
-        self.encodings = {}
+        self.encodings: Dict[str, tiktoken.Encoding] = {}
 
     def lookup(self, prompt: str, llm_string: str) -> Optional[RETURN_VAL_TYPE]:
         """
@@ -63,7 +64,13 @@ class LlmCacheStatsWrapper:
         self.inner_cache.update(prompt, llm_string, return_val)
         self.add_tokens(False, prompt, llm_string, return_val)
 
-    def add_tokens(self, is_hit, prompt, llm_string, result):
+    def add_tokens(
+        self,
+        is_hit: bool,
+        prompt: str,
+        llm_string: str,
+        result: RETURN_VAL_TYPE,
+    ) -> None:
         model_name_match = self.model_name_re.search(llm_string)
         if not model_name_match:
             raise ValueError(f"Could not find model_name in llm_string: {llm_string}")
@@ -85,11 +92,11 @@ class LlmCacheStatsWrapper:
             else self.cache_misses_by_model_name[model_name]
         ).add_tokens(input_tokens, output_tokens)
 
-    def clear_cache_stats(self):
-        self.cache_hits_by_model_name = defaultdict(self.Stat)
-        self.cache_misses_by_model_name = defaultdict(self.Stat)
+    def clear_cache_stats(self) -> None:
+        self.cache_hits_by_model_name = defaultdict(Stat)
+        self.cache_misses_by_model_name = defaultdict(Stat)
 
-    def get_cache_stats_summary(self):
+    def get_cache_stats_summary(self) -> str:
         result = ""
 
         all_cache_hits = self.cache_hits_by_model_name.values()
@@ -126,7 +133,7 @@ class LlmCacheStatsWrapper:
     }
 
     @classmethod
-    def _get_model_cost(cls, model_name, cache_misses):
+    def _get_model_cost(cls, model_name: str, cache_misses: Stat) -> float:
         if not model_name in cls._token_cost_by_model:
             raise ValueError(f"Unknown model name: {model_name}")
 

@@ -1,8 +1,10 @@
 import importlib
+import inspect
 import logging
 import os
 import random
 import shutil
+from typing import Any, Callable, List, Optional, Tuple
 
 from board import get_random_pair
 from llm import dump_cache_stats_since_last_call, set_trial
@@ -10,14 +12,17 @@ from log_to_file import log_to_file
 from results import Clue, Configuration, Results
 
 logger = logging.getLogger("SoCloverAI")
+GenerateType = Callable[[float, Tuple[str, str]], list[str]]
 
 
-def clear_logs():
+def clear_logs() -> None:
     if os.path.isdir("logs"):
         shutil.rmtree("logs")
 
 
-def get_methods(allowed_prefixes):
+def get_methods(
+    allowed_prefixes: Optional[List[str]],
+) -> List[GenerateType]:
     """Get all generate functions from the methods folder"""
     methods = []
     for filename in sorted(
@@ -31,11 +36,25 @@ def get_methods(allowed_prefixes):
         module_name = filename[:-3]
         module = importlib.import_module(f"methods.{module_name}")
         method = getattr(module, "generate")
+        method = get_generate_method(method)
         methods.append(method)
     return methods
 
 
-def generate_with_standard_settings():
+def get_generate_method(method: Any) -> GenerateType:
+    expected_arg_types = [float, Tuple[str, str]]
+    expected_return_type = List[str]
+    assert callable(method)
+    sig = inspect.signature(method)
+    assert len(sig.parameters) == len(expected_arg_types)
+    for i, parameter in enumerate(sig.parameters.values()):
+        assert parameter.annotation == expected_arg_types[i]
+    assert sig.return_annotation == expected_return_type
+    result: GenerateType = method
+    return result
+
+
+def generate_with_standard_settings() -> Results:
     """Generate with standard settings and random words for development and evaluation of methods."""
     temperatures = [0.0, 0.5, 0.9]
     trials = 3
@@ -47,7 +66,12 @@ def generate_with_standard_settings():
     return results
 
 
-def generate(test_pairs, temperatures, trials, methods):
+def generate(
+    test_pairs: List[Tuple[str, str]],
+    temperatures: List[float],
+    trials: int,
+    methods: list[GenerateType],
+) -> Results:
     random.seed("Clover")
 
     configurations = []
@@ -80,17 +104,19 @@ def generate(test_pairs, temperatures, trials, methods):
     return Results(configurations=configurations[::-1])
 
 
-def generate_clue(method, temperature, pair):
+def generate_clue(
+    method: GenerateType, temperature: float, pair: Tuple[str, str]
+) -> Clue:
     candidates = method(temperature, pair)
     for candidate in candidates:
         assert isinstance(candidate, str)
     if len(candidates) == 0:
         logger.info(f"        {pair[0]} {pair[1]} -> NONE")
-        clue = Clue(Word0=pair[0], Word1=pair[1], Clue=None)
+        clue = Clue(Word0=pair[0], Word1=pair[1], ClueWord=None)
         return clue
 
     best = candidates[0]
     candidates_str = ", ".join(candidates[1:])
     logger.info(f"        {pair[0]} {pair[1]} -> {best} ({candidates_str})")
-    clue = Clue(Word0=pair[0], Word1=pair[1], Clue=best)
+    clue = Clue(Word0=pair[0], Word1=pair[1], ClueWord=best)
     return clue

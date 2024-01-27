@@ -1,3 +1,5 @@
+from typing import List, Tuple
+
 from llm import predict
 
 template = """
@@ -20,6 +22,6 @@ or 2. Related to each word individually, even if it is using a different meaning
 """
 
 
-def generate(temperature, pair):
+def generate(temperature: float, pair: Tuple[str, str]) -> List[str]:
     prediction = predict(temperature, template, word0=pair[0], word1=pair[1])
     return prediction

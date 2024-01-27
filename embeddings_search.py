@@ -1,4 +1,5 @@
 import logging
+from typing import Dict, List, Tuple
 
 from embeddings import get_embeddings
 from english_words import get_common_word_embeddings, remove_word_forms_of
@@ -7,26 +8,26 @@ logger = logging.getLogger("SoCloverAI")
 
 
 class CandidatesByDistance:
-    def __init__(self):
-        self.candidates = {}
+    def __init__(self) -> None:
+        self.candidates: Dict[str, float] = {}
 
-    def add(self, candidate, distance):
+    def add(self, candidate: str, distance: float) -> None:
         # Get current distance or 2.0 if not in set (2.0 is larger than any cos distance)
         current_distance = self.candidates.get(candidate, 2.0)
         if distance < current_distance:
             self.candidates[candidate] = distance
 
-    def get_sorted_candidates(self):
+    def get_sorted_candidates(self) -> List[Tuple[str, float]]:
         result = sorted(self.candidates.items(), key=lambda x: x[1])
         return result
 
 
-def find_near_pair(pair):
-    pair_documents = [
-        f"{pair[0]}",
-        f"{pair[1]}",
-        f"{pair[0]} {pair[1]}",
-        f"{pair[1]} {pair[0]}",
+def find_near_pair(word0: str, word1: str) -> List[str]:
+    pair_documents: List[str] = [
+        f"{word0}",
+        f"{word1}",
+        f"{word0} {word1}",
+        f"{word1} {word0}",
     ]
     pair_embeddings = get_embeddings(pair_documents)
 
@@ -56,7 +57,7 @@ def find_near_pair(pair):
     sorted_candidate_words = [candidate for candidate, _ in sorted_candidates]
 
     valid_candidates = sorted_candidate_words
-    valid_candidates = remove_word_forms_of(pair[0], valid_candidates)
-    valid_candidates = remove_word_forms_of(pair[1], valid_candidates)
+    valid_candidates = remove_word_forms_of(word0, valid_candidates)
+    valid_candidates = remove_word_forms_of(word1, valid_candidates)
 
     return valid_candidates

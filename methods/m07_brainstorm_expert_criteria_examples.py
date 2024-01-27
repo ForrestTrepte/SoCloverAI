@@ -1,3 +1,5 @@
+from typing import List, Tuple
+
 from llm import predict
 
 template = """
@@ -42,6 +44,6 @@ Best: green
 """
 
 
-def generate(temperature, pair):
+def generate(temperature: float, pair: Tuple[str, str]) -> List[str]:
     prediction = predict(temperature, template, word0=pair[0], word1=pair[1])
     return prediction
