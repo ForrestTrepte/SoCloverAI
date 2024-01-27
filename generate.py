@@ -68,8 +68,9 @@ def generate(test_pairs, temperatures, trials, methods):
                         f"logs/{method_name}/{test_pair[0]}-{test_pair[1]}-t{temperature}-{trial}.log"
                     )
                     clue = generate_clue(method, temperature, test_pair)
+                    if clue:
+                        clues.append(clue)
                     log_to_file(None)
-                    clues.append(clue)
             configuration = Configuration(
                 method=method_name, temperature=temperature, trials=clues
             )
@@ -83,6 +84,11 @@ def generate_clue(method, temperature, pair):
     candidates = method(temperature, pair)
     for candidate in candidates:
         assert isinstance(candidate, str)
+    if len(candidates) == 0:
+        logger.info(f"        {pair[0]} {pair[1]} -> NONE")
+        clue = Clue(Word0=pair[0], Word1=pair[1], Clue=None)
+        return clue
+
     best = candidates[0]
     candidates_str = ", ".join(candidates[1:])
     logger.info(f"        {pair[0]} {pair[1]} -> {best} ({candidates_str})")

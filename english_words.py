@@ -129,12 +129,22 @@ def remove_word_forms_of(base_word, words_to_remove_from):
                 return True
         return False
 
-    word_forms_by_type = get_word_forms(base_word)
-    word_forms = set.union(*word_forms_by_type.values())
+    word_forms = get_word_forms_list(base_word)
     result = []
-    for word in words_to_remove_from:
-        if is_any_word_form_in(word_forms, word):
+    for candidate_word in words_to_remove_from:
+        # remove words that are a form of the base word
+        if is_any_word_form_in(word_forms, candidate_word):
             continue
-        result.append(word)
+        # also remove words that have a form in the base word
+        candidate_word_forms = get_word_forms_list(candidate_word)
+        if is_any_word_form_in(candidate_word_forms, base_word):
+            continue
+        result.append(candidate_word)
 
     return result
+
+
+def get_word_forms_list(base_word):
+    word_forms_by_type = get_word_forms(base_word)
+    word_forms = set.union(*word_forms_by_type.values())
+    return word_forms

@@ -1065,6 +1065,15 @@
     {
       "Word0": "mushroom",
       "Word1": "summit",
+      "Clue": "mountaintop",
+      "Rating": {
+        "Score": 1.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "mushroom",
+      "Word1": "summit",
       "Clue": "mush",
       "Rating": {
         "Score": 0.0,
