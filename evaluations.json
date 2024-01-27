@@ -39,6 +39,15 @@
     {
       "Word0": "attic",
       "Word1": "table",
+      "Clue": "loft",
+      "Rating": {
+        "Score": 1.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "attic",
+      "Word1": "table",
       "Clue": "lofturniture",
       "Rating": {
         "Score": 3.0,
@@ -96,6 +105,15 @@
       "Clue": "carnival",
       "Rating": {
         "Score": 2.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "chocolate",
+      "Word1": "pair",
+      "Clue": "Cocoa",
+      "Rating": {
+        "Score": 1.0,
         "Legal": 2.0
       }
     },
@@ -255,6 +273,15 @@
     {
       "Word0": "diamond",
       "Word1": "queen",
+      "Clue": "Dimond",
+      "Rating": {
+        "Score": 1.0,
+        "Legal": 1.0
+      }
+    },
+    {
+      "Word0": "diamond",
+      "Word1": "queen",
       "Clue": "card",
       "Rating": {
         "Score": 4.0,
@@ -363,6 +390,15 @@
     {
       "Word0": "dough",
       "Word1": "skate",
+      "Clue": "dumplings",
+      "Rating": {
+        "Score": 1.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "dough",
+      "Word1": "skate",
       "Clue": "knead",
       "Rating": {
         "Score": 1.0,
@@ -438,6 +474,15 @@
       "Clue": "rolling",
       "Rating": {
         "Score": 4.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "finger",
+      "Word1": "queen",
+      "Clue": "chairman",
+      "Rating": {
+        "Score": 0.0,
         "Legal": 2.0
       }
     },
@@ -546,6 +591,15 @@
       "Clue": "einstein",
       "Rating": {
         "Score": 1.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "genius",
+      "Word1": "punch",
+      "Clue": "genie",
+      "Rating": {
+        "Score": 0.0,
         "Legal": 2.0
       }
     },
@@ -672,6 +726,15 @@
       "Clue": "einstein",
       "Rating": {
         "Score": 1.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "hard",
+      "Word1": "pilot",
+      "Clue": "aviator",
+      "Rating": {
+        "Score": 2.0,
         "Legal": 2.0
       }
     },
@@ -840,6 +903,15 @@
     {
       "Word0": "ladder",
       "Word1": "truck",
+      "Clue": "forklift",
+      "Rating": {
+        "Score": 0.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "ladder",
+      "Word1": "truck",
       "Clue": "rescue",
       "Rating": {
         "Score": 3.0,
@@ -993,6 +1065,15 @@
     {
       "Word0": "mushroom",
       "Word1": "summit",
+      "Clue": "mush",
+      "Rating": {
+        "Score": 0.0,
+        "Legal": 0.0
+      }
+    },
+    {
+      "Word0": "mushroom",
+      "Word1": "summit",
       "Clue": "nature",
       "Rating": {
         "Score": 3.0,
@@ -1140,6 +1221,15 @@
       "Clue": "knockout",
       "Rating": {
         "Score": 2.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "pair",
+      "Word1": "punch",
+      "Clue": "pounder",
+      "Rating": {
+        "Score": 1.0,
         "Legal": 2.0
       }
     },
