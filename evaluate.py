@@ -65,13 +65,22 @@ def load_evaluations_dict() -> Dict[Tuple[str, str, str], Rating]:
 
 
 def save_evaluations_dict(evaluations_dict: Dict[Tuple[str, str, str], Rating]) -> None:
-    evaluations_pydantic = Evaluations(clues=[])
-    for clue_tuple, rating in sorted(evaluations_dict.items()):
+    evaluations = Evaluations(clues=[])
+    for clue_tuple, rating in evaluations_dict.items():
         clue = Clue.from_tuple(clue_tuple)
         clue.Rating = rating
-        evaluations_pydantic.clues.append(clue)
+        evaluations.clues.append(clue)
+
+    # Case insensitive sort of evaluations by Word0, Word1, ClueWord
+    def clue_to_lowercase_tuple(clue: Clue) -> Tuple[str, str, str]:
+        return (clue.Word0.lower(), clue.Word1.lower(), clue.ClueWord.lower())
+
+    evaluations.clues = sorted(
+        evaluations.clues, key=clue_to_lowercase_tuple, reverse=False
+    )
+
     with open(evaluation_filename, "w") as f:
-        f.write(evaluations_pydantic.model_dump_json(indent=2))
+        f.write(evaluations.model_dump_json(indent=2))
 
 
 def score_results(

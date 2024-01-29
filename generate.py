@@ -83,7 +83,7 @@ def generate(
         logger.info(f"Generating {method_name}")
         for temperature in temperatures:
             logger.info(f"  Temperature {temperature}")
-            clues = []
+            clues: List[Clue] = []
             for trial in range(trials):
                 logger.info(f"    Trial {trial + 1} of {trials}")
                 set_trial(trial)
@@ -91,9 +91,8 @@ def generate(
                     log_to_file(
                         f"logs/{method_name}/{test_pair[0]}-{test_pair[1]}-t{temperature}-{trial}.log"
                     )
-                    clue = generate_clue(method, temperature, test_pair)
-                    if clue:
-                        clues.append(clue)
+                    pair_clues = generate_clues(method, temperature, test_pair)
+                    clues.extend(pair_clues)
                     log_to_file(None)
             configuration = Configuration(
                 method=method_name, temperature=temperature, trials=clues
@@ -104,19 +103,15 @@ def generate(
     return Results(configurations=configurations[::-1])
 
 
-def generate_clue(
+def generate_clues(
     method: GenerateType, temperature: float, pair: Tuple[str, str]
-) -> Clue:
+) -> List[Clue]:
     candidates = method(temperature, pair)
     for candidate in candidates:
         assert isinstance(candidate, str)
-    if len(candidates) == 0:
-        logger.info(f"        {pair[0]} {pair[1]} -> NONE")
-        clue = Clue(Word0=pair[0], Word1=pair[1], ClueWord=None)
-        return clue
-
-    best = candidates[0]
-    candidates_str = ", ".join(candidates[1:])
-    logger.info(f"        {pair[0]} {pair[1]} -> {best} ({candidates_str})")
-    clue = Clue(Word0=pair[0], Word1=pair[1], ClueWord=best)
-    return clue
+    logger.info(f"        {pair[0]} {pair[1]} -> {', '.join(candidates)}")
+    clues = [
+        Clue(Word0=pair[0], Word1=pair[1], ClueWord=candidate)
+        for candidate in candidates
+    ]
+    return clues

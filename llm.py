@@ -38,17 +38,24 @@ def predict(temperature: float, template: str, **kwargs: Any) -> List[str]:
     chain = LLMChain(llm=llm, prompt=prompt, verbose=False)
     output = chain.predict(**kwargs)
     logger.debug(output)
-    candidates = parse_candidates(output)
+    predictions = parse_candidates(output)
     best = parse_best(output)
-    if not best:
-        return candidates
+    if best:
+        predictions = [best] + predictions
 
-    try:
-        candidates.remove(best)
-    except ValueError:
-        pass  # OK if candidates doesn't contain best
-    result = [best] + candidates
-    return result
+    strip_chars = ' \t"'
+    predictions = [prediction.strip(strip_chars) for prediction in predictions]
+    predictions = [prediction for prediction in predictions if prediction]
+
+    # remove duplicates while preserving order
+    seen = set()
+    unique_predictions = list()
+    for prediction in predictions:
+        if prediction not in seen:
+            unique_predictions.append(prediction)
+            seen.add(prediction)
+    predictions = unique_predictions
+    return predictions
 
 
 def parse_candidates(output: str) -> List[str]:

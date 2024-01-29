@@ -12,9 +12,162 @@
     {
       "Word0": "attic",
       "Word1": "table",
+      "ClueWord": "...",
+      "Rating": {
+        "Score": 0.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "attic",
+      "Word1": "table",
+      "ClueWord": "aloft",
+      "Rating": {
+        "Score": 1.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "attic",
+      "Word1": "table",
       "ClueWord": "antique",
       "Rating": {
         "Score": 2.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "attic",
+      "Word1": "table",
+      "ClueWord": "arena",
+      "Rating": {
+        "Score": 0.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "attic",
+      "Word1": "table",
+      "ClueWord": "arty",
+      "Rating": {
+        "Score": 0.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "attic",
+      "Word1": "table",
+      "ClueWord": "auction",
+      "Rating": {
+        "Score": 2.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "attic",
+      "Word1": "table",
+      "ClueWord": "barn",
+      "Rating": {
+        "Score": 0.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "attic",
+      "Word1": "table",
+      "ClueWord": "carpentry",
+      "Rating": {
+        "Score": 3.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "attic",
+      "Word1": "table",
+      "ClueWord": "carport",
+      "Rating": {
+        "Score": 0.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "attic",
+      "Word1": "table",
+      "ClueWord": "ceiling",
+      "Rating": {
+        "Score": 1.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "attic",
+      "Word1": "table",
+      "ClueWord": "ceilings",
+      "Rating": {
+        "Score": 1.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "attic",
+      "Word1": "table",
+      "ClueWord": "cellar",
+      "Rating": {
+        "Score": 1.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "attic",
+      "Word1": "table",
+      "ClueWord": "crate",
+      "Rating": {
+        "Score": 1.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "attic",
+      "Word1": "table",
+      "ClueWord": "dusty",
+      "Rating": {
+        "Score": 2.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "attic",
+      "Word1": "table",
+      "ClueWord": "estate",
+      "Rating": {
+        "Score": 2.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "attic",
+      "Word1": "table",
+      "ClueWord": "flea market",
+      "Rating": {
+        "Score": 3.0,
+        "Legal": 0.0
+      }
+    },
+    {
+      "Word0": "attic",
+      "Word1": "table",
+      "ClueWord": "floor",
+      "Rating": {
+        "Score": 1.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "attic",
+      "Word1": "table",
+      "ClueWord": "forgotten",
+      "Rating": {
+        "Score": 1.0,
         "Legal": 2.0
       }
     },
@@ -30,6 +183,42 @@
     {
       "Word0": "attic",
       "Word1": "table",
+      "ClueWord": "gallery",
+      "Rating": {
+        "Score": 0.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "attic",
+      "Word1": "table",
+      "ClueWord": "garage",
+      "Rating": {
+        "Score": 1.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "attic",
+      "Word1": "table",
+      "ClueWord": "garage sale",
+      "Rating": {
+        "Score": 2.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "attic",
+      "Word1": "table",
+      "ClueWord": "hangar",
+      "Rating": {
+        "Score": 0.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "attic",
+      "Word1": "table",
       "ClueWord": "heirloom",
       "Rating": {
         "Score": 3.0,
@@ -39,7 +228,70 @@
     {
       "Word0": "attic",
       "Word1": "table",
+      "ClueWord": "heirlooms",
+      "Rating": {
+        "Score": 3.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "attic",
+      "Word1": "table",
+      "ClueWord": "hidden",
+      "Rating": {
+        "Score": 1.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "attic",
+      "Word1": "table",
+      "ClueWord": "lamp",
+      "Rating": {
+        "Score": 2.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "attic",
+      "Word1": "table",
       "ClueWord": "loft",
+      "Rating": {
+        "Score": 1.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "attic",
+      "Word1": "table",
+      "ClueWord": "Loft",
+      "Rating": {
+        "Score": 1.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "attic",
+      "Word1": "table",
+      "ClueWord": "lofted",
+      "Rating": {
+        "Score": 1.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "attic",
+      "Word1": "table",
+      "ClueWord": "lofts",
+      "Rating": {
+        "Score": 1.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "attic",
+      "Word1": "table",
+      "ClueWord": "Lofts",
       "Rating": {
         "Score": 1.0,
         "Legal": 2.0
@@ -57,6 +309,114 @@
     {
       "Word0": "attic",
       "Word1": "table",
+      "ClueWord": "loom",
+      "Rating": {
+        "Score": 0.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "attic",
+      "Word1": "table",
+      "ClueWord": "mahogany",
+      "Rating": {
+        "Score": 1.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "attic",
+      "Word1": "table",
+      "ClueWord": "old",
+      "Rating": {
+        "Score": 2.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "attic",
+      "Word1": "table",
+      "ClueWord": "rafters",
+      "Rating": {
+        "Score": 1.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "attic",
+      "Word1": "table",
+      "ClueWord": "rooftop",
+      "Rating": {
+        "Score": 1.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "attic",
+      "Word1": "table",
+      "ClueWord": "room",
+      "Rating": {
+        "Score": 2.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "attic",
+      "Word1": "table",
+      "ClueWord": "Room",
+      "Rating": {
+        "Score": 2.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "attic",
+      "Word1": "table",
+      "ClueWord": "rooms",
+      "Rating": {
+        "Score": 2.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "attic",
+      "Word1": "table",
+      "ClueWord": "secluded",
+      "Rating": {
+        "Score": 1.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "attic",
+      "Word1": "table",
+      "ClueWord": "secret",
+      "Rating": {
+        "Score": 1.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "attic",
+      "Word1": "table",
+      "ClueWord": "shelf",
+      "Rating": {
+        "Score": 2.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "attic",
+      "Word1": "table",
+      "ClueWord": "stairs",
+      "Rating": {
+        "Score": 1.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "attic",
+      "Word1": "table",
       "ClueWord": "storage",
       "Rating": {
         "Score": 2.0,
@@ -66,9 +426,126 @@
     {
       "Word0": "attic",
       "Word1": "table",
+      "ClueWord": "suite",
+      "Rating": {
+        "Score": 0.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "attic",
+      "Word1": "table",
+      "ClueWord": "Suite",
+      "Rating": {
+        "Score": 0.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "attic",
+      "Word1": "table",
+      "ClueWord": "surface",
+      "Rating": {
+        "Score": 2.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "attic",
+      "Word1": "table",
+      "ClueWord": "tailgate",
+      "Rating": {
+        "Score": 0.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "attic",
+      "Word1": "table",
+      "ClueWord": "tar",
+      "Rating": {
+        "Score": 0.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "attic",
+      "Word1": "table",
+      "ClueWord": "tents",
+      "Rating": {
+        "Score": 0.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "attic",
+      "Word1": "table",
+      "ClueWord": "tile",
+      "Rating": {
+        "Score": 1.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "attic",
+      "Word1": "table",
+      "ClueWord": "toolbox",
+      "Rating": {
+        "Score": 1.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "attic",
+      "Word1": "table",
+      "ClueWord": "tower",
+      "Rating": {
+        "Score": 0.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "attic",
+      "Word1": "table",
       "ClueWord": "vintage",
       "Rating": {
         "Score": 3.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "attic",
+      "Word1": "table",
+      "ClueWord": "wood",
+      "Rating": {
+        "Score": 3.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "attic",
+      "Word1": "table",
+      "ClueWord": "wooden",
+      "Rating": {
+        "Score": 3.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "attic",
+      "Word1": "table",
+      "ClueWord": "workspace",
+      "Rating": {
+        "Score": 3.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "attic",
+      "Word1": "table",
+      "ClueWord": "yard",
+      "Rating": {
+        "Score": 0.0,
         "Legal": 2.0
       }
     },
@@ -111,16 +588,25 @@
     {
       "Word0": "chocolate",
       "Word1": "pair",
-      "ClueWord": "Cocoa",
+      "ClueWord": "",
       "Rating": {
-        "Score": 1.0,
-        "Legal": 2.0
+        "Score": 0.0,
+        "Legal": 0.0
       }
     },
     {
       "Word0": "chocolate",
       "Word1": "pair",
-      "ClueWord": "Easter",
+      "ClueWord": "...",
+      "Rating": {
+        "Score": 0.0,
+        "Legal": 0.0
+      }
+    },
+    {
+      "Word0": "chocolate",
+      "Word1": "pair",
+      "ClueWord": "beans",
       "Rating": {
         "Score": 1.0,
         "Legal": 2.0
@@ -147,9 +633,162 @@
     {
       "Word0": "chocolate",
       "Word1": "pair",
+      "ClueWord": "boxed",
+      "Rating": {
+        "Score": 1.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "chocolate",
+      "Word1": "pair",
+      "ClueWord": "brownies",
+      "Rating": {
+        "Score": 1.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "chocolate",
+      "Word1": "pair",
+      "ClueWord": "Cadbury",
+      "Rating": {
+        "Score": 1.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "chocolate",
+      "Word1": "pair",
+      "ClueWord": "candies",
+      "Rating": {
+        "Score": 1.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "chocolate",
+      "Word1": "pair",
+      "ClueWord": "Candy",
+      "Rating": {
+        "Score": 1.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "chocolate",
+      "Word1": "pair",
+      "ClueWord": "candy",
+      "Rating": {
+        "Score": 1.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "chocolate",
+      "Word1": "pair",
+      "ClueWord": "chemistry",
+      "Rating": {
+        "Score": 0.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "chocolate",
+      "Word1": "pair",
+      "ClueWord": "Choice",
+      "Rating": {
+        "Score": 0.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "chocolate",
+      "Word1": "pair",
+      "ClueWord": "cocktail",
+      "Rating": {
+        "Score": 0.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "chocolate",
+      "Word1": "pair",
+      "ClueWord": "Cocoa",
+      "Rating": {
+        "Score": 1.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "chocolate",
+      "Word1": "pair",
+      "ClueWord": "cocoa",
+      "Rating": {
+        "Score": 1.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "chocolate",
+      "Word1": "pair",
       "ClueWord": "confectionery",
       "Rating": {
         "Score": 1.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "chocolate",
+      "Word1": "pair",
+      "ClueWord": "cookie",
+      "Rating": {
+        "Score": 1.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "chocolate",
+      "Word1": "pair",
+      "ClueWord": "Cookie",
+      "Rating": {
+        "Score": 1.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "chocolate",
+      "Word1": "pair",
+      "ClueWord": "couple",
+      "Rating": {
+        "Score": 1.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "chocolate",
+      "Word1": "pair",
+      "ClueWord": "couples",
+      "Rating": {
+        "Score": 1.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "chocolate",
+      "Word1": "pair",
+      "ClueWord": "Couples",
+      "Rating": {
+        "Score": 1.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "chocolate",
+      "Word1": "pair",
+      "ClueWord": "date",
+      "Rating": {
+        "Score": 2.0,
         "Legal": 2.0
       }
     },
@@ -165,7 +804,34 @@
     {
       "Word0": "chocolate",
       "Word1": "pair",
+      "ClueWord": "diet",
+      "Rating": {
+        "Score": 0.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "chocolate",
+      "Word1": "pair",
       "ClueWord": "duo",
+      "Rating": {
+        "Score": 1.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "chocolate",
+      "Word1": "pair",
+      "ClueWord": "Duo",
+      "Rating": {
+        "Score": 1.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "chocolate",
+      "Word1": "pair",
+      "ClueWord": "Easter",
       "Rating": {
         "Score": 1.0,
         "Legal": 2.0
@@ -201,7 +867,115 @@
     {
       "Word0": "chocolate",
       "Word1": "pair",
+      "ClueWord": "food",
+      "Rating": {
+        "Score": 1.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "chocolate",
+      "Word1": "pair",
+      "ClueWord": "fruit",
+      "Rating": {
+        "Score": 2.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "chocolate",
+      "Word1": "pair",
       "ClueWord": "gift",
+      "Rating": {
+        "Score": 1.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "chocolate",
+      "Word1": "pair",
+      "ClueWord": "gourmet",
+      "Rating": {
+        "Score": 1.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "chocolate",
+      "Word1": "pair",
+      "ClueWord": "Hershey",
+      "Rating": {
+        "Score": 1.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "chocolate",
+      "Word1": "pair",
+      "ClueWord": "Love",
+      "Rating": {
+        "Score": 2.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "chocolate",
+      "Word1": "pair",
+      "ClueWord": "luxury",
+      "Rating": {
+        "Score": 1.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "chocolate",
+      "Word1": "pair",
+      "ClueWord": "matching",
+      "Rating": {
+        "Score": 1.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "chocolate",
+      "Word1": "pair",
+      "ClueWord": "meal",
+      "Rating": {
+        "Score": 0.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "chocolate",
+      "Word1": "pair",
+      "ClueWord": "nuts",
+      "Rating": {
+        "Score": 2.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "chocolate",
+      "Word1": "pair",
+      "ClueWord": "peanut",
+      "Rating": {
+        "Score": 0.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "chocolate",
+      "Word1": "pair",
+      "ClueWord": "Pizza",
+      "Rating": {
+        "Score": 0.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "chocolate",
+      "Word1": "pair",
+      "ClueWord": "Recipes",
       "Rating": {
         "Score": 1.0,
         "Legal": 2.0
@@ -213,6 +987,105 @@
       "ClueWord": "romance",
       "Rating": {
         "Score": 4.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "chocolate",
+      "Word1": "pair",
+      "ClueWord": "sex",
+      "Rating": {
+        "Score": 2.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "chocolate",
+      "Word1": "pair",
+      "ClueWord": "stuff",
+      "Rating": {
+        "Score": 0.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "chocolate",
+      "Word1": "pair",
+      "ClueWord": "sweet",
+      "Rating": {
+        "Score": 1.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "chocolate",
+      "Word1": "pair",
+      "ClueWord": "sweetheart",
+      "Rating": {
+        "Score": 4.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "chocolate",
+      "Word1": "pair",
+      "ClueWord": "sweethearts",
+      "Rating": {
+        "Score": 4.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "chocolate",
+      "Word1": "pair",
+      "ClueWord": "tasting",
+      "Rating": {
+        "Score": 1.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "chocolate",
+      "Word1": "pair",
+      "ClueWord": "tea",
+      "Rating": {
+        "Score": 0.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "chocolate",
+      "Word1": "pair",
+      "ClueWord": "Toast",
+      "Rating": {
+        "Score": 0.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "chocolate",
+      "Word1": "pair",
+      "ClueWord": "toast",
+      "Rating": {
+        "Score": 0.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "chocolate",
+      "Word1": "pair",
+      "ClueWord": "Tool",
+      "Rating": {
+        "Score": 0.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "chocolate",
+      "Word1": "pair",
+      "ClueWord": "treat",
+      "Rating": {
+        "Score": 1.0,
         "Legal": 2.0
       }
     },
@@ -237,6 +1110,24 @@
     {
       "Word0": "chocolate",
       "Word1": "pair",
+      "ClueWord": "twin",
+      "Rating": {
+        "Score": 1.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "chocolate",
+      "Word1": "pair",
+      "ClueWord": "twosome",
+      "Rating": {
+        "Score": 1.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "chocolate",
+      "Word1": "pair",
       "ClueWord": "valentine",
       "Rating": {
         "Score": 3.0,
@@ -249,6 +1140,24 @@
       "ClueWord": "valentine's",
       "Rating": {
         "Score": 4.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "chocolate",
+      "Word1": "pair",
+      "ClueWord": "valentines",
+      "Rating": {
+        "Score": 3.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "chocolate",
+      "Word1": "pair",
+      "ClueWord": "wine",
+      "Rating": {
+        "Score": 2.0,
         "Legal": 2.0
       }
     },
@@ -273,10 +1182,28 @@
     {
       "Word0": "diamond",
       "Word1": "queen",
-      "ClueWord": "Dimond",
+      "ClueWord": "",
       "Rating": {
-        "Score": 1.0,
-        "Legal": 1.0
+        "Score": 0.0,
+        "Legal": 0.0
+      }
+    },
+    {
+      "Word0": "diamond",
+      "Word1": "queen",
+      "ClueWord": "...",
+      "Rating": {
+        "Score": 0.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "diamond",
+      "Word1": "queen",
+      "ClueWord": "affluent",
+      "Rating": {
+        "Score": 3.0,
+        "Legal": 2.0
       }
     },
     {
@@ -285,6 +1212,42 @@
       "ClueWord": "card",
       "Rating": {
         "Score": 4.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "diamond",
+      "Word1": "queen",
+      "ClueWord": "card suit",
+      "Rating": {
+        "Score": 0.0,
+        "Legal": 0.0
+      }
+    },
+    {
+      "Word0": "diamond",
+      "Word1": "queen",
+      "ClueWord": "charm",
+      "Rating": {
+        "Score": 4.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "diamond",
+      "Word1": "queen",
+      "ClueWord": "coronation",
+      "Rating": {
+        "Score": 3.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "diamond",
+      "Word1": "queen",
+      "ClueWord": "coronet",
+      "Rating": {
+        "Score": 2.0,
         "Legal": 2.0
       }
     },
@@ -300,9 +1263,333 @@
     {
       "Word0": "diamond",
       "Word1": "queen",
+      "ClueWord": "Crown",
+      "Rating": {
+        "Score": 3.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "diamond",
+      "Word1": "queen",
+      "ClueWord": "Crystal",
+      "Rating": {
+        "Score": 2.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "diamond",
+      "Word1": "queen",
+      "ClueWord": "Davis",
+      "Rating": {
+        "Score": 0.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "diamond",
+      "Word1": "queen",
+      "ClueWord": "Diana",
+      "Rating": {
+        "Score": 2.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "diamond",
+      "Word1": "queen",
+      "ClueWord": "Diane",
+      "Rating": {
+        "Score": 0.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "diamond",
+      "Word1": "queen",
+      "ClueWord": "Dianne",
+      "Rating": {
+        "Score": 0.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "diamond",
+      "Word1": "queen",
+      "ClueWord": "Dice",
+      "Rating": {
+        "Score": 0.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "diamond",
+      "Word1": "queen",
+      "ClueWord": "Dimond",
+      "Rating": {
+        "Score": 1.0,
+        "Legal": 1.0
+      }
+    },
+    {
+      "Word0": "diamond",
+      "Word1": "queen",
+      "ClueWord": "diva",
+      "Rating": {
+        "Score": 3.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "diamond",
+      "Word1": "queen",
+      "ClueWord": "Diva",
+      "Rating": {
+        "Score": 3.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "diamond",
+      "Word1": "queen",
+      "ClueWord": "Divas",
+      "Rating": {
+        "Score": 3.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "diamond",
+      "Word1": "queen",
+      "ClueWord": "divas",
+      "Rating": {
+        "Score": 3.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "diamond",
+      "Word1": "queen",
+      "ClueWord": "doll",
+      "Rating": {
+        "Score": 1.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "diamond",
+      "Word1": "queen",
+      "ClueWord": "dong",
+      "Rating": {
+        "Score": 0.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "diamond",
+      "Word1": "queen",
+      "ClueWord": "dragon",
+      "Rating": {
+        "Score": 1.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "diamond",
+      "Word1": "queen",
+      "ClueWord": "elizabeth",
+      "Rating": {
+        "Score": 2.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "diamond",
+      "Word1": "queen",
+      "ClueWord": "Elizabeth",
+      "Rating": {
+        "Score": 2.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "diamond",
+      "Word1": "queen",
+      "ClueWord": "Empress",
+      "Rating": {
+        "Score": 2.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "diamond",
+      "Word1": "queen",
+      "ClueWord": "gem",
+      "Rating": {
+        "Score": 2.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "diamond",
+      "Word1": "queen",
+      "ClueWord": "gems",
+      "Rating": {
+        "Score": 2.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "diamond",
+      "Word1": "queen",
+      "ClueWord": "gemstone",
+      "Rating": {
+        "Score": 2.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "diamond",
+      "Word1": "queen",
+      "ClueWord": "Gold",
+      "Rating": {
+        "Score": 2.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "diamond",
+      "Word1": "queen",
+      "ClueWord": "gold",
+      "Rating": {
+        "Score": 2.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "diamond",
+      "Word1": "queen",
+      "ClueWord": "golden",
+      "Rating": {
+        "Score": 2.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "diamond",
+      "Word1": "queen",
+      "ClueWord": "Golden",
+      "Rating": {
+        "Score": 2.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "diamond",
+      "Word1": "queen",
+      "ClueWord": "Goldsmith",
+      "Rating": {
+        "Score": 1.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "diamond",
+      "Word1": "queen",
+      "ClueWord": "heirloom",
+      "Rating": {
+        "Score": 2.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "diamond",
+      "Word1": "queen",
+      "ClueWord": "jet",
+      "Rating": {
+        "Score": 0.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "diamond",
+      "Word1": "queen",
       "ClueWord": "jewel",
       "Rating": {
         "Score": 4.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "diamond",
+      "Word1": "queen",
+      "ClueWord": "Jewel",
+      "Rating": {
+        "Score": 2.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "diamond",
+      "Word1": "queen",
+      "ClueWord": "Jewell",
+      "Rating": {
+        "Score": 2.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "diamond",
+      "Word1": "queen",
+      "ClueWord": "jewelry",
+      "Rating": {
+        "Score": 3.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "diamond",
+      "Word1": "queen",
+      "ClueWord": "Jewels",
+      "Rating": {
+        "Score": 3.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "diamond",
+      "Word1": "queen",
+      "ClueWord": "jewels",
+      "Rating": {
+        "Score": 3.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "diamond",
+      "Word1": "queen",
+      "ClueWord": "king",
+      "Rating": {
+        "Score": 2.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "diamond",
+      "Word1": "queen",
+      "ClueWord": "luxury",
+      "Rating": {
+        "Score": 2.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "diamond",
+      "Word1": "queen",
+      "ClueWord": "Magic",
+      "Rating": {
+        "Score": 0.0,
         "Legal": 2.0
       }
     },
@@ -319,6 +1606,42 @@
       "Word0": "diamond",
       "Word1": "queen",
       "ClueWord": "monarchy",
+      "Rating": {
+        "Score": 2.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "diamond",
+      "Word1": "queen",
+      "ClueWord": "opulence",
+      "Rating": {
+        "Score": 3.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "diamond",
+      "Word1": "queen",
+      "ClueWord": "opulent",
+      "Rating": {
+        "Score": 3.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "diamond",
+      "Word1": "queen",
+      "ClueWord": "prestige",
+      "Rating": {
+        "Score": 2.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "diamond",
+      "Word1": "queen",
+      "ClueWord": "princess",
       "Rating": {
         "Score": 2.0,
         "Legal": 2.0
@@ -363,6 +1686,42 @@
     {
       "Word0": "diamond",
       "Word1": "queen",
+      "ClueWord": "Ruby",
+      "Rating": {
+        "Score": 2.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "diamond",
+      "Word1": "queen",
+      "ClueWord": "scepter",
+      "Rating": {
+        "Score": 3.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "diamond",
+      "Word1": "queen",
+      "ClueWord": "Shield",
+      "Rating": {
+        "Score": 0.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "diamond",
+      "Word1": "queen",
+      "ClueWord": "shine",
+      "Rating": {
+        "Score": 1.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "diamond",
+      "Word1": "queen",
       "ClueWord": "solitaire",
       "Rating": {
         "Score": 3.0,
@@ -372,9 +1731,108 @@
     {
       "Word0": "diamond",
       "Word1": "queen",
+      "ClueWord": "sovereign",
+      "Rating": {
+        "Score": 2.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "diamond",
+      "Word1": "queen",
+      "ClueWord": "Spark",
+      "Rating": {
+        "Score": 0.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "diamond",
+      "Word1": "queen",
       "ClueWord": "tiara",
       "Rating": {
         "Score": 3.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "diamond",
+      "Word1": "queen",
+      "ClueWord": "torch",
+      "Rating": {
+        "Score": 0.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "diamond",
+      "Word1": "queen",
+      "ClueWord": "treasure",
+      "Rating": {
+        "Score": 2.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "diamond",
+      "Word1": "queen",
+      "ClueWord": "value",
+      "Rating": {
+        "Score": 1.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "diamond",
+      "Word1": "queen",
+      "ClueWord": "wealth",
+      "Rating": {
+        "Score": 3.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "dough",
+      "Word1": "skate",
+      "ClueWord": "",
+      "Rating": {
+        "Score": 0.0,
+        "Legal": 0.0
+      }
+    },
+    {
+      "Word0": "dough",
+      "Word1": "skate",
+      "ClueWord": "...",
+      "Rating": {
+        "Score": 0.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "dough",
+      "Word1": "skate",
+      "ClueWord": "arena",
+      "Rating": {
+        "Score": 1.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "dough",
+      "Word1": "skate",
+      "ClueWord": "bake",
+      "Rating": {
+        "Score": 2.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "dough",
+      "Word1": "skate",
+      "ClueWord": "Bake",
+      "Rating": {
+        "Score": 2.0,
         "Legal": 2.0
       }
     },
@@ -390,7 +1848,187 @@
     {
       "Word0": "dough",
       "Word1": "skate",
+      "ClueWord": "balance",
+      "Rating": {
+        "Score": 1.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "dough",
+      "Word1": "skate",
+      "ClueWord": "ball",
+      "Rating": {
+        "Score": 1.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "dough",
+      "Word1": "skate",
+      "ClueWord": "blade",
+      "Rating": {
+        "Score": 1.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "dough",
+      "Word1": "skate",
+      "ClueWord": "blades",
+      "Rating": {
+        "Score": 1.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "dough",
+      "Word1": "skate",
+      "ClueWord": "board",
+      "Rating": {
+        "Score": 2.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "dough",
+      "Word1": "skate",
+      "ClueWord": "bowl",
+      "Rating": {
+        "Score": 2.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "dough",
+      "Word1": "skate",
+      "ClueWord": "breads",
+      "Rating": {
+        "Score": 1.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "dough",
+      "Word1": "skate",
+      "ClueWord": "cakes",
+      "Rating": {
+        "Score": 1.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "dough",
+      "Word1": "skate",
+      "ClueWord": "crispy",
+      "Rating": {
+        "Score": 1.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "dough",
+      "Word1": "skate",
+      "ClueWord": "dice",
+      "Rating": {
+        "Score": 0.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "dough",
+      "Word1": "skate",
+      "ClueWord": "donuts",
+      "Rating": {
+        "Score": 1.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "dough",
+      "Word1": "skate",
+      "ClueWord": "drill",
+      "Rating": {
+        "Score": 0.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "dough",
+      "Word1": "skate",
       "ClueWord": "dumplings",
+      "Rating": {
+        "Score": 1.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "dough",
+      "Word1": "skate",
+      "ClueWord": "dunk",
+      "Rating": {
+        "Score": 0.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "dough",
+      "Word1": "skate",
+      "ClueWord": "etch",
+      "Rating": {
+        "Score": 0.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "dough",
+      "Word1": "skate",
+      "ClueWord": "flour",
+      "Rating": {
+        "Score": 1.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "dough",
+      "Word1": "skate",
+      "ClueWord": "freeze",
+      "Rating": {
+        "Score": 0.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "dough",
+      "Word1": "skate",
+      "ClueWord": "frozen",
+      "Rating": {
+        "Score": 0.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "dough",
+      "Word1": "skate",
+      "ClueWord": "glide",
+      "Rating": {
+        "Score": 1.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "dough",
+      "Word1": "skate",
+      "ClueWord": "halfpipe",
+      "Rating": {
+        "Score": 1.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "dough",
+      "Word1": "skate",
+      "ClueWord": "ice",
       "Rating": {
         "Score": 1.0,
         "Legal": 2.0
@@ -426,7 +2064,79 @@
     {
       "Word0": "dough",
       "Word1": "skate",
+      "ClueWord": "lay",
+      "Rating": {
+        "Score": 0.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "dough",
+      "Word1": "skate",
+      "ClueWord": "nail",
+      "Rating": {
+        "Score": 0.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "dough",
+      "Word1": "skate",
+      "ClueWord": "noodle",
+      "Rating": {
+        "Score": 1.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "dough",
+      "Word1": "skate",
+      "ClueWord": "oven",
+      "Rating": {
+        "Score": 1.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "dough",
+      "Word1": "skate",
+      "ClueWord": "park",
+      "Rating": {
+        "Score": 1.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "dough",
+      "Word1": "skate",
+      "ClueWord": "pencil",
+      "Rating": {
+        "Score": 0.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "dough",
+      "Word1": "skate",
       "ClueWord": "pizza",
+      "Rating": {
+        "Score": 1.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "dough",
+      "Word1": "skate",
+      "ClueWord": "puck",
+      "Rating": {
+        "Score": 1.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "dough",
+      "Word1": "skate",
+      "ClueWord": "pucks",
       "Rating": {
         "Score": 1.0,
         "Legal": 2.0
@@ -478,9 +2188,360 @@
       }
     },
     {
+      "Word0": "dough",
+      "Word1": "skate",
+      "ClueWord": "round",
+      "Rating": {
+        "Score": 1.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "dough",
+      "Word1": "skate",
+      "ClueWord": "scratch",
+      "Rating": {
+        "Score": 1.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "dough",
+      "Word1": "skate",
+      "ClueWord": "shape",
+      "Rating": {
+        "Score": 1.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "dough",
+      "Word1": "skate",
+      "ClueWord": "sketch",
+      "Rating": {
+        "Score": 0.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "dough",
+      "Word1": "skate",
+      "ClueWord": "skid",
+      "Rating": {
+        "Score": 1.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "dough",
+      "Word1": "skate",
+      "ClueWord": "skied",
+      "Rating": {
+        "Score": 1.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "dough",
+      "Word1": "skate",
+      "ClueWord": "Skill",
+      "Rating": {
+        "Score": 2.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "dough",
+      "Word1": "skate",
+      "ClueWord": "skillet",
+      "Rating": {
+        "Score": 0.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "dough",
+      "Word1": "skate",
+      "ClueWord": "slide",
+      "Rating": {
+        "Score": 1.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "dough",
+      "Word1": "skate",
+      "ClueWord": "smooth",
+      "Rating": {
+        "Score": 0.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "dough",
+      "Word1": "skate",
+      "ClueWord": "spin",
+      "Rating": {
+        "Score": 3.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "dough",
+      "Word1": "skate",
+      "ClueWord": "spinning",
+      "Rating": {
+        "Score": 2.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "dough",
+      "Word1": "skate",
+      "ClueWord": "stud",
+      "Rating": {
+        "Score": 0.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "dough",
+      "Word1": "skate",
+      "ClueWord": "tire",
+      "Rating": {
+        "Score": 0.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "dough",
+      "Word1": "skate",
+      "ClueWord": "trick",
+      "Rating": {
+        "Score": 1.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "dough",
+      "Word1": "skate",
+      "ClueWord": "wheel",
+      "Rating": {
+        "Score": 1.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "dough",
+      "Word1": "skate",
+      "ClueWord": "wheels",
+      "Rating": {
+        "Score": 1.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "finger",
+      "Word1": "queen",
+      "ClueWord": "",
+      "Rating": {
+        "Score": 0.0,
+        "Legal": 0.0
+      }
+    },
+    {
+      "Word0": "finger",
+      "Word1": "queen",
+      "ClueWord": "...",
+      "Rating": {
+        "Score": 0.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "finger",
+      "Word1": "queen",
+      "ClueWord": "ancestor",
+      "Rating": {
+        "Score": 1.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "finger",
+      "Word1": "queen",
+      "ClueWord": "buzz",
+      "Rating": {
+        "Score": 0.0,
+        "Legal": 2.0
+      }
+    },
+    {
       "Word0": "finger",
       "Word1": "queen",
       "ClueWord": "chairman",
+      "Rating": {
+        "Score": 0.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "finger",
+      "Word1": "queen",
+      "ClueWord": "chin",
+      "Rating": {
+        "Score": 0.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "finger",
+      "Word1": "queen",
+      "ClueWord": "crow",
+      "Rating": {
+        "Score": 0.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "finger",
+      "Word1": "queen",
+      "ClueWord": "crown",
+      "Rating": {
+        "Score": 1.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "finger",
+      "Word1": "queen",
+      "ClueWord": "diamond",
+      "Rating": {
+        "Score": 3.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "finger",
+      "Word1": "queen",
+      "ClueWord": "elves",
+      "Rating": {
+        "Score": 0.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "finger",
+      "Word1": "queen",
+      "ClueWord": "Feeney",
+      "Rating": {
+        "Score": 0.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "finger",
+      "Word1": "queen",
+      "ClueWord": "female",
+      "Rating": {
+        "Score": 1.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "finger",
+      "Word1": "queen",
+      "ClueWord": "Fink",
+      "Rating": {
+        "Score": 0.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "finger",
+      "Word1": "queen",
+      "ClueWord": "Fiona",
+      "Rating": {
+        "Score": 0.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "finger",
+      "Word1": "queen",
+      "ClueWord": "Fister",
+      "Rating": {
+        "Score": 0.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "finger",
+      "Word1": "queen",
+      "ClueWord": "Freda",
+      "Rating": {
+        "Score": 0.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "finger",
+      "Word1": "queen",
+      "ClueWord": "gesture",
+      "Rating": {
+        "Score": 1.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "finger",
+      "Word1": "queen",
+      "ClueWord": "glove",
+      "Rating": {
+        "Score": 3.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "finger",
+      "Word1": "queen",
+      "ClueWord": "gold",
+      "Rating": {
+        "Score": 1.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "finger",
+      "Word1": "queen",
+      "ClueWord": "hand",
+      "Rating": {
+        "Score": 2.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "finger",
+      "Word1": "queen",
+      "ClueWord": "Jeanie",
+      "Rating": {
+        "Score": 0.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "finger",
+      "Word1": "queen",
+      "ClueWord": "Jeannie",
+      "Rating": {
+        "Score": 0.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "finger",
+      "Word1": "queen",
+      "ClueWord": "Jenny",
       "Rating": {
         "Score": 0.0,
         "Legal": 2.0
@@ -498,6 +2559,15 @@
     {
       "Word0": "finger",
       "Word1": "queen",
+      "ClueWord": "jewellery",
+      "Rating": {
+        "Score": 3.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "finger",
+      "Word1": "queen",
       "ClueWord": "jewelry",
       "Rating": {
         "Score": 3.0,
@@ -507,7 +2577,178 @@
     {
       "Word0": "finger",
       "Word1": "queen",
+      "ClueWord": "keepers",
+      "Rating": {
+        "Score": 0.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "finger",
+      "Word1": "queen",
+      "ClueWord": "king",
+      "Rating": {
+        "Score": 1.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "finger",
+      "Word1": "queen",
+      "ClueWord": "knife",
+      "Rating": {
+        "Score": 1.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "finger",
+      "Word1": "queen",
+      "ClueWord": "knuckle",
+      "Rating": {
+        "Score": 1.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "finger",
+      "Word1": "queen",
+      "ClueWord": "knuckles",
+      "Rating": {
+        "Score": 1.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "finger",
+      "Word1": "queen",
+      "ClueWord": "lover",
+      "Rating": {
+        "Score": 0.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "finger",
+      "Word1": "queen",
+      "ClueWord": "Lucinda",
+      "Rating": {
+        "Score": 0.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "finger",
+      "Word1": "queen",
+      "ClueWord": "manicure",
+      "Rating": {
+        "Score": 2.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "finger",
+      "Word1": "queen",
+      "ClueWord": "monarch",
+      "Rating": {
+        "Score": 1.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "finger",
+      "Word1": "queen",
       "ClueWord": "monarchy",
+      "Rating": {
+        "Score": 1.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "finger",
+      "Word1": "queen",
+      "ClueWord": "monster",
+      "Rating": {
+        "Score": 0.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "finger",
+      "Word1": "queen",
+      "ClueWord": "nail",
+      "Rating": {
+        "Score": 1.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "finger",
+      "Word1": "queen",
+      "ClueWord": "nail polish",
+      "Rating": {
+        "Score": 2.0,
+        "Legal": 0.0
+      }
+    },
+    {
+      "Word0": "finger",
+      "Word1": "queen",
+      "ClueWord": "opus",
+      "Rating": {
+        "Score": 0.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "finger",
+      "Word1": "queen",
+      "ClueWord": "peer",
+      "Rating": {
+        "Score": 0.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "finger",
+      "Word1": "queen",
+      "ClueWord": "pies",
+      "Rating": {
+        "Score": 0.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "finger",
+      "Word1": "queen",
+      "ClueWord": "pinky",
+      "Rating": {
+        "Score": 1.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "finger",
+      "Word1": "queen",
+      "ClueWord": "pliers",
+      "Rating": {
+        "Score": 0.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "finger",
+      "Word1": "queen",
+      "ClueWord": "quip",
+      "Rating": {
+        "Score": 0.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "finger",
+      "Word1": "queen",
+      "ClueWord": "regal",
       "Rating": {
         "Score": 1.0,
         "Legal": 2.0
@@ -542,6 +2783,150 @@
     },
     {
       "Word0": "finger",
+      "Word1": "queen",
+      "ClueWord": "scepter",
+      "Rating": {
+        "Score": 1.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "finger",
+      "Word1": "queen",
+      "ClueWord": "singer",
+      "Rating": {
+        "Score": 0.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "finger",
+      "Word1": "queen",
+      "ClueWord": "sovereign",
+      "Rating": {
+        "Score": 1.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "finger",
+      "Word1": "queen",
+      "ClueWord": "throne",
+      "Rating": {
+        "Score": 1.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "finger",
+      "Word1": "queen",
+      "ClueWord": "thumb",
+      "Rating": {
+        "Score": 1.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "finger",
+      "Word1": "queen",
+      "ClueWord": "Thumb",
+      "Rating": {
+        "Score": 1.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "finger",
+      "Word1": "queen",
+      "ClueWord": "touch",
+      "Rating": {
+        "Score": 1.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "finger",
+      "Word1": "queen",
+      "ClueWord": "vice",
+      "Rating": {
+        "Score": 0.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "finger",
+      "Word1": "queen",
+      "ClueWord": "victim",
+      "Rating": {
+        "Score": 0.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "finger",
+      "Word1": "queen",
+      "ClueWord": "wave",
+      "Rating": {
+        "Score": 0.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "finger",
+      "Word1": "queen",
+      "ClueWord": "win",
+      "Rating": {
+        "Score": 0.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "finger",
+      "Word1": "queen",
+      "ClueWord": "Winfrey",
+      "Rating": {
+        "Score": 0.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "finger",
+      "Word1": "queen",
+      "ClueWord": "winger",
+      "Rating": {
+        "Score": 0.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "finger",
+      "Word1": "queen",
+      "ClueWord": "wives",
+      "Rating": {
+        "Score": 1.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "finger",
+      "Word1": "queen",
+      "ClueWord": "xxx",
+      "Rating": {
+        "Score": 0.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "finger",
+      "Word1": "queen",
+      "ClueWord": "yen",
+      "Rating": {
+        "Score": 0.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "finger",
       "Word1": "truck",
       "ClueWord": "delivery",
       "Rating": {
@@ -561,7 +2946,16 @@
     {
       "Word0": "genius",
       "Word1": "punch",
-      "ClueWord": "Einstein",
+      "ClueWord": "",
+      "Rating": {
+        "Score": 0.0,
+        "Legal": 0.0
+      }
+    },
+    {
+      "Word0": "genius",
+      "Word1": "punch",
+      "ClueWord": "backhander",
       "Rating": {
         "Score": 1.0,
         "Legal": 2.0
@@ -570,7 +2964,151 @@
     {
       "Word0": "genius",
       "Word1": "punch",
+      "ClueWord": "boxer",
+      "Rating": {
+        "Score": 1.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "genius",
+      "Word1": "punch",
+      "ClueWord": "brainiac",
+      "Rating": {
+        "Score": 1.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "genius",
+      "Word1": "punch",
+      "ClueWord": "brainpower",
+      "Rating": {
+        "Score": 2.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "genius",
+      "Word1": "punch",
+      "ClueWord": "brainstrike",
+      "Rating": {
+        "Score": 3.0,
+        "Legal": 0.0
+      }
+    },
+    {
+      "Word0": "genius",
+      "Word1": "punch",
       "ClueWord": "brainy",
+      "Rating": {
+        "Score": 1.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "genius",
+      "Word1": "punch",
+      "ClueWord": "brainy jab",
+      "Rating": {
+        "Score": 0.0,
+        "Legal": 0.0
+      }
+    },
+    {
+      "Word0": "genius",
+      "Word1": "punch",
+      "ClueWord": "brainyblow",
+      "Rating": {
+        "Score": 3.0,
+        "Legal": 0.0
+      }
+    },
+    {
+      "Word0": "genius",
+      "Word1": "punch",
+      "ClueWord": "brainyboxer",
+      "Rating": {
+        "Score": 3.0,
+        "Legal": 0.0
+      }
+    },
+    {
+      "Word0": "genius",
+      "Word1": "punch",
+      "ClueWord": "brainyfight",
+      "Rating": {
+        "Score": 3.0,
+        "Legal": 0.0
+      }
+    },
+    {
+      "Word0": "genius",
+      "Word1": "punch",
+      "ClueWord": "brainyhit",
+      "Rating": {
+        "Score": 3.0,
+        "Legal": 0.0
+      }
+    },
+    {
+      "Word0": "genius",
+      "Word1": "punch",
+      "ClueWord": "brainyjab",
+      "Rating": {
+        "Score": 3.0,
+        "Legal": 0.0
+      }
+    },
+    {
+      "Word0": "genius",
+      "Word1": "punch",
+      "ClueWord": "breaker",
+      "Rating": {
+        "Score": 1.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "genius",
+      "Word1": "punch",
+      "ClueWord": "brightknockout",
+      "Rating": {
+        "Score": 3.0,
+        "Legal": 0.0
+      }
+    },
+    {
+      "Word0": "genius",
+      "Word1": "punch",
+      "ClueWord": "brute",
+      "Rating": {
+        "Score": 1.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "genius",
+      "Word1": "punch",
+      "ClueWord": "champ",
+      "Rating": {
+        "Score": 2.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "genius",
+      "Word1": "punch",
+      "ClueWord": "clever",
+      "Rating": {
+        "Score": 1.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "genius",
+      "Word1": "punch",
+      "ClueWord": "Clever",
       "Rating": {
         "Score": 1.0,
         "Legal": 2.0
@@ -588,7 +3126,115 @@
     {
       "Word0": "genius",
       "Word1": "punch",
+      "ClueWord": "clevercombat",
+      "Rating": {
+        "Score": 3.0,
+        "Legal": 0.0
+      }
+    },
+    {
+      "Word0": "genius",
+      "Word1": "punch",
+      "ClueWord": "cleverforce",
+      "Rating": {
+        "Score": 3.0,
+        "Legal": 0.0
+      }
+    },
+    {
+      "Word0": "genius",
+      "Word1": "punch",
+      "ClueWord": "cleverhit",
+      "Rating": {
+        "Score": 3.0,
+        "Legal": 0.0
+      }
+    },
+    {
+      "Word0": "genius",
+      "Word1": "punch",
+      "ClueWord": "cleverimpact",
+      "Rating": {
+        "Score": 3.0,
+        "Legal": 0.0
+      }
+    },
+    {
+      "Word0": "genius",
+      "Word1": "punch",
+      "ClueWord": "cleverknockout",
+      "Rating": {
+        "Score": 3.0,
+        "Legal": 0.0
+      }
+    },
+    {
+      "Word0": "genius",
+      "Word1": "punch",
+      "ClueWord": "cleverstrike",
+      "Rating": {
+        "Score": 3.0,
+        "Legal": 0.0
+      }
+    },
+    {
+      "Word0": "genius",
+      "Word1": "punch",
+      "ClueWord": "clown",
+      "Rating": {
+        "Score": 0.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "genius",
+      "Word1": "punch",
+      "ClueWord": "Einstein",
+      "Rating": {
+        "Score": 1.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "genius",
+      "Word1": "punch",
       "ClueWord": "einstein",
+      "Rating": {
+        "Score": 1.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "genius",
+      "Word1": "punch",
+      "ClueWord": "einsteinhit",
+      "Rating": {
+        "Score": 3.0,
+        "Legal": 0.0
+      }
+    },
+    {
+      "Word0": "genius",
+      "Word1": "punch",
+      "ClueWord": "einsteinjab",
+      "Rating": {
+        "Score": 3.0,
+        "Legal": 0.0
+      }
+    },
+    {
+      "Word0": "genius",
+      "Word1": "punch",
+      "ClueWord": "fool",
+      "Rating": {
+        "Score": 0.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "genius",
+      "Word1": "punch",
+      "ClueWord": "geek",
       "Rating": {
         "Score": 1.0,
         "Legal": 2.0
@@ -606,6 +3252,123 @@
     {
       "Word0": "genius",
       "Word1": "punch",
+      "ClueWord": "Genie",
+      "Rating": {
+        "Score": 0.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "genius",
+      "Word1": "punch",
+      "ClueWord": "goof",
+      "Rating": {
+        "Score": 0.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "genius",
+      "Word1": "punch",
+      "ClueWord": "hawking",
+      "Rating": {
+        "Score": 0.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "genius",
+      "Word1": "punch",
+      "ClueWord": "hilarity",
+      "Rating": {
+        "Score": 0.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "genius",
+      "Word1": "punch",
+      "ClueWord": "hitting",
+      "Rating": {
+        "Score": 1.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "genius",
+      "Word1": "punch",
+      "ClueWord": "humor",
+      "Rating": {
+        "Score": 3.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "genius",
+      "Word1": "punch",
+      "ClueWord": "impact",
+      "Rating": {
+        "Score": 2.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "genius",
+      "Word1": "punch",
+      "ClueWord": "ingenious",
+      "Rating": {
+        "Score": 0.0,
+        "Legal": 0.0
+      }
+    },
+    {
+      "Word0": "genius",
+      "Word1": "punch",
+      "ClueWord": "ingenuity",
+      "Rating": {
+        "Score": 2.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "genius",
+      "Word1": "punch",
+      "ClueWord": "intellectualfight",
+      "Rating": {
+        "Score": 3.0,
+        "Legal": 0.0
+      }
+    },
+    {
+      "Word0": "genius",
+      "Word1": "punch",
+      "ClueWord": "intellectualforce",
+      "Rating": {
+        "Score": 3.0,
+        "Legal": 0.0
+      }
+    },
+    {
+      "Word0": "genius",
+      "Word1": "punch",
+      "ClueWord": "intellectualhit",
+      "Rating": {
+        "Score": 3.0,
+        "Legal": 0.0
+      }
+    },
+    {
+      "Word0": "genius",
+      "Word1": "punch",
+      "ClueWord": "intellectualimpact",
+      "Rating": {
+        "Score": 3.0,
+        "Legal": 0.0
+      }
+    },
+    {
+      "Word0": "genius",
+      "Word1": "punch",
       "ClueWord": "intellectualknockout",
       "Rating": {
         "Score": 0.0,
@@ -615,10 +3378,109 @@
     {
       "Word0": "genius",
       "Word1": "punch",
+      "ClueWord": "intellectualpower",
+      "Rating": {
+        "Score": 2.0,
+        "Legal": 0.0
+      }
+    },
+    {
+      "Word0": "genius",
+      "Word1": "punch",
+      "ClueWord": "intelligentimpact",
+      "Rating": {
+        "Score": 3.0,
+        "Legal": 0.0
+      }
+    },
+    {
+      "Word0": "genius",
+      "Word1": "punch",
+      "ClueWord": "invention",
+      "Rating": {
+        "Score": 1.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "genius",
+      "Word1": "punch",
+      "ClueWord": "inventivejab",
+      "Rating": {
+        "Score": 3.0,
+        "Legal": 0.0
+      }
+    },
+    {
+      "Word0": "genius",
+      "Word1": "punch",
+      "ClueWord": "iq knock",
+      "Rating": {
+        "Score": 0.0,
+        "Legal": 0.0
+      }
+    },
+    {
+      "Word0": "genius",
+      "Word1": "punch",
+      "ClueWord": "iqjab",
+      "Rating": {
+        "Score": 3.0,
+        "Legal": 0.0
+      }
+    },
+    {
+      "Word0": "genius",
+      "Word1": "punch",
+      "ClueWord": "iqknockout",
+      "Rating": {
+        "Score": 3.0,
+        "Legal": 0.0
+      }
+    },
+    {
+      "Word0": "genius",
+      "Word1": "punch",
+      "ClueWord": "jab",
+      "Rating": {
+        "Score": 1.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "genius",
+      "Word1": "punch",
+      "ClueWord": "joker",
+      "Rating": {
+        "Score": 0.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "genius",
+      "Word1": "punch",
+      "ClueWord": "knife",
+      "Rating": {
+        "Score": 0.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "genius",
+      "Word1": "punch",
       "ClueWord": "knockout",
       "Rating": {
         "Score": 1.0,
         "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "genius",
+      "Word1": "punch",
+      "ClueWord": "knockout brain",
+      "Rating": {
+        "Score": 0.0,
+        "Legal": 0.0
       }
     },
     {
@@ -651,6 +3513,78 @@
     {
       "Word0": "genius",
       "Word1": "punch",
+      "ClueWord": "knockoutIQ",
+      "Rating": {
+        "Score": 3.0,
+        "Legal": 0.0
+      }
+    },
+    {
+      "Word0": "genius",
+      "Word1": "punch",
+      "ClueWord": "knocksmart",
+      "Rating": {
+        "Score": 3.0,
+        "Legal": 0.0
+      }
+    },
+    {
+      "Word0": "genius",
+      "Word1": "punch",
+      "ClueWord": "lightning",
+      "Rating": {
+        "Score": 0.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "genius",
+      "Word1": "punch",
+      "ClueWord": "marksman",
+      "Rating": {
+        "Score": 0.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "genius",
+      "Word1": "punch",
+      "ClueWord": "master blow",
+      "Rating": {
+        "Score": 0.0,
+        "Legal": 0.0
+      }
+    },
+    {
+      "Word0": "genius",
+      "Word1": "punch",
+      "ClueWord": "masterblow",
+      "Rating": {
+        "Score": 3.0,
+        "Legal": 0.0
+      }
+    },
+    {
+      "Word0": "genius",
+      "Word1": "punch",
+      "ClueWord": "masterfulforce",
+      "Rating": {
+        "Score": 2.0,
+        "Legal": 0.0
+      }
+    },
+    {
+      "Word0": "genius",
+      "Word1": "punch",
+      "ClueWord": "masterjab",
+      "Rating": {
+        "Score": 3.0,
+        "Legal": 0.0
+      }
+    },
+    {
+      "Word0": "genius",
+      "Word1": "punch",
       "ClueWord": "mastermind",
       "Rating": {
         "Score": 1.0,
@@ -660,7 +3594,169 @@
     {
       "Word0": "genius",
       "Word1": "punch",
+      "ClueWord": "mastermindblow",
+      "Rating": {
+        "Score": 3.0,
+        "Legal": 0.0
+      }
+    },
+    {
+      "Word0": "genius",
+      "Word1": "punch",
+      "ClueWord": "mastermindjab",
+      "Rating": {
+        "Score": 3.0,
+        "Legal": 0.0
+      }
+    },
+    {
+      "Word0": "genius",
+      "Word1": "punch",
+      "ClueWord": "mastermindstrike",
+      "Rating": {
+        "Score": 3.0,
+        "Legal": 0.0
+      }
+    },
+    {
+      "Word0": "genius",
+      "Word1": "punch",
+      "ClueWord": "masterpunch",
+      "Rating": {
+        "Score": 3.0,
+        "Legal": 0.0
+      }
+    },
+    {
+      "Word0": "genius",
+      "Word1": "punch",
+      "ClueWord": "masterstrike",
+      "Rating": {
+        "Score": 3.0,
+        "Legal": 0.0
+      }
+    },
+    {
+      "Word0": "genius",
+      "Word1": "punch",
+      "ClueWord": "pilot",
+      "Rating": {
+        "Score": 0.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "genius",
+      "Word1": "punch",
+      "ClueWord": "poked",
+      "Rating": {
+        "Score": 1.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "genius",
+      "Word1": "punch",
+      "ClueWord": "powerful",
+      "Rating": {
+        "Score": 2.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "genius",
+      "Word1": "punch",
+      "ClueWord": "prodigypunch",
+      "Rating": {
+        "Score": 3.0,
+        "Legal": 0.0
+      }
+    },
+    {
+      "Word0": "genius",
+      "Word1": "punch",
       "ClueWord": "punchline",
+      "Rating": {
+        "Score": 0.0,
+        "Legal": 0.0
+      }
+    },
+    {
+      "Word0": "genius",
+      "Word1": "punch",
+      "ClueWord": "puzzle",
+      "Rating": {
+        "Score": 1.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "genius",
+      "Word1": "punch",
+      "ClueWord": "quirk",
+      "Rating": {
+        "Score": 0.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "genius",
+      "Word1": "punch",
+      "ClueWord": "sassy",
+      "Rating": {
+        "Score": 0.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "genius",
+      "Word1": "punch",
+      "ClueWord": "seduced",
+      "Rating": {
+        "Score": 0.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "genius",
+      "Word1": "punch",
+      "ClueWord": "sharp",
+      "Rating": {
+        "Score": 1.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "genius",
+      "Word1": "punch",
+      "ClueWord": "Skill",
+      "Rating": {
+        "Score": 0.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "genius",
+      "Word1": "punch",
+      "ClueWord": "slapstick",
+      "Rating": {
+        "Score": 1.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "genius",
+      "Word1": "punch",
+      "ClueWord": "smart",
+      "Rating": {
+        "Score": 1.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "genius",
+      "Word1": "punch",
+      "ClueWord": "smart hit",
       "Rating": {
         "Score": 0.0,
         "Legal": 0.0
@@ -678,6 +3774,15 @@
     {
       "Word0": "genius",
       "Word1": "punch",
+      "ClueWord": "smartblow",
+      "Rating": {
+        "Score": 3.0,
+        "Legal": 0.0
+      }
+    },
+    {
+      "Word0": "genius",
+      "Word1": "punch",
       "ClueWord": "smartforce",
       "Rating": {
         "Score": 2.0,
@@ -690,6 +3795,15 @@
       "ClueWord": "smartknock",
       "Rating": {
         "Score": 0.0,
+        "Legal": 0.0
+      }
+    },
+    {
+      "Word0": "genius",
+      "Word1": "punch",
+      "ClueWord": "smartpower",
+      "Rating": {
+        "Score": 2.0,
         "Legal": 0.0
       }
     },
@@ -722,8 +3836,161 @@
     },
     {
       "Word0": "genius",
+      "Word1": "punch",
+      "ClueWord": "strategicblow",
+      "Rating": {
+        "Score": 3.0,
+        "Legal": 0.0
+      }
+    },
+    {
+      "Word0": "genius",
+      "Word1": "punch",
+      "ClueWord": "strategichit",
+      "Rating": {
+        "Score": 0.0,
+        "Legal": 0.0
+      }
+    },
+    {
+      "Word0": "genius",
+      "Word1": "punch",
+      "ClueWord": "strategicimpact",
+      "Rating": {
+        "Score": 2.0,
+        "Legal": 0.0
+      }
+    },
+    {
+      "Word0": "genius",
+      "Word1": "punch",
+      "ClueWord": "strategicknock",
+      "Rating": {
+        "Score": 2.0,
+        "Legal": 0.0
+      }
+    },
+    {
+      "Word0": "genius",
+      "Word1": "punch",
+      "ClueWord": "strategicknockout",
+      "Rating": {
+        "Score": 3.0,
+        "Legal": 0.0
+      }
+    },
+    {
+      "Word0": "genius",
+      "Word1": "punch",
+      "ClueWord": "strategicstrike",
+      "Rating": {
+        "Score": 2.0,
+        "Legal": 0.0
+      }
+    },
+    {
+      "Word0": "genius",
+      "Word1": "punch",
+      "ClueWord": "strategy",
+      "Rating": {
+        "Score": 1.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "genius",
+      "Word1": "punch",
+      "ClueWord": "strategyhit",
+      "Rating": {
+        "Score": 3.0,
+        "Legal": 0.0
+      }
+    },
+    {
+      "Word0": "genius",
+      "Word1": "punch",
+      "ClueWord": "strategypunch",
+      "Rating": {
+        "Score": 3.0,
+        "Legal": 0.0
+      }
+    },
+    {
+      "Word0": "genius",
+      "Word1": "punch",
+      "ClueWord": "strike",
+      "Rating": {
+        "Score": 1.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "genius",
+      "Word1": "punch",
+      "ClueWord": "thinkerstrike",
+      "Rating": {
+        "Score": 3.0,
+        "Legal": 0.0
+      }
+    },
+    {
+      "Word0": "genius",
+      "Word1": "punch",
+      "ClueWord": "uppercut",
+      "Rating": {
+        "Score": 1.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "genius",
+      "Word1": "punch",
+      "ClueWord": "wittythump",
+      "Rating": {
+        "Score": 3.0,
+        "Legal": 0.0
+      }
+    },
+    {
+      "Word0": "genius",
       "Word1": "sand",
       "ClueWord": "einstein",
+      "Rating": {
+        "Score": 1.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "hard",
+      "Word1": "pilot",
+      "ClueWord": "...",
+      "Rating": {
+        "Score": 0.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "hard",
+      "Word1": "pilot",
+      "ClueWord": "ace",
+      "Rating": {
+        "Score": 2.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "hard",
+      "Word1": "pilot",
+      "ClueWord": "aerospace",
+      "Rating": {
+        "Score": 2.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "hard",
+      "Word1": "pilot",
+      "ClueWord": "aviation",
       "Rating": {
         "Score": 1.0,
         "Legal": 2.0
@@ -741,7 +4008,88 @@
     {
       "Word0": "hard",
       "Word1": "pilot",
+      "ClueWord": "Aviator",
+      "Rating": {
+        "Score": 1.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "hard",
+      "Word1": "pilot",
+      "ClueWord": "aviators",
+      "Rating": {
+        "Score": 1.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "hard",
+      "Word1": "pilot",
+      "ClueWord": "axed",
+      "Rating": {
+        "Score": 0.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "hard",
+      "Word1": "pilot",
+      "ClueWord": "brew",
+      "Rating": {
+        "Score": 0.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "hard",
+      "Word1": "pilot",
+      "ClueWord": "captain",
+      "Rating": {
+        "Score": 1.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "hard",
+      "Word1": "pilot",
+      "ClueWord": "captained",
+      "Rating": {
+        "Score": 1.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "hard",
+      "Word1": "pilot",
+      "ClueWord": "captaining",
+      "Rating": {
+        "Score": 1.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "hard",
+      "Word1": "pilot",
+      "ClueWord": "career",
+      "Rating": {
+        "Score": 1.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "hard",
+      "Word1": "pilot",
       "ClueWord": "challenge",
+      "Rating": {
+        "Score": 2.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "hard",
+      "Word1": "pilot",
+      "ClueWord": "challenging",
       "Rating": {
         "Score": 2.0,
         "Legal": 2.0
@@ -753,6 +4101,42 @@
       "ClueWord": "cockpit",
       "Rating": {
         "Score": 4.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "hard",
+      "Word1": "pilot",
+      "ClueWord": "combat",
+      "Rating": {
+        "Score": 2.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "hard",
+      "Word1": "pilot",
+      "ClueWord": "creator",
+      "Rating": {
+        "Score": 0.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "hard",
+      "Word1": "pilot",
+      "ClueWord": "difficult",
+      "Rating": {
+        "Score": 1.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "hard",
+      "Word1": "pilot",
+      "ClueWord": "endurance",
+      "Rating": {
+        "Score": 0.0,
         "Legal": 2.0
       }
     },
@@ -777,6 +4161,105 @@
     {
       "Word0": "hard",
       "Word1": "pilot",
+      "ClueWord": "fighter",
+      "Rating": {
+        "Score": 2.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "hard",
+      "Word1": "pilot",
+      "ClueWord": "flight school",
+      "Rating": {
+        "Score": 0.0,
+        "Legal": 0.0
+      }
+    },
+    {
+      "Word0": "hard",
+      "Word1": "pilot",
+      "ClueWord": "flight test",
+      "Rating": {
+        "Score": 2.0,
+        "Legal": 0.0
+      }
+    },
+    {
+      "Word0": "hard",
+      "Word1": "pilot",
+      "ClueWord": "flyhalf",
+      "Rating": {
+        "Score": 0.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "hard",
+      "Word1": "pilot",
+      "ClueWord": "focus",
+      "Rating": {
+        "Score": 2.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "hard",
+      "Word1": "pilot",
+      "ClueWord": "hawk",
+      "Rating": {
+        "Score": 0.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "hard",
+      "Word1": "pilot",
+      "ClueWord": "hijackers",
+      "Rating": {
+        "Score": 1.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "hard",
+      "Word1": "pilot",
+      "ClueWord": "honeymoon",
+      "Rating": {
+        "Score": 0.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "hard",
+      "Word1": "pilot",
+      "ClueWord": "ironbird",
+      "Rating": {
+        "Score": 3.0,
+        "Legal": 0.0
+      }
+    },
+    {
+      "Word0": "hard",
+      "Word1": "pilot",
+      "ClueWord": "jet training",
+      "Rating": {
+        "Score": 2.0,
+        "Legal": 0.0
+      }
+    },
+    {
+      "Word0": "hard",
+      "Word1": "pilot",
+      "ClueWord": "knife",
+      "Rating": {
+        "Score": 0.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "hard",
+      "Word1": "pilot",
       "ClueWord": "landing",
       "Rating": {
         "Score": 4.0,
@@ -786,9 +4269,198 @@
     {
       "Word0": "hard",
       "Word1": "pilot",
+      "ClueWord": "lay",
+      "Rating": {
+        "Score": 0.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "hard",
+      "Word1": "pilot",
       "ClueWord": "license",
       "Rating": {
         "Score": 2.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "hard",
+      "Word1": "pilot",
+      "ClueWord": "licensed",
+      "Rating": {
+        "Score": 1.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "hard",
+      "Word1": "pilot",
+      "ClueWord": "linger",
+      "Rating": {
+        "Score": 0.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "hard",
+      "Word1": "pilot",
+      "ClueWord": "maneuver",
+      "Rating": {
+        "Score": 2.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "hard",
+      "Word1": "pilot",
+      "ClueWord": "military",
+      "Rating": {
+        "Score": 2.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "hard",
+      "Word1": "pilot",
+      "ClueWord": "navigating",
+      "Rating": {
+        "Score": 2.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "hard",
+      "Word1": "pilot",
+      "ClueWord": "navigation",
+      "Rating": {
+        "Score": 1.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "hard",
+      "Word1": "pilot",
+      "ClueWord": "navigator",
+      "Rating": {
+        "Score": 1.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "hard",
+      "Word1": "pilot",
+      "ClueWord": "particle",
+      "Rating": {
+        "Score": 0.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "hard",
+      "Word1": "pilot",
+      "ClueWord": "pear",
+      "Rating": {
+        "Score": 0.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "hard",
+      "Word1": "pilot",
+      "ClueWord": "pit",
+      "Rating": {
+        "Score": 0.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "hard",
+      "Word1": "pilot",
+      "ClueWord": "plane",
+      "Rating": {
+        "Score": 1.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "hard",
+      "Word1": "pilot",
+      "ClueWord": "ply",
+      "Rating": {
+        "Score": 0.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "hard",
+      "Word1": "pilot",
+      "ClueWord": "pray",
+      "Rating": {
+        "Score": 0.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "hard",
+      "Word1": "pilot",
+      "ClueWord": "railroad",
+      "Rating": {
+        "Score": 0.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "hard",
+      "Word1": "pilot",
+      "ClueWord": "ray",
+      "Rating": {
+        "Score": 0.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "hard",
+      "Word1": "pilot",
+      "ClueWord": "resilience",
+      "Rating": {
+        "Score": 0.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "hard",
+      "Word1": "pilot",
+      "ClueWord": "rigorous",
+      "Rating": {
+        "Score": 2.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "hard",
+      "Word1": "pilot",
+      "ClueWord": "rod",
+      "Rating": {
+        "Score": 1.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "hard",
+      "Word1": "pilot",
+      "ClueWord": "school",
+      "Rating": {
+        "Score": 2.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "hard",
+      "Word1": "pilot",
+      "ClueWord": "seduced",
+      "Rating": {
+        "Score": 1.0,
         "Legal": 2.0
       }
     },
@@ -813,6 +4485,33 @@
     {
       "Word0": "hard",
       "Word1": "pilot",
+      "ClueWord": "skill",
+      "Rating": {
+        "Score": 2.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "hard",
+      "Word1": "pilot",
+      "ClueWord": "Skill",
+      "Rating": {
+        "Score": 2.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "hard",
+      "Word1": "pilot",
+      "ClueWord": "stud",
+      "Rating": {
+        "Score": 4.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "hard",
+      "Word1": "pilot",
       "ClueWord": "test",
       "Rating": {
         "Score": 2.0,
@@ -822,7 +4521,70 @@
     {
       "Word0": "hard",
       "Word1": "pilot",
+      "ClueWord": "toolbox",
+      "Rating": {
+        "Score": 0.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "hard",
+      "Word1": "pilot",
+      "ClueWord": "topgun",
+      "Rating": {
+        "Score": 4.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "hard",
+      "Word1": "pilot",
+      "ClueWord": "tough",
+      "Rating": {
+        "Score": 2.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "hard",
+      "Word1": "pilot",
       "ClueWord": "training",
+      "Rating": {
+        "Score": 3.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "hard",
+      "Word1": "pilot",
+      "ClueWord": "trip",
+      "Rating": {
+        "Score": 1.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "hard",
+      "Word1": "pilot",
+      "ClueWord": "turbulence",
+      "Rating": {
+        "Score": 1.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "hard",
+      "Word1": "pilot",
+      "ClueWord": "weather",
+      "Rating": {
+        "Score": 2.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "hard",
+      "Word1": "pilot",
+      "ClueWord": "worker",
       "Rating": {
         "Score": 3.0,
         "Legal": 2.0
@@ -843,6 +4605,186 @@
       "ClueWord": "step",
       "Rating": {
         "Score": 1.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "ladder",
+      "Word1": "truck",
+      "ClueWord": "",
+      "Rating": {
+        "Score": 0.0,
+        "Legal": 0.0
+      }
+    },
+    {
+      "Word0": "ladder",
+      "Word1": "truck",
+      "ClueWord": "access",
+      "Rating": {
+        "Score": 2.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "ladder",
+      "Word1": "truck",
+      "ClueWord": "accessible",
+      "Rating": {
+        "Score": 0.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "ladder",
+      "Word1": "truck",
+      "ClueWord": "apparatus",
+      "Rating": {
+        "Score": 1.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "ladder",
+      "Word1": "truck",
+      "ClueWord": "ascend",
+      "Rating": {
+        "Score": 1.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "ladder",
+      "Word1": "truck",
+      "ClueWord": "cargo",
+      "Rating": {
+        "Score": 1.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "ladder",
+      "Word1": "truck",
+      "ClueWord": "climb",
+      "Rating": {
+        "Score": 1.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "ladder",
+      "Word1": "truck",
+      "ClueWord": "construction",
+      "Rating": {
+        "Score": 3.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "ladder",
+      "Word1": "truck",
+      "ClueWord": "crane",
+      "Rating": {
+        "Score": 1.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "ladder",
+      "Word1": "truck",
+      "ClueWord": "deploy",
+      "Rating": {
+        "Score": 1.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "ladder",
+      "Word1": "truck",
+      "ClueWord": "elevate",
+      "Rating": {
+        "Score": 2.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "ladder",
+      "Word1": "truck",
+      "ClueWord": "elevated",
+      "Rating": {
+        "Score": 3.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "ladder",
+      "Word1": "truck",
+      "ClueWord": "elevator",
+      "Rating": {
+        "Score": 0.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "ladder",
+      "Word1": "truck",
+      "ClueWord": "emergency",
+      "Rating": {
+        "Score": 2.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "ladder",
+      "Word1": "truck",
+      "ClueWord": "equipment",
+      "Rating": {
+        "Score": 2.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "ladder",
+      "Word1": "truck",
+      "ClueWord": "extend",
+      "Rating": {
+        "Score": 2.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "ladder",
+      "Word1": "truck",
+      "ClueWord": "extendable",
+      "Rating": {
+        "Score": 1.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "ladder",
+      "Word1": "truck",
+      "ClueWord": "extension",
+      "Rating": {
+        "Score": 1.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "ladder",
+      "Word1": "truck",
+      "ClueWord": "fire",
+      "Rating": {
+        "Score": 4.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "ladder",
+      "Word1": "truck",
+      "ClueWord": "firedepartment",
+      "Rating": {
+        "Score": 4.0,
         "Legal": 2.0
       }
     },
@@ -912,6 +4854,213 @@
     {
       "Word0": "ladder",
       "Word1": "truck",
+      "ClueWord": "forklifts",
+      "Rating": {
+        "Score": 2.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "ladder",
+      "Word1": "truck",
+      "ClueWord": "height",
+      "Rating": {
+        "Score": 1.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "ladder",
+      "Word1": "truck",
+      "ClueWord": "industrial",
+      "Rating": {
+        "Score": 1.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "ladder",
+      "Word1": "truck",
+      "ClueWord": "isle",
+      "Rating": {
+        "Score": 0.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "ladder",
+      "Word1": "truck",
+      "ClueWord": "lags",
+      "Rating": {
+        "Score": 0.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "ladder",
+      "Word1": "truck",
+      "ClueWord": "lamp",
+      "Rating": {
+        "Score": 0.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "ladder",
+      "Word1": "truck",
+      "ClueWord": "lane",
+      "Rating": {
+        "Score": 1.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "ladder",
+      "Word1": "truck",
+      "ClueWord": "led",
+      "Rating": {
+        "Score": 0.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "ladder",
+      "Word1": "truck",
+      "ClueWord": "ledger",
+      "Rating": {
+        "Score": 0.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "ladder",
+      "Word1": "truck",
+      "ClueWord": "lift",
+      "Rating": {
+        "Score": 2.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "ladder",
+      "Word1": "truck",
+      "ClueWord": "lifting",
+      "Rating": {
+        "Score": 1.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "ladder",
+      "Word1": "truck",
+      "ClueWord": "limo",
+      "Rating": {
+        "Score": 0.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "ladder",
+      "Word1": "truck",
+      "ClueWord": "lorries",
+      "Rating": {
+        "Score": 1.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "ladder",
+      "Word1": "truck",
+      "ClueWord": "lorry",
+      "Rating": {
+        "Score": 1.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "ladder",
+      "Word1": "truck",
+      "ClueWord": "luggage",
+      "Rating": {
+        "Score": 1.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "ladder",
+      "Word1": "truck",
+      "ClueWord": "maintenance",
+      "Rating": {
+        "Score": 3.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "ladder",
+      "Word1": "truck",
+      "ClueWord": "mobile",
+      "Rating": {
+        "Score": 1.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "ladder",
+      "Word1": "truck",
+      "ClueWord": "pile",
+      "Rating": {
+        "Score": 0.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "ladder",
+      "Word1": "truck",
+      "ClueWord": "platform",
+      "Rating": {
+        "Score": 1.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "ladder",
+      "Word1": "truck",
+      "ClueWord": "rail",
+      "Rating": {
+        "Score": 0.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "ladder",
+      "Word1": "truck",
+      "ClueWord": "railcars",
+      "Rating": {
+        "Score": 0.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "ladder",
+      "Word1": "truck",
+      "ClueWord": "railroad",
+      "Rating": {
+        "Score": 0.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "ladder",
+      "Word1": "truck",
+      "ClueWord": "reach",
+      "Rating": {
+        "Score": 1.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "ladder",
+      "Word1": "truck",
       "ClueWord": "rescue",
       "Rating": {
         "Score": 3.0,
@@ -921,7 +5070,106 @@
     {
       "Word0": "ladder",
       "Word1": "truck",
+      "ClueWord": "service",
+      "Rating": {
+        "Score": 2.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "ladder",
+      "Word1": "truck",
+      "ClueWord": "siren",
+      "Rating": {
+        "Score": 1.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "ladder",
+      "Word1": "truck",
+      "ClueWord": "Tanker",
+      "Rating": {
+        "Score": 1.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "ladder",
+      "Word1": "truck",
+      "ClueWord": "tanker",
+      "Rating": {
+        "Score": 1.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "ladder",
+      "Word1": "truck",
+      "ClueWord": "tankers",
+      "Rating": {
+        "Score": 1.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "ladder",
+      "Word1": "truck",
+      "ClueWord": "toolbox",
+      "Rating": {
+        "Score": 2.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "ladder",
+      "Word1": "truck",
+      "ClueWord": "tower",
+      "Rating": {
+        "Score": 1.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "ladder",
+      "Word1": "truck",
+      "ClueWord": "Trail",
+      "Rating": {
+        "Score": 0.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "ladder",
+      "Word1": "truck",
+      "ClueWord": "trolley",
+      "Rating": {
+        "Score": 0.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "ladder",
+      "Word1": "truck",
       "ClueWord": "utility",
+      "Rating": {
+        "Score": 3.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "ladder",
+      "Word1": "truck",
+      "ClueWord": "vehicle",
+      "Rating": {
+        "Score": 1.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "ladder",
+      "Word1": "truck",
+      "ClueWord": "worksite",
       "Rating": {
         "Score": 3.0,
         "Legal": 2.0
@@ -939,7 +5187,79 @@
     {
       "Word0": "mushroom",
       "Word1": "summit",
+      "ClueWord": "\" \"alpine",
+      "Rating": {
+        "Score": 0.0,
+        "Legal": 0.0
+      }
+    },
+    {
+      "Word0": "mushroom",
+      "Word1": "summit",
+      "ClueWord": "\" \"climb",
+      "Rating": {
+        "Score": 0.0,
+        "Legal": 0.0
+      }
+    },
+    {
+      "Word0": "mushroom",
+      "Word1": "summit",
+      "ClueWord": "\" \"foraging\"",
+      "Rating": {
+        "Score": 0.0,
+        "Legal": 0.0
+      }
+    },
+    {
+      "Word0": "mushroom",
+      "Word1": "summit",
+      "ClueWord": "\" \"forest",
+      "Rating": {
+        "Score": 0.0,
+        "Legal": 0.0
+      }
+    },
+    {
+      "Word0": "mushroom",
+      "Word1": "summit",
+      "ClueWord": "\" \"gathering",
+      "Rating": {
+        "Score": 0.0,
+        "Legal": 0.0
+      }
+    },
+    {
+      "Word0": "mushroom",
+      "Word1": "summit",
+      "ClueWord": "\" \"peak",
+      "Rating": {
+        "Score": 0.0,
+        "Legal": 0.0
+      }
+    },
+    {
+      "Word0": "mushroom",
+      "Word1": "summit",
       "ClueWord": "\"alpine\"",
+      "Rating": {
+        "Score": 2.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "mushroom",
+      "Word1": "summit",
+      "ClueWord": "\"nature",
+      "Rating": {
+        "Score": 0.0,
+        "Legal": 0.0
+      }
+    },
+    {
+      "Word0": "mushroom",
+      "Word1": "summit",
+      "ClueWord": "...",
       "Rating": {
         "Score": 2.0,
         "Legal": 2.0
@@ -951,6 +5271,42 @@
       "ClueWord": "alpine",
       "Rating": {
         "Score": 2.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "mushroom",
+      "Word1": "summit",
+      "ClueWord": "apex",
+      "Rating": {
+        "Score": 1.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "mushroom",
+      "Word1": "summit",
+      "ClueWord": "cabin",
+      "Rating": {
+        "Score": 0.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "mushroom",
+      "Word1": "summit",
+      "ClueWord": "campfire",
+      "Rating": {
+        "Score": 0.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "mushroom",
+      "Word1": "summit",
+      "ClueWord": "canopy",
+      "Rating": {
+        "Score": 1.0,
         "Legal": 2.0
       }
     },
@@ -975,7 +5331,43 @@
     {
       "Word0": "mushroom",
       "Word1": "summit",
+      "ClueWord": "climb",
+      "Rating": {
+        "Score": 1.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "mushroom",
+      "Word1": "summit",
+      "ClueWord": "climbing",
+      "Rating": {
+        "Score": 1.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "mushroom",
+      "Word1": "summit",
       "ClueWord": "conference",
+      "Rating": {
+        "Score": 1.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "mushroom",
+      "Word1": "summit",
+      "ClueWord": "crown",
+      "Rating": {
+        "Score": 0.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "mushroom",
+      "Word1": "summit",
+      "ClueWord": "culmination",
       "Rating": {
         "Score": 1.0,
         "Legal": 2.0
@@ -987,6 +5379,15 @@
       "ClueWord": "diplomacy",
       "Rating": {
         "Score": 1.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "mushroom",
+      "Word1": "summit",
+      "ClueWord": "ecology",
+      "Rating": {
+        "Score": 2.0,
         "Legal": 2.0
       }
     },
@@ -1011,6 +5412,42 @@
     {
       "Word0": "mushroom",
       "Word1": "summit",
+      "ClueWord": "enlarge",
+      "Rating": {
+        "Score": 0.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "mushroom",
+      "Word1": "summit",
+      "ClueWord": "environment",
+      "Rating": {
+        "Score": 1.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "mushroom",
+      "Word1": "summit",
+      "ClueWord": "exotic",
+      "Rating": {
+        "Score": 0.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "mushroom",
+      "Word1": "summit",
+      "ClueWord": "foothills",
+      "Rating": {
+        "Score": 0.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "mushroom",
+      "Word1": "summit",
       "ClueWord": "forage",
       "Rating": {
         "Score": 1.0,
@@ -1021,6 +5458,15 @@
       "Word0": "mushroom",
       "Word1": "summit",
       "ClueWord": "foraging",
+      "Rating": {
+        "Score": 1.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "mushroom",
+      "Word1": "summit",
+      "ClueWord": "forest",
       "Rating": {
         "Score": 1.0,
         "Legal": 2.0
@@ -1047,6 +5493,15 @@
     {
       "Word0": "mushroom",
       "Word1": "summit",
+      "ClueWord": "fungus",
+      "Rating": {
+        "Score": 1.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "mushroom",
+      "Word1": "summit",
       "ClueWord": "gathering",
       "Rating": {
         "Score": 4.0,
@@ -1056,7 +5511,160 @@
     {
       "Word0": "mushroom",
       "Word1": "summit",
+      "ClueWord": "global",
+      "Rating": {
+        "Score": 1.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "mushroom",
+      "Word1": "summit",
+      "ClueWord": "growth",
+      "Rating": {
+        "Score": 2.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "mushroom",
+      "Word1": "summit",
+      "ClueWord": "harvest",
+      "Rating": {
+        "Score": 0.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "mushroom",
+      "Word1": "summit",
+      "ClueWord": "high",
+      "Rating": {
+        "Score": 4.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "mushroom",
+      "Word1": "summit",
+      "ClueWord": "high-level",
+      "Rating": {
+        "Score": 1.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "mushroom",
+      "Word1": "summit",
+      "ClueWord": "highpoint",
+      "Rating": {
+        "Score": 1.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "mushroom",
+      "Word1": "summit",
+      "ClueWord": "international",
+      "Rating": {
+        "Score": 1.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "mushroom",
+      "Word1": "summit",
+      "ClueWord": "island",
+      "Rating": {
+        "Score": 0.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "mushroom",
+      "Word1": "summit",
+      "ClueWord": "lay",
+      "Rating": {
+        "Score": 0.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "mushroom",
+      "Word1": "summit",
+      "ClueWord": "leaders",
+      "Rating": {
+        "Score": 0.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "mushroom",
+      "Word1": "summit",
+      "ClueWord": "leadership",
+      "Rating": {
+        "Score": 0.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "mushroom",
+      "Word1": "summit",
+      "ClueWord": "lodge",
+      "Rating": {
+        "Score": 0.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "mushroom",
+      "Word1": "summit",
+      "ClueWord": "maple",
+      "Rating": {
+        "Score": 0.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "mushroom",
+      "Word1": "summit",
+      "ClueWord": "marshmallow",
+      "Rating": {
+        "Score": 0.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "mushroom",
+      "Word1": "summit",
       "ClueWord": "meeting",
+      "Rating": {
+        "Score": 1.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "mushroom",
+      "Word1": "summit",
+      "ClueWord": "Morel",
+      "Rating": {
+        "Score": 1.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "mushroom",
+      "Word1": "summit",
+      "ClueWord": "mound",
+      "Rating": {
+        "Score": 0.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "mushroom",
+      "Word1": "summit",
+      "ClueWord": "mountain",
       "Rating": {
         "Score": 1.0,
         "Legal": 2.0
@@ -1083,7 +5691,52 @@
     {
       "Word0": "mushroom",
       "Word1": "summit",
+      "ClueWord": "mussels",
+      "Rating": {
+        "Score": 0.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "mushroom",
+      "Word1": "summit",
+      "ClueWord": "natural",
+      "Rating": {
+        "Score": 2.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "mushroom",
+      "Word1": "summit",
       "ClueWord": "nature",
+      "Rating": {
+        "Score": 3.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "mushroom",
+      "Word1": "summit",
+      "ClueWord": "naturetalk",
+      "Rating": {
+        "Score": 3.0,
+        "Legal": 0.0
+      }
+    },
+    {
+      "Word0": "mushroom",
+      "Word1": "summit",
+      "ClueWord": "outdoor",
+      "Rating": {
+        "Score": 3.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "mushroom",
+      "Word1": "summit",
+      "ClueWord": "outdoors",
       "Rating": {
         "Score": 3.0,
         "Legal": 2.0
@@ -1101,6 +5754,33 @@
     {
       "Word0": "mushroom",
       "Word1": "summit",
+      "ClueWord": "peakmeeting",
+      "Rating": {
+        "Score": 1.0,
+        "Legal": 0.0
+      }
+    },
+    {
+      "Word0": "mushroom",
+      "Word1": "summit",
+      "ClueWord": "peaks",
+      "Rating": {
+        "Score": 1.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "mushroom",
+      "Word1": "summit",
+      "ClueWord": "Peaks",
+      "Rating": {
+        "Score": 1.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "mushroom",
+      "Word1": "summit",
       "ClueWord": "pinnacle",
       "Rating": {
         "Score": 1.0,
@@ -1110,9 +5790,153 @@
     {
       "Word0": "mushroom",
       "Word1": "summit",
+      "ClueWord": "pyramid",
+      "Rating": {
+        "Score": 1.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "mushroom",
+      "Word1": "summit",
+      "ClueWord": "seduce",
+      "Rating": {
+        "Score": 0.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "mushroom",
+      "Word1": "summit",
+      "ClueWord": "seduced",
+      "Rating": {
+        "Score": 0.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "mushroom",
+      "Word1": "summit",
+      "ClueWord": "spear",
+      "Rating": {
+        "Score": 0.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "mushroom",
+      "Word1": "summit",
+      "ClueWord": "Spruce",
+      "Rating": {
+        "Score": 0.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "mushroom",
+      "Word1": "summit",
+      "ClueWord": "spruce",
+      "Rating": {
+        "Score": 0.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "mushroom",
+      "Word1": "summit",
+      "ClueWord": "stud",
+      "Rating": {
+        "Score": 0.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "mushroom",
+      "Word1": "summit",
+      "ClueWord": "stump",
+      "Rating": {
+        "Score": 1.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "mushroom",
+      "Word1": "summit",
+      "ClueWord": "symposium",
+      "Rating": {
+        "Score": 1.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "mushroom",
+      "Word1": "summit",
+      "ClueWord": "talks",
+      "Rating": {
+        "Score": 1.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "mushroom",
+      "Word1": "summit",
+      "ClueWord": "Timberline",
+      "Rating": {
+        "Score": 0.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "mushroom",
+      "Word1": "summit",
       "ClueWord": "toadstool",
       "Rating": {
         "Score": 3.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "mushroom",
+      "Word1": "summit",
+      "ClueWord": "top",
+      "Rating": {
+        "Score": 2.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "mushroom",
+      "Word1": "summit",
+      "ClueWord": "tundra",
+      "Rating": {
+        "Score": 0.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "mushroom",
+      "Word1": "summit",
+      "ClueWord": "united",
+      "Rating": {
+        "Score": 1.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "mushroom",
+      "Word1": "summit",
+      "ClueWord": "volcano",
+      "Rating": {
+        "Score": 1.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "mushroom",
+      "Word1": "summit",
+      "ClueWord": "wild",
+      "Rating": {
+        "Score": 1.0,
         "Legal": 2.0
       }
     },
@@ -1155,6 +5979,15 @@
     {
       "Word0": "pair",
       "Word1": "punch",
+      "ClueWord": "bomb",
+      "Rating": {
+        "Score": 1.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "pair",
+      "Word1": "punch",
       "ClueWord": "boxer",
       "Rating": {
         "Score": 4.0,
@@ -1191,9 +6024,99 @@
     {
       "Word0": "pair",
       "Word1": "punch",
+      "ClueWord": "breaker",
+      "Rating": {
+        "Score": 1.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "pair",
+      "Word1": "punch",
+      "ClueWord": "combative",
+      "Rating": {
+        "Score": 1.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "pair",
+      "Word1": "punch",
       "ClueWord": "combo",
       "Rating": {
         "Score": 3.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "pair",
+      "Word1": "punch",
+      "ClueWord": "couple",
+      "Rating": {
+        "Score": 1.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "pair",
+      "Word1": "punch",
+      "ClueWord": "couples",
+      "Rating": {
+        "Score": 1.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "pair",
+      "Word1": "punch",
+      "ClueWord": "double",
+      "Rating": {
+        "Score": 1.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "pair",
+      "Word1": "punch",
+      "ClueWord": "duel",
+      "Rating": {
+        "Score": 4.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "pair",
+      "Word1": "punch",
+      "ClueWord": "duo",
+      "Rating": {
+        "Score": 1.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "pair",
+      "Word1": "punch",
+      "ClueWord": "Duo",
+      "Rating": {
+        "Score": 1.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "pair",
+      "Word1": "punch",
+      "ClueWord": "fight",
+      "Rating": {
+        "Score": 1.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "pair",
+      "Word1": "punch",
+      "ClueWord": "fighter",
+      "Rating": {
+        "Score": 1.0,
         "Legal": 2.0
       }
     },
@@ -1227,9 +6150,180 @@
     {
       "Word0": "pair",
       "Word1": "punch",
+      "ClueWord": "gloveset",
+      "Rating": {
+        "Score": 3.0,
+        "Legal": 0.0
+      }
+    },
+    {
+      "Word0": "pair",
+      "Word1": "punch",
+      "ClueWord": "hitting",
+      "Rating": {
+        "Score": 1.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "pair",
+      "Word1": "punch",
       "ClueWord": "knockout",
       "Rating": {
         "Score": 2.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "pair",
+      "Word1": "punch",
+      "ClueWord": "knockouts",
+      "Rating": {
+        "Score": 1.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "pair",
+      "Word1": "punch",
+      "ClueWord": "lay",
+      "Rating": {
+        "Score": 0.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "pair",
+      "Word1": "punch",
+      "ClueWord": "match",
+      "Rating": {
+        "Score": 2.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "pair",
+      "Word1": "punch",
+      "ClueWord": "matched",
+      "Rating": {
+        "Score": 1.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "pair",
+      "Word1": "punch",
+      "ClueWord": "matchedblows",
+      "Rating": {
+        "Score": 3.0,
+        "Legal": 0.0
+      }
+    },
+    {
+      "Word0": "pair",
+      "Word1": "punch",
+      "ClueWord": "nap",
+      "Rating": {
+        "Score": 0.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "pair",
+      "Word1": "punch",
+      "ClueWord": "Party",
+      "Rating": {
+        "Score": 0.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "pair",
+      "Word1": "punch",
+      "ClueWord": "pass",
+      "Rating": {
+        "Score": 0.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "pair",
+      "Word1": "punch",
+      "ClueWord": "peek",
+      "Rating": {
+        "Score": 0.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "pair",
+      "Word1": "punch",
+      "ClueWord": "pick",
+      "Rating": {
+        "Score": 0.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "pair",
+      "Word1": "punch",
+      "ClueWord": "picket",
+      "Rating": {
+        "Score": 0.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "pair",
+      "Word1": "punch",
+      "ClueWord": "ping",
+      "Rating": {
+        "Score": 0.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "pair",
+      "Word1": "punch",
+      "ClueWord": "pitch",
+      "Rating": {
+        "Score": 0.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "pair",
+      "Word1": "punch",
+      "ClueWord": "Pitch",
+      "Rating": {
+        "Score": 0.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "pair",
+      "Word1": "punch",
+      "ClueWord": "pluck",
+      "Rating": {
+        "Score": 0.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "pair",
+      "Word1": "punch",
+      "ClueWord": "Pocket",
+      "Rating": {
+        "Score": 0.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "pair",
+      "Word1": "punch",
+      "ClueWord": "poke",
+      "Rating": {
+        "Score": 0.0,
         "Legal": 2.0
       }
     },
@@ -1245,9 +6339,126 @@
     {
       "Word0": "pair",
       "Word1": "punch",
+      "ClueWord": "pulse",
+      "Rating": {
+        "Score": 0.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "pair",
+      "Word1": "punch",
+      "ClueWord": "raid",
+      "Rating": {
+        "Score": 0.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "pair",
+      "Word1": "punch",
+      "ClueWord": "set",
+      "Rating": {
+        "Score": 0.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "pair",
+      "Word1": "punch",
+      "ClueWord": "shotguns",
+      "Rating": {
+        "Score": 1.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "pair",
+      "Word1": "punch",
+      "ClueWord": "smack",
+      "Rating": {
+        "Score": 1.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "pair",
+      "Word1": "punch",
       "ClueWord": "sparring",
       "Rating": {
         "Score": 3.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "pair",
+      "Word1": "punch",
+      "ClueWord": "synchronizedstriking",
+      "Rating": {
+        "Score": 2.0,
+        "Legal": 0.0
+      }
+    },
+    {
+      "Word0": "pair",
+      "Word1": "punch",
+      "ClueWord": "tag",
+      "Rating": {
+        "Score": 0.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "pair",
+      "Word1": "punch",
+      "ClueWord": "tag-team",
+      "Rating": {
+        "Score": 4.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "pair",
+      "Word1": "punch",
+      "ClueWord": "tagteam",
+      "Rating": {
+        "Score": 4.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "pair",
+      "Word1": "punch",
+      "ClueWord": "tap",
+      "Rating": {
+        "Score": 0.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "pair",
+      "Word1": "punch",
+      "ClueWord": "team",
+      "Rating": {
+        "Score": 1.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "pair",
+      "Word1": "punch",
+      "ClueWord": "twins",
+      "Rating": {
+        "Score": 1.0,
+        "Legal": 2.0
+      }
+    },
+    {
+      "Word0": "pair",
+      "Word1": "punch",
+      "ClueWord": "twosome",
+      "Rating": {
+        "Score": 1.0,
         "Legal": 2.0
       }
     },
