@@ -99,8 +99,7 @@ def generate(
             )
             configurations.append(configuration)
     dump_cache_stats_since_last_call()
-    # Reverse order so that the latest methods are last
-    return Results(configurations=configurations[::-1])
+    return Results(configurations=configurations)
 
 
 def generate_clues(
