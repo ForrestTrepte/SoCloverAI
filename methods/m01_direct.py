@@ -17,6 +17,6 @@ Use lowercase unless it is a proper noun or if capitalizing the word would help 
 """
 
 
-def generate(temperature: float, pair: Tuple[str, str]) -> List[str]:
-    prediction = predict(temperature, template, word0=pair[0], word1=pair[1])
+async def generate(temperature: float, pair: Tuple[str, str]) -> List[str]:
+    prediction = await predict(temperature, template, word0=pair[0], word1=pair[1])
     return prediction

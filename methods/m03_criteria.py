@@ -22,6 +22,6 @@ or 2. Related to each word individually, even if it is using a different meaning
 """
 
 
-def generate(temperature: float, pair: Tuple[str, str]) -> List[str]:
-    prediction = predict(temperature, template, word0=pair[0], word1=pair[1])
+async def generate(temperature: float, pair: Tuple[str, str]) -> List[str]:
+    prediction = await predict(temperature, template, word0=pair[0], word1=pair[1])
     return prediction

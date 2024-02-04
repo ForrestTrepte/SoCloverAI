@@ -30,13 +30,13 @@ def create_llm_model(temperature: float, model_name: str) -> ChatOpenAI:
     return result
 
 
-def predict(temperature: float, template: str, **kwargs: Any) -> List[str]:
+async def predict(temperature: float, template: str, **kwargs: Any) -> List[str]:
     prompt = PromptTemplate(
         template=template.strip(), input_variables=["word0", "word1"]
     )
     llm = create_llm_model(temperature, model_name)
     chain = LLMChain(llm=llm, prompt=prompt, verbose=False)
-    output = chain.predict(**kwargs)
+    output = await chain.apredict(**kwargs)
     logger.debug(output)
     predictions = parse_candidates(output)
     best = parse_best(output)
