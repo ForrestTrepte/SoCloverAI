@@ -10,7 +10,7 @@ async def play(pairs: List[Tuple[str, str]]) -> None:
     methods.extend(generate.get_methods(["m06"]))
     methods.extend(generate.get_methods(["m08"]))
     methods.extend(generate.get_methods(["m09"]))
-    results = await generate.generate(
+    results = await generate.parallel_generate(
         test_pairs=pairs,
         temperatures=[0.0, 0.5, 0.9],
         trials=1,

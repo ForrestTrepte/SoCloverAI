@@ -1,3 +1,4 @@
+import asyncio
 import importlib
 import inspect
 import logging
@@ -114,3 +115,59 @@ async def generate_clues(
         for candidate in candidates
     ]
     return clues
+
+
+async def parallel_generate(
+    test_pairs: List[Tuple[str, str]],
+    temperatures: List[float],
+    trials: int,
+    methods: list[GenerateType],
+) -> Results:
+    random.seed("Clover")
+
+    # Initiate all generate methods in parallel
+    # Because of the way caching works, we need to run each trial separately.
+    # And we cannot use log_to_file to log each llm prompt separately.
+    tasks = {}
+    for trial in range(trials):
+        trial_tasks = []
+        logger.info(f"Generating: Trial {trial + 1} of {trials}")
+        for method in methods:
+            method_name = method.__module__
+            methods_prefix = "methods."
+            if method_name.startswith(methods_prefix):
+                method_name = method_name[len(methods_prefix) :]
+            for temperature in temperatures:
+                for test_pair in test_pairs:
+                    task = asyncio.create_task(
+                        generate_clues(method, temperature, test_pair)
+                    )
+                    trial_tasks.append(task)
+                    key = (trial, method.__module__, temperature, test_pair)
+                    tasks[key] = task
+        logger.info(f"Waiting for {len(trial_tasks)} tasks")
+        await asyncio.wait(trial_tasks)
+
+    # Collect results
+    configurations = []
+    for method in methods:
+        method_name = method.__module__
+        methods_prefix = "methods."
+        if method_name.startswith(methods_prefix):
+            method_name = method_name[len(methods_prefix) :]
+        logger.info(f"Generated {method_name}")
+        for temperature in temperatures:
+            logger.info(f"  Temperature {temperature}")
+            clues: List[Clue] = []
+            for trial in range(trials):
+                logger.info(f"    Trial {trial + 1} of {trials}")
+                for test_pair in test_pairs:
+                    key = (trial, method.__module__, temperature, test_pair)
+                    pair_clues = tasks[key].result()
+                    clues.extend(pair_clues)
+            configuration = Configuration(
+                method=method_name, temperature=temperature, trials=clues
+            )
+            configurations.append(configuration)
+    dump_cache_stats_since_last_call()
+    return Results(configurations=configurations)
