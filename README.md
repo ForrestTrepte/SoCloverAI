@@ -31,6 +31,7 @@ Alternatively, instead of using containers, it should also work to install and r
 # Developing
 
 * Set vscode interpreter: Ctrl+Shift+P, Python: Select Interpreter > Enter interpreter path > /opt/venvs/SoCloverAI
+* Create .env file with `OPENAI_API_KEY=sk-...`
 * Type checking (from terminal): `uv run mypy .`
 * Run tests from vscode testing pane
   * Or from terminal: `uv run pytest`
