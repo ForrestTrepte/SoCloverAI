@@ -2,7 +2,7 @@ from pydantic import BaseModel
 from typing import List, Optional, Tuple
 
 
-class Rating(BaseModel):
+class TRating(BaseModel):
     Score: Optional[float]
     Legal: Optional[float]
 
@@ -25,7 +25,7 @@ class Clue(BaseModel):
     Word0: str
     Word1: str
     ClueWord: str
-    Rating: Rating = Rating(Score=None, Legal=None)
+    Rating: TRating = TRating(Score=None, Legal=None)
 
     def as_tuple(self) -> Tuple[str, str, str]:
         if self.Word0 < self.Word1:

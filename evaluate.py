@@ -7,7 +7,7 @@ import numpy as np
 import pandas as pd  # type: ignore
 import seaborn as sns  # type: ignore
 
-from results import Clue, Configuration, Evaluations, Rating, Results
+from results import Clue, Configuration, Evaluations, TRating, Results
 
 logger = logging.getLogger("SoCloverAI")
 evaluation_filename = "evaluations.json"
@@ -31,7 +31,7 @@ def evaluate(results: Results) -> None:
 
 def get_evaluations_dict_if_completed(
     results: Results,
-) -> Optional[Dict[Tuple[str, str, str], Rating]]:
+) -> Optional[Dict[Tuple[str, str, str], TRating]]:
     evaluations_dict = load_evaluations_dict()
     is_scored = True
     for configuration in results.configurations:
@@ -43,7 +43,7 @@ def get_evaluations_dict_if_completed(
             ):
                 continue
             else:
-                evaluations_dict[clue_tuple] = Rating(Score=None, Legal=None)
+                evaluations_dict[clue_tuple] = TRating(Score=None, Legal=None)
                 is_scored = False
     save_evaluations_dict(evaluations_dict)
     if not is_scored:
@@ -51,7 +51,7 @@ def get_evaluations_dict_if_completed(
     return evaluations_dict
 
 
-def load_evaluations_dict() -> Dict[Tuple[str, str, str], Rating]:
+def load_evaluations_dict() -> Dict[Tuple[str, str, str], TRating]:
     if os.path.isfile(evaluation_filename):
         with open(evaluation_filename, "r") as f:
             evaluations_json = f.read()
@@ -64,7 +64,7 @@ def load_evaluations_dict() -> Dict[Tuple[str, str, str], Rating]:
     return evaluations_dict
 
 
-def save_evaluations_dict(evaluations_dict: Dict[Tuple[str, str, str], Rating]) -> None:
+def save_evaluations_dict(evaluations_dict: Dict[Tuple[str, str, str], TRating]) -> None:
     evaluations = Evaluations(clues=[])
     for clue_tuple, rating in evaluations_dict.items():
         clue = Clue.from_tuple(clue_tuple)
@@ -84,7 +84,7 @@ def save_evaluations_dict(evaluations_dict: Dict[Tuple[str, str, str], Rating]) 
 
 
 def score_results(
-    results: Results, evaluations_dict: Dict[Tuple[str, str, str], Rating]
+    results: Results, evaluations_dict: Dict[Tuple[str, str, str], TRating]
 ) -> None:
     for configuration in results.configurations:
         for clue in configuration.trials:
