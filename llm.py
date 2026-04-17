@@ -1,12 +1,14 @@
 import logging
 import re
-from typing import Any, List, Optional
+from typing import Any, List, Optional, cast
 
-import langchain
-from langchain.chains import LLMChain
-from langchain.prompts import PromptTemplate
+from langchain_core.globals import get_llm_cache
+from langchain_core.output_parsers import StrOutputParser
+from langchain_core.prompts import PromptTemplate
 from langchain_openai import ChatOpenAI
 
+import llm_cache_stats_wrapper
+import simple_llm_cache
 from init_openai import init_openai
 
 logger = logging.getLogger("SoCloverAI")
@@ -15,18 +17,18 @@ model_name = "gpt-4-1106-preview"
 
 
 def set_trial(trial: int) -> None:
-    langchain.llm_cache.inner_cache.set_trial(trial)
+    cache = cast(llm_cache_stats_wrapper.LlmCacheStatsWrapper, get_llm_cache())
+    cast(simple_llm_cache.SimpleLlmCache, cache.inner_cache).set_trial(trial)
 
 
 def dump_cache_stats_since_last_call() -> None:
-    logger.info(langchain.llm_cache.get_cache_stats_summary())
-    langchain.llm_cache.clear_cache_stats()
+    cache = cast(llm_cache_stats_wrapper.LlmCacheStatsWrapper, get_llm_cache())
+    logger.info(cache.get_cache_stats_summary())
+    cache.clear_cache_stats()
 
 
 def create_llm_model(temperature: float, model_name: str) -> ChatOpenAI:
-    # mypy seems confused about the model_name parameter:
-    #   Unexpected keyword argument "model_name" for "ChatOpenAI"
-    result = ChatOpenAI(temperature=temperature, model_name=model_name)  # type: ignore
+    result = ChatOpenAI(temperature=temperature, model_name=model_name)
     return result
 
 
@@ -35,8 +37,8 @@ async def predict(temperature: float, template: str, **kwargs: Any) -> List[str]
         template=template.strip(), input_variables=["word0", "word1"]
     )
     llm = create_llm_model(temperature, model_name)
-    chain = LLMChain(llm=llm, prompt=prompt, verbose=False)
-    output = await chain.apredict(**kwargs)
+    chain = prompt | llm | StrOutputParser()
+    output = await chain.ainvoke(kwargs)
     logger.debug(output)
     predictions = parse_candidates(output)
     best = parse_best(output)
@@ -63,7 +65,7 @@ def parse_candidates(output: str) -> List[str]:
     for line in output.splitlines():
         if not line.startswith("Candidates:"):
             continue
-        candidates_str = line[len("Candidates: ") :]
+        candidates_str = line[len("Candidates: "):]
         candidates = candidates_str.split(",")
         candidates = [candidate.strip() for candidate in candidates]
         result += candidates

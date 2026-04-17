@@ -2,11 +2,9 @@ import json
 import os
 from typing import Any, Dict, List, Optional
 
-from langchain.cache import InMemoryCache
-from langchain.load.dump import dumps
-from langchain.load.load import loads
-from langchain.schema import Generation
-from langchain_core.caches import RETURN_VAL_TYPE
+from langchain_core.caches import InMemoryCache, RETURN_VAL_TYPE
+from langchain_core.load.dump import dumps
+from langchain_core.load.load import loads
 
 
 class SimpleLlmCache(InMemoryCache):

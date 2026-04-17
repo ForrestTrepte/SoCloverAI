@@ -18,4 +18,5 @@ dependencies = [
     "pytest",
     "mypy",
     "snakeviz",
+    "langchain-community>=0.4.1",
 ]

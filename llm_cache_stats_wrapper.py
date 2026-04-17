@@ -17,7 +17,7 @@ class Stat:
         self.output_tokens += output_tokens
 
 
-class LlmCacheStatsWrapper:
+class LlmCacheStatsWrapper(BaseCache):
     """Wrapper for an LLM cache that tracks the number of cache hits and tokens used."""
 
     def __init__(self, inner_cache: BaseCache) -> None:
@@ -63,6 +63,9 @@ class LlmCacheStatsWrapper:
         """
         self.inner_cache.update(prompt, llm_string, return_val)
         self.add_tokens(False, prompt, llm_string, return_val)
+
+    def clear(self, **kwargs: Any) -> None:
+        self.inner_cache.clear(**kwargs)
 
     def add_tokens(
         self,

@@ -3,8 +3,8 @@ import os
 from typing import List, Tuple
 
 import numpy as np
-from langchain.embeddings import CacheBackedEmbeddings
-from langchain.storage import LocalFileStore
+from langchain_classic.embeddings import CacheBackedEmbeddings
+from langchain_classic.storage import LocalFileStore
 from langchain_openai import OpenAIEmbeddings
 
 from init_openai import init_openai
