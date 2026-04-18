@@ -14,14 +14,15 @@ from reportlab.lib.colors import HexColor, white, black
 
 CARD_SIZE    = 49 * mm
 CUTOUT_SIZE  = 18 * mm
-CARD_RADIUS  = 2 * mm   # outer card corner radius
-CUTOUT_RADIUS = 2 * mm  # inner cutout corner radius
+CARD_RADIUS  = 2.5 * mm   # outer card corner radius
+CUTOUT_RADIUS = 2.5 * mm  # inner cutout corner radius
 
 # Text: 4.5mm cap height.  For Helvetica, cap height ≈ 0.72 × font size.
-FONT_SIZE = (4.5 * mm) / 0.72   # ≈ 17.7 pt
+FONT_SIZE = (3.25 * mm) / 0.72   # ≈ 17.7 pt
 
 # Vertical center of each text zone (distance from that card edge inward)
-TEXT_ZONE_CENTER = (CARD_SIZE - CUTOUT_SIZE) / 4   # ≈ 7.75 mm
+TEXT_ZONE_CENTER = (CARD_SIZE - CUTOUT_SIZE) / 2 * .33
+# TEXT_ZONE_CENTER = 14   # ≈ 7.75 mm
 
 # ── Green petal geometry ─────────────────────────────────────────────────────
 
