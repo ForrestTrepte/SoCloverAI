@@ -37,8 +37,8 @@ PETAL_BOW = 0.78
 
 # ── Sheet layout ─────────────────────────────────────────────────────────────
 
-CARDS_PER_ROW = 3
-CARDS_PER_COL = 4
+CARDS_PER_ROW = 4
+CARDS_PER_COL = 5
 CARDS_PER_PAGE = CARDS_PER_ROW * CARDS_PER_COL
 
 PAGE_W, PAGE_H = LETTER
@@ -275,7 +275,7 @@ def generate_pdf(word_sets, output_path):
 if __name__ == "__main__":
     import os, pathlib
 
-    # NATO alphabet as placeholder words (12 cards = one full sheet)
+    # NATO alphabet as placeholder words (20 cards = one full 4x5 sheet)
     placeholder = [
         ["Alpha",   "Bravo",    "Charlie",  "Delta"],
         ["Echo",    "Foxtrot",  "Golf",     "Hotel"],
@@ -289,6 +289,14 @@ if __name__ == "__main__":
         ["Kilo",    "Lima",     "Mike",     "November"],
         ["Oscar",   "Papa",     "Quebec",   "Romeo"],
         ["Sierra",  "Tango",    "Uniform",  "Victor"],
+        ["Whiskey", "X-ray",    "Yankee",   "Zulu"],
+        ["Alpha",   "Charlie",  "Echo",     "Golf"],
+        ["India",   "Kilo",     "Mike",     "Oscar"],
+        ["Quebec",  "Uniform",  "Yankee",   "Bravo"],
+        ["Delta",   "Foxtrot",  "Hotel",    "Juliet"],
+        ["Lima",    "November", "Papa",     "Romeo"],
+        ["Sierra",  "Victor",   "X-ray",    "Zulu"],
+        ["Tango",   "Whiskey",  "Alpha",    "Echo"],
     ]
 
     out = pathlib.Path(__file__).parent / "output" / "cards.pdf"
