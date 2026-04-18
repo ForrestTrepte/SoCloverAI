@@ -81,7 +81,14 @@ class LlmCacheStatsWrapper(BaseCache):
             "model_name_format_1"
         ) or model_name_match.group("model_name_format_2")
         if model_name not in self.encodings:
-            self.encodings[model_name] = tiktoken.encoding_for_model(model_name)
+            try:
+                self.encodings[model_name] = tiktoken.encoding_for_model(model_name)
+            except KeyError as e:
+                print(e)
+                fallback_encoding = "o200k_base"
+                print(f"Falling back to encoding: {fallback_encoding}")
+                self.encodings[model_name] = tiktoken.get_encoding(fallback_encoding)
+
         encoding = self.encodings[model_name]
 
         input_tokens = len(encoding.encode(prompt))
@@ -127,6 +134,7 @@ class LlmCacheStatsWrapper(BaseCache):
     # from https://openai.com/pricing as of 11/7/23
     # (input cost, output cost) in USD per 1000 tokens
     _token_cost_by_model = {
+        "gpt-5.4-mini-2026-03-17": (0.00075, 0.00450),
         "gpt-4-1106-preview": (0.01, 0.03),
         "gpt-4": (0.03, 0.06),
         "gpt-4-32k": (0.06, 0.12),

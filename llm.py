@@ -13,7 +13,7 @@ from init_openai import init_openai
 
 logger = logging.getLogger("SoCloverAI")
 init_openai()
-model_name = "gpt-4-1106-preview"
+model_name = "gpt-5.4-mini-2026-03-17"
 
 
 def set_trial(trial: int) -> None:
@@ -68,6 +68,8 @@ def parse_candidates(output: str) -> List[str]:
         candidates_str = line[len("Candidates: "):]
         candidates = candidates_str.split(",")
         candidates = [candidate.strip() for candidate in candidates]
+        # remove bold ** markers if present
+        candidates = [candidate.strip("**") for candidate in candidates]
         result += candidates
     return result
 
@@ -78,7 +80,10 @@ pattern = re.compile(r"Best: (.*)")
 def parse_best(output: str) -> Optional[str]:
     match = pattern.search(output)
     if match:
-        return match.group(1)
+        result = match.group(1)
+        # remove bold ** markers if present
+        result = result.strip("**")
+        return result
     split_output = output.split()
     if len(split_output) == 1:
         logger.info(f"Invalid output format: {output}")
