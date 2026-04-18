@@ -8,7 +8,9 @@ Call generate_pdf(word_sets, output_path) to produce a PDF.
 from reportlab.lib.pagesizes import LETTER
 from reportlab.lib.units import mm
 from reportlab.pdfgen import canvas
-from reportlab.lib.colors import white, black
+from reportlab.lib.colors import HexColor, white, black
+
+CLOVER_GREEN = HexColor('#5aac38')
 
 # ── Card geometry ────────────────────────────────────────────────────────────
 
@@ -22,6 +24,9 @@ FONT_SIZE = (3.25 * mm) / 0.72
 
 # Center of each text zone, measured inward from that card edge.
 TEXT_ZONE_CENTER = (CARD_SIZE - CUTOUT_SIZE) / 2 * 0.33
+
+# How far the white arc dips inward from each card edge toward the center.
+ARC_DEPTH = 13 * mm
 
 # ── Sheet layout ─────────────────────────────────────────────────────────────
 
@@ -68,6 +73,80 @@ def _rounded_rect_path(c, x, y, w, h, r):
 
 # ── Drawing ──────────────────────────────────────────────────────────────────
 
+def _draw_white_arc(c, card_x, card_y, edge):
+    """
+    Fill white from one card edge inward to a concave arc.
+    The arc runs corner-to-corner, bowing toward the card center.
+    """
+    r  = CARD_RADIUS
+    cs = CARD_SIZE
+    d  = ARC_DEPTH
+    k  = KAPPA
+
+    c.setFillColor(white)
+    p = c.beginPath()
+
+    if edge == 'top':
+        # Outer: follow card boundary across top (left corner → top → right corner)
+        p.moveTo(card_x,          card_y + cs - r)
+        p.curveTo(card_x,         card_y + cs - r*(1-k),
+                  card_x + r*(1-k), card_y + cs,
+                  card_x + r,     card_y + cs)
+        p.lineTo(card_x + cs - r, card_y + cs)
+        p.curveTo(card_x + cs - r*(1-k), card_y + cs,
+                  card_x + cs,    card_y + cs - r*(1-k),
+                  card_x + cs,    card_y + cs - r)
+        # Inner: concave arc dipping down toward center
+        p.curveTo(card_x + cs * 0.7, card_y + cs - d,
+                  card_x + cs * 0.3, card_y + cs - d,
+                  card_x,            card_y + cs - r)
+
+    elif edge == 'bottom':
+        p.moveTo(card_x,          card_y + r)
+        p.curveTo(card_x,         card_y + r*(1-k),
+                  card_x + r*(1-k), card_y,
+                  card_x + r,     card_y)
+        p.lineTo(card_x + cs - r, card_y)
+        p.curveTo(card_x + cs - r*(1-k), card_y,
+                  card_x + cs,    card_y + r*(1-k),
+                  card_x + cs,    card_y + r)
+        # Inner: concave arc dipping up toward center
+        p.curveTo(card_x + cs * 0.7, card_y + d,
+                  card_x + cs * 0.3, card_y + d,
+                  card_x,            card_y + r)
+
+    elif edge == 'left':
+        p.moveTo(card_x + r,      card_y)
+        p.curveTo(card_x + r*(1-k), card_y,
+                  card_x,         card_y + r*(1-k),
+                  card_x,         card_y + r)
+        p.lineTo(card_x,          card_y + cs - r)
+        p.curveTo(card_x,         card_y + cs - r*(1-k),
+                  card_x + r*(1-k), card_y + cs,
+                  card_x + r,     card_y + cs)
+        # Inner: concave arc dipping right toward center
+        p.curveTo(card_x + d,     card_y + cs * 0.7,
+                  card_x + d,     card_y + cs * 0.3,
+                  card_x + r,     card_y)
+
+    elif edge == 'right':
+        p.moveTo(card_x + cs - r, card_y)
+        p.curveTo(card_x + cs - r*(1-k), card_y,
+                  card_x + cs,    card_y + r*(1-k),
+                  card_x + cs,    card_y + r)
+        p.lineTo(card_x + cs,     card_y + cs - r)
+        p.curveTo(card_x + cs,    card_y + cs - r*(1-k),
+                  card_x + cs - r*(1-k), card_y + cs,
+                  card_x + cs - r, card_y + cs)
+        # Inner: concave arc dipping left toward center
+        p.curveTo(card_x + cs - d, card_y + cs * 0.7,
+                  card_x + cs - d, card_y + cs * 0.3,
+                  card_x + cs - r, card_y)
+
+    p.close()
+    c.drawPath(p, fill=1, stroke=0)
+
+
 def draw_card(c, card_x, card_y, words):
     """
     Draw one keyword card with bottom-left corner at (card_x, card_y).
@@ -76,9 +155,13 @@ def draw_card(c, card_x, card_y, words):
     top, right, bottom, left = words
 
     # Card background
-    c.setFillColor(white)
+    c.setFillColor(CLOVER_GREEN)
     p = _rounded_rect_path(c, card_x, card_y, CARD_SIZE, CARD_SIZE, CARD_RADIUS)
     c.drawPath(p, fill=1, stroke=0)
+
+    # White arc areas over each edge
+    for edge in ('top', 'bottom', 'left', 'right'):
+        _draw_white_arc(c, card_x, card_y, edge)
 
     # Card outline
     c.setStrokeColor(black)
