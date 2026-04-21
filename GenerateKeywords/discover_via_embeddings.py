@@ -242,7 +242,7 @@ def main() -> None:
                 "word": word,
                 "category": "embeddings",
                 "source": "embeddings",
-                "notes": f"centrality={int(cent)},novelty={nov:.4f}",
+                "notes": "",
             }
             for word, cent, nov in zip(top_words, top_centrality, top_novelty)
         ]
