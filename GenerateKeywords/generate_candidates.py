@@ -105,6 +105,13 @@ CATEGORY_PROMPTS: dict[str, str] = {
         "Examples might include: CHAOS, ECHO, DRIFT, VOID, LORE, VIBE. "
         "Avoid words already in the base game (listed below)."
     ),
+    "acronym": (
+        "Suggest acronyms or initialisms for So Clover! keywords. "
+        "These should be very widely known — things nearly everyone would recognize. "
+        "Examples: VR, AI, DNA, GPS, UFO, FBI, NASA, WiFi, ASAP, DIY, CEO, ATM, FAQ, RSVP. "
+        "Output in their standard capitalization (e.g. DNA, WiFi, GPS, not dna or WIFI). "
+        "Avoid words already in the base game (listed below)."
+    ),
 }
 
 

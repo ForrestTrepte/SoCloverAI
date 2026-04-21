@@ -14,11 +14,11 @@ shenanigans,whimsical,seed,
 Disney,tech,seed,
 Wikipedia,tech,seed,
 Facebook,tech,seed,
-VR,tech,seed,
+VR,acronym,seed,
 elegant,adjective,seed,
-AI,tech,seed,
+AI,acronym,seed,
 slop,tech,seed,internet culture
-Covid,tech,seed,
+COVID,acronym,seed,
 hashtag,tech,seed,
 enshittification,tech,seed,
 Bitcoin,tech,seed,
@@ -28,6 +28,10 @@ Madonna,noun,seed,multi-meaning: singer/religious figure
 Crocs,noun,seed,multi-meaning: shoes/animals
 bond,noun,seed,multi-meaning: spy/finance/glue/emotional
 long,noun,seed,multi-meaning: length/time/longing
+LOL,acronym,seed,
+ram,animal,seed,multi-meaning: animal/computer memory
+YOLO,acronym,seed,
+gnu,animal,seed,multi-meaning: animal/computer term
 pixel,tech,claude,multi-meaning: display/game character/camera
 meme,tech,claude,
 glitch,tech,claude,multi-meaning: error/aesthetic/moment
@@ -178,7 +182,7 @@ Pokemon,tech_and_culture,llm,
 emoji,tech_and_culture,llm,
 selfie,tech_and_culture,llm,
 streaming,tech_and_culture,llm,
-WiFi,tech_and_culture,llm,
+WiFi,acronym,llm,
 Bluetooth,tech_and_culture,llm,
 crypto,tech_and_culture,llm,
 avatar,tech_and_culture,llm,
@@ -308,7 +312,7 @@ defending,embeddings,embeddings,"centrality=0,novelty=0.2942"
 defender,embeddings,embeddings,"centrality=0,novelty=0.2894"
 defended,embeddings,embeddings,"centrality=0,novelty=0.3063"
 defend,embeddings,embeddings,"centrality=0,novelty=0.2995"
-RBIs,embeddings,embeddings,"centrality=0,novelty=0.2406"
+RBIs,acronym,embeddings,"centrality=0,novelty=0.2406"
 defendant,embeddings,embeddings,"centrality=0,novelty=0.2792"
 defensive,embeddings,embeddings,"centrality=0,novelty=0.2999"
 Ford,embeddings,embeddings,"centrality=0,novelty=0.2528"
@@ -342,3 +346,17 @@ ExxonMobil,embeddings,embeddings,manually added from previously-noticed interest
 basin,nouns,llm,
 smoldering,adjectives,llm,
 longing,abstract,llm,
+DNA,acronym,llm,
+GPS,acronym,llm,
+NASA,acronym,llm,
+UFO,acronym,llm,
+FBI,acronym,llm,
+ATM,acronym,llm,
+DIY,acronym,llm,
+VIP,acronym,llm,
+CEO,acronym,llm,
+ASAP,acronym,llm,
+SOS,acronym,llm,
+IOU,acronym,llm,
+MVP,acronym,llm,
+FAQ,acronym,llm,
