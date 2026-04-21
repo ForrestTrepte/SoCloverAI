@@ -32,7 +32,7 @@ load_dotenv(SCRIPT_DIR.parent / ".env")
 GENERATE_CLUES_DIR = SCRIPT_DIR.parent / "GenerateClues"
 CANDIDATES_CSV = SCRIPT_DIR / "candidates.csv"
 REVIEW_CSV = SCRIPT_DIR / "candidates_review.csv"
-EXISTING_KEYWORDS_CSV = SCRIPT_DIR.parent / "GenerateCards" / "CloverExistingKeywords.csv"
+EXISTING_KEYWORDS_CSV = SCRIPT_DIR / "CloverExistingKeywords.csv"
 
 EMBEDDINGS_NPZ = GENERATE_CLUES_DIR / "words_by_frequency_embeddings.npz"
 WORDS_JSON = GENERATE_CLUES_DIR / "words_by_frequency.json"

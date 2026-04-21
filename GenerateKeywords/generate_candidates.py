@@ -28,7 +28,7 @@ from dotenv import load_dotenv
 SCRIPT_DIR = Path(__file__).parent
 load_dotenv(SCRIPT_DIR.parent / ".env")
 CANDIDATES_CSV = SCRIPT_DIR / "candidates.csv"
-EXISTING_KEYWORDS_CSV = SCRIPT_DIR.parent / "GenerateCards" / "CloverExistingKeywords.csv"
+EXISTING_KEYWORDS_CSV = SCRIPT_DIR / "CloverExistingKeywords.csv"
 
 MODEL = "claude-sonnet-4-6"
 
