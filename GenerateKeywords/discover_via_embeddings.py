@@ -209,6 +209,16 @@ def main() -> None:
     filtered_novelty = novelty[novel_mask]
 
     print(f"\nWords passing novelty threshold ({args.novelty_threshold}): {len(filtered_words)}")
+    if len(filtered_novelty) > 0:
+        lo, q1, med, q3, hi = np.percentile(filtered_novelty, [0, 25, 50, 75, 100])
+        print(f"Novelty  min={lo:.4f}  q1={q1:.4f}  median={med:.4f}  q3={q3:.4f}  max={hi:.4f}")
+        bins = 8
+        counts, edges = np.histogram(filtered_novelty, bins=bins)
+        bar_max = counts.max()
+        bar_width = 20
+        for i in range(bins):
+            bar = round(counts[i] / bar_max * bar_width) if bar_max > 0 else 0
+            print(f"  {edges[i]:.4f}–{edges[i+1]:.4f} | {'█' * bar:{bar_width}}  {counts[i]}")
 
     # Sort by centrality descending
     order = np.argsort(filtered_centrality)[::-1]
