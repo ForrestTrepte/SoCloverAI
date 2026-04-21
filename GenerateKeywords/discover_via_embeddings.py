@@ -12,8 +12,8 @@ Usage:
     cd GenerateWords
     python discover_via_embeddings.py
 
-    # Tune thresholds:
-    python discover_via_embeddings.py --centrality-threshold 0.6 --novelty-threshold 0.15 --top-n 100
+    # Tune parameters:
+    python discover_via_embeddings.py --centrality-k 100 --novelty-threshold 0.15 --top-n 100
 
     # Preview without writing to candidates.csv:
     python discover_via_embeddings.py --dry-run
@@ -41,7 +41,7 @@ WORDS_JSON = GENERATE_CLUES_DIR / "words_by_frequency.json"
 FREQUENCY_CUTOFF = 15000
 
 # Cosine similarity threshold for counting a word as a "neighbor" (centrality)
-DEFAULT_CENTRALITY_THRESHOLD = 0.55
+DEFAULT_CENTRALITY_K = 50
 
 # Minimum average cosine distance from existing keywords (0 = identical, 2 = opposite)
 DEFAULT_NOVELTY_THRESHOLD = 0.12
@@ -97,20 +97,21 @@ def is_useful_word(word: str) -> bool:
     return word.lower() not in skip
 
 
-def compute_centrality(embeddings: np.ndarray, threshold: float) -> np.ndarray:
-    """Count how many of the top-frequency words are within cosine similarity threshold."""
-    print("Computing centrality scores (this may take a moment)...")
-    # embeddings is (N, D), normalized — dot product = cosine similarity
-    # Batch to avoid OOM on large matrices
+def compute_centrality(embeddings: np.ndarray, k: int) -> np.ndarray:
+    """Mean cosine similarity to each word's k nearest neighbors (excluding self)."""
+    print(f"Computing centrality scores (top-{k} mean similarity)...")
     batch_size = 1000
     n = len(embeddings)
-    counts = np.zeros(n, dtype=np.int32)
+    scores = np.zeros(n)
     for start in range(0, n, batch_size):
         end = min(start + batch_size, n)
-        # similarity matrix slice: (batch, N)
-        sim = embeddings[start:end] @ embeddings.T
-        counts[start:end] = (sim >= threshold).sum(axis=1) - 1  # exclude self
-    return counts
+        sim = embeddings[start:end] @ embeddings.T  # (batch, N)
+        # Zero out self-similarity so it doesn't rank as a neighbor
+        for local_i in range(end - start):
+            sim[local_i, start + local_i] = -1.0
+        top_k_sim = np.partition(sim, -k, axis=1)[:, -k:]
+        scores[start:end] = top_k_sim.mean(axis=1)
+    return scores
 
 
 def compute_novelty(
@@ -153,8 +154,8 @@ def get_existing_embeddings(
 
 def main() -> None:
     parser = argparse.ArgumentParser(description="Discover So Clover! keyword candidates via embeddings")
-    parser.add_argument("--centrality-threshold", type=float, default=DEFAULT_CENTRALITY_THRESHOLD,
-                        help=f"Cosine similarity threshold for neighbor counting (default: {DEFAULT_CENTRALITY_THRESHOLD})")
+    parser.add_argument("--centrality-k", type=int, default=DEFAULT_CENTRALITY_K,
+                        help=f"Number of nearest neighbors for centrality scoring (default: {DEFAULT_CENTRALITY_K})")
     parser.add_argument("--novelty-threshold", type=float, default=DEFAULT_NOVELTY_THRESHOLD,
                         help=f"Min avg cosine distance from existing keywords (default: {DEFAULT_NOVELTY_THRESHOLD})")
     parser.add_argument("--top-n", type=int, default=DEFAULT_TOP_N,
@@ -195,8 +196,8 @@ def main() -> None:
     usable_embeddings = embeddings[usable_indices]
     print(f"Candidate pool after filtering: {len(usable_words)} words")
 
-    # Centrality: count neighbors among all freq-cutoff words
-    centrality = compute_centrality(usable_embeddings, args.centrality_threshold)
+    # Centrality: mean similarity to top-k nearest neighbors
+    centrality = compute_centrality(usable_embeddings, args.centrality_k)
 
     # Novelty: distance from existing keywords
     existing_embeddings = get_existing_embeddings(exclusions, all_words, all_embeddings)
@@ -233,7 +234,7 @@ def main() -> None:
     print("-" * 56)
     for word, cent, nov in zip(top_words, top_centrality, top_novelty):
         rank = freq_rank.get(word.lower(), freq_rank.get(word, -1))
-        print(f"{word:<20} {rank:>10,} {cent:>12,} {nov:>10.4f}")
+        print(f"{word:<20} {rank:>10,} {cent:>12.4f} {nov:>10.4f}")
 
     if not args.dry_run:
         new_rows = [
