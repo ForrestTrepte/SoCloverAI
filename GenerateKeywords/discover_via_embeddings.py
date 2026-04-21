@@ -220,6 +220,8 @@ def main() -> None:
             bar = round(counts[i] / bar_max * bar_width) if bar_max > 0 else 0
             print(f"  {edges[i]:.4f}–{edges[i+1]:.4f} | {'█' * bar:{bar_width}}  {counts[i]}")
 
+    freq_rank = {w: i for i, w in enumerate(all_words)}
+
     # Sort by centrality descending
     order = np.argsort(filtered_centrality)[::-1]
     top_words = [filtered_words[i] for i in order[:args.top_n]]
@@ -227,10 +229,11 @@ def main() -> None:
     top_novelty = filtered_novelty[order[:args.top_n]]
 
     print(f"\nTop {len(top_words)} candidates (ranked by centrality):")
-    print(f"{'Word':<20} {'Centrality':>12} {'Novelty':>10}")
-    print("-" * 44)
+    print(f"{'Word':<20} {'Freq rank':>10} {'Centrality':>12} {'Novelty':>10}")
+    print("-" * 56)
     for word, cent, nov in zip(top_words, top_centrality, top_novelty):
-        print(f"{word:<20} {cent:>12,} {nov:>10.4f}")
+        rank = freq_rank.get(word.lower(), freq_rank.get(word, -1))
+        print(f"{word:<20} {rank:>10,} {cent:>12,} {nov:>10.4f}")
 
     if not args.dry_run:
         new_rows = [
