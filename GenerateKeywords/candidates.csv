@@ -259,3 +259,8 @@ CASCADE,abstract,llm,
 TENSION,abstract,llm,
 SHIMMER,abstract,llm,
 REVERIE,abstract,llm,
+thwart,embeddings,embeddings,"centrality=13506,novelty=0.2230"
+streamlined,embeddings,embeddings,"centrality=13506,novelty=0.2250"
+encryption,embeddings,embeddings,"centrality=13506,novelty=0.2179"
+towering,embeddings,embeddings,"centrality=13506,novelty=0.2196"
+dissolved,embeddings,embeddings,"centrality=13506,novelty=0.2325"
