@@ -1,0 +1,348 @@
+word,category,source,notes,human_rating,llm_rating,llm_notes
+Microsoft,tech,seed,,5,3,tech giant but limited cross-domain play
+OpenAI,tech,seed,,3,2,"too narrow/recent, mostly one domain"
+hidden,adjective,seed,,5,4,treasure/camera/agenda/gem — solid multi-use
+path,noun,seed,,5,4,career/hiking/math/life — versatile across domains
+entertainment,noun,seed,,5,2,"too broad/abstract, weak as a connector"
+rocket,noun,seed,spacecraft/salad leaf (arugula),3,5,spacecraft/salad/firework/rocket launch — delightful multi-domain surprise
+chip,noun,seed,food/electronics/golf,4,5,food/electronics/golf/poker chip — classic multi-meaning powerhouse
+swim,verb,seed,,3,3,"physical activity, decent but not exceptional"
+film,noun,seed,movie/thin coating,4,4,"movie/photography/thin layer — solid dual meaning, slightly less surprising"
+bamboozle,whimsical,seed,,5,3,fun word but narrow meaning limits connections
+Zamboni,whimsical,seed,,3,2,"obscure to many, single-domain"
+shenanigans,whimsical,seed,,4,3,fun flavor but semantically narrow
+Disney,tech,seed,,4,4,magic/princess/park/streaming — rich cultural web
+Wikipedia,tech,seed,,4,2,"single-concept, limited clue potential"
+Facebook,tech,seed,,4,2,"one domain, dated cultural relevance"
+VR,acronym,seed,,3,2,too narrow and jargony
+elegant,adjective,seed,,4,3,"mostly one register, limited cross-domain connections"
+AI,acronym,seed,,5,3,timely but conceptually narrow for clue-making
+slop,tech,seed,,4,3,food/AI slop/mud — decent but not exciting
+COVID,acronym,seed,,4,2,"culturally heavy, limited fun associations"
+hashtag,tech,seed,,4,3,social media/number sign — modest multi-use
+enshittification,tech,seed,,4,1,too niche and single-domain
+Bitcoin,tech,seed,,4,2,"too narrow, limited playful connections"
+frozen,adjective,seed,,4,5,Disney/food/temperature/time — superb multi-domain
+Sting,noun,seed,musician/insect sting/police sting,5,5,musician/bee/operation/pain — rare perfect multi-meaning
+Madonna,noun,seed,pop icon/Virgin Mary,5,5,pop icon/religious icon — elegant dual identity
+Crocs,noun,seed,foam shoes/crocodiles,4,4,shoes/reptiles — fun accessible dual meaning
+bond,noun,seed,adhesive/financial/emotional connection/James Bond,5,5,adhesive/financial/emotional/spy — textbook excellent
+long,adjective,seed,long distance/to long for (verb),3,4,distance/yearning/finance (short vs long) — underrated depth
+LOL,acronym,seed,,4,2,"internet slang, limited serious clue connections"
+ram,animal,seed,male sheep/computer memory/to ram (collide),5,4,sheep/memory/collision — solid multi-meaning across very different domains
+YOLO,acronym,seed,,4,2,"single-phrase meme, limited clue directions"
+gnu,animal,seed,wildebeest/GNU software,3,2,too obscure; wildebeest and GNU software both niche
+pixel,tech,claude,,3,3,"mostly digital domain, limited cross-category reach"
+meme,tech,claude,,4,3,internet-focused but culturally ubiquitous
+glitch,tech,claude,,4,3,"mostly tech/gaming, some metaphorical extension"
+hack,tech,claude,to chop/computer exploit/life hack/taxi driver,5,5,chop/exploit/life hack/cabbie — genuinely rich multi-meaning
+prompt,tech,claude,AI input/theater cue/punctual (adjective),4,4,AI/theater/punctual — surprisingly cross-domain for a timely word
+viral,tech,claude,internet spread/viral infection,4,4,internet/disease — two strong very different domains
+zoom,tech,claude,,4,4,"speed/camera/app/sound — fun multi-meaning, very accessible"
+lore,tech,claude,,5,3,"gaming/folklore niche, limited surprise connections"
+vibe,tech,claude,,5,3,culturally current but mostly one register
+hype,tech,claude,,4,3,"one register, limited cross-domain play"
+rogue,tech,claude,,4,4,gaming class/spy/going rogue — fun range
+Google,tech,claude,,5,3,"brand dominates, limits creative cluing"
+Netflix,tech,claude,,5,2,"pure brand, very narrow association space"
+TikTok,tech,claude,,4,2,"pure brand, clock pun barely saves it"
+bolt,noun,claude,lightning/door fastener/fabric roll/to run away,3,5,lightning/fastener/fabric/sprint — textbook excellent multi-meaning
+echo,noun,claude,,3,4,sound/mythology/smart speaker/repetition — rich cross-domain
+spark,noun,claude,,3,4,fire/electricity/romance/idea — warm versatile connections
+vault,noun,claude,bank safe room/gymnastics jump/wine cellar,3,5,bank/gymnastics/cellar/leap — exceptional cross-domain range
+draft,noun,claude,wind current/beer on tap/written version/military conscription,4,5,wind/beer/writing/military — four strong unrelated meanings
+bloom,noun,claude,,3,4,flowers/photography/growth/name — accessible and warm
+hive,noun,claude,,3,4,bees/mind/community/rash — fun cross-domain options
+tide,noun,claude,,3,4,ocean/laundry/time expression — accessible multi-meaning
+forge,verb,claude,blacksmith workshop/to move forward/to counterfeit,4,5,blacksmith/persevere/counterfeit — dramatically different meanings
+void,noun,claude,emptiness/to void (cancel),4,4,emptiness/cancel/space — philosophically rich and game-ready
+lurk,verb,claude,,4,3,"internet/horror, limited but evocative"
+grind,verb,claude,to crush/skateboard trick/daily work routine,4,4,crush/skate/hustle/coffee — strong cross-domain reach
+haunt,verb,claude,to visit as a ghost/a favorite hangout place,4,4,"ghost/hangout/memory — poetic dual meaning, very playable"
+brew,verb,claude,,4,4,coffee/beer/potion/storm — solid multi-domain word
+weave,verb,claude,,3,4,fabric/traffic/story/hair — versatile across domains
+drift,verb,claude,,3,4,snow/car/thought/ocean — nice multi-meaning spread
+surge,verb,claude,,3,3,electricity/crowd/ocean — functional but a bit one-register
+hollow,adjective,claude,,4,4,tree/sound/feeling/bone — good physical and emotional range
+neon,adjective,claude,bright color/chemical element (gas),4,4,Vegas/color/element/80s — vivid cross-domain associations
+fuzzy,adjective,claude,soft and furry/unclear or hazy,4,4,texture/memory/logic/animals — fun everyday multi-meaning
+crispy,adjective,claude,,4,3,"mostly food-domain, limited reach"
+eerie,adjective,claude,,3,3,clear meaning but narrow to spooky register
+goblin,whimsical,claude,,2,4,fantasy/mischief/market/green — fun and evocative
+gremlin,whimsical,claude,,3,4,machines/mischief/movie/aviation — great multi-context word
+frenzy,whimsical,claude,,3,3,strong but mostly one intensity register
+kerfuffle,whimsical,claude,,5,4,delightfully silly word with broad comic associations
+ruckus,whimsical,claude,,4,3,similar to kerfuffle but less charming
+quirk,whimsical,claude,,4,4,personality/physics/fun associations — versatile and playful
+glitter,whimsical,claude,,4,4,craft/Taylor Swift/sparkle/mess — fun pop-culture richness
+zap,whimsical,claude,,3,4,electricity/microwave/comic/remote — punchy multi-meaning
+narwhal,animal,claude,,2,4,novelty/unicorn/ocean/meme — delightfully specific yet rich
+capybara,animal,claude,,2,4,meme/calm/rodent/zoo — surprisingly rich cultural presence
+sloth,animal,claude,the animal/laziness (deadly sin),4,5,animal/sin/speed/hanging — perfect multi-meaning gem
+waffle,food,claude,breakfast food/to speak indecisively,4,5,food/indecision/pattern/iron — outstanding multi-domain word
+pretzel,food,claude,,3,3,"mostly food, though logic/twisted has some reach"
+bare,risque,claude,,4,4,naked/empty/minimum/bear-homophone — good multi-meaning
+naughty,risque,claude,,4,3,playful but limited to one behavioral register
+steamy,risque,claude,full of steam/romantically suggestive,4,5,heat/romance/jungle/cooking — excellent double-meaning fun
+snicker,whimsical,llm,,3,4,laugh/candy bar/snide — fun and accessible double
+wobble,whimsical,llm,,4,3,"physical movement, limited cross-domain spread"
+fizz,whimsical,llm,,5,4,drink/excitement/chemistry/fade — lively multi-domain word
+boggle,whimsical,llm,,2,4,game/mind/eyes/confusion — fun and versatile
+jinx,whimsical,llm,,2,4,bad luck/cat/curse/friend — playful with pop culture ties
+squelch,whimsical,llm,wet sucking sound/to suppress or silence,4,4,"sound/suppress dual meaning, fun phonetic quality"
+mumbo,whimsical,llm,,2,1,"only exists as ""mumbo jumbo,"" too dependent on one phrase"
+wisp,whimsical,llm,,4,3,"will-o'-wisp/thin strand, limited but evocative"
+blunder,whimsical,llm,,5,3,"mistake domain only, but universally understood"
+frazzle,whimsical,llm,,3,3,"worn out/frayed, limited associations"
+puffin,whimsical,llm,,3,2,"just a seabird, very narrow"
+snafu,whimsical,llm,,4,2,"single meaning (mess-up), military slang feels dated"
+tizzy,whimsical,llm,,4,2,"only means flustered, very narrow register"
+whomp,whimsical,llm,,3,2,"sound/hit, limited associations"
+flint,nouns,llm,,5,4,spark/stone/Michigan city/Flintstones — good multi-domain
+marrow,nouns,llm,bone marrow/a vegetable (like squash),4,4,bone/vegetable/essence-of-life — surprisingly rich cross-domain
+cipher,nouns,llm,,4,4,code/zero/spy/nonentity — excellent multi-meaning
+lodge,nouns,llm,mountain cabin/to embed/to file a complaint,3,5,cabin/embed/file(complaint)/beaver — versatile across domains
+coil,nouns,llm,,4,4,snake/spring/electrical/contraceptive — strong multi-meaning
+amber,nouns,llm,fossilized resin/golden-yellow color/traffic light,3,5,resin/color/traffic light/name/Jurassic Park — exceptionally rich
+hatch,nouns,llm,opening in a surface/to emerge from egg/to devise a plan,4,5,egg/plan/door/TV show/crosshatch — outstanding multi-meaning
+ferry,nouns,llm,,2,3,"boat transport, some mythological angle, mostly one domain"
+prism,nouns,llm,,3,4,light/geometry/Pink Floyd/perspective — good multi-domain
+silt,nouns,llm,,3,2,"just sediment, very narrow"
+burrow,nouns,llm,,3,4,animal hole/Harry Potter/dig — fun cross-domain
+anvil,nouns,llm,blacksmith's tool/a bone in the ear,3,4,blacksmith/ear bone/cartoons — delightful unexpected dual meaning
+dune,nouns,llm,,3,4,sand/film/Frank Herbert — strong pop culture plus geography
+socket,nouns,llm,,3,4,electrical/eye/joint/wrench — solid everyday multi-meaning
+fringe,nouns,llm,decorative edge/hair bangs/fringe (unconventional or marginal),4,5,hair/decorative/marginal/TV show — rich across domains
+parch,nouns,llm,,3,2,"only means dry/thirsty, very narrow"
+hull,nouns,llm,outer shell of a ship/outer casing of grain,4,4,ship/grain/city/breach — compact but genuinely multi-domain
+throttle,nouns,llm,engine speed control/to strangle,4,4,engine/strangle — vivid dual meaning with strong contrast
+notch,nouns,llm,,3,4,cut/level-up/achievement/Top Notch — versatile everyday word
+reef,nouns,llm,coral formation/to reduce sail area,3,4,"coral/sailing/knot — elegant dual meaning, accessible"
+spire,nouns,llm,,4,3,"church tower, some metaphorical use, mostly architectural"
+crest,nouns,llm,,4,4,wave/mountain/toothpaste/heraldry — solid multi-domain
+smolder,verbs,llm,,4,4,fire/romance/anger — evocative and cross-domain
+prowl,verbs,llm,,4,4,predator/night/stealth/police car — versatile imagery
+simmer,verbs,llm,,4,4,cooking/anger/tension — great dual literal/emotional use
+unravel,verbs,llm,,4,4,knitting/mystery/mental breakdown — rich multi-meaning
+splice,verbs,llm,,4,3,film/rope/genetics — functional but niche associations
+linger,verbs,llm,,3,3,smell/time/emotion — decent but narrow range
+fester,verbs,llm,,4,4,wound/resentment/Addams Family — fun and multi-domain
+beckon,verbs,llm,,5,3,gesture/temptation — limited but evocative
+topple,verbs,llm,,4,4,dictator/tower/domino — satisfying cross-domain range
+hijack,verbs,llm,,4,4,plane/conversation/attention — modern and versatile
+dissolve,verbs,llm,to melt/to formally end (a partnership or parliament),4,5,melt/parliament/tears/chemistry — excellent multi-domain
+plunge,verbs,llm,,4,5,water/knife/stock market/neckline — superb multi-meaning
+ricochet,verbs,llm,,3,3,bullets/sound/consequences — mostly one domain
+devour,verbs,llm,,4,4,eating/books/eyes/fire — strong sensory and figurative range
+meddle,verbs,llm,,3,3,interference/Scooby-Doo — fun but limited
+ignite,verbs,llm,,4,4,fire/passion/engine/controversy — clean multi-domain
+sculpt,verbs,llm,,3,3,art/body/clay — functional but not very surprising
+swindle,verbs,llm,,4,3,con/money — limited to one domain
+pounce,verbs,llm,,3,4,cat/opportunity/attack — fun and accessible
+ferment,verbs,llm,,3,4,beer/revolution/biology — excellent cross-domain
+capsize,verbs,llm,,3,3,boats/overwhelm — mostly nautical
+murmur,verbs,llm,soft sound/heart murmur (medical),4,5,heart/crowd/stream/discontent — beautiful subtle multi-meaning
+coax,verbs,llm,,4,3,persuasion/fire/animal — decent but quiet
+fracture,verbs,llm,,4,4,bone/relationship/rock/light — solid multi-domain
+silky,adjectives,llm,,4,4,texture/voice/smooth operator — sensory and figurative
+gloomy,adjectives,llm,,4,3,"weather/mood — straightforward, limited surprise"
+tangy,adjectives,llm,,2,3,taste/smell — mostly one sensory domain
+brittle,adjectives,llm,easily broken/cold or snappy personality,4,5,material/personality/sugar/cold — rich literal and figurative
+murky,adjectives,llm,,4,4,water/motives/past — evocative and cross-domain
+blazing,adjectives,llm,,4,4,fire/speed/trail/saddles — versatile across domains
+soggy,adjectives,llm,,3,2,"mostly one sensory register, limited fun connections"
+twisted,adjectives,llm,,4,4,physical/evil/music/humor — good multi-meaning range
+grimy,adjectives,llm,,3,2,"mostly one register, limited cross-domain play"
+wobbly,adjectives,llm,,4,3,"physical instability, some humor but narrow"
+stark,adjectives,llm,,3,4,stark naked/Stark (GoT/Iron Man)/bleak/contrast — fun multi-use
+velvety,adjectives,llm,,4,3,texture/voice/fabric — decent but mostly one sensory lane
+jagged,adjectives,llm,,3,3,edges/mountains/music genre — moderate range
+damp,adjectives,llm,,4,2,"mostly one register, few surprising connections"
+slimy,adjectives,llm,,4,3,texture/politician/creatures — some fun cross-domain use
+golden,adjectives,llm,,4,5,color/age/ratio/retriever/Gate/rule — exceptionally rich
+frothy,adjectives,llm,foamy/trivial or lightweight,4,3,coffee/sea/trivial — modest but workable range
+crumpled,adjectives,llm,,3,2,"mostly physical, limited associations"
+dusty,adjectives,llm,,3,4,dirt/old/name/Springfield/trail — fun multi-meaning
+sinister,adjectives,llm,evil/heraldic left side,4,4,evil/heraldic/left-hand — clever multi-meaning bonus
+rugged,adjectives,llm,,4,3,terrain/appearance/tough — decent but predictable
+bubbly,adjectives,llm,fizzy/effervescent personality,4,4,fizzy/personality/champagne — fun dual-register
+scorched,adjectives,llm,,4,3,fire/earth policy/cooking — moderate range
+lanky,adjectives,llm,,3,2,"mostly physical description, narrow associations"
+Amazon,tech_and_culture,llm,tech company/the river/mythological warrior women,5,5,river/warrior/rainforest/tech giant — superb multi-domain
+Spotify,tech_and_culture,llm,,3,2,"single-domain, limited clue connections"
+YouTube,tech_and_culture,llm,,4,3,video/tube/you — modest wordplay potential
+Twitter,tech_and_culture,llm,social media/to twitter (chirp or chatter),4,4,chirping/chatter/social media/Musk drama — fun multi-meaning
+Instagram,tech_and_culture,llm,,3,2,"single-domain, limited wordplay"
+Snapchat,tech_and_culture,llm,,3,2,"single-domain, minimal associations beyond app"
+Reddit,tech_and_culture,llm,,3,3,read/rabbit hole/community — modest wordplay
+Discord,tech_and_culture,llm,chat platform/disharmony or strife,5,5,platform/disharmony/music — excellent dual-meaning
+Minecraft,tech_and_culture,llm,,4,4,mine/craft/blocks/creeper — rich compound word with game culture
+Fortnite,tech_and_culture,llm,game/fortnight (two weeks),3,5,game/fortnight/two weeks — rare and delightful dual-meaning
+Pokemon,tech_and_culture,llm,,3,4,pocket/monsters/game/catch — fun and culturally rich
+emoji,tech_and_culture,llm,,3,3,ubiquitous but associations stay in digital/emotion lane
+selfie,tech_and_culture,llm,,3,2,"narrow cultural reference, limited cross-domain links"
+streaming,tech_and_culture,llm,,3,3,media/water/music — decent but fairly obvious connections
+WiFi,acronym,llm,,3,1,"too technical/single-domain, weak clue potential"
+Bluetooth,tech_and_culture,llm,,3,1,"nearly single-meaning tech term, very limited"
+crypto,tech_and_culture,llm,cryptocurrency/cryptography,4,2,trendy but associations mostly stay in two narrow lanes
+avatar,tech_and_culture,llm,virtual character/Hindu god's earthly incarnation,4,4,film/Hindu deity/gaming/profile pic — genuinely multi-meaning
+fizzing,whimsical,llm,,2,3,drinks/excitement/anger — fun but moderate range
+imp,whimsical,llm,,3,4,demon/mischief/size/printing — playful and surprisingly versatile
+splat,whimsical,llm,,3,4,sound/mess/falling/comics — vivid and cross-domain
+cackle,whimsical,llm,,3,4,witch/laughter/geese/fire — rich character and sensory links
+tangle,whimsical,llm,physical knot/an argument or altercation,4,5,knot/argument/hair/dance/web — beautifully multi-meaning
+flicker,whimsical,llm,,3,4,light/flame/doubt/film — evocative across domains
+muddle,whimsical,llm,,3,4,confusion/cocktails/mess/British charm — versatile and fun
+squishy,whimsical,llm,,4,3,"texture-focused, moderate range"
+whimsy,whimsical,llm,,3,3,"one register, limited cross-domain hooks"
+snoop,whimsical,llm,,4,4,spy/dog/investigation/celebrity — fun multi-lane word
+bumble,whimsical,llm,to move clumsily/a bumblebee,4,5,bee/clumsy movement/dating app/stumble — delightful multi-meaning
+glimmer,whimsical,llm,,3,4,light/hope/faint chance — evocative across domains
+hobgoblin,whimsical,llm,,2,2,"narrow folklore niche, limited accessible connections"
+dazzle,whimsical,llm,,4,4,light/camouflage/impress/WWI ships — surprisingly broad
+fumble,whimsical,llm,to drop clumsily/to grope awkwardly,4,4,sports/groping/clumsiness/keys — relatable multi-context
+crackle,whimsical,llm,,2,4,fire/sound/electricity/cereal — strong sensory cross-domain
+wiggly,whimsical,llm,,3,3,"mostly physical/texture, limited range"
+whoosh,whimsical,llm,,4,3,fun sound but mostly speed/movement lane
+prickle,whimsical,llm,,4,4,sensation/thorns/unease/hedgehog — nice multi-domain spread
+scuttle,whimsical,llm,to scurry/to sink a ship deliberately,2,5,scurry/sink ship/coal bucket/rumor — exceptional multi-meaning
+platypus,animals,llm,,3,4,bizarre animal/eggs/venom/cartoon — endlessly surprising
+viper,animals,llm,,4,3,snake/car/villain — moderate range
+flamingo,animals,llm,,4,4,bird/pink/lawn ornament/yoga pose/casino — vivid and varied
+panda,animals,llm,,3,4,black-white/bamboo/China/cute bear — solid associations
+raccoon,animals,llm,,3,4,trash/mask/nocturnal/bandit — fun versatile animal
+beaver,animals,llm,,4,4,dam/teeth/Canada/industrious — good multi-angle word
+magpie,animals,llm,the bird/a person who hoards shiny things or chatters,3,4,hoarding/chattering/black-white/bird — dual meaning adds richness
+mongoose,animals,llm,,2,2,"mostly just ""kills cobras,"" very narrow"
+dodo,animals,llm,extinct bird/a foolish person,4,4,extinct/stupid/bird/Mauritius — fun dual meaning
+mantis,animals,llm,,3,3,praying/shrimp/insect — limited but decent
+hyena,animals,llm,,3,4,laughing/scavenger/Lion King/spotted — entertaining associations
+penguin,animals,llm,,3,4,tuxedo/Antarctica/Linux/swim — surprisingly versatile
+axolotl,animals,llm,,1,2,"cute but very narrow, obscure for many players"
+weasel,animals,llm,the animal/a sneaky untrustworthy person,4,5,sneaky person/animal/weasel out/pop goes — rich multi-meaning
+peacock,animals,llm,the bird/to show off (to peacock),4,5,showing off/colorful/bird/NBC — excellent dual-meaning
+piranha,animals,llm,,4,3,teeth/Amazon/swarm — limited but vivid
+armadillo,animals,llm,,4,3,Texas/shell/armor/roadkill — decent but narrow
+ferret,animals,llm,the animal/to ferret out (search thoroughly),4,5,animal/ferret out/sneaky/pet — versatile verb+noun combo
+lemur,animals,llm,,2,2,"Madagascar mostly, fairly narrow"
+anchovy,food,llm,,3,3,pizza/salty/Caesar salad — limited but fun food word
+baste,food,llm,to pour juices over cooking meat/to sew loosely,2,4,cooking/sewing — delightful cross-domain dual meaning
+blanch,food,llm,to briefly boil/to turn pale from shock,1,4,cooking/pale/name — nice dual meaning across domains
+brine,food,llm,,3,3,pickle/salt/sea — decent but narrow
+butterscotch,food,llm,,3,4,candy/flavor/golden/sweet — rich sensory associations
+caramel,food,llm,,4,4,sweet/color/apple/burnt sugar — versatile and accessible
+chestnut,food,llm,the nut/an overused old joke/reddish-brown color,3,5,nut/old joke/color/roasting — excellent triple meaning
+cinnamon,food,llm,,3,4,spice/warmth/color/roll — versatile sensory word
+clam,food,llm,shellfish/to clam up (go silent),3,5,shellfish/clam up/happy as a/bake — excellent multi-meaning
+crisp,food,llm,,4,4,texture/British chips/weather/clean — nice cross-domain range
+crumble,food,llm,to fall apart/a fruit-topped dessert,3,5,fall apart/dessert/cookie — perfect dual meaning for this game
+custard,food,llm,,3,3,dessert/yellow/British — pleasant but limited
+deviled,food,llm,,2,4,eggs/spicy/devil — fun and evocative
+drizzle,food,llm,,3,4,rain/honey/cooking/weather — nice cross-domain dual meaning
+fondue,food,llm,,2,3,fun food association but narrow domain connections
+ginger,food,llm,the spice/reddish hair color,3,5,spice/hair/attitude/ginger ale/Ginger Rogers — rich multi-meaning
+gravy,food,llm,,4,4,food/easy money/gravy train — fun cross-domain potential
+honeycomb,food,llm,,3,4,bee/cereal/hexagon/structure — versatile and visual
+lard,food,llm,,3,2,"mostly one domain, limited fun associations"
+marinate,food,llm,,4,3,cooking/thinking/soaking — limited but workable
+pickle,food,llm,"preserved vegetable/a predicament (""in a pickle"")",4,5,food/predicament/sports/brine — excellent multi-meaning
+rind,food,llm,,3,2,"narrow food context, hard to connect broadly"
+truffle,food,llm,underground fungus/chocolate-shaped candy,2,4,fungus/chocolate/luxury/pig — fun dual identity
+flux,abstract,llm,constant change/physics term (flow of particles or energy),3,4,change/physics/soldering/in flux — solid multi-domain word
+dread,abstract,llm,,3,4,fear/dreadlocks/dreadnought — good range of associations
+glow,abstract,llm,,4,4,light/health/emotion/nuclear — versatile and accessible
+ripple,abstract,llm,,3,4,water/effect/crypto/fabric — nice multi-domain spread
+haze,abstract,llm,atmospheric fog/hazing (initiation ritual),3,4,fog/hazing/purple haze/memory — good multi-meaning
+fervor,abstract,llm,,3,2,"mostly one emotional register, limited connections"
+yearning,abstract,llm,,4,2,"single emotional tone, narrow associations"
+threshold,abstract,llm,,4,4,door/pain/psychology/limits — strong conceptual range
+ember,abstract,llm,,4,3,fire/warmth/name — evocative but limited
+static,abstract,llm,radio or electrical noise/unchanging or motionless,4,5,noise/unchanging/electricity/conflict — excellent multi-meaning
+twilight,abstract,llm,,4,5,time/vampire franchise/mood/transition — hugely versatile
+omen,abstract,llm,,4,3,"mostly one domain (bad signs), limited branching"
+tremor,abstract,llm,,3,4,earthquake/fear/medical/subtle movement — solid range
+nostalgia,abstract,llm,,4,3,"single emotional concept, not much branching"
+liminal,abstract,llm,,1,2,too academic/niche for most players
+cascade,abstract,llm,,3,4,waterfall/hair/chain reaction/style — versatile and visual
+tension,abstract,llm,,4,5,physics/drama/muscle/relationships — excellent multi-domain
+shimmer,abstract,llm,,3,3,"mostly visual/light, limited cross-domain"
+reverie,abstract,llm,,3,2,"single register, somewhat obscure"
+thwart,embeddings,embeddings,,3,3,block/foil/nautical — workable but narrow
+streamlined,embeddings,embeddings,,3,3,design/efficiency — functional but not exciting
+encryption,embeddings,embeddings,,2,3,"tech-specific, limited cross-domain fun"
+towering,embeddings,embeddings,,3,4,height/inferno/achievement/figure — good multi-use adjective
+dissolved,embeddings,embeddings,,3,4,chemistry/parliament/marriage/sugar — nice multi-domain word
+buyers,embeddings,embeddings,,3,3,"commerce-focused, moderate associations"
+prosecutors,embeddings,embeddings,,2,2,too narrow/legal-specific
+purchasers,embeddings,embeddings,,2,1,"stuffy synonym for buyers, no added richness"
+prosecuted,embeddings,embeddings,,2,1,"verb form, too narrow and conjugated"
+prosecuting,embeddings,embeddings,,2,1,"verb form, too narrow and conjugated"
+prosecutions,embeddings,embeddings,,2,1,"noun form, too narrow and single-domain"
+wrongly,embeddings,embeddings,,3,2,"adverb, limited clue-making potential"
+governments,embeddings,embeddings,,4,3,"broad but abstract, moderate associations"
+assurances,embeddings,embeddings,,2,3,decent emotional range but not very playful
+incorrectly,embeddings,embeddings,,5,1,"dry adverb, very limited associations"
+prosecute,embeddings,embeddings,,4,2,single-domain legal term
+worsened,embeddings,embeddings,,3,1,"past-tense verb, very limited associations"
+controversies,embeddings,embeddings,,4,3,broad but abstract and negative-skewed
+worsening,embeddings,embeddings,,2,1,"gerund, too narrow and conjugated"
+disagreements,embeddings,embeddings,,2,2,"abstract, limited playful connections"
+disagreement,embeddings,embeddings,,4,2,"same issue, singular doesn't help"
+accordingly,embeddings,embeddings,,2,1,"pure function word, no associations"
+congressional,embeddings,embeddings,,4,2,too politically specific
+homebuyers,embeddings,embeddings,,2,2,too specific a compound
+participating,embeddings,embeddings,,3,1,"gerund, weak clue potential"
+offending,embeddings,embeddings,,4,3,crime/smell/joke/foul — modest multi-meaning
+economists,embeddings,embeddings,,4,2,too narrow/professional-specific
+disruptions,embeddings,embeddings,,3,3,tech/protest/schedule — decent range
+vowed,embeddings,embeddings,,3,2,"limited to promise context, conjugated form"
+succeed,embeddings,embeddings,,4,4,success/follow/plant succession/music — versatile verb
+industries,embeddings,embeddings,,4,3,broad but abstract
+worse,embeddings,embeddings,,4,3,comparisons/Better Call Saul — limited but workable
+sufficient,embeddings,embeddings,,3,3,functional word but limited fun associations
+taxpayers,embeddings,embeddings,,3,3,"civic domain only, but relatable"
+uncertainties,embeddings,embeddings,,3,2,"abstract and narrow, hard to clue creatively"
+determine,embeddings,embeddings,,3,3,some versatility but mostly one register
+despite,embeddings,embeddings,,3,1,"pure function word, no associative richness"
+Nevada,embeddings,embeddings,,2,4,Vegas/desert/gambling/area51 — good pop culture hooks
+defined,embeddings,embeddings,,3,2,"mostly abstract, limited cross-domain play"
+definition,embeddings,embeddings,,4,3,dictionary/muscle/sharp — mild multi-meaning
+Alex,embeddings,embeddings,,1,4,Trebek/Rodriguez/Hamilton/many famous Alexes — fun name game
+defending,embeddings,embeddings,,2,2,"single-domain feel, awkward as clue target"
+defender,embeddings,embeddings,,2,4,sports/legal/Batman/Land Rover — solid multi-meaning
+defended,embeddings,embeddings,,2,1,"verb tense fragment, very hard to clue around"
+defend,embeddings,embeddings,,4,3,sports/legal/castle — decent but not exciting
+RBIs,acronym,embeddings,,2,1,"too narrow baseball jargon, obscure outside sports fans"
+defendant,embeddings,embeddings,,2,3,legal domain only but clear and accessible
+defensive,embeddings,embeddings,,4,3,sports/psychology — two decent domains
+Ford,embeddings,embeddings,,5,5,car/president/Harrison/river crossing — exceptional multi-meaning
+defeated,embeddings,embeddings,,3,2,"mostly one register, awkward standalone word"
+defeat,embeddings,embeddings,,2,3,accessible but limited associations
+defendants,embeddings,embeddings,,2,1,"plural of narrow legal term, redundant with defendant"
+definitely,embeddings,embeddings,,5,2,"filler word, almost no associative hooks"
+deficit,embeddings,embeddings,,4,3,finance/sports/attention — workable
+evangelical,embeddings,embeddings,,4,2,too politically charged and narrow
+pesticides,embeddings,embeddings,,4,2,"single domain, not much playful potential"
+operatives,embeddings,embeddings,,3,3,spy/political — two decent domains
+removes,embeddings,embeddings,,2,2,"generic verb, limited distinctive associations"
+smashing,embeddings,embeddings,,4,4,British slang/breaking/tennis/Hulk — fun multi-meaning
+cynical,embeddings,embeddings,,4,3,clear meaning but single emotional register
+rescheduled,embeddings,embeddings,,3,1,"too specific and situational, no richness"
+fraudulent,embeddings,embeddings,,4,2,"legal/negative connotation only, limited play"
+unconstitutional,embeddings,embeddings,,4,2,"too narrow/legalistic, limited cross-domain clue potential"
+uninsured,embeddings,embeddings,,4,2,"single domain, mostly one association cluster"
+stockholders,embeddings,embeddings,,4,2,"too corporate/specific, weak clue connections"
+unsuccessful,embeddings,embeddings,,4,2,"generic negative, hard to make interesting corner clues"
+contaminated,embeddings,embeddings,,4,3,food/water/science angles but fairly single-register
+catastrophic,embeddings,embeddings,,4,2,"just ""very bad,"" limited playful associations"
+fertilizer,embeddings,embeddings,,4,4,plants/smell/farming/explosives — surprisingly multi-directional
+foremost,embeddings,embeddings,,4,2,"mostly means ""first/leading,"" thin association web"
+overlooked,embeddings,embeddings,,3,3,can play on literal (height/sight) vs. figurative ignored meanings
+embezzlement,embeddings,embeddings,,3,2,"too specific a crime, narrow associations"
+progressive,embeddings,embeddings,,4,4,politics/insurance/jazz/gradual change — genuinely multi-meaning
+worst,embeddings,embeddings,,5,3,"superlative plays well but fairly thin beyond ""bad"""
+philanthropy,embeddings,embeddings,,4,3,charity/wealth/names but mostly one domain
+ExxonMobil,embeddings,embeddings,,5,1,"veto — brand too specific, inaccessible for clue-making"
+basin,nouns,llm,geographical hollow/river basin/bathroom washbasin,3,4,river/bathroom/geography/cooking — solid everyday multi-meaning
+smoldering,adjectives,llm,,3,4,fire/attraction/anger — evocative cross-domain word
+longing,abstract,llm,,4,4,emotion/distance/time — rich poetic and literal connections
