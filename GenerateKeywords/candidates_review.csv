@@ -1,78 +1,348 @@
 word,category,source,near_duplicates,notes
 Microsoft,tech,seed,Google,
 OpenAI,tech,seed,,
-Disney,tech,seed,"Entertainment, Film, Facebook, VR, Frozen, Zoom, Google, Netflix, Spark, Draft, Forge",
+Disney,tech,seed,"film, zoom, Netflix, Amazon, Pokemon",
 Wikipedia,tech,seed,Google,
-Facebook,tech,seed,"Disney, Google, Netflix, Spark, Forge",
-VR,tech,seed,"Rocket, Chip, Film, Disney, AI, Pixel, Zoom, Lore, Vibe, Netflix, Spark, Vault, Draft, Hive, Forge, Void, Zap",
-AI,tech,seed,"Chip, VR, Pixel, Zoom, Google, Spark, Hive, Zap",
-Slop,tech,seed,"Shenanigans, Grind, Fuzzy, Waffle",internet culture
-Covid,tech,seed,,
-Hashtag,tech,seed,,
-Enshittification,tech,seed,,
+Facebook,tech,seed,"Google, Netflix, Amazon, YouTube, Twitter, Discord, WiFi, Bluetooth, avatar",
+slop,tech,seed,"waffle, wobble, blunder, silt, simmer, swindle, murky, soggy, grimy, wobbly, slimy, crumpled, lanky, muddle, crumble, drizzle, gravy",
+hashtag,tech,seed,,
+enshittification,tech,seed,,
 Bitcoin,tech,seed,,
-Pixel,tech,claude,"Chip, Film, VR, AI, Hack, Prompt, Zoom, Google, Netflix, Bolt, Spark, Draft, Hive, Forge, Void, Zap",multi-meaning: display/game character/camera
-Meme,tech,claude,Viral,
-Glitch,tech,claude,"Shenanigans, Hack, Grind, Haunt, Weave, Drift, Fuzzy, Ruckus, Quirk, Glitter, Zap",multi-meaning: error/aesthetic/moment
-Hack,tech,claude,"Hidden, Chip, Pixel, Glitch, Lore, Bolt, Spark, Vault, Draft, Hive, Forge, Zap",multi-meaning: shortcut/computer/taxi/cut
-Prompt,tech,claude,"Pixel, Zoom, Lore, Spark, Draft, Zap",multi-meaning: AI/theater/reminder
-Viral,tech,claude,"Meme, Fuzzy",multi-meaning: internet/disease/marketing
-Zoom,tech,claude,"Hidden, Film, Disney, VR, AI, Frozen, Bond, Pixel, Prompt, Lore, Vibe, Google, Netflix, Bolt, Spark, Vault, Draft, Bloom, Hive, Forge, Zap",multi-meaning: speed/video call/camera
-Lore,tech,claude,"Hidden, Film, VR, Hack, Prompt, Zoom, Google, Bolt, Spark, Draft, Bloom, Hive, Forge, Lurk, Grind, Haunt, Weave, Zap",multi-meaning: mythology/internet deep-dive
-Vibe,tech,claude,"VR, Zoom, Hype, Spark, Bloom, Tide, Drift, Surge, Neon, Glitter",very contemporary
-Hype,tech,claude,"Entertainment, Vibe, Spark, Tide, Surge, Frenzy, Glitter",multi-meaning: excitement/marketing
-Rogue,tech,claude,"Drift, Surge, Hollow, Quirk, Naughty",multi-meaning: rebel/AI risk/game genre
-Google,tech,claude,"Microsoft, Film, Disney, Wikipedia, Facebook, AI, Pixel, Zoom, Lore, Netflix, Spark, Hive, Forge, Zap",
-Netflix,tech,claude,"Hidden, Film, Disney, Facebook, VR, Frozen, Pixel, Zoom, Google, Spark, Zap",
+pixel,tech,claude,"chip, film, VR, ram, prompt, zoom, spark, draft, zap, linger, Pokemon, streaming, avatar, pickle, flux, ripple",
+meme,tech,claude,omen,
+glitch,tech,claude,"hack, quirk, glitter, wobble, jinx, blunder, hatch, notch, hijack, wobbly, flicker, glimmer, scuttle, crumble, truffle, glow, ripple, haze, disruptions",
+hack,tech,claude,"hidden, chip, glitch, spark, hive, forge, zap, hatch, hijack, Discord, Pokemon",to chop/computer exploit/life hack/taxi driver
+prompt,tech,claude,"pixel, spark, draft, zap, prowl, beckon, ripple, threshold",AI input/theater cue/punctual (adjective)
+viral,tech,claude,,internet spread/viral infection
+zoom,tech,claude,"hidden, film, Disney, VR, long, pixel, lore, Google, spark, draft, forge, zap, coil, amber, linger, Discord, Pokemon, Bluetooth, avatar, pickle, flux, ripple, threshold, cascade",
+lore,tech,claude,"film, VR, long, LOL, ram, zoom, Google, spark, bloom, hive, forge, lurk, zap, lodge, amber, unravel, linger, devour, Pokemon, avatar, pickle, flux, ripple, omen, cascade",
+vibe,tech,claude,"hype, spark, tide, ignite, viper, glow, haze, tension",
+hype,tech,claude,"vibe, surge, ignite, glow, haze, nostalgia, tension",
+rogue,tech,claude,"surge, quirk, twisted, rugged, viper",
+Google,tech,claude,"Microsoft, Wikipedia, Facebook, zoom, lore, Netflix, forge, zap, linger, Amazon, YouTube, Twitter",
+Netflix,tech,claude,"film, Disney, Facebook, Google, spark, Amazon, YouTube, Pokemon, streaming, WiFi",
 TikTok,tech,claude,,
-Path,noun,seed,,
-Entertainment,noun,seed,"Film, Disney, Hype",
-Rocket,noun,seed,"VR, Bolt, Spark, Vault, Hive, Forge, Zap",
-Chip,noun,seed,"VR, AI, Pixel, Hack, Spark, Hive, Forge, Zap",multi-meaning: food/electronics/golf
-Film,noun,seed,"Hidden, Entertainment, Disney, VR, Frozen, Bond, Pixel, Zoom, Lore, Google, Netflix, Spark, Draft, Forge, Zap",multi-meaning: movie/coating/photography
-Bond,noun,seed,"Film, Zoom, Bolt, Spark, Vault, Draft, Forge",multi-meaning: spy/finance/glue/emotional
-Bolt,noun,claude,"Rocket, Bond, Pixel, Hack, Zoom, Lore, Spark, Vault, Draft, Hive, Forge, Zap",multi-meaning: lightning/door lock/fabric/sprint
-Echo,noun,claude,,multi-meaning: sound/Amazon device/Greek myth
-Spark,noun,claude,"Hidden, Rocket, Chip, Film, Shenanigans, Disney, Facebook, VR, AI, Frozen, Bond, Pixel, Hack, Prompt, Zoom, Lore, Vibe, Hype, Google, Netflix, Bolt, Vault, Draft, Bloom, Hive, Tide, Forge, Void, Weave, Drift, Surge, Neon, Frenzy, Quirk, Glitter, Zap",multi-meaning: fire/electricity/romance/idea
-Vault,noun,claude,"Hidden, Rocket, VR, Bond, Hack, Zoom, Bolt, Spark, Hive, Forge",multi-meaning: bank/gymnastics/wine cellar/jump
-Draft,noun,claude,"Hidden, Film, Disney, VR, Bond, Pixel, Hack, Prompt, Zoom, Lore, Bolt, Spark, Hive, Forge, Void, Drift, Zap",multi-meaning: wind/beer/writing/sports pick
-Bloom,noun,claude,"Zoom, Lore, Vibe, Spark, Grind, Weave, Surge, Frenzy, Glitter, Zap",multi-meaning: flowers/growth/face flush
-Hive,noun,claude,"Hidden, Rocket, Chip, VR, AI, Pixel, Hack, Zoom, Lore, Google, Bolt, Spark, Vault, Draft, Forge, Haunt, Weave, Zap",multi-meaning: bees/busyness/data warehouse
-Tide,noun,claude,"Vibe, Hype, Spark, Weave, Drift, Surge",multi-meaning: ocean/trend/detergent
-Void,noun,claude,"Hidden, VR, Pixel, Spark, Draft, Hollow, Zap",multi-meaning: empty space/cancel/the abyss
-Swim,verb,seed,"Drift, Surge",
-Forge,verb,claude,"Hidden, Rocket, Chip, Film, Disney, Facebook, VR, Frozen, Bond, Pixel, Hack, Zoom, Lore, Google, Bolt, Spark, Vault, Draft, Hive, Zap",multi-meaning: blacksmith/create/counterfeit
-Lurk,verb,claude,"Hidden, Lore, Haunt, Ruckus",multi-meaning: hide/internet lurking/threaten
-Grind,verb,claude,"Slop, Glitch, Lore, Bloom, Brew, Weave",multi-meaning: work hard/coffee/skateboarding
-Haunt,verb,claude,"Glitch, Lore, Hive, Lurk, Eerie",multi-meaning: ghosts/memories/revisit
-Brew,verb,claude,Grind,multi-meaning: coffee/beer/trouble brewing
-Weave,verb,claude,"Glitch, Lore, Spark, Bloom, Hive, Tide, Grind, Fuzzy, Waffle",multi-meaning: fabric/storytelling/dodge
-Drift,verb,claude,"Swim, Glitch, Vibe, Rogue, Spark, Draft, Tide, Surge",multi-meaning: ocean/cars/thoughts wandering
-Surge,verb,claude,"Swim, Vibe, Hype, Rogue, Spark, Bloom, Tide, Drift, Frenzy, Zap",multi-meaning: electricity/crowd/emotion/price
-Hidden,adjective,seed,"Film, Frozen, Hack, Zoom, Lore, Netflix, Spark, Vault, Draft, Hive, Forge, Void, Lurk, Hollow, Zap",
-Elegant,adjective,seed,"Eerie, Steamy",
-Frozen,adjective,seed,"Hidden, Film, Disney, Zoom, Netflix, Spark, Forge, Zap",multi-meaning: temp/movie/state
-Hollow,adjective,claude,"Hidden, Rogue, Void",multi-meaning: empty/bone/sound quality/false
-Neon,adjective,claude,"Vibe, Spark, Glitter",multi-meaning: bright color/signs/80s aesthetic
-Fuzzy,adjective,claude,"Slop, Glitch, Viral, Weave, Crispy, Eerie, Frenzy, Waffle, Steamy",multi-meaning: texture/unclear memory/animal
-Crispy,adjective,claude,"Fuzzy, Eerie, Waffle, Pretzel, Steamy",multi-meaning: food texture/satisfying sound
-Eerie,adjective,claude,"Elegant, Haunt, Fuzzy, Crispy, Frenzy, Steamy",multi-meaning: unsettling atmosphere
-Bamboozle,whimsical,seed,,
+Amazon,tech_and_culture,llm,"Disney, Facebook, Google, Netflix, YouTube",tech company/the river/mythological warrior women
+Spotify,tech_and_culture,llm,streaming,
+YouTube,tech_and_culture,llm,"film, Facebook, Google, Netflix, Amazon, streaming",
+Twitter,tech_and_culture,llm,"Facebook, Google, spark, linger, Discord, WiFi, avatar",social media/to twitter (chirp or chatter)
+Instagram,tech_and_culture,llm,,
+Snapchat,tech_and_culture,llm,,
+Reddit,tech_and_culture,llm,,
+Discord,tech_and_culture,llm,"chip, Facebook, hack, zoom, spark, zap, socket, Twitter, Pokemon, Bluetooth, ripple",chat platform/disharmony or strife
+Minecraft,tech_and_culture,llm,,
+Fortnite,tech_and_culture,llm,,game/fortnight (two weeks)
+Pokemon,tech_and_culture,llm,"film, Disney, VR, frozen, pixel, hack, zoom, lore, Netflix, spark, hive, forge, zap, Discord, avatar, panda, penguin, omen",
+emoji,tech_and_culture,llm,,
+selfie,tech_and_culture,llm,,
+streaming,tech_and_culture,llm,"entertainment, film, VR, pixel, Netflix, spark, draft, linger, Spotify, YouTube, WiFi",
+Bluetooth,tech_and_culture,llm,"Facebook, zoom, spark, amber, linger, Discord, WiFi",
+crypto,tech_and_culture,llm,,cryptocurrency/cryptography
+avatar,tech_and_culture,llm,"rocket, film, Facebook, VR, AI, ram, pixel, zoom, lore, spark, draft, hive, forge, zap, amber, socket, linger, Twitter, Pokemon, pickle, omen",virtual character/Hindu god's earthly incarnation
+path,noun,seed,long,
+entertainment,noun,seed,"film, streaming, nostalgia",
+rocket,noun,seed,"VR, ram, bolt, spark, vault, forge, avatar, ripple",spacecraft/salad leaf (arugula)
+chip,noun,seed,"ram, pixel, hack, spark, hive, zap, Discord, pickle, ripple",food/electronics/golf
+film,noun,seed,"hidden, entertainment, Disney, VR, frozen, ram, pixel, zoom, lore, Netflix, spark, draft, forge, zap, dune, linger, YouTube, Pokemon, streaming, avatar, twilight",movie/thin coating
+Sting,noun,seed,"spark, viper, glow",musician/insect sting/police sting
+Madonna,noun,seed,,pop icon/Virgin Mary
+Crocs,noun,seed,,foam shoes/crocodiles
+bond,noun,seed,"bolt, spark, vault, draft, forge, linger",adhesive/financial/emotional connection/James Bond
+bolt,noun,claude,"rocket, bond, ram, spark, vault, draft, forge, zap, coil, socket, linger, pickle, flux, ripple",lightning/door fastener/fabric roll/to run away
+echo,noun,claude,,
+spark,noun,claude,"hidden, rocket, chip, film, VR, Sting, bond, long, ram, pixel, hack, prompt, zoom, lore, vibe, Netflix, bolt, vault, draft, bloom, hive, tide, forge, surge, glitter, zap, fizz, tizzy, coil, amber, socket, spire, linger, ignite, pounce, blazing, golden, bubbly, Twitter, Discord, Pokemon, streaming, WiFi, Bluetooth, avatar, flicker, glimmer, dazzle, scuttle, viper, peacock, pickle, flux, glow, ripple, threshold, cascade",
+vault,noun,claude,"rocket, VR, bond, bolt, spark, forge",bank safe room/gymnastics jump/wine cellar
+draft,noun,claude,"film, VR, bond, long, pixel, prompt, zoom, bolt, spark, forge, drift, zap, linger, streaming, avatar, ripple, defender, defend",wind current/beer on tap/written version/military conscription
+bloom,noun,claude,"lore, spark, fizz, simmer, bubbly, flicker, glimmer, crumble, glow, ripple, haze",
+hive,noun,claude,"hidden, chip, ram, hack, lore, spark, forge, haunt, zap, coil, amber, hatch, hull, linger, Pokemon, avatar, honeycomb, pickle, flux, ripple, haze, cascade",
+tide,noun,claude,"vibe, spark, drift, surge, crest, glow, tension",
+void,noun,claude,"hidden, long, hollow, zap",emptiness/to void (cancel)
+flint,nouns,llm,forge,
+marrow,nouns,llm,,bone marrow/a vegetable (like squash)
+cipher,nouns,llm,,
+lodge,nouns,llm,"lore, lurk, hatch, linger",mountain cabin/to embed/to file a complaint
+coil,nouns,llm,"zoom, bolt, spark, hive, forge, socket, spire, linger, coax, pickle, flux, ripple, cascade",
+amber,nouns,llm,"AI, ram, zoom, lore, spark, hive, forge, zap, anvil, linger, golden, Bluetooth, avatar, pickle, flux, ripple, omen",fossilized resin/golden-yellow color/traffic light
+hatch,nouns,llm,"glitch, hack, hive, weave, lodge, hull, notch, hijack, pounce, scuttle",opening in a surface/to emerge from egg/to devise a plan
+ferry,nouns,llm,"forge, hull, scuttle, ferret",
+prism,nouns,llm,"glitter, fringe, spire, glimmer, glow",
+silt,nouns,llm,"slop, haze, dissolved",
+burrow,nouns,llm,plunge,
+anvil,nouns,llm,"forge, amber",blacksmith's tool/a bone in the ear
+dune,nouns,llm,"film, fringe, dusty, twilight",
+socket,nouns,llm,"bolt, spark, zap, coil, linger, Discord, avatar, ripple",
+fringe,nouns,llm,"fuzzy, prism, dune, crisp",decorative edge/hair bangs/fringe (unconventional or marginal)
+parch,nouns,llm,,
+hull,nouns,llm,"hive, hollow, hatch, ferry, scuttle",outer shell of a ship/outer casing of grain
+throttle,nouns,llm,"squelch, simmer, hijack, flicker, scuttle, thwart",engine speed control/to strangle
+notch,nouns,llm,"glitch, hatch, jagged",
+reef,nouns,llm,,coral formation/to reduce sail area
+spire,nouns,llm,"spark, forge, surge, hollow, coil, prism, ignite, honeycomb, towering",
+crest,nouns,llm,tide,
+basin,nouns,llm,brine,geographical hollow/river basin/bathroom washbasin
+swim,verb,seed,plunge,
+forge,verb,claude,"hidden, rocket, film, VR, bond, hack, zoom, lore, Google, bolt, spark, vault, draft, hive, zap, flint, coil, amber, ferry, anvil, spire, linger, Pokemon, avatar, ferret, flux, Ford",blacksmith workshop/to move forward/to counterfeit
+lurk,verb,claude,"lore, haunt, lodge, prowl, meddle, pounce, murmur, murky, lanky, weasel",
+grind,verb,claude,"devour, ferment, grimy, crumble, gravy",to crush/skateboard trick/daily work routine
+haunt,verb,claude,"hive, lurk, eerie, prowl, fester, devour, pounce, haze",to visit as a ghost/a favorite hangout place
+brew,verb,claude,ferment,
+weave,verb,claude,"waffle, wobble, hatch, unravel, twisted, tangle, dazzle, weasel, honeycomb, dread, ripple, haze",
+drift,verb,claude,"draft, tide, surge, flicker, glow",
+surge,verb,claude,"hype, rogue, spark, tide, drift, spire, plunge, ignite, murmur, glow",
+smolder,verbs,llm,,
+prowl,verbs,llm,"prompt, lurk, haunt, ruckus, beckon, devour, pounce",
+simmer,verbs,llm,"slop, bloom, steamy, squelch, throttle, fester, dissolve, meddle, ferment, murmur, slimy, flicker, glimmer, crumble, drizzle, smoldering",
+unravel,verbs,llm,"lore, weave, devour, crumpled, tangle, muddle, crumble",
+splice,verbs,llm,,
+linger,verbs,llm,"hidden, film, VR, frozen, bond, long, LOL, ram, pixel, zoom, lore, Google, bolt, spark, draft, hive, forge, zap, pretzel, tizzy, lodge, coil, amber, socket, golden, lanky, Twitter, streaming, WiFi, Bluetooth, avatar, tangle, glimmer, ginger, pickle, flux, ripple, yearning, threshold, omen, cascade, encryption, longing",
+fester,verbs,llm,"haunt, frenzy, fizz, simmer, devour, ferment, flicker, ferret, fervor, worsened, smoldering",
+beckon,verbs,llm,"prompt, prowl, pounce, coax, yearning, longing",
+topple,verbs,llm,,
+hijack,verbs,llm,"glitch, hack, hatch, throttle, swindle, scuttle, thwart, embezzlement",
+dissolve,verbs,llm,"simmer, ferment, crumble, dissolved",to melt/to formally end (a partnership or parliament)
+plunge,verbs,llm,"swim, surge, burrow, ignite, pounce",
+ricochet,verbs,llm,,
+devour,verbs,llm,"lore, grind, haunt, frenzy, prowl, unravel, fester, pounce, crumble, fervor, yearning",
+meddle,verbs,llm,"lurk, simmer, swindle, muddle, scuttle, thwart",
+ignite,verbs,llm,"vibe, hype, spark, surge, glitter, fizz, spire, plunge, blazing, glimmer, dazzle, glow, smoldering",
+sculpt,verbs,llm,scuttle,
+swindle,verbs,llm,"shenanigans, slop, wobble, blunder, hijack, meddle, muddle, fumble, scuttle, weasel, thwart, fraudulent, embezzlement",
+pounce,verbs,llm,"spark, lurk, haunt, zap, hatch, prowl, beckon, plunge, devour, panda, raccoon, penguin",
+ferment,verbs,llm,"grind, brew, simmer, fester, dissolve, damp, ferret, fervor",
+capsize,verbs,llm,,
+murmur,verbs,llm,"lurk, surge, simmer, tremor",soft sound/heart murmur (medical)
+coax,verbs,llm,"coil, beckon",
+fracture,verbs,llm,"brittle, crumble",
+hidden,adjective,seed,"film, frozen, long, hack, zoom, spark, hive, forge, void, hollow, linger, static",
+elegant,adjective,seed,"silky, slimy, rugged, crisp, streamlined",
+frozen,adjective,seed,"hidden, film, linger, Pokemon, pickle, static",
+long,adjective,seed,"hidden, path, LOL, zoom, lore, spark, draft, void, linger, longing",long distance/to long for (verb)
+hollow,adjective,claude,"hidden, void, hull, spire, twisted, honeycomb, glow",
+neon,adjective,claude,"glitter, flamingo, peacock, glow, Nevada",bright color/chemical element (gas)
+fuzzy,adjective,claude,"crispy, eerie, frenzy, fizz, tizzy, fringe, silky, gloomy, tangy, murky, soggy, grimy, wobbly, jagged, slimy, frothy, crumpled, dusty, rugged, bubbly, lanky, flicker, muddle, haze",soft and furry/unclear or hazy
+crispy,adjective,claude,"fuzzy, waffle, pretzel, silky, brittle, soggy, grimy, slimy, frothy, crumpled, rugged, bubbly, scorched, caramel, crisp, crumble, drizzle",
+eerie,adjective,claude,"haunt, fuzzy, steamy, tizzy, gloomy, murky, sinister, dread",
+silky,adjectives,llm,"elegant, fuzzy, crispy, steamy, tangy, soggy, grimy, slimy, frothy, sinister, bubbly, lanky, caramel, crisp, streamlined",
+gloomy,adjectives,llm,"fuzzy, eerie, murky, soggy, grimy, damp, slimy, frothy, sinister, glimmer, dread, glow, haze, cynical, smoldering",
+tangy,adjectives,llm,"fuzzy, tizzy, silky, soggy, jagged, slimy, rugged, bubbly, lanky, tangle, ginger",
+brittle,adjectives,llm,"crispy, pretzel, wobble, fracture, wobbly, crumpled, bubbly, flicker, glimmer, brine, crisp, crumble, drizzle",easily broken/cold or snappy personality
+murky,adjectives,llm,"slop, lurk, fuzzy, eerie, gloomy, soggy, grimy, wobbly, jagged, slimy, frothy, crumpled, sinister, rugged, bubbly, lanky, muddle, drizzle, haze",
+blazing,adjectives,llm,"spark, frenzy, steamy, blunder, ignite, scorched, glimmer, dazzle, yearning, towering, smashing, smoldering",
+soggy,adjectives,llm,"slop, fuzzy, crispy, steamy, snafu, silky, gloomy, tangy, murky, grimy, wobbly, damp, slimy, frothy, crumpled, bubbly, lanky, drizzle, gravy",
+twisted,adjectives,llm,"rogue, weave, hollow, naughty, tizzy, wobbly, jagged, slimy, crumpled, sinister, tangle, twilight, tension",
+grimy,adjectives,llm,"slop, grind, fuzzy, crispy, steamy, silky, gloomy, murky, soggy, damp, slimy, frothy, crumpled, dusty, sinister, rugged, lanky, gravy, cynical, contaminated",
+wobbly,adjectives,llm,"slop, glitch, fuzzy, waffle, wobble, tizzy, brittle, murky, soggy, twisted, slimy, frothy, crumpled, bubbly, lanky, flicker, whimsy, crumble",
+stark,adjectives,llm,,
+velvety,adjectives,llm,,
+jagged,adjectives,llm,"fuzzy, notch, tangy, murky, twisted, crumpled, rugged, lanky, tangle, crisp",
+damp,adjectives,llm,"steamy, ferment, gloomy, soggy, grimy, drizzle, dread, haze",
+slimy,adjectives,llm,"elegant, slop, fuzzy, crispy, steamy, simmer, silky, gloomy, tangy, murky, soggy, twisted, grimy, wobbly, frothy, sinister, bubbly, lanky, glimmer, weasel, streamlined",
+golden,adjectives,llm,"spark, amber, linger",
+frothy,adjectives,llm,"fuzzy, crispy, frenzy, steamy, fizz, tizzy, silky, gloomy, murky, soggy, grimy, wobbly, slimy, crumpled, bubbly, whimsy, caramel, custard, fervor",foamy/trivial or lightweight
+crumpled,adjectives,llm,"slop, fuzzy, crispy, ruckus, tizzy, unravel, brittle, murky, soggy, twisted, grimy, wobbly, jagged, frothy, rugged, scorched, lanky, muddle, fumble, crisp, crumble, drizzle, smashing, smoldering",
+dusty,adjectives,llm,"fuzzy, dune, grimy, haze",
+sinister,adjectives,llm,"eerie, silky, gloomy, murky, twisted, grimy, slimy, cynical",evil/heraldic left side
+rugged,adjectives,llm,"elegant, rogue, fuzzy, crispy, ruckus, tangy, murky, grimy, jagged, crumpled, lanky, streamlined",
+bubbly,adjectives,llm,"spark, bloom, fuzzy, crispy, glitter, steamy, fizz, tizzy, silky, tangy, brittle, murky, soggy, wobbly, slimy, frothy, whimsy, glimmer, caramel, honeycomb, smashing",fizzy/effervescent personality
+scorched,adjectives,llm,"crispy, blazing, crumpled, smoldering",
+lanky,adjectives,llm,"slop, lurk, fuzzy, wobble, tizzy, linger, silky, tangy, murky, soggy, grimy, wobbly, jagged, slimy, crumpled, rugged, tangle, streamlined, towering",
+smoldering,adjectives,llm,"steamy, simmer, fester, ignite, gloomy, blazing, crumpled, scorched, flicker, glimmer, crumble, glow, towering, smashing",
+bamboozle,whimsical,seed,,
 Zamboni,whimsical,seed,,
-Shenanigans,whimsical,seed,"Slop, Glitch, Spark, Frenzy, Ruckus, Zap, Naughty",
-Goblin,whimsical,claude,,multi-meaning: fantasy/goblin mode behavior
-Gremlin,whimsical,claude,,multi-meaning: troublemaker/plane saboteur/80s film
-Frenzy,whimsical,claude,"Shenanigans, Hype, Spark, Bloom, Surge, Fuzzy, Eerie, Ruckus, Zap",multi-meaning: chaos/excitement/feeding frenzy
-Kerfuffle,whimsical,claude,,fun to say
-Ruckus,whimsical,claude,"Shenanigans, Glitch, Lurk, Frenzy, Zap",
-Quirk,whimsical,claude,"Glitch, Rogue, Spark",multi-meaning: personality oddity/physics term
-Glitter,whimsical,claude,"Glitch, Vibe, Hype, Spark, Bloom, Neon",multi-meaning: sparkle/craft mess/attention
-Zap,whimsical,claude,"Hidden, Rocket, Chip, Film, Shenanigans, VR, AI, Frozen, Pixel, Glitch, Hack, Prompt, Zoom, Lore, Google, Netflix, Bolt, Spark, Draft, Bloom, Hive, Forge, Void, Surge, Frenzy, Ruckus",multi-meaning: electricity/speed/microwave
-Narwhal,animal,claude,,
-Capybara,animal,claude,,internet beloved
-Sloth,animal,claude,,multi-meaning: slowness/animal/deadly sin
-Waffle,food,claude,"Slop, Weave, Fuzzy, Crispy, Pretzel",multi-meaning: food/ramble indecisively
-Pretzel,food,claude,"Crispy, Waffle",multi-meaning: twisted/salty/shape
-Bare,risque,claude,,multi-meaning: empty/exposed/just barely
-Naughty,risque,claude,"Shenanigans, Rogue, Steamy",multi-meaning: misbehaving/slightly risque/Santa's list
-Steamy,risque,claude,"Elegant, Fuzzy, Crispy, Eerie, Naughty",multi-meaning: hot vapor/romantic/jungle
+shenanigans,whimsical,seed,"frenzy, ruckus, fizz, jinx, blunder, snafu, tizzy, swindle, muddle, whimsy",
+goblin,whimsical,claude,,
+gremlin,whimsical,claude,,
+frenzy,whimsical,claude,"shenanigans, fuzzy, ruckus, fizz, tizzy, fester, devour, blazing, frothy, tangle, flicker, muddle, dazzle, fumble, ferret, fervor",
+kerfuffle,whimsical,claude,,
+ruckus,whimsical,claude,"shenanigans, frenzy, blunder, tizzy, prowl, crumpled, rugged, tangle, flicker, muddle, raccoon, crumble, ripple, disruptions",
+quirk,whimsical,claude,"glitch, rogue",
+glitter,whimsical,claude,"glitch, spark, neon, fizz, prism, ignite, bubbly, flicker, glimmer, dazzle, cinnamon, glow",
+zap,whimsical,claude,"chip, film, VR, LOL, ram, pixel, hack, prompt, zoom, lore, Google, bolt, spark, draft, hive, forge, void, fizz, tizzy, amber, socket, linger, pounce, Discord, Pokemon, avatar, panda, peacock, pickle, flux, ripple, omen, cascade",
+snicker,whimsical,llm,,
+wobble,whimsical,llm,"slop, glitch, weave, waffle, blunder, tizzy, swindle, brittle, wobbly, lanky, tangle, flicker, muddle, whimsy, fumble, scuttle, crumble, tremor",
+fizz,whimsical,llm,"shenanigans, spark, bloom, fuzzy, frenzy, glitter, zap, tizzy, fester, ignite, frothy, bubbly, flicker, whimsy, glimmer, dazzle, ginger, glow, haze",
+boggle,whimsical,llm,,
+jinx,whimsical,llm,"shenanigans, glitch",
+squelch,whimsical,llm,"throttle, simmer, scuttle, thwart",wet sucking sound/to suppress or silence
+mumbo,whimsical,llm,,
+wisp,whimsical,llm,,
+blunder,whimsical,llm,"shenanigans, slop, glitch, ruckus, wobble, snafu, swindle, blazing, muddle, fumble, scuttle, crumble, wrongly, incorrectly",
+frazzle,whimsical,llm,,
+puffin,whimsical,llm,,
+snafu,whimsical,llm,"shenanigans, blunder, soggy",
+tizzy,whimsical,llm,"shenanigans, spark, fuzzy, eerie, frenzy, ruckus, zap, wobble, fizz, linger, tangy, twisted, wobbly, frothy, crumpled, bubbly, lanky, tangle, flicker, muddle, whimsy, dazzle, ginger, ripple",
+whomp,whimsical,llm,,
+fizzing,whimsical,llm,,
+imp,whimsical,llm,,
+splat,whimsical,llm,,
+cackle,whimsical,llm,,
+tangle,whimsical,llm,"weave, frenzy, ruckus, waffle, wobble, tizzy, unravel, linger, tangy, twisted, jagged, lanky, flicker, muddle, crumble, ripple, haze, tension",physical knot/an argument or altercation
+flicker,whimsical,llm,"glitch, spark, bloom, drift, fuzzy, frenzy, ruckus, glitter, waffle, wobble, fizz, tizzy, throttle, simmer, fester, brittle, wobbly, tangle, glimmer, dazzle, fumble, scuttle, crumble, drizzle, glow, ripple, haze, fervor, tremor, smoldering",
+muddle,whimsical,llm,"shenanigans, slop, fuzzy, frenzy, ruckus, waffle, wobble, blunder, tizzy, unravel, meddle, swindle, murky, crumpled, tangle, fumble, scuttle, crumble, drizzle, thwart",
+squishy,whimsical,llm,,
+whimsy,whimsical,llm,"shenanigans, wobble, fizz, tizzy, wobbly, frothy, bubbly, glimmer",
+snoop,whimsical,llm,,
+bumble,whimsical,llm,,to move clumsily/a bumblebee
+glimmer,whimsical,llm,"glitch, spark, bloom, glitter, fizz, prism, simmer, linger, ignite, gloomy, brittle, blazing, slimy, bubbly, flicker, whimsy, dazzle, crumble, drizzle, glow, ripple, haze, twilight, smoldering",
+hobgoblin,whimsical,llm,,
+dazzle,whimsical,llm,"spark, weave, frenzy, glitter, fizz, tizzy, ignite, blazing, flicker, glimmer, drizzle, glow, haze",
+fumble,whimsical,llm,"frenzy, wobble, blunder, swindle, crumpled, flicker, muddle, scuttle, crumble",to drop clumsily/to grope awkwardly
+crackle,whimsical,llm,,
+wiggly,whimsical,llm,,
+whoosh,whimsical,llm,,
+prickle,whimsical,llm,,
+scuttle,whimsical,llm,"glitch, spark, wobble, squelch, blunder, hatch, ferry, hull, throttle, hijack, meddle, sculpt, swindle, flicker, muddle, fumble, weasel, thwart",to scurry/to sink a ship deliberately
+ram,animal,seed,"rocket, chip, film, VR, pixel, lore, bolt, spark, hive, zap, amber, linger, avatar, ripple, omen",male sheep/computer memory/to ram (collide)
+gnu,animal,seed,,wildebeest/GNU software
+narwhal,animal,claude,,
+capybara,animal,claude,,
+sloth,animal,claude,,the animal/laziness (deadly sin)
+platypus,animals,llm,,
+viper,animals,llm,"VR, Sting, vibe, rogue, spark, panda, peacock, ferret, defender",
+flamingo,animals,llm,"neon, penguin, peacock, glow",
+panda,animals,llm,"zap, pounce, Pokemon, viper, raccoon, beaver, penguin, weasel, peacock, ferret, ginger",
+raccoon,animals,llm,"ruckus, pounce, panda, beaver, penguin, weasel, peacock, ferret",
+beaver,animals,llm,"panda, raccoon, penguin, weasel, peacock, ferret, clam",
+magpie,animals,llm,,the bird/a person who hoards shiny things or chatters
+mongoose,animals,llm,,
+dodo,animals,llm,,extinct bird/a foolish person
+mantis,animals,llm,,
+hyena,animals,llm,,
+penguin,animals,llm,"pounce, Pokemon, flamingo, panda, raccoon, beaver, peacock, ferret",
+axolotl,animals,llm,,
+weasel,animals,llm,"lurk, weave, swindle, slimy, scuttle, panda, raccoon, beaver, peacock, ferret",the animal/a sneaky untrustworthy person
+peacock,animals,llm,"spark, neon, zap, viper, flamingo, panda, raccoon, beaver, penguin, weasel, ferret, chestnut",the bird/to show off (to peacock)
+piranha,animals,llm,,
+armadillo,animals,llm,,
+ferret,animals,llm,"forge, frenzy, ferry, fester, ferment, viper, panda, raccoon, beaver, penguin, weasel, peacock",the animal/to ferret out (search thoroughly)
+lemur,animals,llm,,
+waffle,food,claude,"slop, weave, crispy, wobble, wobbly, tangle, flicker, muddle, crumble, drizzle",breakfast food/to speak indecisively
+pretzel,food,claude,"crispy, linger, brittle, pickle",
+anchovy,food,llm,,
+baste,food,llm,,to pour juices over cooking meat/to sew loosely
+blanch,food,llm,,to briefly boil/to turn pale from shock
+brine,food,llm,"brittle, gravy, basin",
+butterscotch,food,llm,,
+caramel,food,llm,"crispy, silky, frothy, bubbly, chestnut, cinnamon, custard, ginger, honeycomb, truffle",
+chestnut,food,llm,"peacock, caramel, cinnamon",the nut/an overused old joke/reddish-brown color
+cinnamon,food,llm,"glitter, caramel, chestnut, ginger, honeycomb",
+clam,food,llm,beaver,shellfish/to clam up (go silent)
+crisp,food,llm,"elegant, crispy, fringe, silky, brittle, jagged, crumpled, crumble, drizzle",
+crumble,food,llm,"slop, glitch, bloom, grind, crispy, ruckus, waffle, wobble, blunder, simmer, unravel, dissolve, devour, fracture, brittle, wobbly, crumpled, tangle, flicker, muddle, glimmer, fumble, crisp, drizzle, haze, smashing, smoldering",to fall apart/a fruit-topped dessert
+custard,food,llm,"frothy, caramel, gravy, lard",
+deviled,food,llm,,
+drizzle,food,llm,"slop, crispy, waffle, simmer, brittle, murky, soggy, damp, crumpled, flicker, muddle, glimmer, dazzle, crisp, crumble, gravy, ripple, haze",
+fondue,food,llm,,
+ginger,food,llm,"fizz, tizzy, linger, tangy, panda, caramel, cinnamon",the spice/reddish hair color
+gravy,food,llm,"slop, grind, soggy, grimy, brine, custard, drizzle, lard",
+honeycomb,food,llm,"hive, weave, hollow, spire, bubbly, caramel, cinnamon",
+lard,food,llm,"custard, gravy",
+marinate,food,llm,,
+pickle,food,llm,"chip, frozen, pixel, zoom, lore, bolt, spark, hive, zap, pretzel, coil, amber, linger, avatar, ripple","preserved vegetable/a predicament (""in a pickle"")"
+rind,food,llm,,
+truffle,food,llm,"glitch, caramel",underground fungus/chocolate-shaped candy
+bare,risque,claude,,
+naughty,risque,claude,"steamy, twisted",
+steamy,risque,claude,"eerie, naughty, simmer, silky, blazing, soggy, grimy, damp, slimy, frothy, bubbly, smashing, smoldering",full of steam/romantically suggestive
+flux,abstract,llm,"pixel, zoom, lore, bolt, spark, hive, forge, zap, coil, amber, linger, ripple, fervor, threshold, cascade",constant change/physics term (flow of particles or energy)
+dread,abstract,llm,"weave, eerie, gloomy, damp, fervor",
+glow,abstract,llm,"Sting, glitch, vibe, hype, spark, bloom, tide, drift, surge, hollow, neon, glitter, fizz, prism, ignite, gloomy, flicker, glimmer, dazzle, flamingo, haze, twilight, smoldering",
+ripple,abstract,llm,"rocket, chip, VR, ram, pixel, glitch, prompt, zoom, lore, bolt, spark, draft, bloom, hive, weave, ruckus, zap, tizzy, coil, amber, socket, linger, Discord, tangle, flicker, glimmer, drizzle, pickle, flux, threshold, cascade, encryption",
+haze,abstract,llm,"glitch, vibe, hype, bloom, hive, haunt, weave, fuzzy, fizz, silt, gloomy, murky, damp, dusty, tangle, flicker, glimmer, dazzle, crumble, drizzle, glow",atmospheric fog/hazing (initiation ritual)
+fervor,abstract,llm,"frenzy, fester, devour, ferment, frothy, flicker, flux, dread, yearning",
+yearning,abstract,llm,"linger, beckon, devour, blazing, fervor, longing",
+threshold,abstract,llm,"prompt, zoom, spark, linger, flux, ripple",
+ember,abstract,llm,,
+static,abstract,llm,"hidden, frozen",radio or electrical noise/unchanging or motionless
+twilight,abstract,llm,"film, dune, twisted, glimmer, glow",
+omen,abstract,llm,"AI, ram, meme, lore, zap, amber, linger, Pokemon, avatar",
+tremor,abstract,llm,"wobble, murmur, flicker, tension",
+nostalgia,abstract,llm,"entertainment, hype, longing",
+liminal,abstract,llm,,
+cascade,abstract,llm,"zoom, lore, spark, hive, zap, coil, linger, flux, ripple",
+tension,abstract,llm,"vibe, hype, tide, twisted, tangle, tremor",
+shimmer,abstract,llm,,
+reverie,abstract,llm,,
+longing,abstract,llm,"long, linger, beckon, yearning, nostalgia",
+thwart,embeddings,embeddings,"squelch, throttle, hijack, meddle, swindle, muddle, scuttle, defend, defeat",
+streamlined,embeddings,embeddings,"elegant, silky, slimy, rugged, lanky",
+encryption,embeddings,embeddings,"linger, ripple",
+towering,embeddings,embeddings,"spire, blazing, lanky, smashing, smoldering",
+dissolved,embeddings,embeddings,"silt, dissolve",
+buyers,embeddings,embeddings,"purchasers, homebuyers, taxpayers, defendants, stockholders",
+prosecutors,embeddings,embeddings,"prosecuted, prosecuting, prosecutions, prosecute, taxpayers, defendant, defendants",
+purchasers,embeddings,embeddings,"buyers, homebuyers, taxpayers, stockholders",
+prosecuted,embeddings,embeddings,"prosecutors, prosecuting, prosecutions, prosecute",
+prosecuting,embeddings,embeddings,"prosecutors, prosecuted, prosecutions, prosecute, offending, defending",
+prosecutions,embeddings,embeddings,"prosecutors, prosecuted, prosecuting, prosecute, controversies",
+wrongly,embeddings,embeddings,"blunder, incorrectly, fraudulent",
+governments,embeddings,embeddings,"congressional, economists, taxpayers",
+assurances,embeddings,embeddings,uncertainties,
+incorrectly,embeddings,embeddings,"blunder, wrongly",
+prosecute,embeddings,embeddings,"prosecutors, prosecuted, prosecuting, prosecutions, defend",
+worsened,embeddings,embeddings,"fester, worsening, worse",
+controversies,embeddings,embeddings,"prosecutions, disagreements, disagreement, disruptions, uncertainties",
+worsening,embeddings,embeddings,"worsened, worse, worst",
+disagreements,embeddings,embeddings,"controversies, disagreement, disruptions, uncertainties",
+disagreement,embeddings,embeddings,"controversies, disagreements",
+accordingly,embeddings,embeddings,,
+congressional,embeddings,embeddings,governments,
+homebuyers,embeddings,embeddings,"buyers, purchasers, taxpayers, stockholders",
+participating,embeddings,embeddings,,
+offending,embeddings,embeddings,"prosecuting, defending",
+economists,embeddings,embeddings,"governments, taxpayers",
+disruptions,embeddings,embeddings,"glitch, ruckus, controversies, disagreements, uncertainties",
+vowed,embeddings,embeddings,,
+succeed,embeddings,embeddings,"defeat, unsuccessful",
+industries,embeddings,embeddings,,
+worse,embeddings,embeddings,"worsened, worsening, worst",
+sufficient,embeddings,embeddings,,
+taxpayers,embeddings,embeddings,"buyers, prosecutors, purchasers, governments, homebuyers, economists, defendants, stockholders",
+uncertainties,embeddings,embeddings,"assurances, controversies, disagreements, disruptions",
+determine,embeddings,embeddings,,
+despite,embeddings,embeddings,,
+Nevada,embeddings,embeddings,neon,
+defined,embeddings,embeddings,definition,
+definition,embeddings,embeddings,"defined, defend",
+Alex,embeddings,embeddings,,
+defending,embeddings,embeddings,"prosecuting, offending, defender, defended, defend, defendant, defensive, defendants",
+defender,embeddings,embeddings,"draft, viper, defending, defend, defendant, defensive, defeat, defendants",
+defended,embeddings,embeddings,"defending, defend, defeated",
+defend,embeddings,embeddings,"draft, thwart, prosecute, definition, defending, defender, defended, defendant, defensive, defeat, defendants, definitely",
+defendant,embeddings,embeddings,"prosecutors, defending, defender, defend, defensive, defendants, deficit",
+defensive,embeddings,embeddings,"defending, defender, defend, defendant, deficit, progressive",
+Ford,embeddings,embeddings,forge,
+defeated,embeddings,embeddings,"defended, defeat",
+defeat,embeddings,embeddings,"thwart, succeed, defender, defend, defeated, deficit",
+defendants,embeddings,embeddings,"buyers, prosecutors, taxpayers, defending, defender, defend, defendant, stockholders",
+definitely,embeddings,embeddings,defend,
+deficit,embeddings,embeddings,"defendant, defensive, defeat",
+evangelical,embeddings,embeddings,,
+pesticides,embeddings,embeddings,fertilizer,
+operatives,embeddings,embeddings,,
+removes,embeddings,embeddings,,
+smashing,embeddings,embeddings,"steamy, blazing, crumpled, bubbly, crumble, towering, catastrophic, smoldering",
+cynical,embeddings,embeddings,"gloomy, grimy, sinister",
+rescheduled,embeddings,embeddings,,
+fraudulent,embeddings,embeddings,"swindle, wrongly",
+unconstitutional,embeddings,embeddings,unsuccessful,
+uninsured,embeddings,embeddings,,
+stockholders,embeddings,embeddings,"buyers, purchasers, homebuyers, taxpayers, defendants",
+unsuccessful,embeddings,embeddings,"succeed, unconstitutional",
+contaminated,embeddings,embeddings,grimy,
+catastrophic,embeddings,embeddings,smashing,
+fertilizer,embeddings,embeddings,pesticides,
+foremost,embeddings,embeddings,,
+overlooked,embeddings,embeddings,,
+embezzlement,embeddings,embeddings,"hijack, swindle",
+progressive,embeddings,embeddings,defensive,
+worst,embeddings,embeddings,"worsening, worse",
+philanthropy,embeddings,embeddings,,
+ExxonMobil,embeddings,embeddings,,
+VR,acronym,seed,"rocket, film, ram, pixel, zoom, lore, spark, vault, draft, forge, zap, linger, Pokemon, streaming, avatar, viper, ripple",
+AI,acronym,seed,"amber, avatar, omen",
+COVID,acronym,seed,,
+LOL,acronym,seed,"long, lore, zap, linger",
+YOLO,acronym,seed,,
+WiFi,acronym,llm,"Facebook, Netflix, spark, linger, Twitter, streaming, Bluetooth",
+RBIs,acronym,embeddings,,
