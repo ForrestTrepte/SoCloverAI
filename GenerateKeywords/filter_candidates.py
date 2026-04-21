@@ -80,11 +80,17 @@ def find_near_duplicates(
     """For each word, list other candidate words that are cosine-similar above threshold."""
     embeddings_list = []
     valid_words = []
+    skipped = []
     for word in words:
         emb = get_embedding(word, word_to_idx, all_embeddings)
         if emb is not None:
             embeddings_list.append(emb)
             valid_words.append(word)
+        else:
+            skipped.append(word)
+
+    if skipped:
+        print(f"  Warning: {len(skipped)} candidates skipped in near-duplicate check (not in embedding vocab): {', '.join(sorted(skipped))}")
 
     if not embeddings_list:
         return {}

@@ -136,7 +136,8 @@ def get_existing_embeddings(
     all_embeddings: np.ndarray,
 ) -> np.ndarray:
     """Extract embeddings for the 880 existing keywords from the pre-computed array."""
-    word_to_idx = {w.lower(): i for i, w in enumerate(all_words)}
+    n_embeddings = len(all_embeddings)
+    word_to_idx = {w.lower(): i for i, w in enumerate(all_words[:n_embeddings])}
     indices = []
     missing = []
     for word in existing_words:
@@ -146,7 +147,7 @@ def get_existing_embeddings(
         else:
             missing.append(word)
     if missing:
-        print(f"  Note: {len(missing)} existing keywords not found in embedding vocab (e.g. {missing[:5]})")
+        print(f"  Warning: {len(missing)} existing keywords skipped in novelty check (not in embedding vocab): {', '.join(sorted(missing))}")
     return all_embeddings[indices]
 
 
