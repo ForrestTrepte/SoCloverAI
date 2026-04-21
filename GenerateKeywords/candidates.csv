@@ -23,6 +23,9 @@ Hashtag,tech,seed,
 Enshittification,tech,seed,
 Bitcoin,tech,seed,
 Frozen,adjective,seed,multi-meaning: temp/movie/state
+Sting,noun,seed,multi-meaning: insect/police/music
+Madonna,noun,seed,multi-meaning: singer/religious figure
+Crocs,noun,seed,multi-meaning: shoes/animals
 Bond,noun,seed,multi-meaning: spy/finance/glue/emotional
 Pixel,tech,claude,multi-meaning: display/game character/camera
 Meme,tech,claude,
@@ -313,3 +316,26 @@ defeat,embeddings,embeddings,"centrality=0,novelty=0.2792"
 defendants,embeddings,embeddings,"centrality=0,novelty=0.2972"
 definitely,embeddings,embeddings,"centrality=0,novelty=0.2839"
 deficit,embeddings,embeddings,"centrality=0,novelty=0.3048"
+evangelical,embeddings,embeddings,"manually added from previously-noticed interesting embeddings output"
+pesticides,embeddings,embeddings,"manually added from previously-noticed interesting embeddings output"
+operatives,embeddings,embeddings,"manually added from previously-noticed interesting embeddings output"
+removes,embeddings,embeddings,"manually added from previously-noticed interesting embeddings output"
+smashing,embeddings,embeddings,"manually added from previously-noticed interesting embeddings output"
+cynical,embeddings,embeddings,"manually added from previously-noticed interesting embeddings output"
+rescheduled,embeddings,embeddings,"manually added from previously-noticed interesting embeddings output"
+economists,embeddings,embeddings,"manually added from previously-noticed interesting embeddings output"
+fraudulent,embeddings,embeddings,"manually added from previously-noticed interesting embeddings output"
+unconstitutional,embeddings,embeddings,"manually added from previously-noticed interesting embeddings output"
+uninsured,embeddings,embeddings,"manually added from previously-noticed interesting embeddings output"
+stockholders,embeddings,embeddings,"manually added from previously-noticed interesting embeddings output"
+unsuccessful,embeddings,embeddings,"manually added from previously-noticed interesting embeddings output"
+contaminated,embeddings,embeddings,"manually added from previously-noticed interesting embeddings output"
+catastrophic,embeddings,embeddings,"manually added from previously-noticed interesting embeddings output"
+fertilizer,embeddings,embeddings,"manually added from previously-noticed interesting embeddings output"
+foremost,embeddings,embeddings,"manually added from previously-noticed interesting embeddings output"
+overlooked,embeddings,embeddings,"manually added from previously-noticed interesting embeddings output"
+embezzlement,embeddings,embeddings,"manually added from previously-noticed interesting embeddings output"
+progressive,embeddings,embeddings,"manually added from previously-noticed interesting embeddings output"
+worst,embeddings,embeddings,"manually added from previously-noticed interesting embeddings output"
+philanthropy,embeddings,embeddings,"manually added from previously-noticed interesting embeddings output"
+ExxonMobil,embeddings,embeddings,"manually added from previously-noticed interesting embeddings output"
