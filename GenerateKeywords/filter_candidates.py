@@ -145,13 +145,16 @@ def main() -> None:
     # Deduplicate by word (keep first occurrence)
     seen: set[str] = set()
     deduped = []
+    dup_words = []
     for row in candidates:
         key = row["word"].lower()
         if key not in seen:
             seen.add(key)
             deduped.append(row)
-    if len(deduped) < len(candidates):
-        print(f"Removed {len(candidates) - len(deduped)} exact duplicate rows")
+        else:
+            dup_words.append(row["word"])
+    if dup_words:
+        print(f"Removed {len(dup_words)} exact duplicate rows: {', '.join(sorted(dup_words))}")
     candidates = deduped
 
     print(f"Candidates after deduplication: {len(candidates)}")
