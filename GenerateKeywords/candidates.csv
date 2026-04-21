@@ -1,268 +1,268 @@
 word,category,source,notes
 Microsoft,tech,seed,
 OpenAI,tech,seed,
-Hidden,adjective,seed,
-Path,noun,seed,
-Entertainment,noun,seed,
-Rocket,noun,seed,
-Chip,noun,seed,multi-meaning: food/electronics/golf
-Swim,verb,seed,
-Film,noun,seed,multi-meaning: movie/coating/photography
-Bamboozle,whimsical,seed,
+hidden,adjective,seed,
+path,noun,seed,
+entertainment,noun,seed,
+rocket,noun,seed,
+chip,noun,seed,multi-meaning: food/electronics/golf
+swim,verb,seed,
+film,noun,seed,multi-meaning: movie/coating/photography
+bamboozle,whimsical,seed,
 Zamboni,whimsical,seed,
-Shenanigans,whimsical,seed,
+shenanigans,whimsical,seed,
 Disney,tech,seed,
 Wikipedia,tech,seed,
 Facebook,tech,seed,
 VR,tech,seed,
-Elegant,adjective,seed,
+elegant,adjective,seed,
 AI,tech,seed,
-Slop,tech,seed,internet culture
+slop,tech,seed,internet culture
 Covid,tech,seed,
-Hashtag,tech,seed,
-Enshittification,tech,seed,
+hashtag,tech,seed,
+enshittification,tech,seed,
 Bitcoin,tech,seed,
-Frozen,adjective,seed,multi-meaning: temp/movie/state
+frozen,adjective,seed,multi-meaning: temp/movie/state
 Sting,noun,seed,multi-meaning: insect/police/music
 Madonna,noun,seed,multi-meaning: singer/religious figure
 Crocs,noun,seed,multi-meaning: shoes/animals
-Bond,noun,seed,multi-meaning: spy/finance/glue/emotional
+bond,noun,seed,multi-meaning: spy/finance/glue/emotional
 long,noun,seed,multi-meaning: length/time/longing
-Pixel,tech,claude,multi-meaning: display/game character/camera
-Meme,tech,claude,
-Glitch,tech,claude,multi-meaning: error/aesthetic/moment
-Hack,tech,claude,multi-meaning: shortcut/computer/taxi/cut
-Prompt,tech,claude,multi-meaning: AI/theater/reminder
-Viral,tech,claude,multi-meaning: internet/disease/marketing
-Zoom,tech,claude,multi-meaning: speed/video call/camera
-Lore,tech,claude,multi-meaning: mythology/internet deep-dive
-Vibe,tech,claude,very contemporary
-Hype,tech,claude,multi-meaning: excitement/marketing
-Rogue,tech,claude,multi-meaning: rebel/AI risk/game genre
+pixel,tech,claude,multi-meaning: display/game character/camera
+meme,tech,claude,
+glitch,tech,claude,multi-meaning: error/aesthetic/moment
+hack,tech,claude,multi-meaning: shortcut/computer/taxi/cut
+prompt,tech,claude,multi-meaning: AI/theater/reminder
+viral,tech,claude,multi-meaning: internet/disease/marketing
+zoom,tech,claude,multi-meaning: speed/video call/camera
+lore,tech,claude,multi-meaning: mythology/internet deep-dive
+vibe,tech,claude,very contemporary
+hype,tech,claude,multi-meaning: excitement/marketing
+rogue,tech,claude,multi-meaning: rebel/AI risk/game genre
 Google,tech,claude,
 Netflix,tech,claude,
 TikTok,tech,claude,
-Bolt,noun,claude,multi-meaning: lightning/door lock/fabric/sprint
-Echo,noun,claude,multi-meaning: sound/Amazon device/Greek myth
-Spark,noun,claude,multi-meaning: fire/electricity/romance/idea
-Vault,noun,claude,multi-meaning: bank/gymnastics/wine cellar/jump
-Draft,noun,claude,multi-meaning: wind/beer/writing/sports pick
-Bloom,noun,claude,multi-meaning: flowers/growth/face flush
-Hive,noun,claude,multi-meaning: bees/busyness/data warehouse
-Tide,noun,claude,multi-meaning: ocean/trend/detergent
-Forge,verb,claude,multi-meaning: blacksmith/create/counterfeit
-Void,noun,claude,multi-meaning: empty space/cancel/the abyss
-Lurk,verb,claude,multi-meaning: hide/internet lurking/threaten
-Grind,verb,claude,multi-meaning: work hard/coffee/skateboarding
-Haunt,verb,claude,multi-meaning: ghosts/memories/revisit
-Brew,verb,claude,multi-meaning: coffee/beer/trouble brewing
-Weave,verb,claude,multi-meaning: fabric/storytelling/dodge
-Drift,verb,claude,multi-meaning: ocean/cars/thoughts wandering
-Surge,verb,claude,multi-meaning: electricity/crowd/emotion/price
-Hollow,adjective,claude,multi-meaning: empty/bone/sound quality/false
-Neon,adjective,claude,multi-meaning: bright color/signs/80s aesthetic
-Fuzzy,adjective,claude,multi-meaning: texture/unclear memory/animal
-Crispy,adjective,claude,multi-meaning: food texture/satisfying sound
-Eerie,adjective,claude,multi-meaning: unsettling atmosphere
-Goblin,whimsical,claude,multi-meaning: fantasy/goblin mode behavior
-Gremlin,whimsical,claude,multi-meaning: troublemaker/plane saboteur/80s film
-Frenzy,whimsical,claude,multi-meaning: chaos/excitement/feeding frenzy
-Kerfuffle,whimsical,claude,fun to say
-Ruckus,whimsical,claude,
-Quirk,whimsical,claude,multi-meaning: personality oddity/physics term
-Glitter,whimsical,claude,multi-meaning: sparkle/craft mess/attention
-Zap,whimsical,claude,multi-meaning: electricity/speed/microwave
-Narwhal,animal,claude,
-Capybara,animal,claude,internet beloved
-Sloth,animal,claude,multi-meaning: slowness/animal/deadly sin
-Waffle,food,claude,multi-meaning: food/ramble indecisively
-Pretzel,food,claude,multi-meaning: twisted/salty/shape
-Bare,risque,claude,multi-meaning: empty/exposed/just barely
-Naughty,risque,claude,multi-meaning: misbehaving/slightly risque/Santa's list
-Steamy,risque,claude,multi-meaning: hot vapor/romantic/jungle
-SNICKER,whimsical,llm,
-WOBBLE,whimsical,llm,
-FIZZ,whimsical,llm,
-BOGGLE,whimsical,llm,
-JINX,whimsical,llm,
-SQUELCH,whimsical,llm,
-MUMBO,whimsical,llm,
-WISP,whimsical,llm,
-BLUNDER,whimsical,llm,
-FRAZZLE,whimsical,llm,
-PUFFIN,whimsical,llm,
-SNAFU,whimsical,llm,
-TIZZY,whimsical,llm,
-WHOMP,whimsical,llm,
-FLINT,nouns,llm,
-MARROW,nouns,llm,
-CIPHER,nouns,llm,
-LODGE,nouns,llm,
-COIL,nouns,llm,
-AMBER,nouns,llm,
-HATCH,nouns,llm,
-FERRY,nouns,llm,
-PRISM,nouns,llm,
-SILT,nouns,llm,
-BURROW,nouns,llm,
-ANVIL,nouns,llm,
-DUNE,nouns,llm,
-SOCKET,nouns,llm,
-FRINGE,nouns,llm,
-PARCH,nouns,llm,
-HULL,nouns,llm,
-THROTTLE,nouns,llm,
-NOTCH,nouns,llm,
-REEF,nouns,llm,
-SPIRE,nouns,llm,
-CREST,nouns,llm,
-SMOLDER,verbs,llm,
-PROWL,verbs,llm,
-SIMMER,verbs,llm,
-UNRAVEL,verbs,llm,
-SPLICE,verbs,llm,
-LINGER,verbs,llm,
-FESTER,verbs,llm,
-BECKON,verbs,llm,
-TOPPLE,verbs,llm,
-HIJACK,verbs,llm,
-DISSOLVE,verbs,llm,
-PLUNGE,verbs,llm,
-RICOCHET,verbs,llm,
-DEVOUR,verbs,llm,
-MEDDLE,verbs,llm,
-IGNITE,verbs,llm,
-SCULPT,verbs,llm,
-SWINDLE,verbs,llm,
-POUNCE,verbs,llm,
-FERMENT,verbs,llm,
-CAPSIZE,verbs,llm,
-MURMUR,verbs,llm,
-COAX,verbs,llm,
-FRACTURE,verbs,llm,
-SILKY,adjectives,llm,
-GLOOMY,adjectives,llm,
-TANGY,adjectives,llm,
-BRITTLE,adjectives,llm,
-MURKY,adjectives,llm,
-BLAZING,adjectives,llm,
-SOGGY,adjectives,llm,
-TWISTED,adjectives,llm,
-GRIMY,adjectives,llm,
-WOBBLY,adjectives,llm,
-STARK,adjectives,llm,
-VELVETY,adjectives,llm,
-JAGGED,adjectives,llm,
-DAMP,adjectives,llm,
-SLIMY,adjectives,llm,
-GOLDEN,adjectives,llm,
-FROTHY,adjectives,llm,
-CRUMPLED,adjectives,llm,
-DUSTY,adjectives,llm,
-SINISTER,adjectives,llm,
-RUGGED,adjectives,llm,
-BUBBLY,adjectives,llm,
-SCORCHED,adjectives,llm,
-LANKY,adjectives,llm,
-AMAZON,tech_and_culture,llm,
-SPOTIFY,tech_and_culture,llm,
-YOUTUBE,tech_and_culture,llm,
-TWITTER,tech_and_culture,llm,
-INSTAGRAM,tech_and_culture,llm,
-SNAPCHAT,tech_and_culture,llm,
-REDDIT,tech_and_culture,llm,
-DISCORD,tech_and_culture,llm,
-MINECRAFT,tech_and_culture,llm,
-FORTNITE,tech_and_culture,llm,
-POKEMON,tech_and_culture,llm,
-EMOJI,tech_and_culture,llm,
-SELFIE,tech_and_culture,llm,
-STREAMING,tech_and_culture,llm,
-WIFI,tech_and_culture,llm,
-BLUETOOTH,tech_and_culture,llm,
-CRYPTO,tech_and_culture,llm,
-AVATAR,tech_and_culture,llm,
-FIZZING,whimsical,llm,
-IMP,whimsical,llm,
-SPLAT,whimsical,llm,
-CACKLE,whimsical,llm,
-TANGLE,whimsical,llm,
-FLICKER,whimsical,llm,
-MUDDLE,whimsical,llm,
-SQUISHY,whimsical,llm,
-WHIMSY,whimsical,llm,
-SNOOP,whimsical,llm,
-BUMBLE,whimsical,llm,
-GLIMMER,whimsical,llm,
-HOBGOBLIN,whimsical,llm,
-DAZZLE,whimsical,llm,
-FUMBLE,whimsical,llm,
-CRACKLE,whimsical,llm,
-WIGGLY,whimsical,llm,
-WHOOSH,whimsical,llm,
-PRICKLE,whimsical,llm,
-SCUTTLE,whimsical,llm,
-PLATYPUS,animals,llm,
-VIPER,animals,llm,
-FLAMINGO,animals,llm,
-PANDA,animals,llm,
-RACCOON,animals,llm,
-BEAVER,animals,llm,
-MAGPIE,animals,llm,
-MONGOOSE,animals,llm,
-DODO,animals,llm,
-MANTIS,animals,llm,
-HYENA,animals,llm,
-PENGUIN,animals,llm,
-AXOLOTL,animals,llm,
-WEASEL,animals,llm,
-PEACOCK,animals,llm,
-PIRANHA,animals,llm,
-ARMADILLO,animals,llm,
-FERRET,animals,llm,
-LEMUR,animals,llm,
-ANCHOVY,food,llm,
-BASTE,food,llm,
-BLANCH,food,llm,
-BRINE,food,llm,
-BUTTERSCOTCH,food,llm,
-CARAMEL,food,llm,
-CHESTNUT,food,llm,
-CINNAMON,food,llm,
-CLAM,food,llm,
-CRISP,food,llm,
-CRUMBLE,food,llm,
-CUSTARD,food,llm,
-DEVILED,food,llm,
-DRIZZLE,food,llm,
-FONDUE,food,llm,
-GINGER,food,llm,
-GRAVY,food,llm,
-HONEYCOMB,food,llm,
-LARD,food,llm,
-MARINATE,food,llm,
-PICKLE,food,llm,
-RIND,food,llm,
-TRUFFLE,food,llm,
-FLUX,abstract,llm,
-DREAD,abstract,llm,
-GLOW,abstract,llm,
-RIPPLE,abstract,llm,
-HAZE,abstract,llm,
-FERVOR,abstract,llm,
-YEARNING,abstract,llm,
-THRESHOLD,abstract,llm,
-EMBER,abstract,llm,
-STATIC,abstract,llm,
-TWILIGHT,abstract,llm,
-OMEN,abstract,llm,
-TREMOR,abstract,llm,
-NOSTALGIA,abstract,llm,
-LIMINAL,abstract,llm,
-CASCADE,abstract,llm,
-TENSION,abstract,llm,
-SHIMMER,abstract,llm,
-REVERIE,abstract,llm,
+bolt,noun,claude,multi-meaning: lightning/door lock/fabric/sprint
+echo,noun,claude,multi-meaning: sound/Amazon device/Greek myth
+spark,noun,claude,multi-meaning: fire/electricity/romance/idea
+vault,noun,claude,multi-meaning: bank/gymnastics/wine cellar/jump
+draft,noun,claude,multi-meaning: wind/beer/writing/sports pick
+bloom,noun,claude,multi-meaning: flowers/growth/face flush
+hive,noun,claude,multi-meaning: bees/busyness/data warehouse
+tide,noun,claude,multi-meaning: ocean/trend/detergent
+forge,verb,claude,multi-meaning: blacksmith/create/counterfeit
+void,noun,claude,multi-meaning: empty space/cancel/the abyss
+lurk,verb,claude,multi-meaning: hide/internet lurking/threaten
+grind,verb,claude,multi-meaning: work hard/coffee/skateboarding
+haunt,verb,claude,multi-meaning: ghosts/memories/revisit
+brew,verb,claude,multi-meaning: coffee/beer/trouble brewing
+weave,verb,claude,multi-meaning: fabric/storytelling/dodge
+drift,verb,claude,multi-meaning: ocean/cars/thoughts wandering
+surge,verb,claude,multi-meaning: electricity/crowd/emotion/price
+hollow,adjective,claude,multi-meaning: empty/bone/sound quality/false
+neon,adjective,claude,multi-meaning: bright color/signs/80s aesthetic
+fuzzy,adjective,claude,multi-meaning: texture/unclear memory/animal
+crispy,adjective,claude,multi-meaning: food texture/satisfying sound
+eerie,adjective,claude,multi-meaning: unsettling atmosphere
+goblin,whimsical,claude,multi-meaning: fantasy/goblin mode behavior
+gremlin,whimsical,claude,multi-meaning: troublemaker/plane saboteur/80s film
+frenzy,whimsical,claude,multi-meaning: chaos/excitement/feeding frenzy
+kerfuffle,whimsical,claude,fun to say
+ruckus,whimsical,claude,
+quirk,whimsical,claude,multi-meaning: personality oddity/physics term
+glitter,whimsical,claude,multi-meaning: sparkle/craft mess/attention
+zap,whimsical,claude,multi-meaning: electricity/speed/microwave
+narwhal,animal,claude,
+capybara,animal,claude,internet beloved
+sloth,animal,claude,multi-meaning: slowness/animal/deadly sin
+waffle,food,claude,multi-meaning: food/ramble indecisively
+pretzel,food,claude,multi-meaning: twisted/salty/shape
+bare,risque,claude,multi-meaning: empty/exposed/just barely
+naughty,risque,claude,multi-meaning: misbehaving/slightly risque/Santa's list
+steamy,risque,claude,multi-meaning: hot vapor/romantic/jungle
+snicker,whimsical,llm,
+wobble,whimsical,llm,
+fizz,whimsical,llm,
+boggle,whimsical,llm,
+jinx,whimsical,llm,
+squelch,whimsical,llm,
+mumbo,whimsical,llm,
+wisp,whimsical,llm,
+blunder,whimsical,llm,
+frazzle,whimsical,llm,
+puffin,whimsical,llm,
+snafu,whimsical,llm,
+tizzy,whimsical,llm,
+whomp,whimsical,llm,
+flint,nouns,llm,
+marrow,nouns,llm,
+cipher,nouns,llm,
+lodge,nouns,llm,
+coil,nouns,llm,
+amber,nouns,llm,
+hatch,nouns,llm,
+ferry,nouns,llm,
+prism,nouns,llm,
+silt,nouns,llm,
+burrow,nouns,llm,
+anvil,nouns,llm,
+dune,nouns,llm,
+socket,nouns,llm,
+fringe,nouns,llm,
+parch,nouns,llm,
+hull,nouns,llm,
+throttle,nouns,llm,
+notch,nouns,llm,
+reef,nouns,llm,
+spire,nouns,llm,
+crest,nouns,llm,
+smolder,verbs,llm,
+prowl,verbs,llm,
+simmer,verbs,llm,
+unravel,verbs,llm,
+splice,verbs,llm,
+linger,verbs,llm,
+fester,verbs,llm,
+beckon,verbs,llm,
+topple,verbs,llm,
+hijack,verbs,llm,
+dissolve,verbs,llm,
+plunge,verbs,llm,
+ricochet,verbs,llm,
+devour,verbs,llm,
+meddle,verbs,llm,
+ignite,verbs,llm,
+sculpt,verbs,llm,
+swindle,verbs,llm,
+pounce,verbs,llm,
+ferment,verbs,llm,
+capsize,verbs,llm,
+murmur,verbs,llm,
+coax,verbs,llm,
+fracture,verbs,llm,
+silky,adjectives,llm,
+gloomy,adjectives,llm,
+tangy,adjectives,llm,
+brittle,adjectives,llm,
+murky,adjectives,llm,
+blazing,adjectives,llm,
+soggy,adjectives,llm,
+twisted,adjectives,llm,
+grimy,adjectives,llm,
+wobbly,adjectives,llm,
+stark,adjectives,llm,
+velvety,adjectives,llm,
+jagged,adjectives,llm,
+damp,adjectives,llm,
+slimy,adjectives,llm,
+golden,adjectives,llm,
+frothy,adjectives,llm,
+crumpled,adjectives,llm,
+dusty,adjectives,llm,
+sinister,adjectives,llm,
+rugged,adjectives,llm,
+bubbly,adjectives,llm,
+scorched,adjectives,llm,
+lanky,adjectives,llm,
+Amazon,tech_and_culture,llm,
+Spotify,tech_and_culture,llm,
+YouTube,tech_and_culture,llm,
+Twitter,tech_and_culture,llm,
+Instagram,tech_and_culture,llm,
+Snapchat,tech_and_culture,llm,
+Reddit,tech_and_culture,llm,
+Discord,tech_and_culture,llm,
+Minecraft,tech_and_culture,llm,
+Fortnite,tech_and_culture,llm,
+Pokemon,tech_and_culture,llm,
+emoji,tech_and_culture,llm,
+selfie,tech_and_culture,llm,
+streaming,tech_and_culture,llm,
+WiFi,tech_and_culture,llm,
+Bluetooth,tech_and_culture,llm,
+crypto,tech_and_culture,llm,
+avatar,tech_and_culture,llm,
+fizzing,whimsical,llm,
+imp,whimsical,llm,
+splat,whimsical,llm,
+cackle,whimsical,llm,
+tangle,whimsical,llm,
+flicker,whimsical,llm,
+muddle,whimsical,llm,
+squishy,whimsical,llm,
+whimsy,whimsical,llm,
+snoop,whimsical,llm,
+bumble,whimsical,llm,
+glimmer,whimsical,llm,
+hobgoblin,whimsical,llm,
+dazzle,whimsical,llm,
+fumble,whimsical,llm,
+crackle,whimsical,llm,
+wiggly,whimsical,llm,
+whoosh,whimsical,llm,
+prickle,whimsical,llm,
+scuttle,whimsical,llm,
+platypus,animals,llm,
+viper,animals,llm,
+flamingo,animals,llm,
+panda,animals,llm,
+raccoon,animals,llm,
+beaver,animals,llm,
+magpie,animals,llm,
+mongoose,animals,llm,
+dodo,animals,llm,
+mantis,animals,llm,
+hyena,animals,llm,
+penguin,animals,llm,
+axolotl,animals,llm,
+weasel,animals,llm,
+peacock,animals,llm,
+piranha,animals,llm,
+armadillo,animals,llm,
+ferret,animals,llm,
+lemur,animals,llm,
+anchovy,food,llm,
+baste,food,llm,
+blanch,food,llm,
+brine,food,llm,
+butterscotch,food,llm,
+caramel,food,llm,
+chestnut,food,llm,
+cinnamon,food,llm,
+clam,food,llm,
+crisp,food,llm,
+crumble,food,llm,
+custard,food,llm,
+deviled,food,llm,
+drizzle,food,llm,
+fondue,food,llm,
+ginger,food,llm,
+gravy,food,llm,
+honeycomb,food,llm,
+lard,food,llm,
+marinate,food,llm,
+pickle,food,llm,
+rind,food,llm,
+truffle,food,llm,
+flux,abstract,llm,
+dread,abstract,llm,
+glow,abstract,llm,
+ripple,abstract,llm,
+haze,abstract,llm,
+fervor,abstract,llm,
+yearning,abstract,llm,
+threshold,abstract,llm,
+ember,abstract,llm,
+static,abstract,llm,
+twilight,abstract,llm,
+omen,abstract,llm,
+tremor,abstract,llm,
+nostalgia,abstract,llm,
+liminal,abstract,llm,
+cascade,abstract,llm,
+tension,abstract,llm,
+shimmer,abstract,llm,
+reverie,abstract,llm,
 thwart,embeddings,embeddings,"centrality=13506,novelty=0.2230"
 streamlined,embeddings,embeddings,"centrality=13506,novelty=0.2250"
 encryption,embeddings,embeddings,"centrality=13506,novelty=0.2179"
@@ -317,28 +317,28 @@ defeat,embeddings,embeddings,"centrality=0,novelty=0.2792"
 defendants,embeddings,embeddings,"centrality=0,novelty=0.2972"
 definitely,embeddings,embeddings,"centrality=0,novelty=0.2839"
 deficit,embeddings,embeddings,"centrality=0,novelty=0.3048"
-evangelical,embeddings,embeddings,"manually added from previously-noticed interesting embeddings output"
-pesticides,embeddings,embeddings,"manually added from previously-noticed interesting embeddings output"
-operatives,embeddings,embeddings,"manually added from previously-noticed interesting embeddings output"
-removes,embeddings,embeddings,"manually added from previously-noticed interesting embeddings output"
-smashing,embeddings,embeddings,"manually added from previously-noticed interesting embeddings output"
-cynical,embeddings,embeddings,"manually added from previously-noticed interesting embeddings output"
-rescheduled,embeddings,embeddings,"manually added from previously-noticed interesting embeddings output"
-fraudulent,embeddings,embeddings,"manually added from previously-noticed interesting embeddings output"
-unconstitutional,embeddings,embeddings,"manually added from previously-noticed interesting embeddings output"
-uninsured,embeddings,embeddings,"manually added from previously-noticed interesting embeddings output"
-stockholders,embeddings,embeddings,"manually added from previously-noticed interesting embeddings output"
-unsuccessful,embeddings,embeddings,"manually added from previously-noticed interesting embeddings output"
-contaminated,embeddings,embeddings,"manually added from previously-noticed interesting embeddings output"
-catastrophic,embeddings,embeddings,"manually added from previously-noticed interesting embeddings output"
-fertilizer,embeddings,embeddings,"manually added from previously-noticed interesting embeddings output"
-foremost,embeddings,embeddings,"manually added from previously-noticed interesting embeddings output"
-overlooked,embeddings,embeddings,"manually added from previously-noticed interesting embeddings output"
-embezzlement,embeddings,embeddings,"manually added from previously-noticed interesting embeddings output"
-progressive,embeddings,embeddings,"manually added from previously-noticed interesting embeddings output"
-worst,embeddings,embeddings,"manually added from previously-noticed interesting embeddings output"
-philanthropy,embeddings,embeddings,"manually added from previously-noticed interesting embeddings output"
-ExxonMobil,embeddings,embeddings,"manually added from previously-noticed interesting embeddings output"
+evangelical,embeddings,embeddings,manually added from previously-noticed interesting embeddings output
+pesticides,embeddings,embeddings,manually added from previously-noticed interesting embeddings output
+operatives,embeddings,embeddings,manually added from previously-noticed interesting embeddings output
+removes,embeddings,embeddings,manually added from previously-noticed interesting embeddings output
+smashing,embeddings,embeddings,manually added from previously-noticed interesting embeddings output
+cynical,embeddings,embeddings,manually added from previously-noticed interesting embeddings output
+rescheduled,embeddings,embeddings,manually added from previously-noticed interesting embeddings output
+fraudulent,embeddings,embeddings,manually added from previously-noticed interesting embeddings output
+unconstitutional,embeddings,embeddings,manually added from previously-noticed interesting embeddings output
+uninsured,embeddings,embeddings,manually added from previously-noticed interesting embeddings output
+stockholders,embeddings,embeddings,manually added from previously-noticed interesting embeddings output
+unsuccessful,embeddings,embeddings,manually added from previously-noticed interesting embeddings output
+contaminated,embeddings,embeddings,manually added from previously-noticed interesting embeddings output
+catastrophic,embeddings,embeddings,manually added from previously-noticed interesting embeddings output
+fertilizer,embeddings,embeddings,manually added from previously-noticed interesting embeddings output
+foremost,embeddings,embeddings,manually added from previously-noticed interesting embeddings output
+overlooked,embeddings,embeddings,manually added from previously-noticed interesting embeddings output
+embezzlement,embeddings,embeddings,manually added from previously-noticed interesting embeddings output
+progressive,embeddings,embeddings,manually added from previously-noticed interesting embeddings output
+worst,embeddings,embeddings,manually added from previously-noticed interesting embeddings output
+philanthropy,embeddings,embeddings,manually added from previously-noticed interesting embeddings output
+ExxonMobil,embeddings,embeddings,manually added from previously-noticed interesting embeddings output
 basin,nouns,llm,
 smoldering,adjectives,llm,
 longing,abstract,llm,
