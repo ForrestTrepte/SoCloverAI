@@ -1,0 +1,92 @@
+word,category,source,notes
+Microsoft,tech,seed,
+OpenAI,tech,seed,
+Hidden,adjective,seed,
+Path,noun,seed,
+Entertainment,noun,seed,
+Rocket,noun,seed,
+Chip,noun,seed,multi-meaning: food/electronics/golf
+Swim,verb,seed,
+Film,noun,seed,multi-meaning: movie/coating/photography
+Bamboozle,whimsical,seed,
+Zamboni,whimsical,seed,
+Shenanigans,whimsical,seed,
+Disney,tech,seed,
+Wikipedia,tech,seed,
+Facebook,tech,seed,
+VR,tech,seed,
+Elegant,adjective,seed,
+AI,tech,seed,
+Slop,tech,seed,internet culture
+Covid,tech,seed,
+Hashtag,tech,seed,
+Enshittification,tech,seed,
+Bitcoin,tech,seed,
+Frozen,adjective,seed,multi-meaning: temp/movie/state
+Bond,noun,seed,multi-meaning: spy/finance/glue/emotional
+Pixel,tech,claude,multi-meaning: display/game character/camera
+Meme,tech,claude,
+Glitch,tech,claude,multi-meaning: error/aesthetic/moment
+Hack,tech,claude,multi-meaning: shortcut/computer/taxi/cut
+Prompt,tech,claude,multi-meaning: AI/theater/reminder
+Viral,tech,claude,multi-meaning: internet/disease/marketing
+Zoom,tech,claude,multi-meaning: speed/video call/camera
+Lore,tech,claude,multi-meaning: mythology/internet deep-dive
+Vibe,tech,claude,very contemporary
+Hype,tech,claude,multi-meaning: excitement/marketing
+Rogue,tech,claude,multi-meaning: rebel/AI risk/game genre
+Google,tech,claude,
+Netflix,tech,claude,
+TikTok,tech,claude,
+Bolt,noun,claude,multi-meaning: lightning/door lock/fabric/sprint
+Echo,noun,claude,multi-meaning: sound/Amazon device/Greek myth
+Spark,noun,claude,multi-meaning: fire/electricity/romance/idea
+Vault,noun,claude,multi-meaning: bank/gymnastics/wine cellar/jump
+Draft,noun,claude,multi-meaning: wind/beer/writing/sports pick
+Bloom,noun,claude,multi-meaning: flowers/growth/face flush
+Hive,noun,claude,multi-meaning: bees/busyness/data warehouse
+Tide,noun,claude,multi-meaning: ocean/trend/detergent
+Forge,verb,claude,multi-meaning: blacksmith/create/counterfeit
+Void,noun,claude,multi-meaning: empty space/cancel/the abyss
+Lurk,verb,claude,multi-meaning: hide/internet lurking/threaten
+Grind,verb,claude,multi-meaning: work hard/coffee/skateboarding
+Haunt,verb,claude,multi-meaning: ghosts/memories/revisit
+Brew,verb,claude,multi-meaning: coffee/beer/trouble brewing
+Weave,verb,claude,multi-meaning: fabric/storytelling/dodge
+Drift,verb,claude,multi-meaning: ocean/cars/thoughts wandering
+Surge,verb,claude,multi-meaning: electricity/crowd/emotion/price
+Hollow,adjective,claude,multi-meaning: empty/bone/sound quality/false
+Neon,adjective,claude,multi-meaning: bright color/signs/80s aesthetic
+Fuzzy,adjective,claude,multi-meaning: texture/unclear memory/animal
+Crispy,adjective,claude,multi-meaning: food texture/satisfying sound
+Eerie,adjective,claude,multi-meaning: unsettling atmosphere
+Goblin,whimsical,claude,multi-meaning: fantasy/goblin mode behavior
+Gremlin,whimsical,claude,multi-meaning: troublemaker/plane saboteur/80s film
+Frenzy,whimsical,claude,multi-meaning: chaos/excitement/feeding frenzy
+Kerfuffle,whimsical,claude,fun to say
+Ruckus,whimsical,claude,
+Quirk,whimsical,claude,multi-meaning: personality oddity/physics term
+Glitter,whimsical,claude,multi-meaning: sparkle/craft mess/attention
+Zap,whimsical,claude,multi-meaning: electricity/speed/microwave
+Narwhal,animal,claude,
+Capybara,animal,claude,internet beloved
+Sloth,animal,claude,multi-meaning: slowness/animal/deadly sin
+Waffle,food,claude,multi-meaning: food/ramble indecisively
+Pretzel,food,claude,multi-meaning: twisted/salty/shape
+Bare,risque,claude,multi-meaning: empty/exposed/just barely
+Naughty,risque,claude,multi-meaning: misbehaving/slightly risque/Santa's list
+Steamy,risque,claude,multi-meaning: hot vapor/romantic/jungle
+SNICKER,whimsical,llm,
+WOBBLE,whimsical,llm,
+FIZZ,whimsical,llm,
+BOGGLE,whimsical,llm,
+JINX,whimsical,llm,
+SQUELCH,whimsical,llm,
+MUMBO,whimsical,llm,
+WISP,whimsical,llm,
+BLUNDER,whimsical,llm,
+FRAZZLE,whimsical,llm,
+PUFFIN,whimsical,llm,
+SNAFU,whimsical,llm,
+TIZZY,whimsical,llm,
+WHOMP,whimsical,llm,

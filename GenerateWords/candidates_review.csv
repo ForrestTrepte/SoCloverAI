@@ -1,0 +1,78 @@
+word,category,source,near_duplicates,notes
+Microsoft,tech,seed,Google,
+OpenAI,tech,seed,,
+Disney,tech,seed,"Entertainment, Film, Facebook, VR, Frozen, Zoom, Google, Netflix, Spark, Draft, Forge",
+Wikipedia,tech,seed,Google,
+Facebook,tech,seed,"Disney, Google, Netflix, Spark, Forge",
+VR,tech,seed,"Rocket, Chip, Film, Disney, AI, Pixel, Zoom, Lore, Vibe, Netflix, Spark, Vault, Draft, Hive, Forge, Void, Zap",
+AI,tech,seed,"Chip, VR, Pixel, Zoom, Google, Spark, Hive, Zap",
+Slop,tech,seed,"Shenanigans, Grind, Fuzzy, Waffle",internet culture
+Covid,tech,seed,,
+Hashtag,tech,seed,,
+Enshittification,tech,seed,,
+Bitcoin,tech,seed,,
+Pixel,tech,claude,"Chip, Film, VR, AI, Hack, Prompt, Zoom, Google, Netflix, Bolt, Spark, Draft, Hive, Forge, Void, Zap",multi-meaning: display/game character/camera
+Meme,tech,claude,Viral,
+Glitch,tech,claude,"Shenanigans, Hack, Grind, Haunt, Weave, Drift, Fuzzy, Ruckus, Quirk, Glitter, Zap",multi-meaning: error/aesthetic/moment
+Hack,tech,claude,"Hidden, Chip, Pixel, Glitch, Lore, Bolt, Spark, Vault, Draft, Hive, Forge, Zap",multi-meaning: shortcut/computer/taxi/cut
+Prompt,tech,claude,"Pixel, Zoom, Lore, Spark, Draft, Zap",multi-meaning: AI/theater/reminder
+Viral,tech,claude,"Meme, Fuzzy",multi-meaning: internet/disease/marketing
+Zoom,tech,claude,"Hidden, Film, Disney, VR, AI, Frozen, Bond, Pixel, Prompt, Lore, Vibe, Google, Netflix, Bolt, Spark, Vault, Draft, Bloom, Hive, Forge, Zap",multi-meaning: speed/video call/camera
+Lore,tech,claude,"Hidden, Film, VR, Hack, Prompt, Zoom, Google, Bolt, Spark, Draft, Bloom, Hive, Forge, Lurk, Grind, Haunt, Weave, Zap",multi-meaning: mythology/internet deep-dive
+Vibe,tech,claude,"VR, Zoom, Hype, Spark, Bloom, Tide, Drift, Surge, Neon, Glitter",very contemporary
+Hype,tech,claude,"Entertainment, Vibe, Spark, Tide, Surge, Frenzy, Glitter",multi-meaning: excitement/marketing
+Rogue,tech,claude,"Drift, Surge, Hollow, Quirk, Naughty",multi-meaning: rebel/AI risk/game genre
+Google,tech,claude,"Microsoft, Film, Disney, Wikipedia, Facebook, AI, Pixel, Zoom, Lore, Netflix, Spark, Hive, Forge, Zap",
+Netflix,tech,claude,"Hidden, Film, Disney, Facebook, VR, Frozen, Pixel, Zoom, Google, Spark, Zap",
+TikTok,tech,claude,,
+Path,noun,seed,,
+Entertainment,noun,seed,"Film, Disney, Hype",
+Rocket,noun,seed,"VR, Bolt, Spark, Vault, Hive, Forge, Zap",
+Chip,noun,seed,"VR, AI, Pixel, Hack, Spark, Hive, Forge, Zap",multi-meaning: food/electronics/golf
+Film,noun,seed,"Hidden, Entertainment, Disney, VR, Frozen, Bond, Pixel, Zoom, Lore, Google, Netflix, Spark, Draft, Forge, Zap",multi-meaning: movie/coating/photography
+Bond,noun,seed,"Film, Zoom, Bolt, Spark, Vault, Draft, Forge",multi-meaning: spy/finance/glue/emotional
+Bolt,noun,claude,"Rocket, Bond, Pixel, Hack, Zoom, Lore, Spark, Vault, Draft, Hive, Forge, Zap",multi-meaning: lightning/door lock/fabric/sprint
+Echo,noun,claude,,multi-meaning: sound/Amazon device/Greek myth
+Spark,noun,claude,"Hidden, Rocket, Chip, Film, Shenanigans, Disney, Facebook, VR, AI, Frozen, Bond, Pixel, Hack, Prompt, Zoom, Lore, Vibe, Hype, Google, Netflix, Bolt, Vault, Draft, Bloom, Hive, Tide, Forge, Void, Weave, Drift, Surge, Neon, Frenzy, Quirk, Glitter, Zap",multi-meaning: fire/electricity/romance/idea
+Vault,noun,claude,"Hidden, Rocket, VR, Bond, Hack, Zoom, Bolt, Spark, Hive, Forge",multi-meaning: bank/gymnastics/wine cellar/jump
+Draft,noun,claude,"Hidden, Film, Disney, VR, Bond, Pixel, Hack, Prompt, Zoom, Lore, Bolt, Spark, Hive, Forge, Void, Drift, Zap",multi-meaning: wind/beer/writing/sports pick
+Bloom,noun,claude,"Zoom, Lore, Vibe, Spark, Grind, Weave, Surge, Frenzy, Glitter, Zap",multi-meaning: flowers/growth/face flush
+Hive,noun,claude,"Hidden, Rocket, Chip, VR, AI, Pixel, Hack, Zoom, Lore, Google, Bolt, Spark, Vault, Draft, Forge, Haunt, Weave, Zap",multi-meaning: bees/busyness/data warehouse
+Tide,noun,claude,"Vibe, Hype, Spark, Weave, Drift, Surge",multi-meaning: ocean/trend/detergent
+Void,noun,claude,"Hidden, VR, Pixel, Spark, Draft, Hollow, Zap",multi-meaning: empty space/cancel/the abyss
+Swim,verb,seed,"Drift, Surge",
+Forge,verb,claude,"Hidden, Rocket, Chip, Film, Disney, Facebook, VR, Frozen, Bond, Pixel, Hack, Zoom, Lore, Google, Bolt, Spark, Vault, Draft, Hive, Zap",multi-meaning: blacksmith/create/counterfeit
+Lurk,verb,claude,"Hidden, Lore, Haunt, Ruckus",multi-meaning: hide/internet lurking/threaten
+Grind,verb,claude,"Slop, Glitch, Lore, Bloom, Brew, Weave",multi-meaning: work hard/coffee/skateboarding
+Haunt,verb,claude,"Glitch, Lore, Hive, Lurk, Eerie",multi-meaning: ghosts/memories/revisit
+Brew,verb,claude,Grind,multi-meaning: coffee/beer/trouble brewing
+Weave,verb,claude,"Glitch, Lore, Spark, Bloom, Hive, Tide, Grind, Fuzzy, Waffle",multi-meaning: fabric/storytelling/dodge
+Drift,verb,claude,"Swim, Glitch, Vibe, Rogue, Spark, Draft, Tide, Surge",multi-meaning: ocean/cars/thoughts wandering
+Surge,verb,claude,"Swim, Vibe, Hype, Rogue, Spark, Bloom, Tide, Drift, Frenzy, Zap",multi-meaning: electricity/crowd/emotion/price
+Hidden,adjective,seed,"Film, Frozen, Hack, Zoom, Lore, Netflix, Spark, Vault, Draft, Hive, Forge, Void, Lurk, Hollow, Zap",
+Elegant,adjective,seed,"Eerie, Steamy",
+Frozen,adjective,seed,"Hidden, Film, Disney, Zoom, Netflix, Spark, Forge, Zap",multi-meaning: temp/movie/state
+Hollow,adjective,claude,"Hidden, Rogue, Void",multi-meaning: empty/bone/sound quality/false
+Neon,adjective,claude,"Vibe, Spark, Glitter",multi-meaning: bright color/signs/80s aesthetic
+Fuzzy,adjective,claude,"Slop, Glitch, Viral, Weave, Crispy, Eerie, Frenzy, Waffle, Steamy",multi-meaning: texture/unclear memory/animal
+Crispy,adjective,claude,"Fuzzy, Eerie, Waffle, Pretzel, Steamy",multi-meaning: food texture/satisfying sound
+Eerie,adjective,claude,"Elegant, Haunt, Fuzzy, Crispy, Frenzy, Steamy",multi-meaning: unsettling atmosphere
+Bamboozle,whimsical,seed,,
+Zamboni,whimsical,seed,,
+Shenanigans,whimsical,seed,"Slop, Glitch, Spark, Frenzy, Ruckus, Zap, Naughty",
+Goblin,whimsical,claude,,multi-meaning: fantasy/goblin mode behavior
+Gremlin,whimsical,claude,,multi-meaning: troublemaker/plane saboteur/80s film
+Frenzy,whimsical,claude,"Shenanigans, Hype, Spark, Bloom, Surge, Fuzzy, Eerie, Ruckus, Zap",multi-meaning: chaos/excitement/feeding frenzy
+Kerfuffle,whimsical,claude,,fun to say
+Ruckus,whimsical,claude,"Shenanigans, Glitch, Lurk, Frenzy, Zap",
+Quirk,whimsical,claude,"Glitch, Rogue, Spark",multi-meaning: personality oddity/physics term
+Glitter,whimsical,claude,"Glitch, Vibe, Hype, Spark, Bloom, Neon",multi-meaning: sparkle/craft mess/attention
+Zap,whimsical,claude,"Hidden, Rocket, Chip, Film, Shenanigans, VR, AI, Frozen, Pixel, Glitch, Hack, Prompt, Zoom, Lore, Google, Netflix, Bolt, Spark, Draft, Bloom, Hive, Forge, Void, Surge, Frenzy, Ruckus",multi-meaning: electricity/speed/microwave
+Narwhal,animal,claude,,
+Capybara,animal,claude,,internet beloved
+Sloth,animal,claude,,multi-meaning: slowness/animal/deadly sin
+Waffle,food,claude,"Slop, Weave, Fuzzy, Crispy, Pretzel",multi-meaning: food/ramble indecisively
+Pretzel,food,claude,"Crispy, Waffle",multi-meaning: twisted/salty/shape
+Bare,risque,claude,,multi-meaning: empty/exposed/just barely
+Naughty,risque,claude,"Shenanigans, Rogue, Steamy",multi-meaning: misbehaving/slightly risque/Santa's list
+Steamy,risque,claude,"Elegant, Fuzzy, Crispy, Eerie, Naughty",multi-meaning: hot vapor/romantic/jungle
