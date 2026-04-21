@@ -27,6 +27,7 @@ Sting,noun,seed,multi-meaning: insect/police/music
 Madonna,noun,seed,multi-meaning: singer/religious figure
 Crocs,noun,seed,multi-meaning: shoes/animals
 Bond,noun,seed,multi-meaning: spy/finance/glue/emotional
+long,noun,seed,multi-meaning: length/time/longing
 Pixel,tech,claude,multi-meaning: display/game character/camera
 Meme,tech,claude,
 Glitch,tech,claude,multi-meaning: error/aesthetic/moment
@@ -338,3 +339,6 @@ progressive,embeddings,embeddings,"manually added from previously-noticed intere
 worst,embeddings,embeddings,"manually added from previously-noticed interesting embeddings output"
 philanthropy,embeddings,embeddings,"manually added from previously-noticed interesting embeddings output"
 ExxonMobil,embeddings,embeddings,"manually added from previously-noticed interesting embeddings output"
+basin,nouns,llm,
+smoldering,adjectives,llm,
+longing,abstract,llm,

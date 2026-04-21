@@ -172,7 +172,10 @@ def generate_batch(
         f"{CATEGORY_PROMPTS[category]}\n\n"
         f"{exclusion_note}\n\n"
         f"Return exactly {per_batch} words, one per line. "
-        f"No explanations, just the words. Single words only (no phrases)."
+        f"No explanations, just the words. Single words only (no phrases). "
+        f"Use natural capitalization: lowercase for regular words (wobble, fizz), "
+        f"capitalized for proper nouns (Disney, Google), "
+        f"and preserve mixed case for brand names (TikTok, OpenAI, iPhone)."
     )
 
     message = client.messages.create(
