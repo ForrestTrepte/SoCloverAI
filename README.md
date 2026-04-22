@@ -97,15 +97,19 @@ python compare_ratings.py
 Prints correlation statistics and highlights the biggest agreements and divergences between
 human and LLM ratings. Useful for catching words you underrated or overrated.
 
-### 6. Select final set *(pending)*
+### 6. Select shortlist
 
-`select_final.py` — weighted selection respecting vetoes, force-includes,
-and minimum category representation.
+```
+python select_shortlist.py
+```
+
+Weighted selection (~110 words) respecting vetoes (human=1), force-includes (human=5),
+and minimum category representation. Produces `candidates_shortlist.csv`.
 
 ### 7. Cull near-duplicates *(pending)*
 
 `cull_similar.py` — greedy similarity cull using embeddings to remove the most redundant
-words from the final set.
+words from the shortlist, producing `candidates_final.csv`.
 
 ### 8. Generate cards *(see GenerateCards)*
 

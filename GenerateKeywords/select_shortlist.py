@@ -1,25 +1,28 @@
 """
-Select the final keyword set for So Clover! expansion cards.
+Select a shortlist of keyword candidates for So Clover! expansion cards.
 
-Reads candidates_llm_ratings.csv and produces candidates_final.csv by:
+Reads candidates_llm_ratings.csv and produces candidates_shortlist.csv by:
   1. Vetoing words rated 1 by the human
   2. Force-including words rated 5 by the human
   3. Scoring the rest by weighted average (human weighted more by default)
   4. Enforcing a minimum number of words per content category
   5. Filling remaining slots by score until target-n is reached
 
+The shortlist is then passed to cull_similar.py which removes near-duplicates
+using embeddings to produce the true final set (candidates_final.csv).
+
 Usage:
     cd GenerateKeywords
-    python select_final.py
+    python select_shortlist.py
 
     # Tune target size and weights:
-    python select_final.py --target-n 100 --human-weight 3 --llm-weight 1
+    python select_shortlist.py --target-n 100 --human-weight 3 --llm-weight 1
 
     # Adjust category minimum:
-    python select_final.py --min-per-category 2
+    python select_shortlist.py --min-per-category 2
 
     # Preview without writing output file:
-    python select_final.py --dry-run
+    python select_shortlist.py --dry-run
 """
 
 import argparse
@@ -29,7 +32,7 @@ from pathlib import Path
 
 SCRIPT_DIR = Path(__file__).parent
 LLM_RATING_CSV = SCRIPT_DIR / "candidates_llm_ratings.csv"
-FINAL_CSV = SCRIPT_DIR / "candidates_final.csv"
+SHORTLIST_CSV = SCRIPT_DIR / "candidates_shortlist.csv"
 
 DEFAULT_TARGET_N = 110
 DEFAULT_HUMAN_WEIGHT = 2.0
@@ -167,11 +170,12 @@ def main() -> None:
               f"{row.get('human_rating',''):>6} {row.get('llm_rating',''):>6} {score:>7.2f}")
 
     if not args.dry_run:
-        with open(FINAL_CSV, "w", newline="") as f:
+        with open(SHORTLIST_CSV, "w", newline="") as f:
             writer = csv.DictWriter(f, fieldnames=FINAL_FIELDNAMES)
             writer.writeheader()
             writer.writerows(selected)
-        print(f"\nWrote {len(selected)} words to {FINAL_CSV}")
+        print(f"\nWrote {len(selected)} words to {SHORTLIST_CSV}")
+        print("Next: run cull_similar.py to remove near-duplicates and produce candidates_final.csv")
     else:
         print(f"\n(Dry run — nothing written)")
 
