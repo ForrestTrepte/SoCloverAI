@@ -4,6 +4,13 @@ OpenAI,tech,seed,,3,2,"too narrow/recent, mostly one domain"
 hidden,adjective,seed,,5,4,treasure/camera/agenda/gem — solid multi-use
 path,noun,seed,,5,4,career/hiking/math/life — versatile across domains
 entertainment,noun,seed,,5,2,"too broad/abstract, weak as a connector"
+incorporated,noun,seed,,5,2,"narrow legal/business meaning, hard to clue creatively"
+Michael,noun,seed,people,5,4,archangel/Jackson/Jordan/Scott — famous Michaels and religious/pop culture angles
+Peter,noun,seed,people,5,4,Pan/Parker/rabbit/apostle — strong multi-domain famous Peters
+Forrest,noun,seed,people,5,2,mainly just Gump; very narrow association pool
+Brian,noun,seed,people,5,2,mostly just a plain name; Life of Brian helps but still limited
+freeze,verb,seed,,4,4,ice/stop/brain freeze/freeze frame — versatile across physical/emotional/media
+boxer,noun,seed,athlete/dog breed,4,5,fighter/dog breed/underwear/boxing day — classic multi-meaning gem
 rocket,noun,seed,spacecraft/salad leaf (arugula),3,5,spacecraft/salad/firework/rocket launch — delightful multi-domain surprise
 chip,noun,seed,food/electronics/golf,4,5,food/electronics/golf/poker chip — classic multi-meaning powerhouse
 swim,verb,seed,,3,3,"physical activity, decent but not exceptional"
@@ -44,7 +51,7 @@ vibe,tech,claude,,5,3,culturally current but mostly one register
 hype,tech,claude,,4,3,"one register, limited cross-domain play"
 rogue,tech,claude,,4,4,gaming class/spy/going rogue — fun range
 Google,tech,claude,,5,3,"brand dominates, limits creative cluing"
-Netflix,tech,claude,,5,2,"pure brand, very narrow association space"
+Netflix,tech,claude,,4,2,"pure brand, very narrow association space"
 TikTok,tech,claude,,4,2,"pure brand, clock pun barely saves it"
 bolt,noun,claude,lightning/door fastener/fabric roll/to run away,3,5,lightning/fastener/fabric/sprint — textbook excellent multi-meaning
 echo,noun,claude,,3,4,sound/mythology/smart speaker/repetition — rich cross-domain
@@ -177,7 +184,7 @@ Snapchat,tech_and_culture,llm,,3,2,"single-domain, minimal associations beyond a
 Reddit,tech_and_culture,llm,,3,3,read/rabbit hole/community — modest wordplay
 Discord,tech_and_culture,llm,chat platform/disharmony or strife,5,5,platform/disharmony/music — excellent dual-meaning
 Minecraft,tech_and_culture,llm,,4,4,mine/craft/blocks/creeper — rich compound word with game culture
-Fortnite,tech_and_culture,llm,game/fortnight (two weeks),3,5,game/fortnight/two weeks — rare and delightful dual-meaning
+Fortnite,tech_and_culture,llm,game/fortnight (two weeks),4,5,game/fortnight/two weeks — rare and delightful dual-meaning
 Pokemon,tech_and_culture,llm,,3,4,pocket/monsters/game/catch — fun and culturally rich
 emoji,tech_and_culture,llm,,3,3,ubiquitous but associations stay in digital/emotion lane
 selfie,tech_and_culture,llm,,3,2,"narrow cultural reference, limited cross-domain links"
@@ -205,7 +212,7 @@ crackle,whimsical,llm,,2,4,fire/sound/electricity/cereal — strong sensory cros
 wiggly,whimsical,llm,,3,3,"mostly physical/texture, limited range"
 whoosh,whimsical,llm,,4,3,fun sound but mostly speed/movement lane
 prickle,whimsical,llm,,4,4,sensation/thorns/unease/hedgehog — nice multi-domain spread
-scuttle,whimsical,llm,to scurry/to sink a ship deliberately,2,5,scurry/sink ship/coal bucket/rumor — exceptional multi-meaning
+scuttle,whimsical,llm,to scurry/to sink a ship deliberately,3,5,scurry/sink ship/coal bucket/rumor — exceptional multi-meaning
 platypus,animals,llm,,3,4,bizarre animal/eggs/venom/cartoon — endlessly surprising
 viper,animals,llm,,4,3,snake/car/villain — moderate range
 flamingo,animals,llm,,4,4,bird/pink/lawn ornament/yoga pose/casino — vivid and varied
@@ -327,7 +334,7 @@ operatives,embeddings,embeddings,,3,3,spy/political — two decent domains
 removes,embeddings,embeddings,,2,2,"generic verb, limited distinctive associations"
 smashing,embeddings,embeddings,,4,4,British slang/breaking/tennis/Hulk — fun multi-meaning
 cynical,embeddings,embeddings,,4,3,clear meaning but single emotional register
-rescheduled,embeddings,embeddings,,3,1,"too specific and situational, no richness"
+rescheduled,embeddings,embeddings,,2,1,"too specific and situational, no richness"
 fraudulent,embeddings,embeddings,,4,2,"legal/negative connotation only, limited play"
 unconstitutional,embeddings,embeddings,,4,2,"too narrow/legalistic, limited cross-domain clue potential"
 uninsured,embeddings,embeddings,,4,2,"single domain, mostly one association cluster"
