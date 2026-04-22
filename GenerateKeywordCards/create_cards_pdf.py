@@ -150,7 +150,7 @@ def _draw_white_arc(c, card_x, card_y, edge):
 
 def _display_word(word: str) -> str:
     """Uppercase ordinary words; preserve mixed-case brands (ExxonMobil, iPhone, WiFi)."""
-    if word == word.lower() or word == word.upper() or word == word.capitalize():
+    if word == word.lower():
         return word.capitalize()
     return word
 
