@@ -44,6 +44,8 @@ All scripts are run from inside the `GenerateKeywords/` directory.
 
 ## Pipeline
 
+TODO: Consider whether we could combine this entire workflow into a single command. It would use a file in place and addditively fill in columns instead of generating a new file for each step. Would that be simpler and easier to use?
+
 ### 1. Generate candidates
 
 Run any combination of these to build up `candidates.csv`:
@@ -106,7 +108,7 @@ python select_shortlist.py
 Weighted selection (~110 words) respecting vetoes (human=1), force-includes (human=5),
 and minimum category representation. Produces `candidates_shortlist.csv`.
 
-### 7. Cull near-duplicates *(pending)*
+### 7. Cull near-duplicates
 
 `cull_similar.py` — greedy similarity cull using embeddings to remove the most redundant
 words from the shortlist, producing `candidates_final.csv`.
