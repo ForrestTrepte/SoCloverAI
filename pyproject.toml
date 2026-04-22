@@ -19,4 +19,7 @@ dependencies = [
     "mypy",
     "snakeviz",
     "langchain-community>=0.4.1",
+    "anthropic>=0.40.0",
+    "python-dotenv>=1.0.0",
+    "reportlab>=4.0",
 ]

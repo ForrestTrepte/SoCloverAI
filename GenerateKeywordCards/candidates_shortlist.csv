@@ -1,0 +1,111 @@
+word,category,source,notes,human_rating,llm_rating,llm_notes
+static,abstract,llm,radio or electrical noise/unchanging or motionless,4,5,noise/unchanging/electricity/conflict — excellent multi-meaning
+twilight,abstract,llm,,4,5,time/vampire franchise/mood/transition — hugely versatile
+tension,abstract,llm,,4,5,physics/drama/muscle/relationships — excellent multi-domain
+glow,abstract,llm,,4,4,light/health/emotion/nuclear — versatile and accessible
+threshold,abstract,llm,,4,4,door/pain/psychology/limits — strong conceptual range
+longing,abstract,llm,,4,4,emotion/distance/time — rich poetic and literal connections
+AI,acronym,seed,,5,3,timely but conceptually narrow for clue-making
+COVID,acronym,seed,,4,2,"culturally heavy, limited fun associations"
+LOL,acronym,seed,,4,2,"internet slang, limited serious clue connections"
+YOLO,acronym,seed,,4,2,"single-phrase meme, limited clue directions"
+VR,acronym,seed,,3,2,too narrow and jargony
+WiFi,acronym,llm,,3,1,"too technical/single-domain, weak clue potential"
+hidden,adjective,seed,,5,4,treasure/camera/agenda/gem — solid multi-use
+frozen,adjective,seed,,4,5,Disney/food/temperature/time — superb multi-domain
+brittle,adjectives,llm,easily broken/cold or snappy personality,4,5,material/personality/sugar/cold — rich literal and figurative
+golden,adjectives,llm,,4,5,color/age/ratio/retriever/Gate/rule — exceptionally rich
+hollow,adjective,claude,,4,4,tree/sound/feeling/bone — good physical and emotional range
+neon,adjective,claude,bright color/chemical element (gas),4,4,Vegas/color/element/80s — vivid cross-domain associations
+fuzzy,adjective,claude,soft and furry/unclear or hazy,4,4,texture/memory/logic/animals — fun everyday multi-meaning
+silky,adjectives,llm,,4,4,texture/voice/smooth operator — sensory and figurative
+murky,adjectives,llm,,4,4,water/motives/past — evocative and cross-domain
+ram,animal,seed,male sheep/computer memory/to ram (collide),5,4,sheep/memory/collision — solid multi-meaning across very different domains
+sloth,animal,claude,the animal/laziness (deadly sin),4,5,animal/sin/speed/hanging — perfect multi-meaning gem
+weasel,animals,llm,the animal/a sneaky untrustworthy person,4,5,sneaky person/animal/weasel out/pop goes — rich multi-meaning
+peacock,animals,llm,the bird/to show off (to peacock),4,5,showing off/colorful/bird/NBC — excellent dual-meaning
+ferret,animals,llm,the animal/to ferret out (search thoroughly),4,5,animal/ferret out/sneaky/pet — versatile verb+noun combo
+flamingo,animals,llm,,4,4,bird/pink/lawn ornament/yoga pose/casino — vivid and varied
+Ford,embeddings,embeddings,,5,5,car/president/Harrison/river crossing — exceptional multi-meaning
+worst,embeddings,embeddings,,5,3,"superlative plays well but fairly thin beyond ""bad"""
+definitely,embeddings,embeddings,,5,2,"filler word, almost no associative hooks"
+incorrectly,embeddings,embeddings,,5,1,"dry adverb, very limited associations"
+ExxonMobil,embeddings,embeddings,,5,1,"veto — brand too specific, inaccessible for clue-making"
+waffle,food,claude,breakfast food/to speak indecisively,4,5,food/indecision/pattern/iron — outstanding multi-domain word
+pickle,food,llm,"preserved vegetable/a predicament (""in a pickle"")",4,5,food/predicament/sports/brine — excellent multi-meaning
+caramel,food,llm,,4,4,sweet/color/apple/burnt sugar — versatile and accessible
+crisp,food,llm,,4,4,texture/British chips/weather/clean — nice cross-domain range
+gravy,food,llm,,4,4,food/easy money/gravy train — fun cross-domain potential
+chestnut,food,llm,the nut/an overused old joke/reddish-brown color,3,5,nut/old joke/color/roasting — excellent triple meaning
+Sting,noun,seed,musician/insect sting/police sting,5,5,musician/bee/operation/pain — rare perfect multi-meaning
+Madonna,noun,seed,pop icon/Virgin Mary,5,5,pop icon/religious icon — elegant dual identity
+bond,noun,seed,adhesive/financial/emotional connection/James Bond,5,5,adhesive/financial/emotional/spy — textbook excellent
+path,noun,seed,,5,4,career/hiking/math/life — versatile across domains
+Michael,noun,seed,people,5,4,archangel/Jackson/Jordan/Scott — famous Michaels and religious/pop culture angles
+Peter,noun,seed,people,5,4,Pan/Parker/rabbit/apostle — strong multi-domain famous Peters
+flint,nouns,llm,,5,4,spark/stone/Michigan city/Flintstones — good multi-domain
+boxer,noun,seed,athlete/dog breed,4,5,fighter/dog breed/underwear/boxing day — classic multi-meaning gem
+chip,noun,seed,food/electronics/golf,4,5,food/electronics/golf/poker chip — classic multi-meaning powerhouse
+draft,noun,claude,wind current/beer on tap/written version/military conscription,4,5,wind/beer/writing/military — four strong unrelated meanings
+hatch,nouns,llm,opening in a surface/to emerge from egg/to devise a plan,4,5,egg/plan/door/TV show/crosshatch — outstanding multi-meaning
+fringe,nouns,llm,decorative edge/hair bangs/fringe (unconventional or marginal),4,5,hair/decorative/marginal/TV show — rich across domains
+film,noun,seed,movie/thin coating,4,4,"movie/photography/thin layer — solid dual meaning, slightly less surprising"
+Crocs,noun,seed,foam shoes/crocodiles,4,4,shoes/reptiles — fun accessible dual meaning
+void,noun,claude,emptiness/to void (cancel),4,4,emptiness/cancel/space — philosophically rich and game-ready
+marrow,nouns,llm,bone marrow/a vegetable (like squash),4,4,bone/vegetable/essence-of-life — surprisingly rich cross-domain
+cipher,nouns,llm,,4,4,code/zero/spy/nonentity — excellent multi-meaning
+coil,nouns,llm,,4,4,snake/spring/electrical/contraceptive — strong multi-meaning
+hull,nouns,llm,outer shell of a ship/outer casing of grain,4,4,ship/grain/city/breach — compact but genuinely multi-domain
+throttle,nouns,llm,engine speed control/to strangle,4,4,engine/strangle — vivid dual meaning with strong contrast
+crest,nouns,llm,,4,4,wave/mountain/toothpaste/heraldry — solid multi-domain
+entertainment,noun,seed,,5,2,"too broad/abstract, weak as a connector"
+incorporated,noun,seed,,5,2,"narrow legal/business meaning, hard to clue creatively"
+Forrest,noun,seed,people,5,2,mainly just Gump; very narrow association pool
+Brian,noun,seed,people,5,2,mostly just a plain name; Life of Brian helps but still limited
+steamy,risque,claude,full of steam/romantically suggestive,4,5,heat/romance/jungle/cooking — excellent double-meaning fun
+bare,risque,claude,,4,4,naked/empty/minimum/bear-homophone — good multi-meaning
+naughty,risque,claude,,4,3,playful but limited to one behavioral register
+hack,tech,claude,to chop/computer exploit/life hack/taxi driver,5,5,chop/exploit/life hack/cabbie — genuinely rich multi-meaning
+Microsoft,tech,seed,,5,3,tech giant but limited cross-domain play
+lore,tech,claude,,5,3,"gaming/folklore niche, limited surprise connections"
+vibe,tech,claude,,5,3,culturally current but mostly one register
+Google,tech,claude,,5,3,"brand dominates, limits creative cluing"
+Disney,tech,seed,,4,4,magic/princess/park/streaming — rich cultural web
+prompt,tech,claude,AI input/theater cue/punctual (adjective),4,4,AI/theater/punctual — surprisingly cross-domain for a timely word
+viral,tech,claude,internet spread/viral infection,4,4,internet/disease — two strong very different domains
+zoom,tech,claude,,4,4,"speed/camera/app/sound — fun multi-meaning, very accessible"
+rogue,tech,claude,,4,4,gaming class/spy/going rogue — fun range
+Amazon,tech_and_culture,llm,tech company/the river/mythological warrior women,5,5,river/warrior/rainforest/tech giant — superb multi-domain
+Discord,tech_and_culture,llm,chat platform/disharmony or strife,5,5,platform/disharmony/music — excellent dual-meaning
+Fortnite,tech_and_culture,llm,game/fortnight (two weeks),4,5,game/fortnight/two weeks — rare and delightful dual-meaning
+Twitter,tech_and_culture,llm,social media/to twitter (chirp or chatter),4,4,chirping/chatter/social media/Musk drama — fun multi-meaning
+Minecraft,tech_and_culture,llm,,4,4,mine/craft/blocks/creeper — rich compound word with game culture
+avatar,tech_and_culture,llm,virtual character/Hindu god's earthly incarnation,4,4,film/Hindu deity/gaming/profile pic — genuinely multi-meaning
+forge,verb,claude,blacksmith workshop/to move forward/to counterfeit,4,5,blacksmith/persevere/counterfeit — dramatically different meanings
+dissolve,verbs,llm,to melt/to formally end (a partnership or parliament),4,5,melt/parliament/tears/chemistry — excellent multi-domain
+plunge,verbs,llm,,4,5,water/knife/stock market/neckline — superb multi-meaning
+murmur,verbs,llm,soft sound/heart murmur (medical),4,5,heart/crowd/stream/discontent — beautiful subtle multi-meaning
+beckon,verbs,llm,,5,3,gesture/temptation — limited but evocative
+freeze,verb,seed,,4,4,ice/stop/brain freeze/freeze frame — versatile across physical/emotional/media
+grind,verb,claude,to crush/skateboard trick/daily work routine,4,4,crush/skate/hustle/coffee — strong cross-domain reach
+haunt,verb,claude,to visit as a ghost/a favorite hangout place,4,4,"ghost/hangout/memory — poetic dual meaning, very playable"
+brew,verb,claude,,4,4,coffee/beer/potion/storm — solid multi-domain word
+smolder,verbs,llm,,4,4,fire/romance/anger — evocative and cross-domain
+prowl,verbs,llm,,4,4,predator/night/stealth/police car — versatile imagery
+simmer,verbs,llm,,4,4,cooking/anger/tension — great dual literal/emotional use
+unravel,verbs,llm,,4,4,knitting/mystery/mental breakdown — rich multi-meaning
+fester,verbs,llm,,4,4,wound/resentment/Addams Family — fun and multi-domain
+topple,verbs,llm,,4,4,dictator/tower/domino — satisfying cross-domain range
+hijack,verbs,llm,,4,4,plane/conversation/attention — modern and versatile
+devour,verbs,llm,,4,4,eating/books/eyes/fire — strong sensory and figurative range
+ignite,verbs,llm,,4,4,fire/passion/engine/controversy — clean multi-domain
+fracture,verbs,llm,,4,4,bone/relationship/rock/light — solid multi-domain
+kerfuffle,whimsical,claude,,5,4,delightfully silly word with broad comic associations
+fizz,whimsical,llm,,5,4,drink/excitement/chemistry/fade — lively multi-domain word
+tangle,whimsical,llm,physical knot/an argument or altercation,4,5,knot/argument/hair/dance/web — beautifully multi-meaning
+bumble,whimsical,llm,to move clumsily/a bumblebee,4,5,bee/clumsy movement/dating app/stumble — delightful multi-meaning
+bamboozle,whimsical,seed,,5,3,fun word but narrow meaning limits connections
+blunder,whimsical,llm,,5,3,"mistake domain only, but universally understood"
+quirk,whimsical,claude,,4,4,personality/physics/fun associations — versatile and playful
+glitter,whimsical,claude,,4,4,craft/Taylor Swift/sparkle/mess — fun pop-culture richness
+squelch,whimsical,llm,wet sucking sound/to suppress or silence,4,4,"sound/suppress dual meaning, fun phonetic quality"

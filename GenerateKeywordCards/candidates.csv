@@ -1,0 +1,355 @@
+word,category,source,notes
+Microsoft,tech,seed,
+OpenAI,tech,seed,
+hidden,adjective,seed,
+path,noun,seed,
+entertainment,noun,seed,
+incorporated,noun,seed,
+Michael,noun,seed,people
+Peter,noun,seed,people
+Forrest,noun,seed,people
+Brian,noun,seed,people
+freeze,verb,seed,
+boxer,noun,seed,athlete/dog breed
+rocket,noun,seed,spacecraft/salad leaf (arugula)
+chip,noun,seed,food/electronics/golf
+swim,verb,seed,
+film,noun,seed,movie/thin coating
+bamboozle,whimsical,seed,
+Zamboni,whimsical,seed,
+shenanigans,whimsical,seed,
+Disney,tech,seed,
+Wikipedia,tech,seed,
+Facebook,tech,seed,
+VR,acronym,seed,
+elegant,adjective,seed,
+AI,acronym,seed,
+slop,tech,seed,
+COVID,acronym,seed,
+hashtag,tech,seed,
+enshittification,tech,seed,
+Bitcoin,tech,seed,
+frozen,adjective,seed,
+Sting,noun,seed,musician/insect sting/police sting
+Madonna,noun,seed,pop icon/Virgin Mary
+Crocs,noun,seed,foam shoes/crocodiles
+bond,noun,seed,adhesive/financial/emotional connection/James Bond
+long,adjective,seed,long distance/to long for (verb)
+LOL,acronym,seed,
+ram,animal,seed,male sheep/computer memory/to ram (collide)
+YOLO,acronym,seed,
+gnu,animal,seed,wildebeest/GNU software
+pixel,tech,claude,
+meme,tech,claude,
+glitch,tech,claude,
+hack,tech,claude,to chop/computer exploit/life hack/taxi driver
+prompt,tech,claude,AI input/theater cue/punctual (adjective)
+viral,tech,claude,internet spread/viral infection
+zoom,tech,claude,
+lore,tech,claude,
+vibe,tech,claude,
+hype,tech,claude,
+rogue,tech,claude,
+Google,tech,claude,
+Netflix,tech,claude,
+TikTok,tech,claude,
+bolt,noun,claude,lightning/door fastener/fabric roll/to run away
+echo,noun,claude,
+spark,noun,claude,
+vault,noun,claude,bank safe room/gymnastics jump/wine cellar
+draft,noun,claude,wind current/beer on tap/written version/military conscription
+bloom,noun,claude,
+hive,noun,claude,
+tide,noun,claude,
+forge,verb,claude,blacksmith workshop/to move forward/to counterfeit
+void,noun,claude,emptiness/to void (cancel)
+lurk,verb,claude,
+grind,verb,claude,to crush/skateboard trick/daily work routine
+haunt,verb,claude,to visit as a ghost/a favorite hangout place
+brew,verb,claude,
+weave,verb,claude,
+drift,verb,claude,
+surge,verb,claude,
+hollow,adjective,claude,
+neon,adjective,claude,bright color/chemical element (gas)
+fuzzy,adjective,claude,soft and furry/unclear or hazy
+crispy,adjective,claude,
+eerie,adjective,claude,
+goblin,whimsical,claude,
+gremlin,whimsical,claude,
+frenzy,whimsical,claude,
+kerfuffle,whimsical,claude,
+ruckus,whimsical,claude,
+quirk,whimsical,claude,
+glitter,whimsical,claude,
+zap,whimsical,claude,
+narwhal,animal,claude,
+capybara,animal,claude,
+sloth,animal,claude,the animal/laziness (deadly sin)
+waffle,food,claude,breakfast food/to speak indecisively
+pretzel,food,claude,
+bare,risque,claude,
+naughty,risque,claude,
+steamy,risque,claude,full of steam/romantically suggestive
+snicker,whimsical,llm,
+wobble,whimsical,llm,
+fizz,whimsical,llm,
+boggle,whimsical,llm,
+jinx,whimsical,llm,
+squelch,whimsical,llm,wet sucking sound/to suppress or silence
+mumbo,whimsical,llm,
+wisp,whimsical,llm,
+blunder,whimsical,llm,
+frazzle,whimsical,llm,
+puffin,whimsical,llm,
+snafu,whimsical,llm,
+tizzy,whimsical,llm,
+whomp,whimsical,llm,
+flint,nouns,llm,
+marrow,nouns,llm,bone marrow/a vegetable (like squash)
+cipher,nouns,llm,
+lodge,nouns,llm,mountain cabin/to embed/to file a complaint
+coil,nouns,llm,
+amber,nouns,llm,fossilized resin/golden-yellow color/traffic light
+hatch,nouns,llm,opening in a surface/to emerge from egg/to devise a plan
+ferry,nouns,llm,
+prism,nouns,llm,
+silt,nouns,llm,
+burrow,nouns,llm,
+anvil,nouns,llm,blacksmith's tool/a bone in the ear
+dune,nouns,llm,
+socket,nouns,llm,
+fringe,nouns,llm,decorative edge/hair bangs/fringe (unconventional or marginal)
+parch,nouns,llm,
+hull,nouns,llm,outer shell of a ship/outer casing of grain
+throttle,nouns,llm,engine speed control/to strangle
+notch,nouns,llm,
+reef,nouns,llm,coral formation/to reduce sail area
+spire,nouns,llm,
+crest,nouns,llm,
+smolder,verbs,llm,
+prowl,verbs,llm,
+simmer,verbs,llm,
+unravel,verbs,llm,
+splice,verbs,llm,
+linger,verbs,llm,
+fester,verbs,llm,
+beckon,verbs,llm,
+topple,verbs,llm,
+hijack,verbs,llm,
+dissolve,verbs,llm,to melt/to formally end (a partnership or parliament)
+plunge,verbs,llm,
+ricochet,verbs,llm,
+devour,verbs,llm,
+meddle,verbs,llm,
+ignite,verbs,llm,
+sculpt,verbs,llm,
+swindle,verbs,llm,
+pounce,verbs,llm,
+ferment,verbs,llm,
+capsize,verbs,llm,
+murmur,verbs,llm,soft sound/heart murmur (medical)
+coax,verbs,llm,
+fracture,verbs,llm,
+silky,adjectives,llm,
+gloomy,adjectives,llm,
+tangy,adjectives,llm,
+brittle,adjectives,llm,easily broken/cold or snappy personality
+murky,adjectives,llm,
+blazing,adjectives,llm,
+soggy,adjectives,llm,
+twisted,adjectives,llm,
+grimy,adjectives,llm,
+wobbly,adjectives,llm,
+stark,adjectives,llm,
+velvety,adjectives,llm,
+jagged,adjectives,llm,
+damp,adjectives,llm,
+slimy,adjectives,llm,
+golden,adjectives,llm,
+frothy,adjectives,llm,foamy/trivial or lightweight
+crumpled,adjectives,llm,
+dusty,adjectives,llm,
+sinister,adjectives,llm,evil/heraldic left side
+rugged,adjectives,llm,
+bubbly,adjectives,llm,fizzy/effervescent personality
+scorched,adjectives,llm,
+lanky,adjectives,llm,
+Amazon,tech_and_culture,llm,tech company/the river/mythological warrior women
+Spotify,tech_and_culture,llm,
+YouTube,tech_and_culture,llm,
+Twitter,tech_and_culture,llm,social media/to twitter (chirp or chatter)
+Instagram,tech_and_culture,llm,
+Snapchat,tech_and_culture,llm,
+Reddit,tech_and_culture,llm,
+Discord,tech_and_culture,llm,chat platform/disharmony or strife
+Minecraft,tech_and_culture,llm,
+Fortnite,tech_and_culture,llm,game/fortnight (two weeks)
+Pokemon,tech_and_culture,llm,
+emoji,tech_and_culture,llm,
+selfie,tech_and_culture,llm,
+streaming,tech_and_culture,llm,
+WiFi,acronym,llm,
+Bluetooth,tech_and_culture,llm,
+crypto,tech_and_culture,llm,cryptocurrency/cryptography
+avatar,tech_and_culture,llm,virtual character/Hindu god's earthly incarnation
+fizzing,whimsical,llm,
+imp,whimsical,llm,
+splat,whimsical,llm,
+cackle,whimsical,llm,
+tangle,whimsical,llm,physical knot/an argument or altercation
+flicker,whimsical,llm,
+muddle,whimsical,llm,
+squishy,whimsical,llm,
+whimsy,whimsical,llm,
+snoop,whimsical,llm,
+bumble,whimsical,llm,to move clumsily/a bumblebee
+glimmer,whimsical,llm,
+hobgoblin,whimsical,llm,
+dazzle,whimsical,llm,
+fumble,whimsical,llm,to drop clumsily/to grope awkwardly
+crackle,whimsical,llm,
+wiggly,whimsical,llm,
+whoosh,whimsical,llm,
+prickle,whimsical,llm,
+scuttle,whimsical,llm,to scurry/to sink a ship deliberately
+platypus,animals,llm,
+viper,animals,llm,
+flamingo,animals,llm,
+panda,animals,llm,
+raccoon,animals,llm,
+beaver,animals,llm,
+magpie,animals,llm,the bird/a person who hoards shiny things or chatters
+mongoose,animals,llm,
+dodo,animals,llm,extinct bird/a foolish person
+mantis,animals,llm,
+hyena,animals,llm,
+penguin,animals,llm,
+axolotl,animals,llm,
+weasel,animals,llm,the animal/a sneaky untrustworthy person
+peacock,animals,llm,the bird/to show off (to peacock)
+piranha,animals,llm,
+armadillo,animals,llm,
+ferret,animals,llm,the animal/to ferret out (search thoroughly)
+lemur,animals,llm,
+anchovy,food,llm,
+baste,food,llm,to pour juices over cooking meat/to sew loosely
+blanch,food,llm,to briefly boil/to turn pale from shock
+brine,food,llm,
+butterscotch,food,llm,
+caramel,food,llm,
+chestnut,food,llm,the nut/an overused old joke/reddish-brown color
+cinnamon,food,llm,
+clam,food,llm,shellfish/to clam up (go silent)
+crisp,food,llm,
+crumble,food,llm,to fall apart/a fruit-topped dessert
+custard,food,llm,
+deviled,food,llm,
+drizzle,food,llm,
+fondue,food,llm,
+ginger,food,llm,the spice/reddish hair color
+gravy,food,llm,
+honeycomb,food,llm,
+lard,food,llm,
+marinate,food,llm,
+pickle,food,llm,preserved vegetable/a predicament ("in a pickle")
+rind,food,llm,
+truffle,food,llm,underground fungus/chocolate-shaped candy
+flux,abstract,llm,constant change/physics term (flow of particles or energy)
+dread,abstract,llm,
+glow,abstract,llm,
+ripple,abstract,llm,
+haze,abstract,llm,atmospheric fog/hazing (initiation ritual)
+fervor,abstract,llm,
+yearning,abstract,llm,
+threshold,abstract,llm,
+ember,abstract,llm,
+static,abstract,llm,radio or electrical noise/unchanging or motionless
+twilight,abstract,llm,
+omen,abstract,llm,
+tremor,abstract,llm,
+nostalgia,abstract,llm,
+liminal,abstract,llm,
+cascade,abstract,llm,
+tension,abstract,llm,
+shimmer,abstract,llm,
+reverie,abstract,llm,
+thwart,embeddings,embeddings,
+streamlined,embeddings,embeddings,
+encryption,embeddings,embeddings,
+towering,embeddings,embeddings,
+dissolved,embeddings,embeddings,
+buyers,embeddings,embeddings,
+prosecutors,embeddings,embeddings,
+purchasers,embeddings,embeddings,
+prosecuted,embeddings,embeddings,
+prosecuting,embeddings,embeddings,
+prosecutions,embeddings,embeddings,
+wrongly,embeddings,embeddings,
+governments,embeddings,embeddings,
+assurances,embeddings,embeddings,
+incorrectly,embeddings,embeddings,
+prosecute,embeddings,embeddings,
+worsened,embeddings,embeddings,
+controversies,embeddings,embeddings,
+worsening,embeddings,embeddings,
+disagreements,embeddings,embeddings,
+disagreement,embeddings,embeddings,
+accordingly,embeddings,embeddings,
+congressional,embeddings,embeddings,
+homebuyers,embeddings,embeddings,
+participating,embeddings,embeddings,
+offending,embeddings,embeddings,
+economists,embeddings,embeddings,
+disruptions,embeddings,embeddings,
+vowed,embeddings,embeddings,
+succeed,embeddings,embeddings,
+industries,embeddings,embeddings,
+worse,embeddings,embeddings,
+sufficient,embeddings,embeddings,
+taxpayers,embeddings,embeddings,
+uncertainties,embeddings,embeddings,
+determine,embeddings,embeddings,
+despite,embeddings,embeddings,
+Nevada,embeddings,embeddings,
+defined,embeddings,embeddings,
+definition,embeddings,embeddings,
+Alex,embeddings,embeddings,
+defending,embeddings,embeddings,
+defender,embeddings,embeddings,
+defended,embeddings,embeddings,
+defend,embeddings,embeddings,
+RBIs,acronym,embeddings,
+defendant,embeddings,embeddings,
+defensive,embeddings,embeddings,
+Ford,embeddings,embeddings,
+defeated,embeddings,embeddings,
+defeat,embeddings,embeddings,
+defendants,embeddings,embeddings,
+definitely,embeddings,embeddings,
+deficit,embeddings,embeddings,
+evangelical,embeddings,embeddings,
+pesticides,embeddings,embeddings,
+operatives,embeddings,embeddings,
+removes,embeddings,embeddings,
+smashing,embeddings,embeddings,
+cynical,embeddings,embeddings,
+rescheduled,embeddings,embeddings,
+fraudulent,embeddings,embeddings,
+unconstitutional,embeddings,embeddings,
+uninsured,embeddings,embeddings,
+stockholders,embeddings,embeddings,
+unsuccessful,embeddings,embeddings,
+contaminated,embeddings,embeddings,
+catastrophic,embeddings,embeddings,
+fertilizer,embeddings,embeddings,
+foremost,embeddings,embeddings,
+overlooked,embeddings,embeddings,
+embezzlement,embeddings,embeddings,
+progressive,embeddings,embeddings,
+worst,embeddings,embeddings,
+philanthropy,embeddings,embeddings,
+ExxonMobil,embeddings,embeddings,
+basin,nouns,llm,geographical hollow/river basin/bathroom washbasin
+smoldering,adjectives,llm,
+longing,abstract,llm,
