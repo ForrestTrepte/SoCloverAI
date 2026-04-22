@@ -177,7 +177,7 @@ def main() -> None:
     with open(WORDS_JSON) as f:
         all_words: list[str] = json.load(f)
 
-    n_vocab = min(args.frequency_cutoff, len(all_words))
+    n_vocab = min(args.frequency_cutoff, len(all_words), len(all_embeddings))
     words = all_words[:n_vocab]
     embeddings = all_embeddings[:n_vocab]
     print(f"Loaded {n_vocab} words with embeddings of shape {embeddings.shape}")
