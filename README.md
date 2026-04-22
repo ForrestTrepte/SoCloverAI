@@ -18,7 +18,9 @@ Alternatively, instead of using containers, it should also work to install and r
 # Developing
 
 * Set vscode interpreter: Ctrl+Shift+P, Python: Select Interpreter > Enter interpreter path > /opt/venvs/SoCloverAI
-* Create .env file with `OPENAI_API_KEY=sk-...`
+* Create .env file with:
+  * `OPENAI_API_KEY=sk-...` (required for embeddings-based features)
+  * `ANTHROPIC_API_KEY=sk-ant-...` (required for LLM candidate generation and rating)
 * Type checking (from terminal): `uv run mypy .`
 * Run tests from vscode testing pane
   * Or from terminal: `uv run pytest`
@@ -26,13 +28,92 @@ Alternatively, instead of using containers, it should also work to install and r
   * Select kernel (upper right) > Select another kernel > Python environments > /opt/venvs/SoCloverAI
   * Sometimes the Python kernel seems to hang in vscode, particularly when restarting the kernel. Not sure if the is a vscode, jupyter, or python bug. When this happens, you can recover vis Ctrl+Shift+P > Developer: Reload Window.
 
+# GenerateKeywords
+
+Workflow for generating, rating, and selecting a set of expansion keywords for So Clover!
+All scripts are run from inside the `GenerateKeywords/` directory.
+
+## Data files
+
+| File | Description |
+|------|-------------|
+| `CloverExistingKeywords.csv` | 880 keywords from the base game — used as an exclusion list |
+| `candidates.csv` | Growing pool of candidate keywords (word, category, source, notes) |
+| `candidates_rating.csv` | Same pool with a `human_rating` column (1–5) for manual review |
+| `candidates_llm_ratings.csv` | Adds `llm_rating` and `llm_notes` columns from Claude |
+
+## Pipeline
+
+### 1. Generate candidates
+
+Run any combination of these to build up `candidates.csv`:
+
+```
+uv run generate_candidates.py               # LLM brainstorm by category (uses Anthropic API)
+uv run discover_via_embeddings.py           # Find novel+versatile words from 60k vocabulary
+# or edit candidates.csv directly to add seed words
+```
+
+Both scripts deduplicate against the base game's 880 words and any existing candidates.
+Run them multiple times safely — they only append new words.
+
+### 2. Create / update the rating file
+
+```
+uv run create_rating_file.py
+```
+
+Creates `candidates_rating.csv` on first run. On subsequent runs, merges in any new candidates
+from `candidates.csv` without overwriting existing human ratings.
+
+### 3. Human rating
+
+Open `candidates_rating.csv` and fill in the `human_rating` column for each word:
+
+| Rating | Meaning |
+|--------|---------|
+| 1 | Veto — exclude |
+| 2 | Weak |
+| 3 | Ok |
+| 4 | Good |
+| 5 | Must include |
+
+### 4. LLM rating
+
+```
+python rate_candidates.py
+```
+
+Claude rates each candidate 1–5 for fun and versatility, writing results to
+`candidates_llm_ratings.csv`. Safe to re-run after adding new words — only unrated words
+are sent to the API; existing ratings are preserved.
+
+### 5. Compare ratings
+
+```
+python compare_ratings.py
+```
+
+Prints correlation statistics and highlights the biggest agreements and divergences between
+human and LLM ratings. Useful for catching words you underrated or overrated.
+
+### 6. Select final set *(pending)*
+
+`select_final.py` — weighted selection respecting vetoes, force-includes,
+and minimum category representation.
+
+### 7. Cull near-duplicates *(pending)*
+
+`cull_similar.py` — greedy similarity cull using embeddings to remove the most redundant
+words from the final set.
+
+### 8. Generate cards *(see GenerateCards)*
+
+Feed the final word list into `GenerateCards/generate_cards.py` to produce a printable PDF.
+
 # GenerateCards
 
 The GenerateCards folder contains code for generating a printable pdf with a supplied set of keywords on cards suitable for printing and playing with So Clover!
-
-# GenerateKeywords
-
-The GenerateKeywords folder contains a workflow for generating candidate keywords (manually, via LLM, or using embeddings), rating candidate keywords (manually via LLM), selecting a set of words, and allocating them to cards.
 
 # GenerateClues
 
