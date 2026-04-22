@@ -28,10 +28,10 @@ Alternatively, instead of using containers, it should also work to install and r
   * Select kernel (upper right) > Select another kernel > Python environments > /opt/venvs/SoCloverAI
   * Sometimes the Python kernel seems to hang in vscode, particularly when restarting the kernel. Not sure if the is a vscode, jupyter, or python bug. When this happens, you can recover vis Ctrl+Shift+P > Developer: Reload Window.
 
-# GenerateKeywords
+# GenerateKeywordCards
 
 Workflow for generating, rating, and selecting a set of expansion keywords for So Clover!
-All scripts are run from inside the `GenerateKeywords/` directory.
+All scripts are run from inside the `GenerateKeywordCards/` directory.
 
 ## Data files
 
@@ -83,7 +83,7 @@ Open `candidates_rating.csv` and fill in the `human_rating` column for each word
 ### 4. LLM rating
 
 ```
-python rate_candidates.py
+uv run rate_candidates.py
 ```
 
 Claude rates each candidate 1–5 for fun and versatility, writing results to
@@ -93,7 +93,7 @@ are sent to the API; existing ratings are preserved.
 ### 5. Compare ratings
 
 ```
-python compare_ratings.py
+uv run compare_ratings.py
 ```
 
 Prints correlation statistics and highlights the biggest agreements and divergences between
@@ -102,7 +102,7 @@ human and LLM ratings. Useful for catching words you underrated or overrated.
 ### 6. Select shortlist
 
 ```
-python select_shortlist.py
+uv run select_shortlist.py
 ```
 
 Weighted selection (~110 words) respecting vetoes (human=1), force-includes (human=5),
@@ -110,16 +110,31 @@ and minimum category representation. Produces `candidates_shortlist.csv`.
 
 ### 7. Cull near-duplicates
 
-`cull_similar.py` — greedy similarity cull using embeddings to remove the most redundant
-words from the shortlist, producing `candidates_final.csv`.
+```
+uv run cull_similar.py
+```
 
-### 8. Generate cards *(see GenerateCards)*
+Greedy similarity cull using embeddings to remove the most redundant words from the
+shortlist, producing `candidates_final.csv`.
 
-Feed the final word list into `GenerateCards/generate_cards.py` to produce a printable PDF.
+### 8. Assign words to cards
 
-# GenerateCards
+```
+uv run assign_cards.py
+```
 
-The GenerateCards folder contains code for generating a printable pdf with a supplied set of keywords on cards suitable for printing and playing with So Clover!
+Groups words into sets of 4, maximizing dissimilarity within each card so players
+have rich clue options. Produces `cards.csv`. To pre-fix any cards manually, create
+`cards_manual.csv` with columns `word1,word2,word3,word4` (one row per card).
+
+### 9. Generate PDF
+
+```
+uv run create_cards_pdf.py
+uv run create_cards_pdf.py --blank-cards 4   # append blank cards for custom words
+```
+
+Renders `cards.csv` as a print-and-play PDF (`cards.pdf`).
 
 # GenerateClues
 

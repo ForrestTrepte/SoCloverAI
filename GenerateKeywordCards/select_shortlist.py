@@ -12,7 +12,7 @@ The shortlist is then passed to cull_similar.py which removes near-duplicates
 using embeddings to produce the true final set (candidates_final.csv).
 
 Usage:
-    cd GenerateKeywords
+    cd GenerateKeywordCards
     python select_shortlist.py
 
     # Tune target size and weights:

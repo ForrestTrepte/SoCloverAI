@@ -8,7 +8,7 @@ On subsequent runs: adds any new words from candidates.csv that are not yet
 in candidates_rating.csv, leaving their human_rating blank.
 
 Usage:
-    cd GenerateKeywords
+    cd GenerateKeywordCards
     python create_rating_file.py
 """
 

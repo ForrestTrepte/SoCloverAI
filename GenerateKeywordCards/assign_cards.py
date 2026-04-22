@@ -12,7 +12,7 @@ Algorithm:
      intra-card similarity, until no improving swap exists
 
 Usage:
-    cd GenerateKeywords
+    cd GenerateKeywordCards
     python assign_cards.py
 
     # Reproducible run with specific seed:

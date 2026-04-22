@@ -8,7 +8,7 @@ If candidates_llm_ratings.csv already exists, only rates words not yet rated
 (safe to re-run after interruption or after adding new candidates).
 
 Usage:
-    cd GenerateKeywords
+    cd GenerateKeywordCards
     python rate_candidates.py
 
     # Rate only specific categories:

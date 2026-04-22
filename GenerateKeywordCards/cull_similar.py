@@ -6,7 +6,7 @@ the most similar pair, stopping when no pair exceeds the similarity threshold or
 the remove limit is reached. Writes the result to candidates_final.csv.
 
 Usage:
-    cd GenerateKeywords
+    cd GenerateKeywordCards
     python cull_similar.py
 
     # Tune stopping criteria:

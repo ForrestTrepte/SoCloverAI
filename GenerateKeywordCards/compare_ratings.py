@@ -8,7 +8,7 @@ Reads candidates_llm_ratings.csv and prints:
   - Rating distribution comparison
 
 Usage:
-    cd GenerateKeywords
+    cd GenerateKeywordCards
     python compare_ratings.py
 
     # Show more divergence examples:
