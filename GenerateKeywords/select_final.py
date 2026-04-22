@@ -160,7 +160,7 @@ def main() -> None:
     print(f"\nScore breakdown (weighted {args.human_weight}×human + {args.llm_weight}×LLM):")
     print(f"  {'Word':<22} {'Cat':<18} {'Human':>6} {'LLM':>6} {'Score':>7}")
     print("  " + "-" * 65)
-    for row in selected:
+    for row in sorted(selected, key=lambda r: -weighted_score(r, args.human_weight, args.llm_weight)):
         score = weighted_score(row, args.human_weight, args.llm_weight)
         cat = normalize_category(row.get("category", ""))
         print(f"  {row['word']:<22} {cat:<18} "
