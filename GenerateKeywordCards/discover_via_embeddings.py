@@ -41,12 +41,12 @@ WORDS_JSON = GENERATE_CLUES_DIR / "words_by_frequency.json"
 FREQUENCY_CUTOFF = 15000
 
 # Cosine similarity threshold for counting a word as a "neighbor" (centrality)
-DEFAULT_CENTRALITY_K = 50
+DEFAULT_CENTRALITY_K = 10
 
 # Minimum average cosine distance from existing keywords (0 = identical, 2 = opposite)
-DEFAULT_NOVELTY_THRESHOLD = 0.12
+DEFAULT_NOVELTY_THRESHOLD = 0.235
 
-DEFAULT_TOP_N = 75
+DEFAULT_TOP_N = 50
 
 
 def load_exclusion_set() -> set[str]:
