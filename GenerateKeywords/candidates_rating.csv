@@ -44,7 +44,7 @@ vibe,tech,claude,,5
 hype,tech,claude,,4
 rogue,tech,claude,,4
 Google,tech,claude,,5
-Netflix,tech,claude,,5
+Netflix,tech,claude,,4
 TikTok,tech,claude,,4
 bolt,noun,claude,lightning/door fastener/fabric roll/to run away,3
 echo,noun,claude,,3
@@ -177,7 +177,7 @@ Snapchat,tech_and_culture,llm,,3
 Reddit,tech_and_culture,llm,,3
 Discord,tech_and_culture,llm,chat platform/disharmony or strife,5
 Minecraft,tech_and_culture,llm,,4
-Fortnite,tech_and_culture,llm,game/fortnight (two weeks),3
+Fortnite,tech_and_culture,llm,game/fortnight (two weeks),4
 Pokemon,tech_and_culture,llm,,3
 emoji,tech_and_culture,llm,,3
 selfie,tech_and_culture,llm,,3
@@ -205,7 +205,7 @@ crackle,whimsical,llm,,2
 wiggly,whimsical,llm,,3
 whoosh,whimsical,llm,,4
 prickle,whimsical,llm,,4
-scuttle,whimsical,llm,to scurry/to sink a ship deliberately,2
+scuttle,whimsical,llm,to scurry/to sink a ship deliberately,3
 platypus,animals,llm,,3
 viper,animals,llm,,4
 flamingo,animals,llm,,4
@@ -327,7 +327,7 @@ operatives,embeddings,embeddings,,3
 removes,embeddings,embeddings,,2
 smashing,embeddings,embeddings,,4
 cynical,embeddings,embeddings,,4
-rescheduled,embeddings,embeddings,,3
+rescheduled,embeddings,embeddings,,2
 fraudulent,embeddings,embeddings,,4
 unconstitutional,embeddings,embeddings,,4
 uninsured,embeddings,embeddings,,4
