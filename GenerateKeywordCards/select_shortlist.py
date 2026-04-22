@@ -35,9 +35,9 @@ LLM_RATING_CSV = SCRIPT_DIR / "candidates_llm_ratings.csv"
 SHORTLIST_CSV = SCRIPT_DIR / "candidates_shortlist.csv"
 
 DEFAULT_TARGET_N = 110
-DEFAULT_HUMAN_WEIGHT = 2.0
-DEFAULT_LLM_WEIGHT = 1.0
-DEFAULT_MIN_PER_CATEGORY = 3
+DEFAULT_HUMAN_WEIGHT = 3.0
+DEFAULT_LLM_WEIGHT = 2.0
+DEFAULT_MIN_PER_CATEGORY = 6
 
 # Category aliases: normalize plural/singular variants to a canonical name
 CATEGORY_ALIASES: dict[str, str] = {

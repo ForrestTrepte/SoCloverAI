@@ -36,8 +36,8 @@ WORDS_JSON = GENERATE_CLUES_DIR / "words_by_frequency.json"
 
 DEFAULT_THRESHOLD = 0.85
 DEFAULT_MAX_REMOVE = 10
-DEFAULT_HUMAN_WEIGHT = 2.0
-DEFAULT_LLM_WEIGHT = 1.0
+DEFAULT_HUMAN_WEIGHT = 3.0
+DEFAULT_LLM_WEIGHT = 2.0
 
 FINAL_FIELDNAMES = ["word", "category", "source", "notes", "human_rating", "llm_rating", "llm_notes"]
 
