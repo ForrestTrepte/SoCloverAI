@@ -148,12 +148,19 @@ def _draw_white_arc(c, card_x, card_y, edge):
     c.drawPath(p, fill=1, stroke=0)
 
 
+def _display_word(word: str) -> str:
+    """Uppercase ordinary words; preserve mixed-case brands (ExxonMobil, iPhone, WiFi)."""
+    if word == word.lower() or word == word.upper() or word == word.capitalize():
+        return word.capitalize()
+    return word
+
+
 def draw_card(c, card_x, card_y, words):
     """
     Draw one keyword card with bottom-left corner at (card_x, card_y).
     words = [top, right, bottom, left]; pass empty strings for a blank card.
     """
-    top, right, bottom, left = words
+    top, right, bottom, left = [_display_word(w) for w in words]
 
     c.setFillColor(CLOVER_GREEN)
     p = _rounded_rect_path(c, card_x, card_y, CARD_SIZE, CARD_SIZE, CARD_RADIUS)
