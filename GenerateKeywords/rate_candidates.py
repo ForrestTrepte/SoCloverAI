@@ -172,12 +172,15 @@ def main() -> None:
         print("Nothing to rate.")
         return
 
-    # Build output rows: start from all candidates, overlay existing ratings
+    # Build output rows: start from all candidates, overlay existing ratings.
+    # Always take human_rating from candidates_rating.csv so updates there are reflected.
     all_rows: list[dict[str, str]] = []
     for row in load_candidates():  # reload full file for output
         key = row["word"].lower()
         if key in existing:
-            all_rows.append(existing[key])
+            merged = dict(existing[key])
+            merged["human_rating"] = row.get("human_rating", "")
+            all_rows.append(merged)
         else:
             all_rows.append({
                 "word": row["word"],
