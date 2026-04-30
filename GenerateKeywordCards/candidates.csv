@@ -108,6 +108,25 @@ pretzel,food,claude,
 bare,risque,claude,
 naughty,risque,claude,
 steamy,risque,claude,full of steam/romantically suggestive
+pitch,nouns,chatgpt,baseball/music/sales/slope
+anchor,nouns,chatgpt,boat/news/verb
+set,nouns,chatgpt,group/tennis/verb
+current,nouns,chatgpt,flow of electricity/present time
+titanic,nouns,chatgpt,huge/shipwreck
+signal,nouns,chatgpt,noun/verb
+orbit,nouns,chatgpt,
+scale,nouns,chatgpt,measuring instrument/size/to climb
+seal,nouns,chatgpt,animal/stamp/to close something tightly
+jam,nouns,chatgpt,fruit/to get stuck
+cast,nouns,chatgpt,actors/throwing
+spell,nouns,chatgpt,magic/word/verb
+match,nouns,chatgpt,contest/pairing/ignite
+mole,nouns,chatgpt,rodent/spy
+crash,nouns,chatgpt,collision/computer
+deck,nouns,chatgpt,platform/cards
+dice,nouns,chatgpt,
+king,nouns,chatgpt,
+plot,nouns,chatgpt,storyline/land division/graph
 snicker,whimsical,llm,
 wobble,whimsical,llm,
 fizz,whimsical,llm,
