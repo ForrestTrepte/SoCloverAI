@@ -26,3 +26,9 @@ dependencies = [
     "litellm>=1.83.12",
     "wordfreq",
 ]
+
+[tool.uv]
+constraint-dependencies = [
+    "jupyter-server>=2.18.0",
+    "mistune>=3.2.1",
+]
