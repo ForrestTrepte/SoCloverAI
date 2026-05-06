@@ -1,13 +1,14 @@
 from get_prompt import get_prompt
-from litellm import completion
+from llm import generate_async
 from llm_metadata import LlmMetadata
 
 
-def check_familiarity(model: str) -> tuple[str, LlmMetadata]:
+async def check_familiarity_async(model: str) -> tuple[str, LlmMetadata]:
     prompt = get_prompt("check_familiarity", "check_familiarity", {})
-    response = completion(
+    result, metadata = await generate_async(
         model=model,
-        messages=[{"role": "user", "content": prompt}],
+        user_message=prompt,
         reasoning_effort="low",
+        trial=0,
     )
-    return response.choices[0].message.content, LlmMetadata.from_response(response)
+    return result, metadata
