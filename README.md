@@ -155,3 +155,7 @@ Legal:
 0. Invalid, not clever
 1. Questionably valid -or- clever
 2. Valid
+
+# GenerateKeywordCards2
+
+Work in progress on a new and more automated approach for generating keyword cards.

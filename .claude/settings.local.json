@@ -1,0 +1,11 @@
+{
+  "permissions": {
+    "allow": [
+      "Read(//opt/venvs/SoCloverAI/lib/python3.12/site-packages/**)",
+      "Bash(python generate_cards.py)",
+      "Bash(uv sync *)",
+      "Bash(python filter_candidates.py)",
+      "Bash(python generate_candidates.py *)"
+    ]
+  }
+}

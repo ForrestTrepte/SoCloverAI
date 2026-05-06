@@ -164,3 +164,6 @@ cython_debug/
 
 # Word embeddings file is ignored because it is too large for github and can be regenerated
 words_by_frequency_embeddings.npz
+
+# Local-only notes file
+/GenerateKeywordCards2/notes.py
