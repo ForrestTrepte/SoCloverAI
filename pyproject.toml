@@ -23,7 +23,7 @@ dependencies = [
     "anthropic>=0.40.0",
     "python-dotenv>=1.0.0",
     "reportlab>=4.0",
-    "litellm>=1.83.12",
+    "litellm[caching]>=1.83.12",
     "wordfreq",
 ]
 

@@ -647,6 +647,15 @@ wheels = [
 ]
 
 [[package]]
+name = "diskcache"
+version = "5.6.3"
+source = { registry = "https://pypi.org/simple" }
+sdist = { url = "https://files.pythonhosted.org/packages/3f/21/1c1ffc1a039ddcc459db43cc108658f32c57d271d7289a2794e401d0fdb6/diskcache-5.6.3.tar.gz", hash = "sha256:2c3a3fa2743d8535d832ec61c2054a1641f41775aa7c556758a109941e33e4fc", size = 67916, upload-time = "2023-08-31T06:12:00.316Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/3f/27/4570e78fc0bf5ea0ca45eb1de3818a23787af9b390c0b0a0033a1b8236f9/diskcache-5.6.3-py3-none-any.whl", hash = "sha256:5e31b2d5fbad117cc363ebaf6b689474db18a1f6438bc82358b024abd4c2ca19", size = 45550, upload-time = "2023-08-31T06:11:58.822Z" },
+]
+
+[[package]]
 name = "distro"
 version = "1.9.0"
 source = { registry = "https://pypi.org/simple" }
@@ -1914,6 +1923,11 @@ wheels = [
     { url = "https://files.pythonhosted.org/packages/7f/5c/1b5691575420135e90578543b2bf219497caa33cfd0af64cb38f30288450/litellm-1.83.14-py3-none-any.whl", hash = "sha256:92b11ba2a32cf80707ddf388d18526696c7999a21b418c5e3b6eda1243d2cfdb", size = 16457054, upload-time = "2026-04-26T03:16:05.72Z" },
 ]
 
+[package.optional-dependencies]
+caching = [
+    { name = "diskcache" },
+]
+
 [[package]]
 name = "locate"
 version = "1.1.1"
@@ -3149,7 +3163,7 @@ dependencies = [
     { name = "langchain" },
     { name = "langchain-community" },
     { name = "langchain-openai" },
-    { name = "litellm" },
+    { name = "litellm", extra = ["caching"] },
     { name = "matplotlib" },
     { name = "mypy" },
     { name = "notebook" },
@@ -3175,7 +3189,7 @@ requires-dist = [
     { name = "langchain" },
     { name = "langchain-community", specifier = ">=0.4.1" },
     { name = "langchain-openai" },
-    { name = "litellm", specifier = ">=1.83.12" },
+    { name = "litellm", extras = ["caching"], specifier = ">=1.83.12" },
     { name = "matplotlib" },
     { name = "mypy" },
     { name = "notebook" },
