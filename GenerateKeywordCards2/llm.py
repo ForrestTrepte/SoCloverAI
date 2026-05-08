@@ -2,10 +2,11 @@ from asyncio import Semaphore
 from typing import Literal
 
 from litellm import acompletion
-from llm_metadata import LlmMetadata
+
+from .llm_metadata import LlmMetadata
 
 try:
-    import notes
+    from . import notes
 except ImportError:
     pass
 

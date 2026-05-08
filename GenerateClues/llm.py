@@ -28,7 +28,7 @@ def dump_cache_stats_since_last_call() -> None:
 
 
 def create_llm_model(temperature: float, model_name: str) -> ChatOpenAI:
-    result = ChatOpenAI(temperature=temperature, model_name=model_name)
+    result = ChatOpenAI(temperature=temperature, model=model_name)
     return result
 
 
@@ -65,7 +65,7 @@ def parse_candidates(output: str) -> List[str]:
     for line in output.splitlines():
         if not line.startswith("Candidates:"):
             continue
-        candidates_str = line[len("Candidates: "):]
+        candidates_str = line[len("Candidates: ") :]
         candidates = candidates_str.split(",")
         candidates = [candidate.strip() for candidate in candidates]
         # remove bold ** markers if present

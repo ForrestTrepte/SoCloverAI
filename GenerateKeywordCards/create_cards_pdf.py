@@ -16,33 +16,33 @@ import argparse
 import csv
 from pathlib import Path
 
-from reportlab.lib.colors import HexColor, black, white
-from reportlab.lib.pagesizes import LETTER
-from reportlab.lib.units import mm
-from reportlab.pdfgen import canvas
+from reportlab.lib.colors import HexColor, black, white  # type: ignore
+from reportlab.lib.pagesizes import LETTER  # type: ignore
+from reportlab.lib.units import mm  # type: ignore
+from reportlab.pdfgen import canvas  # type: ignore
 
 SCRIPT_DIR = Path(__file__).parent
 CARDS_CSV = SCRIPT_DIR / "cards.csv"
 OUTPUT_PDF = SCRIPT_DIR / "cards.pdf"
 
-CLOVER_GREEN = HexColor('#5aac38')
+CLOVER_GREEN = HexColor("#5aac38")
 
 # ── Card geometry ─────────────────────────────────────────────────────────────
 
-CARD_SIZE     = 49 * mm
-CUTOUT_SIZE   = 18 * mm
-CARD_RADIUS   = 2.5 * mm
+CARD_SIZE = 49 * mm
+CUTOUT_SIZE = 18 * mm
+CARD_RADIUS = 2.5 * mm
 CUTOUT_RADIUS = 2.5 * mm
 
-FONT_SIZE = (3.25 * mm) / 0.72   # 4.5mm cap height; Helvetica cap ≈ 0.72 × font size
+FONT_SIZE = (3.25 * mm) / 0.72  # 4.5mm cap height; Helvetica cap ≈ 0.72 × font size
 
 TEXT_ZONE_CENTER = (CARD_SIZE - CUTOUT_SIZE) / 2 * 0.33
 ARC_DEPTH = 13 * mm
 
 # ── Sheet layout ──────────────────────────────────────────────────────────────
 
-CARDS_PER_ROW  = 4
-CARDS_PER_COL  = 5
+CARDS_PER_ROW = 4
+CARDS_PER_COL = 5
 CARDS_PER_PAGE = CARDS_PER_ROW * CARDS_PER_COL
 
 PAGE_W, PAGE_H = LETTER
@@ -51,98 +51,153 @@ MARGIN_Y = (PAGE_H - CARDS_PER_COL * CARD_SIZE) / 2
 
 # ── Crop marks ────────────────────────────────────────────────────────────────
 
-CROP_GAP    = 1.5 * mm
-CROP_LENGTH = 4   * mm
+CROP_GAP = 1.5 * mm
+CROP_LENGTH = 4 * mm
 
 KAPPA = 0.5523  # bezier approximation of quarter-circle arc
 
 
 # ── Drawing helpers ───────────────────────────────────────────────────────────
 
+
 def _rounded_rect_path(c, x, y, w, h, r):
     p = c.beginPath()
     p.moveTo(x + r, y)
     p.lineTo(x + w - r, y)
-    p.curveTo(x + w - r + r * KAPPA, y,
-              x + w, y + r - r * KAPPA,
-              x + w, y + r)
+    p.curveTo(x + w - r + r * KAPPA, y, x + w, y + r - r * KAPPA, x + w, y + r)
     p.lineTo(x + w, y + h - r)
-    p.curveTo(x + w, y + h - r + r * KAPPA,
-              x + w - r + r * KAPPA, y + h,
-              x + w - r, y + h)
+    p.curveTo(
+        x + w, y + h - r + r * KAPPA, x + w - r + r * KAPPA, y + h, x + w - r, y + h
+    )
     p.lineTo(x + r, y + h)
-    p.curveTo(x + r - r * KAPPA, y + h,
-              x, y + h - r + r * KAPPA,
-              x, y + h - r)
+    p.curveTo(x + r - r * KAPPA, y + h, x, y + h - r + r * KAPPA, x, y + h - r)
     p.lineTo(x, y + r)
-    p.curveTo(x, y + r - r * KAPPA,
-              x + r - r * KAPPA, y,
-              x + r, y)
+    p.curveTo(x, y + r - r * KAPPA, x + r - r * KAPPA, y, x + r, y)
     p.close()
     return p
 
 
 def _draw_white_arc(c, card_x, card_y, edge):
     """Fill white from one card edge inward to a concave arc."""
-    r  = CARD_RADIUS
+    r = CARD_RADIUS
     cs = CARD_SIZE
-    d  = ARC_DEPTH
-    k  = KAPPA
+    d = ARC_DEPTH
+    k = KAPPA
 
     c.setFillColor(white)
     p = c.beginPath()
 
-    if edge == 'top':
-        p.moveTo(card_x,          card_y + cs - r)
-        p.curveTo(card_x,         card_y + cs - r*(1-k),
-                  card_x + r*(1-k), card_y + cs,
-                  card_x + r,     card_y + cs)
+    if edge == "top":
+        p.moveTo(card_x, card_y + cs - r)
+        p.curveTo(
+            card_x,
+            card_y + cs - r * (1 - k),
+            card_x + r * (1 - k),
+            card_y + cs,
+            card_x + r,
+            card_y + cs,
+        )
         p.lineTo(card_x + cs - r, card_y + cs)
-        p.curveTo(card_x + cs - r*(1-k), card_y + cs,
-                  card_x + cs,    card_y + cs - r*(1-k),
-                  card_x + cs,    card_y + cs - r)
-        p.curveTo(card_x + cs * 0.7, card_y + cs - d,
-                  card_x + cs * 0.3, card_y + cs - d,
-                  card_x,            card_y + cs - r)
+        p.curveTo(
+            card_x + cs - r * (1 - k),
+            card_y + cs,
+            card_x + cs,
+            card_y + cs - r * (1 - k),
+            card_x + cs,
+            card_y + cs - r,
+        )
+        p.curveTo(
+            card_x + cs * 0.7,
+            card_y + cs - d,
+            card_x + cs * 0.3,
+            card_y + cs - d,
+            card_x,
+            card_y + cs - r,
+        )
 
-    elif edge == 'bottom':
-        p.moveTo(card_x,          card_y + r)
-        p.curveTo(card_x,         card_y + r*(1-k),
-                  card_x + r*(1-k), card_y,
-                  card_x + r,     card_y)
+    elif edge == "bottom":
+        p.moveTo(card_x, card_y + r)
+        p.curveTo(
+            card_x,
+            card_y + r * (1 - k),
+            card_x + r * (1 - k),
+            card_y,
+            card_x + r,
+            card_y,
+        )
         p.lineTo(card_x + cs - r, card_y)
-        p.curveTo(card_x + cs - r*(1-k), card_y,
-                  card_x + cs,    card_y + r*(1-k),
-                  card_x + cs,    card_y + r)
-        p.curveTo(card_x + cs * 0.7, card_y + d,
-                  card_x + cs * 0.3, card_y + d,
-                  card_x,            card_y + r)
+        p.curveTo(
+            card_x + cs - r * (1 - k),
+            card_y,
+            card_x + cs,
+            card_y + r * (1 - k),
+            card_x + cs,
+            card_y + r,
+        )
+        p.curveTo(
+            card_x + cs * 0.7,
+            card_y + d,
+            card_x + cs * 0.3,
+            card_y + d,
+            card_x,
+            card_y + r,
+        )
 
-    elif edge == 'left':
-        p.moveTo(card_x + r,      card_y)
-        p.curveTo(card_x + r*(1-k), card_y,
-                  card_x,         card_y + r*(1-k),
-                  card_x,         card_y + r)
-        p.lineTo(card_x,          card_y + cs - r)
-        p.curveTo(card_x,         card_y + cs - r*(1-k),
-                  card_x + r*(1-k), card_y + cs,
-                  card_x + r,     card_y + cs)
-        p.curveTo(card_x + d,     card_y + cs * 0.7,
-                  card_x + d,     card_y + cs * 0.3,
-                  card_x + r,     card_y)
+    elif edge == "left":
+        p.moveTo(card_x + r, card_y)
+        p.curveTo(
+            card_x + r * (1 - k),
+            card_y,
+            card_x,
+            card_y + r * (1 - k),
+            card_x,
+            card_y + r,
+        )
+        p.lineTo(card_x, card_y + cs - r)
+        p.curveTo(
+            card_x,
+            card_y + cs - r * (1 - k),
+            card_x + r * (1 - k),
+            card_y + cs,
+            card_x + r,
+            card_y + cs,
+        )
+        p.curveTo(
+            card_x + d,
+            card_y + cs * 0.7,
+            card_x + d,
+            card_y + cs * 0.3,
+            card_x + r,
+            card_y,
+        )
 
-    elif edge == 'right':
+    elif edge == "right":
         p.moveTo(card_x + cs - r, card_y)
-        p.curveTo(card_x + cs - r*(1-k), card_y,
-                  card_x + cs,    card_y + r*(1-k),
-                  card_x + cs,    card_y + r)
-        p.lineTo(card_x + cs,     card_y + cs - r)
-        p.curveTo(card_x + cs,    card_y + cs - r*(1-k),
-                  card_x + cs - r*(1-k), card_y + cs,
-                  card_x + cs - r, card_y + cs)
-        p.curveTo(card_x + cs - d, card_y + cs * 0.7,
-                  card_x + cs - d, card_y + cs * 0.3,
-                  card_x + cs - r, card_y)
+        p.curveTo(
+            card_x + cs - r * (1 - k),
+            card_y,
+            card_x + cs,
+            card_y + r * (1 - k),
+            card_x + cs,
+            card_y + r,
+        )
+        p.lineTo(card_x + cs, card_y + cs - r)
+        p.curveTo(
+            card_x + cs,
+            card_y + cs - r * (1 - k),
+            card_x + cs - r * (1 - k),
+            card_y + cs,
+            card_x + cs - r,
+            card_y + cs,
+        )
+        p.curveTo(
+            card_x + cs - d,
+            card_y + cs * 0.7,
+            card_x + cs - d,
+            card_y + cs * 0.3,
+            card_x + cs - r,
+            card_y,
+        )
 
     p.close()
     c.drawPath(p, fill=1, stroke=0)
@@ -166,7 +221,7 @@ def draw_card(c, card_x, card_y, words):
     p = _rounded_rect_path(c, card_x, card_y, CARD_SIZE, CARD_SIZE, CARD_RADIUS)
     c.drawPath(p, fill=1, stroke=0)
 
-    for edge in ('top', 'bottom', 'left', 'right'):
+    for edge in ("top", "bottom", "left", "right"):
         _draw_white_arc(c, card_x, card_y, edge)
 
     c.setStrokeColor(black)
@@ -179,7 +234,9 @@ def draw_card(c, card_x, card_y, words):
     c.setStrokeColor(black)
     c.setLineWidth(0.5)
     c.setDash([2 * mm, 1.5 * mm])
-    p = _rounded_rect_path(c, cutout_x, cutout_y, CUTOUT_SIZE, CUTOUT_SIZE, CUTOUT_RADIUS)
+    p = _rounded_rect_path(
+        c, cutout_x, cutout_y, CUTOUT_SIZE, CUTOUT_SIZE, CUTOUT_RADIUS
+    )
     c.drawPath(p, fill=0, stroke=1)
     c.setDash([])
 
@@ -201,27 +258,25 @@ def draw_card(c, card_x, card_y, words):
         c.drawString(-w / 2, -baseline, word)
         c.restoreState()
 
-    _draw_word(top,    cx,                            card_y + CARD_SIZE - baseline,  0)
-    _draw_word(bottom, cx,                            card_y + baseline,            180)
-    _draw_word(left,   card_x + baseline,             cy,                            90)
-    _draw_word(right,  card_x + CARD_SIZE - baseline, cy,                           -90)
+    _draw_word(top, cx, card_y + CARD_SIZE - baseline, 0)
+    _draw_word(bottom, cx, card_y + baseline, 180)
+    _draw_word(left, card_x + baseline, cy, 90)
+    _draw_word(right, card_x + CARD_SIZE - baseline, cy, -90)
 
 
 def _draw_crop_marks(c, card_x, card_y):
     c.setStrokeColor(black)
     c.setLineWidth(0.25)
     for cx, cy in (
-        (card_x,             card_y),
+        (card_x, card_y),
         (card_x + CARD_SIZE, card_y),
-        (card_x,             card_y + CARD_SIZE),
+        (card_x, card_y + CARD_SIZE),
         (card_x + CARD_SIZE, card_y + CARD_SIZE),
     ):
         sign_x = -1 if cx == card_x else 1
         sign_y = -1 if cy == card_y else 1
-        c.line(cx + sign_x * CROP_GAP, cy,
-               cx + sign_x * (CROP_GAP + CROP_LENGTH), cy)
-        c.line(cx, cy + sign_y * CROP_GAP,
-               cx, cy + sign_y * (CROP_GAP + CROP_LENGTH))
+        c.line(cx + sign_x * CROP_GAP, cy, cx + sign_x * (CROP_GAP + CROP_LENGTH), cy)
+        c.line(cx, cy + sign_y * CROP_GAP, cx, cy + sign_y * (CROP_GAP + CROP_LENGTH))
 
 
 def generate_pdf(word_sets: list[list[str]], output_path: Path) -> None:
@@ -232,7 +287,7 @@ def generate_pdf(word_sets: list[list[str]], output_path: Path) -> None:
         if pos == 0 and i > 0:
             c.showPage()
         row = pos // CARDS_PER_ROW
-        col = pos  % CARDS_PER_ROW
+        col = pos % CARDS_PER_ROW
         card_x = MARGIN_X + col * CARD_SIZE
         card_y = PAGE_H - MARGIN_Y - (row + 1) * CARD_SIZE
         draw_card(c, card_x, card_y, words)
@@ -241,9 +296,16 @@ def generate_pdf(word_sets: list[list[str]], output_path: Path) -> None:
 
 
 def main() -> None:
-    parser = argparse.ArgumentParser(description="Generate So Clover! keyword cards PDF")
-    parser.add_argument("--blank-cards", type=int, default=0, metavar="N",
-                        help="Append N blank cards at the end (default: 0)")
+    parser = argparse.ArgumentParser(
+        description="Generate So Clover! keyword cards PDF"
+    )
+    parser.add_argument(
+        "--blank-cards",
+        type=int,
+        default=0,
+        metavar="N",
+        help="Append N blank cards at the end (default: 0)",
+    )
     args = parser.parse_args()
 
     if not CARDS_CSV.exists():
@@ -260,8 +322,10 @@ def main() -> None:
         print(f"Appending {args.blank_cards} blank card(s).")
 
     generate_pdf(word_sets, OUTPUT_PDF)
-    print(f"Wrote {len(word_sets)} cards ({len(word_sets) - args.blank_cards} keyword"
-          f" + {args.blank_cards} blank) to {OUTPUT_PDF}")
+    print(
+        f"Wrote {len(word_sets)} cards ({len(word_sets) - args.blank_cards} keyword"
+        f" + {args.blank_cards} blank) to {OUTPUT_PDF}"
+    )
 
 
 if __name__ == "__main__":

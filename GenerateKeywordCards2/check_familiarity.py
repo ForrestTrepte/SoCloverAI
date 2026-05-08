@@ -1,6 +1,6 @@
-from get_prompt import get_prompt
-from llm import generate_async
-from llm_metadata import LlmMetadata
+from .get_prompt import get_prompt
+from .llm import generate_async
+from .llm_metadata import LlmMetadata
 
 
 async def check_familiarity_async(model: str) -> tuple[str, LlmMetadata]:

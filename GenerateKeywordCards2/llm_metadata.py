@@ -59,6 +59,7 @@ class LlmMetadata:
     def from_response(cls, response: ModelResponse) -> "LlmMetadata":
         cache_hit = response._hidden_params.get("cache_hit", False)
 
+        assert hasattr(response, "usage")
         if response.model in custom_cost_mapping_by_model:
             prices = custom_cost_mapping_by_model[response.model]
             cost = (
