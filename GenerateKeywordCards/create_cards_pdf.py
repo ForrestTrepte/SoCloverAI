@@ -15,6 +15,7 @@ Usage:
 import argparse
 import csv
 from pathlib import Path
+from typing import Any
 
 from reportlab.lib.colors import HexColor, black, white  # type: ignore
 from reportlab.lib.pagesizes import LETTER  # type: ignore
@@ -60,7 +61,7 @@ KAPPA = 0.5523  # bezier approximation of quarter-circle arc
 # ── Drawing helpers ───────────────────────────────────────────────────────────
 
 
-def _rounded_rect_path(c, x, y, w, h, r):
+def _rounded_rect_path(c: Any, x: float, y: float, w: float, h: float, r: float) -> Any:
     p = c.beginPath()
     p.moveTo(x + r, y)
     p.lineTo(x + w - r, y)
@@ -77,7 +78,7 @@ def _rounded_rect_path(c, x, y, w, h, r):
     return p
 
 
-def _draw_white_arc(c, card_x, card_y, edge):
+def _draw_white_arc(c: Any, card_x: float, card_y: float, edge: str) -> None:
     """Fill white from one card edge inward to a concave arc."""
     r = CARD_RADIUS
     cs = CARD_SIZE
@@ -210,7 +211,7 @@ def _display_word(word: str) -> str:
     return word
 
 
-def draw_card(c, card_x, card_y, words):
+def draw_card(c: Any, card_x: float, card_y: float, words: list[str]) -> None:
     """
     Draw one keyword card with bottom-left corner at (card_x, card_y).
     words = [top, right, bottom, left]; pass empty strings for a blank card.
@@ -248,7 +249,7 @@ def draw_card(c, card_x, card_y, words):
     cy = card_y + CARD_SIZE / 2
     baseline = TEXT_ZONE_CENTER - (FONT_SIZE * 0.72) / 2
 
-    def _draw_word(word, tx, ty, angle):
+    def _draw_word(word: str, tx: float, ty: float, angle: float) -> None:
         if not word:
             return
         c.saveState()
@@ -264,7 +265,7 @@ def draw_card(c, card_x, card_y, words):
     _draw_word(right, card_x + CARD_SIZE - baseline, cy, -90)
 
 
-def _draw_crop_marks(c, card_x, card_y):
+def _draw_crop_marks(c: Any, card_x: float, card_y: float) -> None:
     c.setStrokeColor(black)
     c.setLineWidth(0.25)
     for cx, cy in (

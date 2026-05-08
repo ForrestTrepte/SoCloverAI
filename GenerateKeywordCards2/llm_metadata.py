@@ -48,7 +48,7 @@ class LlmMetadata:
         )
         return result
 
-    def __radd__(self, other):
+    def __radd__(self, other: Any) -> "LlmMetadata":
         return self.__add__(other)
 
     def __str__(self) -> str:
