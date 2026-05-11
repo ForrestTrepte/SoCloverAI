@@ -19,12 +19,14 @@ class LlmMetadata:
         cached_cost: float,
         uncached_cost: float,
         output_tokens: int,
+        reasoning_tokens: int,
     ):
         self.cache_hits = cache_hits
         self.cache_misses = cache_misses
         self.cached_cost = cached_cost
         self.uncached_cost = uncached_cost
         self.output_tokens = output_tokens
+        self.reasoning_tokens = reasoning_tokens
 
     @property
     def total_requests(self) -> int:
@@ -45,6 +47,7 @@ class LlmMetadata:
             cached_cost=self.cached_cost + other.cached_cost,
             uncached_cost=self.uncached_cost + other.uncached_cost,
             output_tokens=self.output_tokens + other.output_tokens,
+            reasoning_tokens=self.reasoning_tokens + other.reasoning_tokens,
         )
         return result
 
@@ -52,7 +55,7 @@ class LlmMetadata:
         return self.__add__(other)
 
     def __str__(self) -> str:
-        result = f"{self.cache_hits}/{self.total_requests} cache hits, ${self.uncached_cost:.4f} uncached cost, ${self.total_cost:.4f} total cost, {self.output_tokens} output tokens"
+        result = f"{self.cache_hits}/{self.total_requests} cache hits, ${self.uncached_cost:.4f} uncached cost, ${self.total_cost:.4f} total cost, {self.output_tokens:,} output tokens"
         return result
 
     @classmethod
@@ -70,6 +73,9 @@ class LlmMetadata:
             cost = completion_cost(response)
 
         output_tokens = response.usage.completion_tokens
+        reasoning_tokens = response.usage.completion_tokens_details.reasoning_tokens
+        if reasoning_tokens is None:
+            reasoning_tokens = 0
         if cache_hit:
             return cls(
                 cache_hits=1,
@@ -77,6 +83,7 @@ class LlmMetadata:
                 cached_cost=cost,
                 uncached_cost=0.0,
                 output_tokens=output_tokens,
+                reasoning_tokens=reasoning_tokens,
             )
         else:
             return cls(
@@ -85,8 +92,9 @@ class LlmMetadata:
                 cached_cost=0.0,
                 uncached_cost=cost,
                 output_tokens=output_tokens,
+                reasoning_tokens=reasoning_tokens,
             )
 
     @classmethod
     def zero(cls) -> "LlmMetadata":
-        return cls(0, 0, 0.0, 0.0, 0)
+        return cls(0, 0, 0.0, 0.0, 0, 0)

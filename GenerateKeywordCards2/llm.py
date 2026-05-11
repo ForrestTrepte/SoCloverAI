@@ -71,10 +71,17 @@ async def generate_structured_async[T: BaseModel](
     ],
     trial: int,
     response_format: type[T],
+    response_format_fallback_description: str,
 ) -> tuple[T, LlmMetadata]:
     async with llm_semaphore:
         log_llm_concurrency()
         # print(f"> acompletion {model}")
+        response_format_param: dict[str, str] | type[T]
+        if model.startswith("deepseek/"):
+            response_format_param = {"type": "json_object"}
+            system_message += response_format_fallback_description
+        else:
+            response_format_param = response_format
         response = await acompletion(
             model=model,
             messages=[
@@ -84,7 +91,7 @@ async def generate_structured_async[T: BaseModel](
             reasoning_effort=reasoning_effort,
             # set user to trial number so requests from different trials will be treated separately in the cache
             user=f"trial_{trial}",
-            response_format=response_format,
+            response_format=response_format_param,
         )
         # print(f"< acompletion {model}")
     log_llm_concurrency()

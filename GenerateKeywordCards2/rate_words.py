@@ -75,6 +75,10 @@ async def _rate_words_batch(
         reasoning_effort="low",
         trial=0,
         response_format=WordRatingList,
+        response_format_fallback_description=(
+            "\nRespond with a JSON object matching the following format:\n"
+            '{"ratings": [{"word": "example", "rating": 0.5}, ...]}'
+        ),
     )
 
     result_ratings = {}
