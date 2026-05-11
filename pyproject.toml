@@ -26,6 +26,7 @@ dependencies = [
     "reportlab>=4.0",
     "litellm[caching]>=1.83.12",
     "wordfreq",
+    "tabulate>=0.10.0",
 ]
 
 [tool.uv]
