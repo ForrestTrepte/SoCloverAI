@@ -17,6 +17,7 @@ dependencies = [
     "gensim",
     "word-forms",
     "pytest",
+    "pytest-asyncio",
     "mypy",
     "snakeviz",
     "langchain-community>=0.4.1",

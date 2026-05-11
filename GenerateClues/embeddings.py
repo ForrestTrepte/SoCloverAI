@@ -9,6 +9,11 @@ from langchain_openai import OpenAIEmbeddings
 
 from init_openai import init_openai
 
+try:
+    from GenerateKeywordCards2 import notes
+except ImportError:
+    pass
+
 logger = logging.getLogger("SoCloverAI")
 init_openai()
 project_root = os.path.dirname(os.path.realpath(__file__))

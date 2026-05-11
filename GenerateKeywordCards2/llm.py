@@ -1,7 +1,8 @@
 from asyncio import Semaphore
-from typing import Literal
+from typing import Literal, TypeVar
 
 from litellm import acompletion
+from pydantic import BaseModel
 
 from .llm_metadata import LlmMetadata
 
@@ -59,3 +60,33 @@ async def generate_async(
         # print(f"< acompletion {model}")
     log_llm_concurrency()
     return response.choices[0].message.content, LlmMetadata.from_response(response)
+
+
+async def generate_structured_async[T: BaseModel](
+    model: str,
+    system_message: str,
+    user_message: str,
+    reasoning_effort: Literal[
+        "none", "minimal", "low", "medium", "high", "xhigh", "default"
+    ],
+    trial: int,
+    response_format: type[T],
+) -> tuple[T, LlmMetadata]:
+    async with llm_semaphore:
+        log_llm_concurrency()
+        # print(f"> acompletion {model}")
+        response = await acompletion(
+            model=model,
+            messages=[
+                {"role": "system", "content": system_message},
+                {"role": "user", "content": user_message},
+            ],
+            reasoning_effort=reasoning_effort,
+            # set user to trial number so requests from different trials will be treated separately in the cache
+            user=f"trial_{trial}",
+            response_format=response_format,
+        )
+        # print(f"< acompletion {model}")
+    log_llm_concurrency()
+    result = response_format.model_validate_json(response.choices[0].message.content)
+    return result, LlmMetadata.from_response(response)

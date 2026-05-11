@@ -86,3 +86,7 @@ class LlmMetadata:
                 uncached_cost=cost,
                 output_tokens=output_tokens,
             )
+
+    @classmethod
+    def zero(cls) -> "LlmMetadata":
+        return cls(0, 0, 0.0, 0.0, 0)
