@@ -1,11 +1,14 @@
+import asyncio
+from asyncio import TaskGroup
 from typing import Literal, TypeAlias
 
+from litellm.exceptions import RateLimitError
 from pydantic import BaseModel
 
 from GenerateKeywordCards2.async_rng import AsyncRng
 
 from .get_prompt import get_prompt
-from .llm import generate_structured_async
+from .llm import ReasoningEffort, generate_structured_async
 from .llm_metadata import LlmMetadata
 
 Ratings: TypeAlias = dict[str, float]
@@ -15,9 +18,7 @@ async def rate_words(
     model: str,
     prompt_name: str,
     words: list[str],
-    reasoning_effort: Literal[
-        "none", "minimal", "low", "medium", "high", "xhigh", "default"
-    ],
+    reasoning_effort: ReasoningEffort,
     batch_size: int,
     rng: AsyncRng,
 ) -> tuple[dict[str, Ratings], LlmMetadata]:
@@ -27,36 +28,79 @@ async def rate_words(
 
     ratings = {}
     metadata = LlmMetadata.zero()
-    for i in range(0, len(words), batch_size):
-        batch_words = words_shuffled[i : i + batch_size]
-        batch_ratings, batch_metadata = await _rate_words_batch(
-            model, prompt_name, batch_words, reasoning_effort
-        )
-        ratings.update(batch_ratings)
-        metadata += batch_metadata
+    batch_ratings, batch_metadata = await rate_words_batches(
+        model, prompt_name, words_shuffled, reasoning_effort, batch_size
+    )
+    ratings.update(batch_ratings)
+    metadata += batch_metadata
 
     unrated = [w for w in words_shuffled if w not in ratings]
     if unrated:
         print(f"Warning: Re-rating {len(unrated)} unrated words")
-        for i in range(0, len(unrated), batch_size):
-            batch_words = unrated[i : i + batch_size]
-            batch_ratings, batch_metadata = await _rate_words_batch(
-                model, prompt_name, batch_words, reasoning_effort
-            )
-            ratings.update(batch_ratings)
-            metadata += batch_metadata
+        batch_ratings, batch_metadata = await rate_words_batches(
+            model, prompt_name, unrated, reasoning_effort, batch_size
+        )
+        ratings.update(batch_ratings)
+        metadata += batch_metadata
 
     assert set(ratings.keys()) == set(words)
     return ratings, metadata
+
+
+async def rate_words_batches(
+    model: str,
+    prompt_name: str,
+    words: list[str],
+    reasoning_effort: ReasoningEffort,
+    batch_size: int,
+) -> tuple[dict[str, Ratings], LlmMetadata]:
+    tasks = []
+    ratings = {}
+    metadata = LlmMetadata.zero()
+    async with TaskGroup() as tg:
+        for i in range(0, len(words), batch_size):
+            batch_words = words[i : i + batch_size]
+            tasks.append(
+                tg.create_task(
+                    _rate_words_batch_with_rate_limit(
+                        model, prompt_name, batch_words, reasoning_effort
+                    )
+                )
+            )
+
+    for task in tasks:
+        batch_ratings, batch_metadata = task.result()
+        ratings.update(batch_ratings)
+        metadata += batch_metadata
+
+    return ratings, metadata
+
+
+async def _rate_words_batch_with_rate_limit(
+    model: str,
+    prompt_name: str,
+    words: list[str],
+    reasoning_effort: ReasoningEffort,
+) -> tuple[dict[str, Ratings], LlmMetadata]:
+    max_tries = 5
+    for i in range(max_tries):
+        try:
+            return await _rate_words_batch(model, prompt_name, words, reasoning_effort)
+        except RateLimitError as e:
+            assert e
+            retry_after = float(e.litellm_response_headers.get("retry-after"))
+            await asyncio.sleep(retry_after)
+            if i == max_tries - 1:
+                raise
+
+    assert False
 
 
 async def _rate_words_batch(
     model: str,
     prompt_name: str,
     words: list[str],
-    reasoning_effort: Literal[
-        "none", "minimal", "low", "medium", "high", "xhigh", "default"
-    ],
+    reasoning_effort: ReasoningEffort,
 ) -> tuple[dict[str, Ratings], LlmMetadata]:
 
     class WordRating(BaseModel):
@@ -72,7 +116,7 @@ async def _rate_words_batch(
         model=model,
         system_message=prompt.format(words=words),
         user_message=f"{words}",
-        reasoning_effort="low",
+        reasoning_effort=reasoning_effort,
         trial=0,
         response_format=WordRatingList,
         response_format_fallback_description=(
@@ -83,11 +127,9 @@ async def _rate_words_batch(
 
     result_ratings = {}
     words_set = set(words)
-    is_valid = True
     for rating in response.ratings:
         if rating.word not in words_set:
-            print(f"Error: rated word '{rating.word}' not in input words")
-            is_valid = False
+            print(f"Warning: rated word '{rating.word}' not in input words")
             continue
 
         if rating.word in result_ratings:
@@ -101,8 +143,5 @@ async def _rate_words_batch(
     unrated_words = words_set - set(result_ratings.keys())
     if unrated_words:
         print(f"Warning: the following words were not rated: {unrated_words}")
-
-    if not is_valid:
-        raise ValueError("Invalid ratings response")
 
     return (result_ratings, metadata)

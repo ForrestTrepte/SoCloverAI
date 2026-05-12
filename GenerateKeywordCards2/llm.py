@@ -1,5 +1,6 @@
 from asyncio import Semaphore
-from typing import Literal, TypeVar
+from contextlib import nullcontext
+from typing import Literal, TypeAlias, TypeVar
 
 from litellm import acompletion
 from pydantic import BaseModel
@@ -22,6 +23,10 @@ small_models = [
 
 maximum_concurrent_requests = 25
 llm_semaphore = Semaphore(maximum_concurrent_requests)
+
+maximum_concurrent_requests_anthropic = 3
+llm_semaphore_anthropic = Semaphore(maximum_concurrent_requests_anthropic)
+
 log_llm_concurrency_was_in_use = False
 
 
@@ -39,15 +44,21 @@ def log_llm_concurrency() -> None:
     print(f"LLMs {in_use} in use, {waiting} waiting")
 
 
+ReasoningEffort: TypeAlias = Literal[
+    "none", "minimal", "low", "medium", "high", "xhigh", "default"
+]
+
+
 async def generate_async(
     model: str,
     user_message: str,
-    reasoning_effort: Literal[
-        "none", "minimal", "low", "medium", "high", "xhigh", "default"
-    ],
+    reasoning_effort: ReasoningEffort,
     trial: int,
 ) -> tuple[str, LlmMetadata]:
-    async with llm_semaphore:
+    anthropic_lock = (
+        llm_semaphore_anthropic if model.startswith("anthropic/") else nullcontext()
+    )
+    async with llm_semaphore, anthropic_lock:
         log_llm_concurrency()
         # print(f"> acompletion {model}")
         response = await acompletion(
@@ -66,14 +77,15 @@ async def generate_structured_async[T: BaseModel](
     model: str,
     system_message: str,
     user_message: str,
-    reasoning_effort: Literal[
-        "none", "minimal", "low", "medium", "high", "xhigh", "default"
-    ],
+    reasoning_effort: ReasoningEffort,
     trial: int,
     response_format: type[T],
     response_format_fallback_description: str,
 ) -> tuple[T, LlmMetadata]:
-    async with llm_semaphore:
+    anthropic_lock = (
+        llm_semaphore_anthropic if model.startswith("anthropic/") else nullcontext()
+    )
+    async with llm_semaphore, anthropic_lock:
         log_llm_concurrency()
         # print(f"> acompletion {model}")
         response_format_param: dict[str, str] | type[T]
