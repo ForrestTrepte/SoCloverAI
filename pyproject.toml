@@ -33,4 +33,5 @@ dependencies = [
 constraint-dependencies = [
     "jupyter-server>=2.18.0",
     "mistune>=3.2.1",
+    "urllib3>=2.7.0",
 ]
