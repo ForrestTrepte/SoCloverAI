@@ -40,8 +40,14 @@ def log_llm_concurrency() -> None:
         return
 
     log_llm_concurrency_was_in_use = True
+    anthropic_in_use = (
+        maximum_concurrent_requests_anthropic - llm_semaphore_anthropic._value
+    )
     waiting = len(llm_semaphore._waiters or [])
-    print(f"LLMs {in_use} in use, {waiting} waiting")
+    anthropic_waiting = len(llm_semaphore_anthropic._waiters or [])
+    print(
+        f"LLMs {in_use} in use, {waiting} waiting (anthropic {anthropic_in_use} in use, {anthropic_waiting} waiting)"
+    )
 
 
 ReasoningEffort: TypeAlias = Literal[
@@ -85,27 +91,28 @@ async def generate_structured_async[T: BaseModel](
     anthropic_lock = (
         llm_semaphore_anthropic if model.startswith("anthropic/") else nullcontext()
     )
-    async with llm_semaphore, anthropic_lock:
-        log_llm_concurrency()
-        # print(f"> acompletion {model}")
-        response_format_param: dict[str, str] | type[T]
-        if model.startswith("deepseek/"):
-            response_format_param = {"type": "json_object"}
-            system_message += response_format_fallback_description
-        else:
-            response_format_param = response_format
-        response = await acompletion(
-            model=model,
-            messages=[
-                {"role": "system", "content": system_message},
-                {"role": "user", "content": user_message},
-            ],
-            reasoning_effort=reasoning_effort,
-            # set user to trial number so requests from different trials will be treated separately in the cache
-            user=f"trial_{trial}",
-            response_format=response_format_param,
-        )
-        # print(f"< acompletion {model}")
+    async with anthropic_lock:
+        async with llm_semaphore:
+            log_llm_concurrency()
+            # print(f"> acompletion {model}")
+            response_format_param: dict[str, str] | type[T]
+            if model.startswith("deepseek/"):
+                response_format_param = {"type": "json_object"}
+                system_message += response_format_fallback_description
+            else:
+                response_format_param = response_format
+            response = await acompletion(
+                model=model,
+                messages=[
+                    {"role": "system", "content": system_message},
+                    {"role": "user", "content": user_message},
+                ],
+                reasoning_effort=reasoning_effort,
+                # set user to trial number so requests from different trials will be treated separately in the cache
+                user=f"trial_{trial}",
+                response_format=response_format_param,
+            )
+            # print(f"< acompletion {model}")
     log_llm_concurrency()
     result = response_format.model_validate_json(response.choices[0].message.content)
     return result, LlmMetadata.from_response(response)

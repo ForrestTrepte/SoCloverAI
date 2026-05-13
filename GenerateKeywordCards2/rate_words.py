@@ -80,22 +80,44 @@ async def rate_words_batches(
     return ratings, metadata
 
 
+_rate_words_batch_with_rate_limit_id = 0
+
+
 async def _rate_words_batch_with_rate_limit(
     model: str,
     prompt_name: str,
     words: list[str],
     reasoning_effort: ReasoningEffort,
 ) -> tuple[RatingsByWord, LlmMetadata]:
+    # TODO: Move this to a general layer in llm.py
     max_tries = 5
+
+    global _rate_words_batch_with_rate_limit_id
+    _rate_words_batch_with_rate_limit_id += 1
+    batch_id = _rate_words_batch_with_rate_limit_id
+
     for i in range(max_tries):
         try:
             return await _rate_words_batch(model, prompt_name, words, reasoning_effort)
         except RateLimitError as e:
-            assert hasattr(e, "litellm_response_headers")
-            retry_after = float(e.litellm_response_headers.get("retry-after"))
-            await asyncio.sleep(retry_after)
+            now_str = f"{asyncio.get_running_loop().time():,.1f}"
             if i == max_tries - 1:
+                print(
+                    f"batch {batch_id} {now_str}s {model} rate limit error: giving up after {max_tries} tries"
+                )
                 raise
+
+            assert hasattr(e, "litellm_response_headers")
+            extra_time = 0.2
+            retry_after = (
+                float(e.litellm_response_headers.get("retry-after")) + extra_time
+            )
+            print(
+                f"batch {batch_id} {now_str}s {model} rate limit: retrying after {retry_after:.1f} seconds"
+            )
+            await asyncio.sleep(retry_after)
+            now_str = f"{asyncio.get_running_loop().time():,.1f}"
+            print(f"batch {batch_id} {now_str}s {model} rate limit: resuming")
 
     assert False
 
