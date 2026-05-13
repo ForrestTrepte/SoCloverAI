@@ -1,17 +1,20 @@
 import asyncio
-from asyncio import TaskGroup
-from typing import Literal, TypeAlias
+from typing import TypeAlias
 
 from litellm.exceptions import RateLimitError
 from pydantic import BaseModel
 
 from GenerateKeywordCards2.async_rng import AsyncRng
 
+# from asyncio import TaskGroup  <-- Doesn't work in Jupyter, use CompatTaskGroup instead.
+from GenerateKeywordCards2.compat_task_group import CompatTaskGroup as TaskGroup
+
 from .get_prompt import get_prompt
 from .llm import ReasoningEffort, generate_structured_async
 from .llm_metadata import LlmMetadata
 
 Ratings: TypeAlias = dict[str, float]
+RatingsByWord: TypeAlias = dict[str, Ratings]
 
 
 async def rate_words(
@@ -21,7 +24,7 @@ async def rate_words(
     reasoning_effort: ReasoningEffort,
     batch_size: int,
     rng: AsyncRng,
-) -> tuple[dict[str, Ratings], LlmMetadata]:
+) -> tuple[RatingsByWord, LlmMetadata]:
     local_rng = rng.unwrap()
     words_shuffled = words.copy()
     local_rng.shuffle(words_shuffled)
@@ -53,7 +56,7 @@ async def rate_words_batches(
     words: list[str],
     reasoning_effort: ReasoningEffort,
     batch_size: int,
-) -> tuple[dict[str, Ratings], LlmMetadata]:
+) -> tuple[RatingsByWord, LlmMetadata]:
     tasks = []
     ratings = {}
     metadata = LlmMetadata.zero()
@@ -64,7 +67,8 @@ async def rate_words_batches(
                 tg.create_task(
                     _rate_words_batch_with_rate_limit(
                         model, prompt_name, batch_words, reasoning_effort
-                    )
+                    ),
+                    eager_start=True,
                 )
             )
 
@@ -81,13 +85,13 @@ async def _rate_words_batch_with_rate_limit(
     prompt_name: str,
     words: list[str],
     reasoning_effort: ReasoningEffort,
-) -> tuple[dict[str, Ratings], LlmMetadata]:
+) -> tuple[RatingsByWord, LlmMetadata]:
     max_tries = 5
     for i in range(max_tries):
         try:
             return await _rate_words_batch(model, prompt_name, words, reasoning_effort)
         except RateLimitError as e:
-            assert e
+            assert hasattr(e, "litellm_response_headers")
             retry_after = float(e.litellm_response_headers.get("retry-after"))
             await asyncio.sleep(retry_after)
             if i == max_tries - 1:
@@ -101,7 +105,7 @@ async def _rate_words_batch(
     prompt_name: str,
     words: list[str],
     reasoning_effort: ReasoningEffort,
-) -> tuple[dict[str, Ratings], LlmMetadata]:
+) -> tuple[RatingsByWord, LlmMetadata]:
 
     class WordRating(BaseModel):
         word: str
