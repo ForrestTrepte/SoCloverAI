@@ -1,8 +1,11 @@
+import asyncio
 from asyncio import Semaphore
 from contextlib import nullcontext
-from typing import Literal, TypeAlias, TypeVar
+from collections.abc import Awaitable, Callable
+from typing import Literal, TypeAlias, cast
 
-from litellm import acompletion
+from litellm import ModelResponse, acompletion
+from litellm.exceptions import RateLimitError
 from pydantic import BaseModel
 
 from .llm_metadata import LlmMetadata
@@ -55,6 +58,44 @@ ReasoningEffort: TypeAlias = Literal[
 ]
 
 
+_with_rate_limit_retry_id = 0
+
+
+async def with_rate_limit_retry[R](
+    request_info: str,
+    op: Callable[[], Awaitable[R]],
+    max_tries: int = 5,
+    extra_time_seconds: float = 0.2,
+) -> R:
+    global _with_rate_limit_retry_id
+    _with_rate_limit_retry_id += 1
+    id = _with_rate_limit_retry_id
+
+    for i in range(max_tries):
+        try:
+            return await op()
+        except RateLimitError as e:
+            now_str = f"{asyncio.get_running_loop().time():,.1f}"
+            if i == max_tries - 1:
+                print(
+                    f"request {id} {now_str}s {request_info} rate limit error: giving up after {max_tries} tries"
+                )
+                raise
+
+            assert hasattr(e, "litellm_response_headers")
+            retry_after = float(e.litellm_response_headers.get("retry-after"))
+            retry_after += extra_time_seconds
+            print(
+                f"request {id} {now_str}s {request_info} rate limit: retrying after {retry_after:.1f} seconds"
+            )
+            await asyncio.sleep(retry_after)
+
+            now_str = f"{asyncio.get_running_loop().time():,.1f}"
+            print(f"request {id} {now_str}s {request_info} rate limit: resuming")
+
+    assert False
+
+
 async def generate_async(
     model: str,
     user_message: str,
@@ -64,19 +105,29 @@ async def generate_async(
     anthropic_lock = (
         llm_semaphore_anthropic if model.startswith("anthropic/") else nullcontext()
     )
-    async with llm_semaphore, anthropic_lock:
-        log_llm_concurrency()
-        # print(f"> acompletion {model}")
-        response = await acompletion(
+
+    async def complete() -> ModelResponse:
+        result = await acompletion(
             model=model,
             messages=[{"role": "user", "content": user_message}],
             reasoning_effort=reasoning_effort,
             # set user to trial number so requests from different trials will be treated separately in the cache
             user=f"trial_{trial}",
         )
-        # print(f"< acompletion {model}")
+        assert isinstance(result, ModelResponse)
+        return result
+
+    async with anthropic_lock:
+        async with llm_semaphore:
+            log_llm_concurrency()
+            # print(f"> acompletion {model}")
+            response = await with_rate_limit_retry(request_info=model, op=complete)
+            # print(f"< acompletion {model}")
+
     log_llm_concurrency()
-    return response.choices[0].message.content, LlmMetadata.from_response(response)
+    content = response.choices[0].message.content
+    assert content is not None
+    return content, LlmMetadata.from_response(response)
 
 
 async def generate_structured_async[T: BaseModel](
@@ -91,28 +142,37 @@ async def generate_structured_async[T: BaseModel](
     anthropic_lock = (
         llm_semaphore_anthropic if model.startswith("anthropic/") else nullcontext()
     )
+
+    response_format_param: dict[str, str] | type[T]
+    if model.startswith("deepseek/"):
+        response_format_param = {"type": "json_object"}
+        system_message += response_format_fallback_description
+    else:
+        response_format_param = response_format
+
+    async def complete() -> ModelResponse:
+        result = await acompletion(
+            model=model,
+            messages=[
+                {"role": "system", "content": system_message},
+                {"role": "user", "content": user_message},
+            ],
+            reasoning_effort=reasoning_effort,
+            # set user to trial number so requests from different trials will be treated separately in the cache
+            user=f"trial_{trial}",
+            response_format=response_format_param,
+        )
+        assert isinstance(result, ModelResponse)
+        return result
+
     async with anthropic_lock:
         async with llm_semaphore:
             log_llm_concurrency()
             # print(f"> acompletion {model}")
-            response_format_param: dict[str, str] | type[T]
-            if model.startswith("deepseek/"):
-                response_format_param = {"type": "json_object"}
-                system_message += response_format_fallback_description
-            else:
-                response_format_param = response_format
-            response = await acompletion(
-                model=model,
-                messages=[
-                    {"role": "system", "content": system_message},
-                    {"role": "user", "content": user_message},
-                ],
-                reasoning_effort=reasoning_effort,
-                # set user to trial number so requests from different trials will be treated separately in the cache
-                user=f"trial_{trial}",
-                response_format=response_format_param,
-            )
+            response = await with_rate_limit_retry(request_info=model, op=complete)
             # print(f"< acompletion {model}")
     log_llm_concurrency()
-    result = response_format.model_validate_json(response.choices[0].message.content)
+    content = response.choices[0].message.content
+    assert content is not None
+    result = response_format.model_validate_json(content)
     return result, LlmMetadata.from_response(response)
