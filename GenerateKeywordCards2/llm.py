@@ -49,7 +49,7 @@ def log_llm_concurrency() -> None:
     waiting = len(llm_semaphore._waiters or [])
     anthropic_waiting = len(llm_semaphore_anthropic._waiters or [])
     print(
-        f"LLMs {in_use} in use, {waiting} waiting (anthropic {anthropic_in_use} in use, {anthropic_waiting} waiting)"
+        f"LLMs {in_use} in use, {waiting + anthropic_waiting} waiting (anthropic {anthropic_in_use} in use, {anthropic_waiting} waiting)"
     )
 
 
