@@ -27,6 +27,7 @@ dependencies = [
     "litellm[caching]>=1.83.12",
     "wordfreq",
     "tabulate>=0.10.0",
+    "scipy",
 ]
 
 [tool.uv]
