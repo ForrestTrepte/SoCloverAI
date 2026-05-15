@@ -42,10 +42,10 @@ Examples:
 - key → lock, open
 - oven → bake, rack
 
-## Multiple Senses
+## Multiple Meanings
 
 Definition:
-  Associations arising because the word has multiple legitimate meanings.
+  Associations arising because the word has multiple meanings or interpretations.
   
 Examples:
 - pitch → melody, baseball, sales, tar
