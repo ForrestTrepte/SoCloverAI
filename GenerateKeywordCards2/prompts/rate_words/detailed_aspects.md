@@ -20,8 +20,18 @@ isolated or narrow
 few meaningful associations
 difficult to connect naturally
 
-Provide the following ratings:
-* semantic/category: Associations based on meaning, taxonomy, properties, or conceptual similarity. These are the most straightforward "related concept" connections. Examples: dog → animal, pet, bark, leash; apple → fruit, food, tree; ocean → water, fish, wave
+Provide a rating for each category of association below:
+
+## Semantic/Category
+
+definition:
+    Associations based on meaning, taxonomy, properties, or conceptual similarity. These are the most straightforward "related concept" connections.
+
+examples:
+- dog → animal, pet, bark, leash
+- apple → fruit, food, tree
+- ocean → water, fish, wave
+
 * functional: Associations based on what something does, how it is used, or what it interacts with. Examples: hammer → building, nails, wood; key → lock, open; oven → bake, rack
 * multiple senses: Associations arising because the word has multiple legitimate meanings. Examples: pitch → melody, baseball, sales, tar; crane → bird, construction; match → competition, fire, pair
 * metaphorical/symbolic: Associations where the word represents broader ideas, concepts, emotions, or relationships beyond its literal meaning These associations may arise from figurative analogy, abstract comparison, or culturally recognized symbolic meaning. Examples: fire → passion, energy, intensity; anchor → emotional stability; bridge → connection between people; dove → peace; heart → love; scales → justice
@@ -33,6 +43,8 @@ Provide the following ratings:
 * overall_associations: Overall bredth, diversity, and flexibility of the word’s associations across different types of clueing routes.
 
 # Gameplay Suitability
+
+Provide ratings for the following dimensions of gameplay potential:
 
 * recognizability: How likely the average player is to know and understand the word quickly.
 * evocativeness: How strongly the word evokes mental imagery, sensory experiences, emotions, stories, memorable concepts, or vivid situations.
