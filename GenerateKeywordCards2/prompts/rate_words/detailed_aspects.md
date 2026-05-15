@@ -49,7 +49,6 @@ Definition:
   
 Examples:
 - pitch → melody, baseball, sales, tar
-- crane → bird, construction
 - match → competition, fire, pair
 
 ## Metaphorical/Symbolic
@@ -92,7 +91,7 @@ Definition:
 Examples:
 - pyramid → triangular structure
 - jungle → dense green vegetation
-- mirror → reflection
+- mirror → shiny reflection
 
 ## Emotional
 
