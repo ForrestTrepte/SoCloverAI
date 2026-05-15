@@ -1,8 +1,4 @@
-from pathlib import Path
-
-
-def get_root_directory() -> Path:
-    return Path(__file__).parent
+from GenerateKeywordCards2.get_root_directory import get_root_directory
 
 
 def get_prompt(prompt_name: str, prompt_directory: str, args: dict[str, str]) -> str:
