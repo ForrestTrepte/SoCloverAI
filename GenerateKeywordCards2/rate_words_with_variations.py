@@ -14,10 +14,14 @@ from GenerateKeywordCards2.rate_words import RatingsByWord, rate_words
 class ModelParams:
     model: str
     reasoning_effort: ReasoningEffort
-    batch_size: int
+
+    # batch size used with prompts that have a single overall rating
+    batch_size_overall: int
+    # batch size used with aspects prompts that have multiple ratings per word
+    batch_size_aspects: int
 
     def __str__(self) -> str:
-        return f"{self.model} {self.reasoning_effort} {self.batch_size}"
+        return f"{self.model} {self.reasoning_effort} {self.batch_size_overall} {self.batch_size_aspects}"
 
     def short_str(self) -> str:
         model_slash_split = self.model.split("/")
@@ -37,6 +41,18 @@ class ModelParams:
 class VariationParams:
     model_params: ModelParams
     prompt_name: str
+
+    @property
+    def is_aspects(self) -> bool:
+        return self.prompt_name.startswith("aspects_")
+
+    def get_batch_size(self) -> int:
+        result = (
+            self.model_params.batch_size_aspects
+            if self.is_aspects
+            else self.model_params.batch_size_overall
+        )
+        return result
 
     def __str__(self) -> str:
         return f"{self.model_params} {self.prompt_name}"
@@ -68,7 +84,7 @@ async def rate_words_with_variations(
                         prompt_name,
                         words,
                         model_params.reasoning_effort,
-                        model_params.batch_size,
+                        variation_params.get_batch_size(),
                         rng=AsyncRng(123),
                     ),
                     eager_start=True,
@@ -96,17 +112,13 @@ class VariationView:
     variation_params: VariationParams
     variation_result: RateWordsWithVariationsResult
 
-    @property
-    def is_aspects(self) -> bool:
-        return self.variation_params.prompt_name.startswith("aspects_")
-
     # False for non-aspects.
     # For aspects: True for Association Overall, False for Gameplay Overall.
     is_association: bool
 
     @property
     def overall_key(self) -> str:
-        if not self.is_aspects:
+        if not self.variation_params.is_aspects:
             return "overall"
         return "Association Overall" if self.is_association else "Gameplay Overall"
 
@@ -114,7 +126,7 @@ class VariationView:
         return self.variation_result.ratings_by_word[word][self.overall_key]
 
     def short_str(self) -> str:
-        if not self.is_aspects:
+        if not self.variation_params.is_aspects:
             return self.variation_params.short_str()
         suffix = "assoc" if self.is_association else "gamepl"
         return f"{self.variation_params.short_str()} [{suffix}]"
