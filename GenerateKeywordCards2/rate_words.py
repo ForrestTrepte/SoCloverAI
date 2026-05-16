@@ -57,6 +57,18 @@ class WordAspectsList(BaseModel):
     ratings: list[WordAspects]
 
 
+response_format_fallback_description_overall = (
+    "\nRespond with a JSON object containing a ratings array matching the following format:\n"
+    '{"ratings": [{"word": "example", "rating": 5}, ...]}'
+)
+
+response_format_fallback_description_aspects = (
+    "\nRespond with a JSON object containing a ratings array matching the following format:\n"
+    '{"ratings": [{"word": "example", "associations": {"Semantic/Category": 5, "Functional": 5, "Multiple Meanings": 5, "Metaphorical/Symbolic": 5, "Idioms/Phrases": 5, "Wordplay": 5, "Visual": 5, "Emotional": 5, "Cultural/Historical": 5, "Overall": 5}, "gameplay": {"Recognizability": 5, "Evocativeness": 5, "Fun": 5, "Overall": 5}}, ...]}'
+    "IMPORTANT OUTPUT CONTRACT: Be sure to respond with a JSON object containing the ratings array, and not just the array by itself."
+)
+
+
 async def rate_words(
     model: str,
     prompt_name: str,
@@ -161,8 +173,12 @@ async def _rate_words_batch(
 
     prompt = get_prompt(prompt_name, "rate_words", {})
 
-    response_format = (
-        WordAspectsList if prompt_name.startswith("aspects_") else WordRatingList
+    is_aspects = prompt_name.startswith("aspects_")
+    response_format = WordAspectsList if is_aspects else WordRatingList
+    fallback = (
+        response_format_fallback_description_aspects
+        if is_aspects
+        else response_format_fallback_description_overall
     )
 
     print(
@@ -175,10 +191,7 @@ async def _rate_words_batch(
         reasoning_effort=reasoning_effort,
         trial=0,
         response_format=response_format,
-        response_format_fallback_description=(
-            "\nRespond with a JSON object matching the following format:\n"
-            '{"ratings": [{"word": "example", "rating": 0.5}, ...]}'
-        ),
+        response_format_fallback_description=fallback,
     )
     assert isinstance(response, response_format)
 

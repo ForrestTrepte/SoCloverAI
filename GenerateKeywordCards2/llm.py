@@ -6,7 +6,7 @@ from typing import Literal, TypeAlias, cast
 
 from litellm import ModelResponse, acompletion
 from litellm.exceptions import RateLimitError
-from pydantic import BaseModel
+from pydantic import BaseModel, ValidationError
 
 from .llm_metadata import LlmMetadata
 
@@ -174,5 +174,12 @@ async def generate_structured_async[T: BaseModel](
     log_llm_concurrency()
     content = response.choices[0].message.content
     assert content is not None
-    result = response_format.model_validate_json(content)
+    try:
+        result = response_format.model_validate_json(content)
+    except ValidationError as e:
+        print(
+            f"Validation error in JSON response from model {model}:\n{content}",
+            flush=True,
+        )
+        raise
     return result, LlmMetadata.from_response(response)
