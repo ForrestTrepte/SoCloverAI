@@ -124,6 +124,6 @@ async def _rate_words_batch(
 
     unrated_words = words_set - set(result_ratings.keys())
     if unrated_words:
-        print(f"Warning: the following words were not rated: {unrated_words}")
+        print(f"Warning: the following words were not rated: {sorted(unrated_words)}")
 
     return (result_ratings, metadata)
