@@ -1,4 +1,5 @@
 from dataclasses import dataclass
+from typing import Iterator
 
 from GenerateKeywordCards2.async_rng import AsyncRng
 
@@ -80,3 +81,62 @@ async def rate_words_with_variations(
         result[variation_params] = RateWordsWithVariationsResult(ratings, metadata)
 
     return result
+
+
+@dataclass(frozen=True)
+class VariationView:
+    """
+    View abstraction for treating aspects results as two virtual variations.
+
+    For aspects prompts, this class exposes two views:
+    1. Overall rating comes from Association Overall,
+    2. Overall rating comes from Gameplay Overall.
+    """
+
+    variation_params: VariationParams
+    variation_result: RateWordsWithVariationsResult
+
+    @property
+    def is_aspects(self) -> bool:
+        return self.variation_params.prompt_name.startswith("aspects_")
+
+    # False for non-aspects.
+    # For aspects: True for Association Overall, False for Gameplay Overall.
+    is_association: bool
+
+    @property
+    def overall_key(self) -> str:
+        if not self.is_aspects:
+            return "overall"
+        return "Association Overall" if self.is_association else "Gameplay Overall"
+
+    def overall_rating(self, word: str) -> float:
+        return self.variation_result.ratings_by_word[word][self.overall_key]
+
+    def short_str(self) -> str:
+        if not self.is_aspects:
+            return self.variation_params.short_str()
+        suffix = "assoc" if self.is_association else "gamepl"
+        return f"{self.variation_params.short_str()} [{suffix}]"
+
+    def get_hash_key(self) -> tuple[VariationParams, bool]:
+        # Helper for using VariationView as a dict key.
+        # The underlying variation_params and is_association should be sufficient to uniquely identify the view.
+        return (self.variation_params, self.is_association)
+
+
+def iter_variation_views(
+    results_by_variation: dict[VariationParams, RateWordsWithVariationsResult],
+) -> Iterator[VariationView]:
+    """
+    Iterate over VariationView items, treating aspects variations as two virtual variations each.
+    """
+    for vp in sorted(results_by_variation.keys()):
+        vr = results_by_variation[vp]
+        if vp.prompt_name.startswith("aspects_"):
+            # Two items per aspects variation
+            yield VariationView(vp, vr, is_association=True)  # Association Overall
+            yield VariationView(vp, vr, is_association=False)  # Gameplay Overall
+        else:
+            # One item for non-aspects variations
+            yield VariationView(vp, vr, is_association=False)

@@ -25,14 +25,14 @@ class WordAssociationAspects(BaseModel):
     visual: float = Field(alias="Visual")
     emotional: float = Field(alias="Emotional")
     cultural_historical: float = Field(alias="Cultural/Historical")
-    overall: float = Field(alias="Overall Associations")
+    overall: float = Field(alias="Overall")
 
 
 class WordGameplayAspects(BaseModel):
     recognizability: float = Field(alias="Recognizability")
     evocativeness: float = Field(alias="Evocativeness")
     fun: float = Field(alias="Fun")
-    overall: float = Field(alias="Overall Gameplay")
+    overall: float = Field(alias="Overall")
 
 
 class WordAspects(BaseModel):
@@ -100,7 +100,7 @@ async def rate_words(
         rerating_count += 1
 
     if len(unrated) > 0:
-        message = f"The following words were still not rated after {rerating_count} re-rating passes: {sorted(unrated)}"
+        message = f"The following {len(unrated)} words were still not rated after {rerating_count} re-rating passes: {sorted(unrated)}"
         print(f"Error: {message}")
         raise RuntimeError(message)
 
@@ -165,6 +165,9 @@ async def _rate_words_batch(
         WordAspectsList if prompt_name.startswith("aspects_") else WordRatingList
     )
 
+    print(
+        f"> {model} {prompt_name} {reasoning_effort}: {len(words)} words [{words[0]}...]"
+    )
     response, metadata = await generate_structured_async(
         model=model,
         system_message=prompt.format(words=words),
@@ -194,6 +197,12 @@ async def _rate_words_batch(
 
     unrated_words = words_set - set(result_ratings.keys())
     if unrated_words:
-        print(f"Warning: the following words were not rated: {sorted(unrated_words)}")
+        print(
+            f"Warning: the following {len(unrated_words)} words were not rated: {sorted(unrated_words)}"
+        )
+
+    print(
+        f"< {model} {prompt_name} {reasoning_effort}: {len(result_ratings)} words [{words[0]}...]"
+    )
 
     return (result_ratings, metadata)

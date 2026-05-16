@@ -43,7 +43,7 @@ def get_manual_ratings() -> RatingsByWord:
 
     if unrated_words:
         raise ValueError(
-            f"The ratings in manual_ratings.csv are incomplete for the following words: {', '.join(sorted(unrated_words))}"
+            f"The ratings in manual_ratings.csv are incomplete for the following {len(unrated_words)} words: {', '.join(sorted(unrated_words))}"
         )
 
     return ratings_by_word
