@@ -65,7 +65,7 @@ response_format_fallback_description_overall = (
 
 response_format_fallback_description_aspects = (
     "\nRespond with a JSON object containing a ratings array matching the following format:\n"
-    '{"ratings": [{"word": "example", "associations": {"Semantic/Category": 5, "Functional": 5, "Multiple Meanings": 5, "Metaphorical/Symbolic": 5, "Idioms/Phrases": 5, "Wordplay": 5, "Visual": 5, "Emotional": 5, "Cultural/Historical": 5, "Overall": 5}, "gameplay": {"Recognizability": 5, "Evocativeness": 5, "Fun": 5, "Overall": 5}}, ...]}'
+    '{"ratings": [{"word": "example", "associations": {"Semantic/Category": 5, "Functional": 5, "Multiple Meanings": 5, "Metaphorical/Symbolic": 5, "Idioms/Phrases": 5, "Wordplay": 5, "Visual": 5, "Emotional": 5, "Cultural/Historical": 5, "Overall": 5}, "gameplay": {"Recognizability": 5, "Inoffensiveness": 5,"Evocativeness": 5, "Fun": 5, "Overall": 5}}, ...]}'
     "IMPORTANT OUTPUT CONTRACT: Be sure to respond with a JSON object containing the ratings array, and not just the array by itself."
 )
 
