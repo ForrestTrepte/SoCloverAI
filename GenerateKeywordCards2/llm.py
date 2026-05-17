@@ -1,7 +1,8 @@
 import asyncio
+import json
 from asyncio import Semaphore
-from contextlib import nullcontext
 from collections.abc import Awaitable, Callable
+from contextlib import nullcontext
 from typing import Literal, TypeAlias, cast
 
 from litellm import ModelResponse, acompletion
@@ -24,10 +25,15 @@ small_models = [
 ]
 
 
+# From https://docs.litellm.ai/docs/providers/anthropic#supported-openai-parameters:
+#   "Anthropic API fails requests when max_tokens are not passed. Due to this litellm passes max_tokens=4096 when no max_tokens are passed"
+# We will pass 64k max tokens to avoid hitting this limit.
+anthropic_max_completion_tokens = 64_000
+
 maximum_concurrent_requests = 25
 llm_semaphore = Semaphore(maximum_concurrent_requests)
 
-maximum_concurrent_requests_anthropic = 3
+maximum_concurrent_requests_anthropic = 5
 llm_semaphore_anthropic = Semaphore(maximum_concurrent_requests_anthropic)
 
 log_llm_concurrency_was_in_use = False
@@ -150,6 +156,10 @@ async def generate_structured_async[T: BaseModel](
     else:
         response_format_param = response_format
 
+    optional_args = {}
+    if model.startswith("anthropic/"):
+        optional_args["max_completion_tokens"] = anthropic_max_completion_tokens
+
     async def complete() -> ModelResponse:
         result = await acompletion(
             model=model,
@@ -161,6 +171,7 @@ async def generate_structured_async[T: BaseModel](
             # set user to trial number so requests from different trials will be treated separately in the cache
             user=f"trial_{trial}",
             response_format=response_format_param,
+            **optional_args,
         )
         assert isinstance(result, ModelResponse)
         return result
@@ -181,5 +192,16 @@ async def generate_structured_async[T: BaseModel](
             f"Validation error in JSON response from model {model}:\n{content}",
             flush=True,
         )
-        raise
+
+        if not model.startswith("anthropic/"):
+            raise e
+
+        # Workaround for a strange case where an Anthropic model returned a json dictionary
+        # with the value "parameter" containing the actual expected response.
+        try:
+            content_dict = json.loads(content)
+            result = response_format.model_validate(content_dict["parameter"])
+        except Exception:
+            raise e
+
     return result, LlmMetadata.from_response(response)

@@ -30,6 +30,7 @@ class WordAssociationAspects(BaseModel):
 
 class WordGameplayAspects(BaseModel):
     recognizability: float = Field(alias="Recognizability")
+    inoffensiveness: float = Field(alias="Inoffensiveness")
     evocativeness: float = Field(alias="Evocativeness")
     fun: float = Field(alias="Fun")
     overall: float = Field(alias="Overall")

@@ -131,6 +131,11 @@ Provide ratings for the following dimensions of gameplay potential:
 Definition:
   How likely the average player is to know and understand the word quickly.
 
+## Inoffensiveness
+
+Definition:
+  How likely the average player is not to be offended by the word. Please provide ratings for offensive words, but give them a low rating for inoffensiveness, to ensure that they are excluded from the expansion.
+
 ## Evocativeness
 
 Definition:
