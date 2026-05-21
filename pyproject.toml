@@ -28,6 +28,7 @@ dependencies = [
     "wordfreq",
     "tabulate>=0.10.0",
     "scipy",
+    "scikit-learn>=1.8.0",
 ]
 
 [tool.uv]
