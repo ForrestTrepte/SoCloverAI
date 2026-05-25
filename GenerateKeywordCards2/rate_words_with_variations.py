@@ -1,4 +1,6 @@
+from collections import defaultdict
 from dataclasses import dataclass
+from statistics import mean
 from typing import Iterator
 
 from GenerateKeywordCards2.async_rng import AsyncRng
@@ -152,3 +154,34 @@ def iter_variation_views(
         else:
             # One item for non-aspects variations
             yield VariationView(vp, vr, is_association=False)
+
+
+def combine_results(
+    results: Iterator[VariationView],
+) -> RateWordsWithVariationsResult:
+    """
+    Combine ratings from multiple variations by averaging them.
+    """
+    metadata = LlmMetadata.zero()
+    seen_variation_params = set()
+    variation_ratings_by_word = defaultdict(list)
+    for result in results:
+        # Don't double-count metadata from multiple views of the same variation.
+        #   e.g. Association Overall and Gameplay Overall views of the same aspects variation.
+        if result.variation_params not in seen_variation_params:
+            seen_variation_params.add(result.variation_params)
+            metadata += result.variation_result.metadata
+
+        for word in result.variation_result.ratings_by_word.keys():
+            overall_rating = result.overall_rating(word)
+            variation_ratings_by_word[word].append(overall_rating)
+
+    # Average the ratings for each word
+    averaged_ratings_by_word = {
+        word: {"overall": mean(ratings)}
+        for word, ratings in variation_ratings_by_word.items()
+    }
+
+    return RateWordsWithVariationsResult(
+        ratings_by_word=averaged_ratings_by_word, metadata=metadata
+    )
