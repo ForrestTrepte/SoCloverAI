@@ -164,7 +164,7 @@ def filter_results(
     Filter VariationView items based on a list of names.
     """
     for result in results:
-        if result.variation_params.short_str() in names:
+        if result.short_str() in names:
             yield result
 
 
