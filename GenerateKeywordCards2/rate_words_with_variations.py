@@ -156,6 +156,18 @@ def iter_variation_views(
             yield VariationView(vp, vr, is_association=False)
 
 
+def filter_results(
+    results: Iterator[VariationView],
+    names: list[str],
+) -> Iterator[VariationView]:
+    """
+    Filter VariationView items based on a list of names.
+    """
+    for result in results:
+        if result.variation_params.short_str() in names:
+            yield result
+
+
 def combine_results(
     results: Iterator[VariationView],
 ) -> RateWordsWithVariationsResult:
