@@ -28,6 +28,9 @@ llm_semaphore = Semaphore(maximum_concurrent_requests)
 maximum_concurrent_requests_anthropic = 5
 llm_semaphore_anthropic = Semaphore(maximum_concurrent_requests_anthropic)
 
+maximum_concurrent_requests_google_pro = 5
+llm_semaphore_google_pro = Semaphore(maximum_concurrent_requests_google_pro)
+
 log_llm_concurrency_was_in_use = False
 
 
@@ -44,10 +47,14 @@ def log_llm_concurrency() -> None:
     anthropic_in_use = (
         maximum_concurrent_requests_anthropic - llm_semaphore_anthropic._value
     )
+    google_pro_in_use = (
+        maximum_concurrent_requests_google_pro - llm_semaphore_google_pro._value
+    )
     waiting = len(llm_semaphore._waiters or [])
     anthropic_waiting = len(llm_semaphore_anthropic._waiters or [])
+    google_pro_waiting = len(llm_semaphore_google_pro._waiters or [])
     print(
-        f"LLMs {in_use} in use, {waiting + anthropic_waiting} waiting (anthropic {anthropic_in_use} in use, {anthropic_waiting} waiting)"
+        f"LLMs {in_use} in use, {waiting + anthropic_waiting + google_pro_waiting} waiting (anthropic {anthropic_in_use} in use, {anthropic_waiting} waiting, google pro {google_pro_in_use} in use, {google_pro_waiting} waiting)"
     )
 
 
@@ -103,6 +110,8 @@ async def generate_async(
     anthropic_lock = (
         llm_semaphore_anthropic if model.startswith("anthropic/") else nullcontext()
     )
+    is_google_pro = model.startswith("gemini/") and "-pro-" in model
+    google_pro_lock = llm_semaphore_google_pro if is_google_pro else nullcontext()
 
     async def complete() -> ModelResponse:
         result = await acompletion(
@@ -116,11 +125,12 @@ async def generate_async(
         return result
 
     async with anthropic_lock:
-        async with llm_semaphore:
-            log_llm_concurrency()
-            # print(f"> acompletion {model}")
-            response = await with_rate_limit_retry(request_info=model, op=complete)
-            # print(f"< acompletion {model}")
+        async with google_pro_lock:
+            async with llm_semaphore:
+                log_llm_concurrency()
+                # print(f"> acompletion {model}")
+                response = await with_rate_limit_retry(request_info=model, op=complete)
+                # print(f"< acompletion {model}")
 
     log_llm_concurrency()
     content = response.choices[0].message.content
@@ -140,6 +150,8 @@ async def generate_structured_async[T: BaseModel](
     anthropic_lock = (
         llm_semaphore_anthropic if model.startswith("anthropic/") else nullcontext()
     )
+    is_google_pro = model.startswith("gemini/") and "-pro-" in model
+    google_pro_lock = llm_semaphore_google_pro if is_google_pro else nullcontext()
 
     response_format_param: dict[str, str] | type[T]
     if model.startswith("deepseek/"):
@@ -169,11 +181,12 @@ async def generate_structured_async[T: BaseModel](
         return result
 
     async with anthropic_lock:
-        async with llm_semaphore:
-            log_llm_concurrency()
-            # print(f"> acompletion {model}")
-            response = await with_rate_limit_retry(request_info=model, op=complete)
-            # print(f"< acompletion {model}")
+        async with google_pro_lock:
+            async with llm_semaphore:
+                log_llm_concurrency()
+                # print(f"> acompletion {model}")
+                response = await with_rate_limit_retry(request_info=model, op=complete)
+                # print(f"< acompletion {model}")
     log_llm_concurrency()
     content = response.choices[0].message.content
     assert content is not None
