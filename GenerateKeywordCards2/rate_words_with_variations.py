@@ -73,12 +73,18 @@ async def rate_words_with_variations(
     models_params: list[ModelParams],
     prompt_names: list[str],
     words: list[str],
+    selected_variation_names: list[str] | None = None,
 ) -> dict[VariationParams, RateWordsWithVariationsResult]:
     tasks_by_variation_params = {}
     async with TaskGroup() as tg:
         for model_params in models_params:
             for prompt_name in prompt_names:
                 variation_params = VariationParams(model_params, prompt_name)
+                if (
+                    selected_variation_names is not None
+                    and variation_params.short_str() not in selected_variation_names
+                ):
+                    continue
                 print(f"* Rating {variation_params}...")
                 tasks_by_variation_params[variation_params] = tg.create_task(
                     rate_words(
