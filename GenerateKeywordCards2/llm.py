@@ -17,14 +17,6 @@ except ImportError:
     pass
 
 
-small_models = [
-    "openai/gpt-5.4-mini-2026-03-17",
-    "anthropic/claude-haiku-4-5-20251001",
-    "gemini/gemini-3-flash-preview",
-    "deepseek/deepseek-v4-flash",
-]
-
-
 # From https://docs.litellm.ai/docs/providers/anthropic#supported-openai-parameters:
 #   "Anthropic API fails requests when max_tokens are not passed. Due to this litellm passes max_tokens=4096 when no max_tokens are passed"
 # We will pass 64k max tokens to avoid hitting this limit.
