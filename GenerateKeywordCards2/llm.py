@@ -198,15 +198,24 @@ async def generate_structured_async[T: BaseModel](
             flush=True,
         )
 
-        if not model.startswith("anthropic/"):
-            raise e
-
-        # Workaround for a strange case where an Anthropic model returned a json dictionary
-        # with the value "parameter" containing the actual expected response.
-        try:
-            content_dict = json.loads(content)
-            result = response_format.model_validate(content_dict["parameter"])
-        except Exception:
+        if model.startswith("anthropic/"):
+            # Workaround for a strange case where an Anthropic model returned a json dictionary
+            # with the value "parameter" containing the actual expected response.
+            try:
+                content_dict = json.loads(content)
+                result = response_format.model_validate(content_dict["parameter"])
+            except Exception:
+                raise e
+        elif model.startswith("deepseek/"):
+            # Workaround for a strange case where Deepseek models sometimes return the JSON response as an array instead of an object
+            # TODO: This is specific to ratings. Make it generic in some way?
+            try:
+                content_array = json.loads(content)
+                content_object = {"ratings": content_array}
+                result = response_format.model_validate(content_object)
+            except Exception:
+                raise e
+        else:
             raise e
 
     return result, LlmMetadata.from_response(response)
