@@ -53,6 +53,22 @@ class WordAspects(BaseModel):
         result = associations_dict_with_prefix | gameplay_dict_with_prefix
         return result
 
+    @classmethod
+    def _get_prefixed_field_names(
+        cls, model_cls: type[BaseModel], prefix: str
+    ) -> list[str]:
+        return [
+            f"{prefix} {field.alias or name}"
+            for name, field in model_cls.model_fields.items()
+        ]
+
+    @classmethod
+    def get_rating_fields(cls) -> list[str]:
+        result = cls._get_prefixed_field_names(
+            WordAssociationAspects, "Association"
+        ) + cls._get_prefixed_field_names(WordGameplayAspects, "Gameplay")
+        return result
+
 
 class WordAspectsList(BaseModel):
     ratings: list[WordAspects]
