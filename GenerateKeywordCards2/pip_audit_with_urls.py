@@ -13,6 +13,8 @@ def get_advisory_url(vulnerability_id: str) -> str:
         return f"https://github.com/advisories/{vulnerability_id}"
     if vulnerability_id.startswith("PYSEC-"):
         return f"https://osv.dev/vulnerability/{vulnerability_id}"
+    if vulnerability_id.startswith("BIT-"):
+        return f"https://osv.dev/vulnerability/{vulnerability_id}"
     assert False, f"Unexpected vulnerability ID format: {vulnerability_id}"
 
 
