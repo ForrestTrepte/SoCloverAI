@@ -5,7 +5,7 @@
       "Bash(uv run pytest)",
       "Bash(uv run main.py)",
       "Bash(git check-ignore *)",
-      "Bash(pip-audit *)"
+      "Bash(python3 GenerateKeywordCards2/pip_audit_with_urls.py)"
     ]
   }
 }

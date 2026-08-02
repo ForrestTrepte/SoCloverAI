@@ -89,3 +89,40 @@ def pip_audit_with_urls() -> None:
         f"Found {len(rows)} vulnerabilities in {len(vulnerable_dependencies)}/{len(all_dependencies)} dependencies."
     )
     display(Markdown(table_md))  # type: ignore
+
+
+def pip_audit_summary() -> None:
+    """Print a compact vulnerability summary for Claude's use: one line per package."""
+    cmd = [
+        "pip-audit",
+        "--format=json",
+        "--aliases=on",
+        "--progress-spinner=off",
+    ]
+    json_result = subprocess.run(cmd, capture_output=True, text=True, check=False)
+    if json_result.returncode not in [0, 1]:
+        raise RuntimeError(
+            f"pip-audit failed with exit code {json_result.returncode}:\n{json_result.stderr}"
+        )
+    dict_result = json.loads(json_result.stdout)
+
+    pkgs: dict[str, dict] = {}
+    for dep in dict_result["dependencies"]:
+        for vuln in dep["vulns"]:
+            name = dep["name"]
+            if name not in pkgs:
+                pkgs[name] = {"version": dep["version"], "fixes": set()}
+            for fv in vuln["fix_versions"]:
+                pkgs[name]["fixes"].add(fv)
+
+    if not pkgs:
+        print("No vulnerabilities found.")
+        return
+
+    for name in sorted(pkgs):
+        fixes = ", ".join(sorted(pkgs[name]["fixes"])) or "(no fix)"
+        print(f"{name:25} {pkgs[name]['version']:10} -> {fixes}")
+
+
+if __name__ == "__main__":
+    pip_audit_summary()
