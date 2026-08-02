@@ -46,8 +46,12 @@ def pip_audit_with_urls() -> None:
     dict_result = json.loads(json_result.stdout)
 
     rows = []
+    all_dependencies = set()
+    vulnerable_dependencies = set()
     for dependency in dict_result["dependencies"]:
+        all_dependencies.add(dependency["name"])
         for vulnerability in dependency["vulns"]:
+            vulnerable_dependencies.add(dependency["name"])
             aliases = [
                 get_advisory_markdown_link(alias) for alias in vulnerability["aliases"]
             ]
@@ -80,5 +84,8 @@ def pip_audit_with_urls() -> None:
         rows,
         headers=["Name", "ID", "Aliases", "Version", "Fix Versions", "Description"],
         tablefmt="pipe",  # markdown-compatible table format
+    )
+    print(
+        f"Found {len(rows)} vulnerabilities in {len(vulnerable_dependencies)}/{len(all_dependencies)} dependencies."
     )
     display(Markdown(table_md))  # type: ignore
