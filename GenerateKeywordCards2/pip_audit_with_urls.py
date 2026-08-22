@@ -1,6 +1,7 @@
 import html
 import json
 import subprocess
+from typing import Any
 
 from IPython.display import Markdown, display
 from tabulate import tabulate  # type: ignore
@@ -106,7 +107,7 @@ def pip_audit_summary() -> None:
         )
     dict_result = json.loads(json_result.stdout)
 
-    pkgs: dict[str, dict] = {}
+    pkgs: dict[str, dict[Any, Any]] = {}
     for dep in dict_result["dependencies"]:
         for vuln in dep["vulns"]:
             name = dep["name"]
