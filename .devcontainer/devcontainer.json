@@ -14,6 +14,7 @@
     },
     "mounts": [
         "source=${localEnv:USERPROFILE}\\OneDrive\\Development\\Crd\\MiscUse\\notes-cache.bin,target=/run/local-cache/notes-cache.bin,type=bind,readonly",
+        "source=${localEnv:USERPROFILE}\\OneDrive\\Development\\SoCloverAI\\SWOW-EN18.zip,target=/run/local-cache/SWOW-EN18.zip,type=bind,readonly",
         "source=claude-config,target=/root/.claude,type=volume"
     ],
     "workspaceFolder": "/workspaces/SoCloverAI",
