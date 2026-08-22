@@ -167,3 +167,5 @@ words_by_frequency_embeddings.npz
 
 # Local-only notes file
 /GenerateKeywordCards2/notes.py
+# Local-only downloaded SWOW dataset
+GenerateKeywordCards2/cache/SWOW-EN.complete.20180827.csv
