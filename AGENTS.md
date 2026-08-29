@@ -1,5 +1,23 @@
 # Agent Notes
 
+## Maintaining This Documentation
+
+* **Split by audience**: general development practices relevant to both humans and AI agents
+  belong in `README.md` (split into linked `.md` files if it would clutter README.md).
+  Guidance specific to AI agents — recurring task workflows, tool quirks, lessons from past
+  corrections — belongs here in AGENTS.md.
+* **Learn from corrections proactively**: after finishing a task, consider whether similar
+  tasks are likely to recur. If a human corrected your approach, or your approach wasn't what
+  they expected, add guidance here (or to README.md) so the same correction doesn't need to
+  be repeated next time. Don't wait to be asked.
+* **Prune as you go**: when you notice guidance in these files that's obsolete, incorrect, or
+  poorly organized, fix it in the same pass rather than leaving it for later.
+* **No private memory**: don't rely on private, non-checked-in storage (e.g. `/root/.claude`)
+  to carry lessons or context forward between sessions on this repo. If something's worth
+  remembering for future work here, write it into a checked-in file (README.md, AGENTS.md, or
+  a file they link to) so it's visible to every future session and every contributor — not
+  just the one that learned it.
+
 ## Fixing Security Vulnerabilities
 
 ### Overview

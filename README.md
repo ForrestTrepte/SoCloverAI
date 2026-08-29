@@ -28,6 +28,16 @@ Alternatively, instead of using containers, it should also work to install and r
   * Select kernel (upper right) > Select another kernel > Python environments > /opt/venvs/SoCloverAI
   * Sometimes the Python kernel seems to hang in vscode, particularly when restarting the kernel. Not sure if the is a vscode, jupyter, or python bug. When this happens, you can recover vis Ctrl+Shift+P > Developer: Reload Window.
 
+# Documentation
+
+This repo's docs are split by audience:
+* **README.md** (this file) — setup, workflows, and development practices useful to both
+  human contributors and AI coding agents. If a topic would clutter this file, split it into
+  its own `.md` file and link it from here.
+* **AGENTS.md** — guidance specific to AI coding agents (e.g. Claude Code): how to approach
+  recurring tasks in this repo, lessons learned from past corrections, and conventions that
+  don't apply to human contributors.
+
 # GenerateKeywordCards
 
 Workflow for generating, rating, and selecting a set of expansion keywords for So Clover!
