@@ -19,6 +19,18 @@ python3 GenerateKeywordCards2/pip_audit_with_urls.py
 This prints one line per vulnerable package: `name  current_version -> fix_version(s)`.
 The same file's `pip_audit_with_urls()` function renders a full table for the notebook.
 
+### Always raise the floor to the fix version
+
+When a scan flags a vulnerable version, bump the `pyproject.toml` floor to the fix version
+itself (e.g. `"nltk>=3.10.2"`), even if the existing constraint is already loose enough to
+technically permit it (e.g. `"nltk>=3.10.0"`). Don't stop at re-locking to get the vulnerable
+version out of `uv.lock` — a lockfile-only fix leaves no record in the source of truth that
+the old version is specifically disallowed, so a lockfile regeneration (or another tool
+reading `pyproject.toml` directly) can silently land back on it. The constraint documents
+*why* the floor is where it is; the lockfile just pins what's currently resolved. Edit the
+constraint in `pyproject.toml`, then run `uv sync` to regenerate `uv.lock` from it — don't
+hand-edit the lockfile as a substitute.
+
 ### Identifying direct vs. transitive dependencies
 
 - **Direct deps** are listed in the `[project] dependencies` section of `pyproject.toml`.
