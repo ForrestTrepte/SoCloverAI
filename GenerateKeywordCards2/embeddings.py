@@ -26,8 +26,6 @@ except ImportError:
 if TYPE_CHECKING:
     import networkx as nx  # type: ignore[import-untyped]
 
-DEFAULT_EMBEDDING_MODEL = "text-embedding-3-small"
-
 maximum_concurrent_embedding_requests = 25
 _embedding_semaphore = asyncio.Semaphore(maximum_concurrent_embedding_requests)
 
@@ -88,7 +86,7 @@ async def _embed_one_async(model: str, word: str) -> tuple[list[float], Embeddin
 
 
 async def embed_words_async(
-    words: list[str], model: str = DEFAULT_EMBEDDING_MODEL
+    model_name: str, words: list[str]
 ) -> tuple[np.ndarray, EmbeddingUsage]:
     """
     Compute L2-normalized embeddings for a list of (distinct) words via litellm.
@@ -100,7 +98,9 @@ async def embed_words_async(
     """
     assert len(words) == len(set(words)), "words must be distinct"
 
-    results = await asyncio.gather(*(_embed_one_async(model, word) for word in words))
+    results = await asyncio.gather(
+        *(_embed_one_async(model_name, word) for word in words)
+    )
     raw_embeddings = np.array([embedding for embedding, _ in results], dtype=np.float64)
     total_usage: EmbeddingUsage = sum(
         (usage for _, usage in results), EmbeddingUsage.zero()
@@ -125,10 +125,10 @@ class WordEmbeddings:
 
     @classmethod
     async def from_words_async(
-        cls, words: list[str], model: str = DEFAULT_EMBEDDING_MODEL
+        cls, model_name: str, words: list[str]
     ) -> tuple["WordEmbeddings", EmbeddingUsage]:
         deduped_words = list(dict.fromkeys(words))
-        embeddings, usage = await embed_words_async(deduped_words, model=model)
+        embeddings, usage = await embed_words_async(model_name, deduped_words)
         return cls(deduped_words, embeddings), usage
 
     def __len__(self) -> int:
@@ -155,6 +155,9 @@ class WordEmbeddings:
     def nearest_to_embedding(
         self, embedding: np.ndarray, count: int, exclude_index: int | None = None
     ) -> list[tuple[str, float]]:
+        # CONSIDER: If this is a bottleneck, consider optimization to the current O(n log n) sort of the full list.
+        #   np.argpartition could be used to find the top-k indices in O(n) time, then sort just those k indices.
+        #   Or more sophisticated spatial data structures could be used for faster nearest-neighbor search.
         similarities = self.embeddings @ embedding
         if exclude_index is not None:
             similarities = similarities.copy()
