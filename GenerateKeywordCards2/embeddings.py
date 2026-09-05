@@ -36,24 +36,36 @@ _embedding_semaphore = asyncio.Semaphore(maximum_concurrent_embedding_requests)
 class EmbeddingUsage:
     cache_hits: int
     cache_misses: int
-    cost: float
+    cached_cost: float
+    uncached_cost: float
     prompt_tokens: int
+
+    @property
+    def total_cost(self) -> float:
+        return self.cached_cost + self.uncached_cost
 
     @classmethod
     def zero(cls) -> "EmbeddingUsage":
-        return cls(cache_hits=0, cache_misses=0, cost=0.0, prompt_tokens=0)
+        return cls(
+            cache_hits=0,
+            cache_misses=0,
+            cached_cost=0.0,
+            uncached_cost=0.0,
+            prompt_tokens=0,
+        )
 
     def __add__(self, other: "EmbeddingUsage") -> "EmbeddingUsage":
         return EmbeddingUsage(
             cache_hits=self.cache_hits + other.cache_hits,
             cache_misses=self.cache_misses + other.cache_misses,
-            cost=self.cost + other.cost,
+            cached_cost=self.cached_cost + other.cached_cost,
+            uncached_cost=self.uncached_cost + other.uncached_cost,
             prompt_tokens=self.prompt_tokens + other.prompt_tokens,
         )
 
     def __str__(self) -> str:
         total = self.cache_hits + self.cache_misses
-        return f"{self.cache_hits}/{total} cache hits, ${self.cost:.4f} cost, {self.prompt_tokens:,} prompt tokens"
+        return f"{self.cache_hits}/{total} cache hits, ${self.uncached_cost:.7f} uncached cost, ${self.total_cost:.7f} total cost, {self.prompt_tokens:,} prompt tokens"
 
 
 async def _embed_one_async(model: str, word: str) -> tuple[list[float], EmbeddingUsage]:
@@ -67,7 +79,8 @@ async def _embed_one_async(model: str, word: str) -> tuple[list[float], Embeddin
     usage = EmbeddingUsage(
         cache_hits=1 if cache_hit else 0,
         cache_misses=0 if cache_hit else 1,
-        cost=cost,
+        cached_cost=cost if cache_hit else 0.0,
+        uncached_cost=0.0 if cache_hit else cost,
         prompt_tokens=response.usage.prompt_tokens if response.usage else 0,
     )
     embedding = response.data[0]["embedding"]
