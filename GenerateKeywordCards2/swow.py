@@ -72,6 +72,19 @@ class WordAssociations:
     # Count of the number of times words were a cue that produced this word as a response.
     backward: dict[str, int]
 
+    def get_associations(self, forward: bool, backward: bool) -> dict[str, int]:
+        if forward and backward:
+            combined = self.forward.copy()
+            for key, value in self.backward.items():
+                combined[key] = combined.get(key, 0) + value
+            return combined
+        elif forward:
+            return self.forward
+        elif backward:
+            return self.backward
+        else:
+            return {}
+
 
 class SWOWAssociations:
     def __init__(self) -> None:
@@ -83,12 +96,19 @@ class SWOWAssociations:
             cue = row["cue"]
 
             responses = []
-            non_response = "No more responses"
-            if row["R1"] != non_response:
+            non_responses = [
+                "no more responses",
+                "unknown word",
+                "onbekend wooed",
+                "onbekend wood",
+                "onbekend word",
+                "unbekanntes wort",
+            ]
+            if row["R1"].casefold() not in non_responses:
                 responses.append(row["R1"])
-            if row["R2"] != non_response:
+            if row["R2"].casefold() not in non_responses:
                 responses.append(row["R2"])
-            if row["R3"] != non_response:
+            if row["R3"].casefold() not in non_responses:
                 responses.append(row["R3"])
 
             for response in responses:
