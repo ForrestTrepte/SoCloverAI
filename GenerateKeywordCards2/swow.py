@@ -87,17 +87,17 @@ class WordAssociations:
 
 
 class SWOWAssociations:
-    def __init__(self, include_two_word_associations: bool) -> None:
+    def __init__(self, include_multiword_associations: bool) -> None:
         associations: defaultdict[str, WordAssociations] = defaultdict(
             lambda: WordAssociations(defaultdict(int), defaultdict(int))
         )
-        self.include_two_word_associations = include_two_word_associations
+        self.include_multiword_associations = include_multiword_associations
 
         rows = get_swow_rows()
         for row in rows:
             cue = row["cue"]
 
-            if not self.include_two_word_associations and " " in cue:
+            if not self.include_multiword_associations and " " in cue:
                 continue
 
             responses = []
@@ -117,7 +117,7 @@ class SWOWAssociations:
                 responses.append(row["R3"])
 
             for response in responses:
-                if not self.include_two_word_associations and " " in response:
+                if not self.include_multiword_associations and " " in response:
                     continue
 
                 associations[cue].forward[response] += 1
