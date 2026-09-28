@@ -121,12 +121,18 @@ class SWOWAssociations:
                 responses.append(row["R3"])
 
             for response in responses:
+                if response == cue:
+                    continue
+
                 if (
                     multiword_to_single_word_association_weight > 0.0
                     and " " in response
                 ):
                     # if multiple words are in the response, distribute the association weight to each word individually
                     for subword in response.split(" "):
+                        if subword == cue:
+                            continue
+
                         associations[cue].forward[subword] += (
                             multiword_to_single_word_association_weight
                         )
