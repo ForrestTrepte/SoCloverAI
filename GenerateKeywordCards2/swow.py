@@ -68,11 +68,11 @@ def get_swow_rows() -> list[dict[str, str]]:
 @dataclass(frozen=True)
 class WordAssociations:
     # Count of the number of times words occurred as a response to this word as a cue.
-    forward: dict[str, int]
+    forward: dict[str, float]
     # Count of the number of times words were a cue that produced this word as a response.
-    backward: dict[str, int]
+    backward: dict[str, float]
 
-    def get_associations(self, forward: bool, backward: bool) -> dict[str, int]:
+    def get_associations(self, forward: bool, backward: bool) -> dict[str, float]:
         if forward and backward:
             combined = self.forward.copy()
             for key, value in self.backward.items():
@@ -87,9 +87,13 @@ class WordAssociations:
 
 
 class SWOWAssociations:
-    def __init__(self, include_multiword_associations: bool) -> None:
+    def __init__(
+        self,
+        include_multiword_associations: bool,
+        multiword_to_single_word_association_weight: float,
+    ) -> None:
         associations: defaultdict[str, WordAssociations] = defaultdict(
-            lambda: WordAssociations(defaultdict(int), defaultdict(int))
+            lambda: WordAssociations(defaultdict(float), defaultdict(float))
         )
         self.include_multiword_associations = include_multiword_associations
 
@@ -117,6 +121,19 @@ class SWOWAssociations:
                 responses.append(row["R3"])
 
             for response in responses:
+                if (
+                    multiword_to_single_word_association_weight > 0.0
+                    and " " in response
+                ):
+                    # if multiple words are in the response, distribute the association weight to each word individually
+                    for subword in response.split(" "):
+                        associations[cue].forward[subword] += (
+                            multiword_to_single_word_association_weight
+                        )
+                        associations[subword].backward[cue] += (
+                            multiword_to_single_word_association_weight
+                        )
+
                 if not self.include_multiword_associations and " " in response:
                     continue
 
