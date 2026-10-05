@@ -164,3 +164,27 @@ class SWOWAssociations:
                 )
             )
             self.associations[word] = WordAssociations(sorted_forward, sorted_backward)
+
+    def filter_to_forward_associations_by_percentage_of_all_associations(
+        self, threshold_percentage: float
+    ) -> None:
+        # remove words with no forward associations
+        words_to_remove = [
+            word
+            for word, word_associations in self.associations.items()
+            if not word_associations.forward
+        ]
+        for word in words_to_remove:
+            del self.associations[word]
+
+        for word, word_associations in self.associations.items():
+            all_associations = word_associations.get_associations(True, True)
+            total = sum(all_associations.values())
+            association_words_to_remove = {
+                word
+                for word, count in all_associations.items()
+                if count / total * 100 < threshold_percentage
+            }
+            for word_to_remove in association_words_to_remove:
+                word_associations.forward.pop(word_to_remove, None)
+                word_associations.backward.pop(word_to_remove, None)
