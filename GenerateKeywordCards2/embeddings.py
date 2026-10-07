@@ -12,11 +12,16 @@ Two intended uses (see Associations.ipynb):
 import asyncio
 import time
 from dataclasses import dataclass
-from typing import TYPE_CHECKING, Literal, cast
+from pathlib import Path
+from typing import TYPE_CHECKING, Any, Literal, cast
 
 import litellm
 import numpy as np
 from litellm import aembedding
+from litellm.caching.caching import Cache
+from litellm.types.caching import LiteLLMCacheType
+
+from GenerateKeywordCards2.get_root_directory import get_root_directory
 
 from .swow import SWOWAssociations
 
@@ -32,7 +37,7 @@ maximum_concurrent_embedding_requests = 25
 _embedding_semaphore = asyncio.Semaphore(maximum_concurrent_embedding_requests)
 
 # Provider quotas on API requests per minute, keyed by model name prefix. Only requests that
-# miss litellm's cache count against these. Set below the real quota to leave headroom.
+# miss the embeddings cache count against these. Set below the real quota to leave headroom.
 # (Gemini's paid tier allows 3000 requests/minute per model.)
 maximum_uncached_requests_per_minute_by_model_prefix = {"gemini/": 2500}
 
@@ -70,19 +75,39 @@ def _get_rate_limiter(model: str) -> _RateLimiter | None:
     return None
 
 
-def is_embedding_cached(model: str, word: str) -> bool:
-    """
-    Predict whether litellm's response cache can serve `aembedding(model, [word])`.
+# Embeddings are cached separately from litellm's global cache (`litellm.cache`) because they are
+# large (hundreds of MB) and can be regenerated, so this directory is git-ignored while the global
+# cache stays checked in. litellm cannot route an individual call to a different cache object, so
+# embedding calls bypass the global cache and read/write this one directly.
+embeddings_cache_dir = get_root_directory() / ".litellm_embeddings_cache"
+_embeddings_cache: Cache | None = None
 
-    Relies on litellm's per-item cache key format, which is not a public contract. A wrong
-    prediction only affects rate limiting (the real call still goes through litellm), so
-    it can cost time but not correctness.
-    """
-    cache = litellm.cache
-    if cache is None:
-        return False
-    key = cache.get_cache_key(model=model, input=word)
-    return cache.cache.get_cache(key) is not None  # type: ignore[no-untyped-call]
+
+def get_embeddings_cache() -> Cache:
+    global _embeddings_cache
+    if _embeddings_cache is None:
+        _embeddings_cache = Cache(
+            type=LiteLLMCacheType.DISK, disk_cache_dir=str(embeddings_cache_dir)
+        )
+    return _embeddings_cache
+
+
+def set_embeddings_cache(cache: Cache | None) -> None:
+    """Replace the embeddings cache (None restores the default on-disk cache)."""
+    global _embeddings_cache
+    _embeddings_cache = cache
+
+
+def _embedding_cache_key(model: str, word: str) -> str:
+    return get_embeddings_cache().get_cache_key(model=model, input=[word])
+
+
+def _get_cached_embedding(model: str, word: str) -> dict[str, Any] | None:
+    return get_embeddings_cache().cache.get_cache(_embedding_cache_key(model, word))  # type: ignore[no-untyped-call, no-any-return]
+
+
+def is_embedding_cached(model: str, word: str) -> bool:
+    return _get_cached_embedding(model, word) is not None
 
 
 @dataclass
@@ -124,22 +149,40 @@ class EmbeddingUsage:
 async def _embed_one_async(model: str, word: str) -> tuple[list[float], EmbeddingUsage]:
     from litellm.cost_calculator import completion_cost
 
+    cached = _get_cached_embedding(model, word)
+    if cached is not None:
+        usage = EmbeddingUsage(
+            cache_hits=1,
+            cache_misses=0,
+            cached_cost=cached["cost"],
+            uncached_cost=0.0,
+            prompt_tokens=cached["prompt_tokens"],
+        )
+        return cached["embedding"], usage
+
     limiter = _get_rate_limiter(model)
-    if limiter is not None and not is_embedding_cached(model, word):
+    if limiter is not None:
         await limiter.acquire()
     async with _embedding_semaphore:
-        response = await aembedding(model=model, input=[word])
+        # Bypass litellm's global cache; this module manages the embeddings cache itself.
+        response = await aembedding(
+            model=model, input=[word], cache={"no-cache": True, "no-store": True}
+        )
 
-    cache_hit = response._hidden_params.get("cache_hit", False)
     cost = completion_cost(completion_response=response, call_type="aembedding")
-    usage = EmbeddingUsage(
-        cache_hits=1 if cache_hit else 0,
-        cache_misses=0 if cache_hit else 1,
-        cached_cost=cost if cache_hit else 0.0,
-        uncached_cost=0.0 if cache_hit else cost,
-        prompt_tokens=response.usage.prompt_tokens if response.usage else 0,
-    )
+    prompt_tokens = response.usage.prompt_tokens if response.usage else 0
     embedding = response.data[0]["embedding"]
+    get_embeddings_cache().cache.set_cache(  # type: ignore[no-untyped-call]
+        _embedding_cache_key(model, word),
+        {"embedding": embedding, "cost": cost, "prompt_tokens": prompt_tokens},
+    )
+    usage = EmbeddingUsage(
+        cache_hits=0,
+        cache_misses=1,
+        cached_cost=0.0,
+        uncached_cost=cost,
+        prompt_tokens=prompt_tokens,
+    )
     return embedding, usage
 
 
@@ -149,10 +192,10 @@ async def embed_words_async(
     """
     Compute L2-normalized embeddings for a list of (distinct) words via litellm.
 
-    Requests are made one word at a time so that litellm's response cache
-    (e.g. `litellm.cache = litellm.Cache(type="disk")`) can dedupe at the word
-    level as the vocabulary grows across notebook runs, rather than caching
-    whole batches keyed on the exact set of words requested together.
+    Requests are made one word at a time so that the embeddings cache (see
+    `get_embeddings_cache`) can dedupe at the word level as the vocabulary grows
+    across notebook runs, rather than caching whole batches keyed on the exact
+    set of words requested together.
 
     Words that are not already cached are rate limited (see
     `maximum_uncached_requests_per_minute_by_model_prefix`) to stay under provider quotas;
@@ -163,6 +206,8 @@ async def embed_words_async(
     #   for a batch would return True as cached even if only some of the items were actually cached. If that's the
     #   case, batching would need to implement a manual cache check. Then it could keep stats and only submit the
     #   uncached items.
+    # Update: Now that we have implemented _embed_one_async with our own caching, we could potentially switch to
+    #   batching here by checking the cache, updating the usage, and then only passing on the uncached words.
     assert len(words) == len(set(words)), "words must be distinct"
 
     results = await asyncio.gather(
