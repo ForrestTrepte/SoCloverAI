@@ -10,9 +10,11 @@ Two intended uses (see Associations.ipynb):
 """
 
 import asyncio
+import time
 from dataclasses import dataclass
 from typing import TYPE_CHECKING, Literal, cast
 
+import litellm
 import numpy as np
 from litellm import aembedding
 
@@ -28,6 +30,59 @@ if TYPE_CHECKING:
 
 maximum_concurrent_embedding_requests = 25
 _embedding_semaphore = asyncio.Semaphore(maximum_concurrent_embedding_requests)
+
+# Provider quotas on API requests per minute, keyed by model name prefix. Only requests that
+# miss litellm's cache count against these. Set below the real quota to leave headroom.
+# (Gemini's paid tier allows 3000 requests/minute per model.)
+maximum_uncached_requests_per_minute_by_model_prefix = {"gemini/": 2500}
+
+
+class _RateLimiter:
+    """Spaces out acquisitions evenly so that at most `per_minute` occur per minute."""
+
+    def __init__(self, per_minute: int) -> None:
+        self._interval_seconds = 60.0 / per_minute
+        self._next_slot = 0.0
+
+    async def acquire(self) -> None:
+        now = time.monotonic()
+        slot = max(now, self._next_slot)
+        self._next_slot = slot + self._interval_seconds
+        if slot > now:
+            await asyncio.sleep(slot - now)
+
+
+# Shared across calls because provider quotas are per minute, not per call.
+_rate_limiters_by_model: dict[str, _RateLimiter] = {}
+
+
+def _get_rate_limiter(model: str) -> _RateLimiter | None:
+    if model in _rate_limiters_by_model:
+        return _rate_limiters_by_model[model]
+    for (
+        prefix,
+        per_minute,
+    ) in maximum_uncached_requests_per_minute_by_model_prefix.items():
+        if model.startswith(prefix):
+            limiter = _RateLimiter(per_minute)
+            _rate_limiters_by_model[model] = limiter
+            return limiter
+    return None
+
+
+def is_embedding_cached(model: str, word: str) -> bool:
+    """
+    Predict whether litellm's response cache can serve `aembedding(model, [word])`.
+
+    Relies on litellm's per-item cache key format, which is not a public contract. A wrong
+    prediction only affects rate limiting (the real call still goes through litellm), so
+    it can cost time but not correctness.
+    """
+    cache = litellm.cache
+    if cache is None:
+        return False
+    key = cache.get_cache_key(model=model, input=word)
+    return cache.cache.get_cache(key) is not None  # type: ignore[no-untyped-call]
 
 
 @dataclass
@@ -69,6 +124,9 @@ class EmbeddingUsage:
 async def _embed_one_async(model: str, word: str) -> tuple[list[float], EmbeddingUsage]:
     from litellm.cost_calculator import completion_cost
 
+    limiter = _get_rate_limiter(model)
+    if limiter is not None and not is_embedding_cached(model, word):
+        await limiter.acquire()
     async with _embedding_semaphore:
         response = await aembedding(model=model, input=[word])
 
@@ -95,7 +153,16 @@ async def embed_words_async(
     (e.g. `litellm.cache = litellm.Cache(type="disk")`) can dedupe at the word
     level as the vocabulary grows across notebook runs, rather than caching
     whole batches keyed on the exact set of words requested together.
+
+    Words that are not already cached are rate limited (see
+    `maximum_uncached_requests_per_minute_by_model_prefix`) to stay under provider quotas;
+    cached words are not throttled.
     """
+    # CONSIDER: Switching to batches would be more efficient. Litellm seems to support batching while caching
+    #   individual items. However, the usage it returns appears not so support that granularity so that a request
+    #   for a batch would return True as cached even if only some of the items were actually cached. If that's the
+    #   case, batching would need to implement a manual cache check. Then it could keep stats and only submit the
+    #   uncached items.
     assert len(words) == len(set(words)), "words must be distinct"
 
     results = await asyncio.gather(
