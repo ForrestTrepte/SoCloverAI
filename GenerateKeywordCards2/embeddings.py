@@ -255,11 +255,18 @@ class SwowEmbeddingComparison:
     word: str
     embedding_neighbors: list[str]
     swow_responses: list[str]
-    overlap: list[str]
 
     @property
-    def overlap_count(self) -> int:
-        return len(self.overlap)
+    def overlap(self) -> list[str]:
+        return [w for w in self.embedding_neighbors if w in self.swow_responses]
+
+    @property
+    def embed_only(self) -> list[str]:
+        return [w for w in self.embedding_neighbors if w not in self.swow_responses]
+
+    @property
+    def swow_only(self) -> list[str]:
+        return [w for w in self.swow_responses if w not in self.embedding_neighbors]
 
     @property
     def jaccard(self) -> float:
@@ -273,8 +280,8 @@ def compare_with_swow(
     embeddings: WordEmbeddings,
     swow: SWOWAssociations,
     word: str,
-    count: int = 10,
-    direction: Literal["forward", "backward"] = "forward",
+    count: int,
+    direction: Literal["forward", "backward"],
 ) -> SwowEmbeddingComparison:
     """
     Compares a word's top embedding neighbors against its SWOW human association
@@ -283,16 +290,16 @@ def compare_with_swow(
     """
     embedding_neighbors = [w for w, _ in embeddings.nearest(word, count)]
 
-    word_associations = swow.associations.get(word)
-    responses = getattr(word_associations, direction, {}) if word_associations else {}
+    word_associations = swow.associations[word]
+    responses = word_associations.get_associations(
+        direction == "forward", direction == "backward"
+    )
     swow_responses = list(responses.keys())[:count]
 
-    overlap = [w for w in embedding_neighbors if w in swow_responses]
     return SwowEmbeddingComparison(
         word=word,
         embedding_neighbors=embedding_neighbors,
         swow_responses=swow_responses,
-        overlap=overlap,
     )
 
 
@@ -300,10 +307,9 @@ def summarize_swow_comparisons(
     comparisons: list[SwowEmbeddingComparison],
 ) -> dict[str, float]:
     """Aggregate overlap/jaccard statistics across many compare_with_swow() results."""
-    if not comparisons:
-        return {"mean_overlap_count": 0.0, "mean_jaccard": 0.0}
-    return {
-        "mean_overlap_count": sum(c.overlap_count for c in comparisons)
+    result = {
+        "mean_overlap_count": sum(len(c.overlap) for c in comparisons)
         / len(comparisons),
         "mean_jaccard": sum(c.jaccard for c in comparisons) / len(comparisons),
     }
+    return result
