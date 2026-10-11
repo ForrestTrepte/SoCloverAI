@@ -97,8 +97,11 @@ with a comment explaining:
 - Why the risk is acceptable (or not) for this project
 - Any conditions that would change the risk assessment
 
-Current known unfixable: `diskcache` (GHSA-w8v5-vhqr-4h9v, pickle deserialization).
-See the comment in `RatingExperiments.ipynb` for the full risk assessment.
+Current known unfixable:
+- `diskcache` (GHSA-w8v5-vhqr-4h9v, pickle deserialization)
+- `nltk` (GHSA-8mgp-746c-j5xp, model-artifact path traversal; transitive via `word-forms`)
+
+See the comments in `RatingExperiments.ipynb` for the full risk assessments.
 
 ### Permission setup
 
