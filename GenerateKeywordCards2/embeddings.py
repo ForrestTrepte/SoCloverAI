@@ -263,6 +263,9 @@ class WordEmbeddings:
     def similarity(self, word_a: str, word_b: str) -> float:
         return float(self.get_embedding(word_a) @ self.get_embedding(word_b))
 
+    def distance(self, word_a: str, word_b: str) -> float:
+        return 1 - self.similarity(word_a, word_b)
+
     def nearest(
         self, word: str, count: int = 10, exclude_self: bool = True
     ) -> list[tuple[str, float]]:
