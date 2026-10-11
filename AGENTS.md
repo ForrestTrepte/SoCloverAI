@@ -76,6 +76,15 @@ in this project:
 
 After each cluster: run the audit script and confirm only the expected packages were changed.
 
+**Verifying litellm upgrades**: import checks and `pytest` don't exercise litellm's cache
+path, so they can pass while every notebook LLM call fails. After changing litellm, run a
+real cached request from `GenerateKeywordCards2/` (set `litellm.cache = litellm.Cache(type="disk")`,
+then `await check_familiarity_async(model)` for each model in RatingExperiments' familiarity
+cell) — these hit the checked-in `.litellm_cache`, so they cost nothing. Example failure:
+litellm 1.105.0's cache-hit path imports proxy code that needs `fastapi` (not installed), so
+litellm is capped at `<1.97` in `pyproject.toml`. Prefer upgrading within the fixed patch line
+over jumping to the latest release.
+
 ### Reverting a cluster upgrade
 
 If `uv sync` was run with the wrong constraints, reverting `pyproject.toml` alone is not
