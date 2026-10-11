@@ -170,26 +170,78 @@ class SWOWAssociations:
             )
             self.associations[word] = WordAssociations(sorted_forward, sorted_backward)
 
-    def filter_to_forward_associations_by_percentage_of_all_associations(
-        self, threshold_percentage: float
+        self.check_forward_backward_symmetry()
+
+    def check_forward_backward_symmetry(self) -> None:
+        for word_a, associations in self.associations.items():
+            for word_b in associations.forward:
+                assert word_a in self.associations[word_b].backward
+            for word_b in associations.backward:
+                assert word_a in self.associations[word_b].forward
+
+    def filter_out_words_without_forward_associations(
+        self, maintain_forward_backward_symmetry: bool
     ) -> None:
-        # remove words with no forward associations
-        words_to_remove = [
+        self.check_forward_backward_symmetry()
+
+        words_to_remove = {
             word
             for word, word_associations in self.associations.items()
             if not word_associations.forward
-        ]
+        }
         for word in words_to_remove:
             del self.associations[word]
 
+        if maintain_forward_backward_symmetry:
+            for word, word_associations in self.associations.items():
+                forward_removes = {
+                    word
+                    for word in word_associations.forward
+                    if word in words_to_remove
+                }
+                for word in forward_removes:
+                    del word_associations.forward[word]
+
+            self.check_forward_backward_symmetry()
+
+    def filter_associations_by_percentage_of_all_associations(
+        self,
+        threshold_percentage: float,
+        maintain_forward_backward_symmetry: bool,
+    ) -> None:
+        pairs_to_remove = set()
         for word, word_associations in self.associations.items():
             all_associations = word_associations.get_associations(True, True)
             total = sum(all_associations.values())
-            association_words_to_remove = {
-                word
-                for word, count in all_associations.items()
-                if count / total * 100 < threshold_percentage
+            for association_word, count in all_associations.items():
+                if count / total * 100 < threshold_percentage:
+                    pairs_to_remove.add((word, association_word))
+
+        if maintain_forward_backward_symmetry:
+            # Word a's association to b may have been below the threshold while b's association to a was above the threshold.
+            # In that case, we'll keep a's association to b to maintain symmetry.
+            unsymmetric_pairs = set()
+            for word, word_association in pairs_to_remove:
+                if (word_association, word) not in pairs_to_remove:
+                    unsymmetric_pairs.add((word, word_association))
+            pairs_to_remove -= unsymmetric_pairs
+
+        for word, associations in self.associations.items():
+            forward_removes = {
+                forward_word
+                for forward_word, _ in associations.forward.items()
+                if (word, forward_word) in pairs_to_remove
             }
-            for word_to_remove in association_words_to_remove:
-                word_associations.forward.pop(word_to_remove, None)
-                word_associations.backward.pop(word_to_remove, None)
+            for word_to_remove in forward_removes:
+                associations.forward.pop(word_to_remove, None)
+
+            backward_removes = {
+                backward_word
+                for backward_word, _ in associations.backward.items()
+                if (word, backward_word) in pairs_to_remove
+            }
+            for word_to_remove in backward_removes:
+                associations.backward.pop(word_to_remove, None)
+
+        if maintain_forward_backward_symmetry:
+            self.check_forward_backward_symmetry()
