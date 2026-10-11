@@ -80,6 +80,9 @@ def _get_rate_limiter(model: str) -> _RateLimiter | None:
 # cache stays checked in. litellm cannot route an individual call to a different cache object, so
 # embedding calls bypass the global cache and read/write this one directly.
 embeddings_cache_dir = get_root_directory() / ".litellm_embeddings_cache"
+# diskcache defaults to a 1 GiB size limit and silently evicts the oldest entries beyond it, which
+# holds only ~47k embeddings (~22 KB each).
+embeddings_cache_size_limit_bytes = 20_000_000_000
 _embeddings_cache: Cache | None = None
 
 
@@ -88,6 +91,10 @@ def get_embeddings_cache() -> Cache:
     if _embeddings_cache is None:
         _embeddings_cache = Cache(
             type=LiteLLMCacheType.DISK, disk_cache_dir=str(embeddings_cache_dir)
+        )
+        # litellm doesn't expose diskcache's size_limit, so set it on the underlying diskcache.Cache.
+        _embeddings_cache.cache.disk_cache.reset(  # type: ignore[attr-defined]
+            "size_limit", embeddings_cache_size_limit_bytes
         )
     return _embeddings_cache
 
@@ -176,6 +183,7 @@ async def _embed_one_async(model: str, word: str) -> tuple[list[float], Embeddin
         _embedding_cache_key(model, word),
         {"embedding": embedding, "cost": cost, "prompt_tokens": prompt_tokens},
     )
+    assert is_embedding_cached(model, word)
     usage = EmbeddingUsage(
         cache_hits=0,
         cache_misses=1,
