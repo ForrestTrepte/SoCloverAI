@@ -100,6 +100,7 @@ class SWOWAssociations:
         rows = get_swow_rows()
         for row in rows:
             cue = row["cue"]
+            assert cue
 
             if not self.include_multiword_associations and " " in cue:
                 continue
@@ -121,6 +122,7 @@ class SWOWAssociations:
                 responses.append(row["R3"])
 
             for response in responses:
+                assert response
                 if response == cue:
                     continue
 
@@ -130,6 +132,9 @@ class SWOWAssociations:
                 ):
                     # if multiple words are in the response, distribute the association weight to each word individually
                     for subword in response.split(" "):
+                        if not subword.strip():
+                            continue
+
                         if subword == cue:
                             continue
 
