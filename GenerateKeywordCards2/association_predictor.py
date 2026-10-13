@@ -3,7 +3,7 @@ from dataclasses import dataclass
 from typing import Callable
 
 import numpy as np
-from sklearn.linear_model import LogisticRegression
+from sklearn.linear_model import LogisticRegression  # type: ignore[import-untyped]
 
 from GenerateKeywordCards2.embeddings import WordEmbeddings
 from GenerateKeywordCards2.swow import SWOWAssociations
@@ -20,7 +20,9 @@ def get_distance_threshold_association_predictor(
 
 @dataclass
 class PredictorTrainingDataRow:
+    word_a: str
     embedding_a: np.ndarray
+    word_b: str
     embedding_b: np.ndarray
     is_association: bool
 
@@ -34,8 +36,10 @@ class PredictorTrainingData:
             for word_b in word_a_associations:
                 association_rows.append(
                     PredictorTrainingDataRow(
-                        embedding_a=embeddings.get_embedding(word_a),
-                        embedding_b=embeddings.get_embedding(word_b),
+                        word_a,
+                        embeddings.get_embedding(word_a),
+                        word_b,
+                        embeddings.get_embedding(word_b),
                         is_association=True,
                     )
                 )
@@ -57,8 +61,10 @@ class PredictorTrainingData:
 
             nonassociation_rows.append(
                 PredictorTrainingDataRow(
-                    embedding_a=embeddings.get_embedding(word_a),
-                    embedding_b=embeddings.get_embedding(word_b),
+                    word_a,
+                    embeddings.get_embedding(word_a),
+                    word_b,
+                    embeddings.get_embedding(word_b),
                     is_association=False,
                 )
             )
@@ -80,7 +86,7 @@ class PredictorTrainingData:
         seeded_random.shuffle(self.held_out_rows)
 
     def get_regression_association_predictor(
-        self, probability_threshold: float = 0.5
+        self, probability_threshold: float, max_training_rows: int
     ) -> Callable[[str, str], bool]:
         """
         Fits a logistic regression on the element-wise product of the two words' embeddings.
@@ -88,18 +94,31 @@ class PredictorTrainingData:
         so equal weights reproduce the distance-threshold predictor; learned weights let the
         model emphasize the dimensions that matter most for human associations.
         """
+        training_rows = self.training_rows[:max_training_rows]
         features = np.stack(
-            [row.embedding_a * row.embedding_b for row in self.training_rows]
+            [row.embedding_a * row.embedding_b for row in training_rows]
         ).astype(np.float32)
-        labels = np.array([row.is_association for row in self.training_rows])
+        # Products of unit-norm vectors are ~1/dim in magnitude, which L2 regularization
+        # would flatten to zero weights (constant predictions); rescale to O(1).
+        feature_scale = float(features.shape[1])
+        features *= feature_scale
+        labels = np.array([row.is_association for row in training_rows])
         model = LogisticRegression(max_iter=1000)
         model.fit(features, labels)
 
+        # Evaluate the fitted model directly rather than via predict_proba, which has a lot
+        # of per-call overhead for single rows: probability >= p  <=>  logit >= log(p/(1-p)).
         embeddings = self.embeddings
+        weights = model.coef_[0]
+        intercept = model.intercept_[0]
+        logit_threshold = np.log(probability_threshold / (1 - probability_threshold))
 
         def predictor(word: str, associated_word: str) -> bool:
-            feature = embeddings.get_embedding(word) * embeddings.get_embedding(associated_word)
-            probability = model.predict_proba(feature.reshape(1, -1))[0, 1]
-            return bool(probability >= probability_threshold)
+            feature = embeddings.get_embedding(word) * embeddings.get_embedding(
+                associated_word
+            )
+            return bool(
+                feature * feature_scale @ weights + intercept >= logit_threshold
+            )
 
         return predictor
