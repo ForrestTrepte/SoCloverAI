@@ -1,3 +1,4 @@
+import gc
 import random
 from dataclasses import dataclass
 from typing import Callable
@@ -7,6 +8,36 @@ from sklearn.linear_model import LogisticRegression  # type: ignore[import-untyp
 
 from GenerateKeywordCards2.embeddings import WordEmbeddings
 from GenerateKeywordCards2.swow import SWOWAssociations
+
+
+def _read_int(path: str) -> int | None:
+    try:
+        with open(path) as f:
+            text = f.read().strip()
+        return None if text == "max" else int(text)
+    except (OSError, ValueError):
+        return None
+
+
+def _log_free_memory(label: str) -> None:
+    """Prints available memory, both host-wide and within the container's cgroup limit."""
+    available = None
+    try:
+        with open("/proc/meminfo") as f:
+            for line in f:
+                if line.startswith("MemAvailable:"):
+                    available = int(line.split()[1]) * 1024
+    except OSError:
+        pass
+    limit = _read_int("/sys/fs/cgroup/memory.max")
+    used = _read_int("/sys/fs/cgroup/memory.current")
+    gb = 1024**3
+    parts = []
+    if available is not None:
+        parts.append(f"host available {available / gb:.2f} GB")
+    if limit is not None and used is not None:
+        parts.append(f"cgroup free {(limit - used) / gb:.2f} GB of {limit / gb:.2f} GB")
+    print(f"[memory] {label}: " + ", ".join(parts))
 
 
 def get_distance_threshold_association_predictor(
@@ -94,17 +125,32 @@ class PredictorTrainingData:
         so equal weights reproduce the distance-threshold predictor; learned weights let the
         model emphasize the dimensions that matter most for human associations.
         """
+        max_training_rows = min(max_training_rows, len(self.training_rows))
         training_rows = self.training_rows[:max_training_rows]
-        features = np.stack(
-            [row.embedding_a * row.embedding_b for row in training_rows]
-        ).astype(np.float32)
+        _log_free_memory(f"before building features ({max_training_rows} rows)")
+        # Fill a preallocated float32 array row by row; np.stack on a list of products
+        # holds the list and the result at once (plus an astype copy), several times the
+        # final size.
+        features = np.empty(
+            (len(training_rows), len(training_rows[0].embedding_a)), dtype=np.float32
+        )
+        for i, row in enumerate(training_rows):
+            np.multiply(row.embedding_a, row.embedding_b, out=features[i])
+        _log_free_memory(
+            f"after building features ({features.nbytes / 1024**3:.2f} GB array)"
+        )
         # Products of unit-norm vectors are ~1/dim in magnitude, which L2 regularization
         # would flatten to zero weights (constant predictions); rescale to O(1).
         feature_scale = float(features.shape[1])
         features *= feature_scale
         labels = np.array([row.is_association for row in training_rows])
         model = LogisticRegression(max_iter=1000)
+        _log_free_memory("before fit")
         model.fit(features, labels)
+        _log_free_memory("after fit")
+        del features, training_rows
+        gc.collect()
+        _log_free_memory("after freeing memory")
 
         # Evaluate the fitted model directly rather than via predict_proba, which has a lot
         # of per-call overhead for single rows: probability >= p  <=>  logit >= log(p/(1-p)).
