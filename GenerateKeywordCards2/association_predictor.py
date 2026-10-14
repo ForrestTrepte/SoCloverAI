@@ -4,7 +4,7 @@ from dataclasses import dataclass
 from typing import Callable
 
 import numpy as np
-from sklearn.linear_model import LogisticRegression  # type: ignore[import-untyped]
+from scipy.optimize import minimize  # type: ignore[import-untyped]
 
 from GenerateKeywordCards2.embeddings import WordEmbeddings
 from GenerateKeywordCards2.swow import SWOWAssociations
@@ -117,7 +117,7 @@ class PredictorTrainingData:
         seeded_random.shuffle(self.held_out_rows)
 
     def get_regression_association_predictor(
-        self, probability_threshold: float, max_training_rows: int
+        self, probability_threshold: float, max_training_rows: int, max_iter: int = 1000
     ) -> Callable[[str, str], bool]:
         """
         Fits a logistic regression on the element-wise product of the two words' embeddings.
@@ -127,36 +127,59 @@ class PredictorTrainingData:
         """
         max_training_rows = min(max_training_rows, len(self.training_rows))
         training_rows = self.training_rows[:max_training_rows]
+        # Products of unit-norm vectors are ~1/dim in magnitude, which L2 regularization
+        # would flatten to zero weights (constant predictions); rescale to O(1).
+        dim = len(training_rows[0].embedding_a)
+        feature_scale = float(dim)
         _log_free_memory(f"before building features ({max_training_rows} rows)")
-        # Fill a preallocated float32 array row by row; np.stack on a list of products
-        # holds the list and the result at once (plus an astype copy), several times the
-        # final size.
-        features = np.empty(
-            (len(training_rows), len(training_rows[0].embedding_a)), dtype=np.float32
-        )
+        features = np.empty((len(training_rows), dim), dtype=np.float32)
         for i, row in enumerate(training_rows):
             np.multiply(row.embedding_a, row.embedding_b, out=features[i])
+        features *= feature_scale
+        labels = np.array([row.is_association for row in training_rows], dtype=np.float64)
+        del training_rows
         _log_free_memory(
             f"after building features ({features.nbytes / 1024**3:.2f} GB array)"
         )
-        # Products of unit-norm vectors are ~1/dim in magnitude, which L2 regularization
-        # would flatten to zero weights (constant predictions); rescale to O(1).
-        feature_scale = float(features.shape[1])
-        features *= feature_scale
-        labels = np.array([row.is_association for row in training_rows])
-        model = LogisticRegression(max_iter=1000)
+
+        # Same objective as LogisticRegression(C=1): sum of log-loss + 0.5*|w|^2, with an
+        # unpenalized intercept. sklearn's lbfgs would copy the whole matrix to float64
+        # (doubling memory), so evaluate loss and gradient over float64 chunks instead.
+        chunk_size = 8192
+
+        def objective(params: np.ndarray) -> tuple[float, np.ndarray]:
+            w, b = params[:-1], params[-1]
+            loss = 0.5 * float(w @ w)
+            grad = np.zeros_like(params)
+            grad[:-1] = w
+            for start in range(0, len(features), chunk_size):
+                x = features[start : start + chunk_size].astype(np.float64)
+                y = labels[start : start + chunk_size]
+                z = x @ w + b
+                loss += float(np.sum(np.logaddexp(0.0, z) - y * z))
+                residual = 1.0 / (1.0 + np.exp(-z)) - y
+                grad[:-1] += x.T @ residual
+                grad[-1] += residual.sum()
+            return loss, grad
+
         _log_free_memory("before fit")
-        model.fit(features, labels)
+        result = minimize(
+            objective,
+            np.zeros(dim + 1),
+            jac=True,
+            method="L-BFGS-B",
+            options={"maxiter": max_iter},
+        )
+        print(f"  L-BFGS: {result.nit} iterations, {result.message}")
         _log_free_memory("after fit")
-        del features, training_rows
+        del features
         gc.collect()
-        _log_free_memory("after freeing memory")
+        weights = result.x[:-1]
+        intercept = result.x[-1]
 
         # Evaluate the fitted model directly rather than via predict_proba, which has a lot
         # of per-call overhead for single rows: probability >= p  <=>  logit >= log(p/(1-p)).
         embeddings = self.embeddings
-        weights = model.coef_[0]
-        intercept = model.intercept_[0]
         logit_threshold = np.log(probability_threshold / (1 - probability_threshold))
 
         def predictor(word: str, associated_word: str) -> bool:
