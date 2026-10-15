@@ -1,4 +1,5 @@
 import gc
+import json
 import random
 from dataclasses import dataclass
 from typing import Callable
@@ -116,9 +117,11 @@ class PredictorTrainingData:
         self.held_out_rows = held_out_association_rows + held_out_nonassociation_rows
         seeded_random.shuffle(self.held_out_rows)
 
-    def get_regression_association_predictor(
-        self, probability_threshold: float, max_training_rows: int, max_iter: int = 1000
-    ) -> Callable[[str, str], bool]:
+    def train_regression_association_predictor(
+        self,
+        max_training_rows: int,
+        max_iter: int,
+    ) -> None:
         """
         Fits a logistic regression on the element-wise product of the two words' embeddings.
         Since embeddings are L2-normalized, summing those products gives cosine similarity,
@@ -130,13 +133,15 @@ class PredictorTrainingData:
         # Products of unit-norm vectors are ~1/dim in magnitude, which L2 regularization
         # would flatten to zero weights (constant predictions); rescale to O(1).
         dim = len(training_rows[0].embedding_a)
-        feature_scale = float(dim)
+        self.feature_scale = float(dim)
         _log_free_memory(f"before building features ({max_training_rows} rows)")
         features = np.empty((len(training_rows), dim), dtype=np.float32)
         for i, row in enumerate(training_rows):
             np.multiply(row.embedding_a, row.embedding_b, out=features[i])
-        features *= feature_scale
-        labels = np.array([row.is_association for row in training_rows], dtype=np.float64)
+        features *= self.feature_scale
+        labels = np.array(
+            [row.is_association for row in training_rows], dtype=np.float64
+        )
         del training_rows
         _log_free_memory(
             f"after building features ({features.nbytes / 1024**3:.2f} GB array)"
@@ -163,20 +168,35 @@ class PredictorTrainingData:
             return loss, grad
 
         _log_free_memory("before fit")
+
+        iteration = 0
+
+        def show_progress(xk):
+            global iteration
+            iteration += 1
+            loss, _ = objective(xk)
+            print(f"Iteration {iteration}/{max_iter}: loss={loss:.6f}")
+
         result = minimize(
             objective,
             np.zeros(dim + 1),
             jac=True,
             method="L-BFGS-B",
+            callback=show_progress,
             options={"maxiter": max_iter},
         )
+
         print(f"  L-BFGS: {result.nit} iterations, {result.message}")
         _log_free_memory("after fit")
         del features
         gc.collect()
-        weights = result.x[:-1]
-        intercept = result.x[-1]
+        self.weights = result.x[:-1]
+        self.intercept = result.x[-1]
 
+    def get_regression_association_predictor(
+        self,
+        probability_threshold: float,
+    ) -> Callable[[str, str], bool]:
         # Evaluate the fitted model directly rather than via predict_proba, which has a lot
         # of per-call overhead for single rows: probability >= p  <=>  logit >= log(p/(1-p)).
         embeddings = self.embeddings
@@ -187,7 +207,26 @@ class PredictorTrainingData:
                 associated_word
             )
             return bool(
-                feature * feature_scale @ weights + intercept >= logit_threshold
+                feature * self.feature_scale @ self.weights + self.intercept
+                >= logit_threshold
             )
 
         return predictor
+
+    def save_model(self, file_path: str) -> None:
+        with open(file_path, "w") as f:
+            json.dump(
+                {
+                    "weights": self.weights.tolist(),
+                    "intercept": float(self.intercept),
+                    "feature_scale": self.feature_scale,
+                },
+                f,
+            )
+
+    def load_model(self, file_path: str) -> None:
+        with open(file_path, "r") as f:
+            data = json.load(f)
+            self.weights = np.array(data["weights"])
+            self.intercept = float(data["intercept"])
+            self.feature_scale = np.array(data["feature_scale"])
