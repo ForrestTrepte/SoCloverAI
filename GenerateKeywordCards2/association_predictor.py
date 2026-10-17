@@ -63,7 +63,7 @@ class PredictorTrainingData:
     def __init__(self, swow: SWOWAssociations, embeddings: WordEmbeddings):
         self.embeddings = embeddings
         association_rows = []
-        for word_a, associations in swow.associations.items():
+        for word_a in swow.associations:
             word_a_associations = swow.associations[word_a].get_associations(True, True)
             for word_b in word_a_associations:
                 association_rows.append(
@@ -171,8 +171,8 @@ class PredictorTrainingData:
 
         iteration = 0
 
-        def show_progress(xk):
-            global iteration
+        def show_progress(xk: np.ndarray) -> None:
+            nonlocal iteration
             iteration += 1
             loss, _ = objective(xk)
             print(f"Iteration {iteration}/{max_iter}: loss={loss:.6f}")
@@ -229,4 +229,4 @@ class PredictorTrainingData:
             data = json.load(f)
             self.weights = np.array(data["weights"])
             self.intercept = float(data["intercept"])
-            self.feature_scale = np.array(data["feature_scale"])
+            self.feature_scale = float(data["feature_scale"])
