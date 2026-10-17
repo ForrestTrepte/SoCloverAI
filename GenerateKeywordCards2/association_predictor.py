@@ -53,9 +53,9 @@ def get_distance_threshold_association_predictor(
 @dataclass
 class PredictorTrainingDataRow:
     word_a: str
-    embedding_a: np.ndarray
+    embedding_index_a: int
     word_b: str
-    embedding_b: np.ndarray
+    embedding_index_b: int
     is_association: bool
 
 
@@ -69,9 +69,9 @@ class PredictorTrainingData:
                 association_rows.append(
                     PredictorTrainingDataRow(
                         word_a,
-                        embeddings.get_embedding(word_a),
+                        embeddings.get_embedding_index(word_a),
                         word_b,
-                        embeddings.get_embedding(word_b),
+                        embeddings.get_embedding_index(word_b),
                         is_association=True,
                     )
                 )
@@ -94,9 +94,9 @@ class PredictorTrainingData:
             nonassociation_rows.append(
                 PredictorTrainingDataRow(
                     word_a,
-                    embeddings.get_embedding(word_a),
+                    embeddings.get_embedding_index(word_a),
                     word_b,
-                    embeddings.get_embedding(word_b),
+                    embeddings.get_embedding_index(word_b),
                     is_association=False,
                 )
             )
@@ -123,7 +123,8 @@ class PredictorTrainingData:
         max_iter: int,
     ) -> None:
         """
-        Fits a logistic regression on the element-wise product of the two words' embeddings.
+        Fits logistic regression on element-wise embedding products, gathering features in
+        chunks during each objective evaluation to avoid storing the full feature matrix.
         Since embeddings are L2-normalized, summing those products gives cosine similarity,
         so equal weights reproduce the distance-threshold predictor; learned weights let the
         model emphasize the dimensions that matter most for human associations.
@@ -132,33 +133,42 @@ class PredictorTrainingData:
         training_rows = self.training_rows[:max_training_rows]
         # Products of unit-norm vectors are ~1/dim in magnitude, which L2 regularization
         # would flatten to zero weights (constant predictions); rescale to O(1).
-        dim = len(training_rows[0].embedding_a)
+        dim = self.embeddings.embeddings.shape[1]
         self.feature_scale = float(dim)
-        _log_free_memory(f"before building features ({max_training_rows} rows)")
-        features = np.empty((len(training_rows), dim), dtype=np.float32)
-        for i, row in enumerate(training_rows):
-            np.multiply(row.embedding_a, row.embedding_b, out=features[i])
-        features *= self.feature_scale
+        idx_a = np.fromiter(
+            (row.embedding_index_a for row in training_rows),
+            dtype=np.intp,
+            count=len(training_rows),
+        )
+        idx_b = np.fromiter(
+            (row.embedding_index_b for row in training_rows),
+            dtype=np.intp,
+            count=len(training_rows),
+        )
         labels = np.array(
             [row.is_association for row in training_rows], dtype=np.float64
         )
         del training_rows
+        index_bytes = idx_a.nbytes + idx_b.nbytes
         _log_free_memory(
-            f"after building features ({features.nbytes / 1024**3:.2f} GB array)"
+            f"before fit ({len(idx_a):,} rows, {index_bytes:,} bytes of indices)"
         )
 
         # Same objective as LogisticRegression(C=1): sum of log-loss + 0.5*|w|^2, with an
-        # unpenalized intercept. sklearn's lbfgs would copy the whole matrix to float64
-        # (doubling memory), so evaluate loss and gradient over float64 chunks instead.
+        # unpenalized intercept. Rebuild features by chunk so memory stays bounded.
         chunk_size = 8192
+        embedding_matrix = self.embeddings.embeddings
 
         def objective(params: np.ndarray) -> tuple[float, np.ndarray]:
             w, b = params[:-1], params[-1]
             loss = 0.5 * float(w @ w)
             grad = np.zeros_like(params)
             grad[:-1] = w
-            for start in range(0, len(features), chunk_size):
-                x = features[start : start + chunk_size].astype(np.float64)
+            for start in range(0, len(idx_a), chunk_size):
+                end = start + chunk_size
+                x = embedding_matrix[idx_a[start:end]]
+                x *= embedding_matrix[idx_b[start:end]]
+                x *= self.feature_scale
                 y = labels[start : start + chunk_size]
                 z = x @ w + b
                 loss += float(np.sum(np.logaddexp(0.0, z) - y * z))
@@ -166,8 +176,6 @@ class PredictorTrainingData:
                 grad[:-1] += x.T @ residual
                 grad[-1] += residual.sum()
             return loss, grad
-
-        _log_free_memory("before fit")
 
         iteration = 0
 
@@ -188,7 +196,6 @@ class PredictorTrainingData:
 
         print(f"  L-BFGS: {result.nit} iterations, {result.message}")
         _log_free_memory("after fit")
-        del features
         gc.collect()
         self.weights = result.x[:-1]
         self.intercept = result.x[-1]

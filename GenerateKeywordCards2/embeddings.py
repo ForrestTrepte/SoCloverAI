@@ -257,6 +257,9 @@ class WordEmbeddings:
     def __contains__(self, word: str) -> bool:
         return word in self._index_by_word
 
+    def get_embedding_index(self, word: str) -> int:
+        return self._index_by_word[word]
+
     def get_embedding(self, word: str) -> np.ndarray:
         return cast(np.ndarray, self.embeddings[self._index_by_word[word]])
 
