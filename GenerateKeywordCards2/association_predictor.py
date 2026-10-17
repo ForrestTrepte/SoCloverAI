@@ -149,6 +149,7 @@ class PredictorTrainingData:
             [row.is_association for row in training_rows], dtype=np.float64
         )
         del training_rows
+        embedding_matrix = self.embeddings.embeddings.astype(np.float32, copy=False)
         index_bytes = idx_a.nbytes + idx_b.nbytes
         _log_free_memory(
             f"before fit ({len(idx_a):,} rows, {index_bytes:,} bytes of indices)"
@@ -157,10 +158,14 @@ class PredictorTrainingData:
         # Same objective as LogisticRegression(C=1): sum of log-loss + 0.5*|w|^2, with an
         # unpenalized intercept. Rebuild features by chunk so memory stays bounded.
         chunk_size = 8192
-        embedding_matrix = self.embeddings.embeddings
+        last_objective_params: np.ndarray | None = None
+        last_objective_loss: float | None = None
 
         def objective(params: np.ndarray) -> tuple[float, np.ndarray]:
+            nonlocal last_objective_params, last_objective_loss
             w, b = params[:-1], params[-1]
+            w_float32 = w.astype(np.float32)
+            b_float32 = np.float32(b)
             loss = 0.5 * float(w @ w)
             grad = np.zeros_like(params)
             grad[:-1] = w
@@ -168,13 +173,18 @@ class PredictorTrainingData:
                 end = start + chunk_size
                 x = embedding_matrix[idx_a[start:end]]
                 x *= embedding_matrix[idx_b[start:end]]
-                x *= self.feature_scale
-                y = labels[start : start + chunk_size]
-                z = x @ w + b
-                loss += float(np.sum(np.logaddexp(0.0, z) - y * z))
-                residual = 1.0 / (1.0 + np.exp(-z)) - y
+                x *= np.float32(self.feature_scale)
+                y = labels[start:end]
+                z = x @ w_float32 + b_float32
+                z_float64 = z.astype(np.float64)
+                loss += float(np.sum(np.logaddexp(0.0, z_float64) - y * z_float64))
+                residual = np.float32(1.0) / (np.float32(1.0) + np.exp(-z)) - y.astype(
+                    np.float32
+                )
                 grad[:-1] += x.T @ residual
-                grad[-1] += residual.sum()
+                grad[-1] += residual.sum(dtype=np.float64)
+            last_objective_params = params.copy()
+            last_objective_loss = loss
             return loss, grad
 
         iteration = 0
@@ -182,8 +192,8 @@ class PredictorTrainingData:
         def show_progress(xk: np.ndarray) -> None:
             nonlocal iteration
             iteration += 1
-            loss, _ = objective(xk)
-            print(f"Iteration {iteration}/{max_iter}: loss={loss:.6f}")
+            assert last_objective_loss is not None
+            print(f"Iteration {iteration}/{max_iter}: loss={last_objective_loss:.6f}")
 
         result = minimize(
             objective,
