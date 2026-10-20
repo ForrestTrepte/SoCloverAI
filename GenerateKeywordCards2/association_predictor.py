@@ -50,6 +50,61 @@ def get_distance_threshold_association_predictor(
     return predictor
 
 
+class RegressionAssociationPredictor:
+    """Callable fitted logistic-regression model for association prediction."""
+
+    def __init__(
+        self,
+        embeddings: WordEmbeddings,
+        weights: np.ndarray,
+        intercept: float,
+        feature_scale: float,
+    ):
+        self.embeddings = embeddings
+        self.weights = weights
+        self.intercept = intercept
+        self.feature_scale = feature_scale
+
+    def __call__(
+        self, word: str, associated_word: str, threshold: float = 0.5
+    ) -> bool:
+        """Predict using a probability cutoff; higher cutoffs generally favor precision."""
+        if not 0 < threshold < 1:
+            raise ValueError("threshold must be between 0 and 1")
+        logit_threshold = np.log(threshold / (1 - threshold))
+        feature = self.embeddings.get_embedding(word) * self.embeddings.get_embedding(
+            associated_word
+        )
+        return bool(
+            feature * self.feature_scale @ self.weights + self.intercept
+            >= logit_threshold
+        )
+
+    def save_model(self, file_path: str) -> None:
+        with open(file_path, "w") as f:
+            json.dump(
+                {
+                    "weights": self.weights.tolist(),
+                    "intercept": float(self.intercept),
+                    "feature_scale": self.feature_scale,
+                },
+                f,
+            )
+
+    @classmethod
+    def load_model(
+        cls, embeddings: WordEmbeddings, file_path: str
+    ) -> "RegressionAssociationPredictor":
+        with open(file_path, "r") as f:
+            data = json.load(f)
+        return cls(
+            embeddings,
+            np.array(data["weights"]),
+            float(data["intercept"]),
+            float(data["feature_scale"]),
+        )
+
+
 @dataclass
 class PredictorTrainingDataRow:
     word_a: str
@@ -121,7 +176,7 @@ class PredictorTrainingData:
         self,
         max_training_rows: int,
         max_iter: int,
-    ) -> None:
+    ) -> RegressionAssociationPredictor:
         """
         Fits logistic regression on element-wise embedding products, gathering features in
         chunks during each objective evaluation to avoid storing the full feature matrix.
@@ -134,7 +189,7 @@ class PredictorTrainingData:
         # Products of unit-norm vectors are ~1/dim in magnitude, which L2 regularization
         # would flatten to zero weights (constant predictions); rescale to O(1).
         dim = self.embeddings.embeddings.shape[1]
-        self.feature_scale = float(dim)
+        feature_scale = float(dim)
         idx_a = np.fromiter(
             (row.embedding_index_a for row in training_rows),
             dtype=np.intp,
@@ -173,7 +228,7 @@ class PredictorTrainingData:
                 end = start + chunk_size
                 x = embedding_matrix[idx_a[start:end]]
                 x *= embedding_matrix[idx_b[start:end]]
-                x *= np.float32(self.feature_scale)
+                x *= np.float32(feature_scale)
                 y = labels[start:end]
                 z = x @ w_float32 + b_float32
                 z_float64 = z.astype(np.float64)
@@ -207,43 +262,6 @@ class PredictorTrainingData:
         print(f"  L-BFGS: {result.nit} iterations, {result.message}")
         _log_free_memory("after fit")
         gc.collect()
-        self.weights = result.x[:-1]
-        self.intercept = result.x[-1]
-
-    def get_regression_association_predictor(
-        self,
-        probability_threshold: float,
-    ) -> Callable[[str, str], bool]:
-        # Evaluate the fitted model directly rather than via predict_proba, which has a lot
-        # of per-call overhead for single rows: probability >= p  <=>  logit >= log(p/(1-p)).
-        embeddings = self.embeddings
-        logit_threshold = np.log(probability_threshold / (1 - probability_threshold))
-
-        def predictor(word: str, associated_word: str) -> bool:
-            feature = embeddings.get_embedding(word) * embeddings.get_embedding(
-                associated_word
-            )
-            return bool(
-                feature * self.feature_scale @ self.weights + self.intercept
-                >= logit_threshold
-            )
-
-        return predictor
-
-    def save_model(self, file_path: str) -> None:
-        with open(file_path, "w") as f:
-            json.dump(
-                {
-                    "weights": self.weights.tolist(),
-                    "intercept": float(self.intercept),
-                    "feature_scale": self.feature_scale,
-                },
-                f,
-            )
-
-    def load_model(self, file_path: str) -> None:
-        with open(file_path, "r") as f:
-            data = json.load(f)
-            self.weights = np.array(data["weights"])
-            self.intercept = float(data["intercept"])
-            self.feature_scale = float(data["feature_scale"])
+        return RegressionAssociationPredictor(
+            self.embeddings, result.x[:-1], float(result.x[-1]), feature_scale
+        )
