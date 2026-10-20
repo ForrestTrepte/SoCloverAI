@@ -13,7 +13,7 @@ import asyncio
 import time
 from dataclasses import dataclass
 from pathlib import Path
-from typing import TYPE_CHECKING, Any, Literal, cast
+from typing import TYPE_CHECKING, Any, Callable, Literal, cast
 
 import litellm
 import numpy as np
@@ -404,6 +404,7 @@ class SwowEmbeddingComparison:
 
 def compare_with_swow(
     embeddings: WordEmbeddings,
+    predictor: Callable[[str, str], bool] | None,
     swow: SWOWAssociations,
     word: str,
     count: int,
@@ -414,7 +415,12 @@ def compare_with_swow(
     responses (forward: cue -> response, backward: response -> cue), to gauge how
     well embedding similarity approximates human free-association norms.
     """
-    embedding_neighbors = [w for w, _ in embeddings.nearest(word, count)]
+    if predictor is None:
+        embedding_neighbors = [w for w, _ in embeddings.nearest(word, count)]
+    else:
+        embedding_neighbors = [
+            w for w in embeddings.words if word != w and predictor(word, w)
+        ]
 
     word_associations = swow.associations[word]
     responses = word_associations.get_associations(
@@ -431,11 +437,25 @@ def compare_with_swow(
 
 def summarize_swow_comparisons(
     comparisons: list[SwowEmbeddingComparison],
-) -> dict[str, float]:
-    """Aggregate overlap/jaccard statistics across many compare_with_swow() results."""
-    result = {
-        "mean_overlap_count": sum(len(c.overlap) for c in comparisons)
-        / len(comparisons),
-        "mean_jaccard": sum(c.jaccard for c in comparisons) / len(comparisons),
-    }
-    return result
+) -> None:
+    for comparison in comparisons:
+        print(f"{comparison.word}:")
+        print(
+            f"  agreement            = {len(comparison.overlap)}: {comparison.overlap}"
+        )
+        print(
+            f"  swow-only responses  = {len(comparison.swow_only)}: {sorted(comparison.swow_only)}"
+        )
+        print(
+            f"  predicted neighbors = {len(comparison.embed_only)}: {sorted(comparison.embed_only)}"
+        )
+        print(f"  jaccard              = {comparison.jaccard:.2f}")
+
+    print()
+
+    # Aggregate overlap/jaccard statistics across many compare_with_swow() results.
+    mean_overlap_count = sum(len(c.overlap) for c in comparisons) / len(comparisons)
+    print(f"Mean overlap count: {mean_overlap_count}")
+
+    mean_jaccard = sum(c.jaccard for c in comparisons) / len(comparisons)
+    print(f"Mean jaccard: {mean_jaccard}")
