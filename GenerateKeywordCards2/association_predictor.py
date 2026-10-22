@@ -41,11 +41,15 @@ def _log_free_memory(label: str) -> None:
     print(f"[memory] {label}: " + ", ".join(parts))
 
 
+# A Predictor type. Takes two words and a threshold, returns whether they are associated.
+PredictorType = Callable[[str, str, float], bool]
+
+
 def get_distance_threshold_association_predictor(
-    embeddings: WordEmbeddings, distance_threshold: float
-) -> Callable[[str, str], bool]:
-    def predictor(word: str, associated_word: str) -> bool:
-        return embeddings.distance(word, associated_word) <= distance_threshold
+    embeddings: WordEmbeddings,
+) -> PredictorType:
+    def predictor(word: str, associated_word: str, threshold: float) -> bool:
+        return embeddings.distance(word, associated_word) <= threshold
 
     return predictor
 
@@ -65,9 +69,7 @@ class RegressionAssociationPredictor:
         self.intercept = intercept
         self.feature_scale = feature_scale
 
-    def __call__(
-        self, word: str, associated_word: str, threshold: float = 0.5
-    ) -> bool:
+    def __call__(self, word: str, associated_word: str, threshold: float) -> bool:
         """Predict using a probability cutoff; higher cutoffs generally favor precision."""
         if not 0 < threshold < 1:
             raise ValueError("threshold must be between 0 and 1")

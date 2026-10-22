@@ -21,6 +21,7 @@ from litellm import aembedding
 from litellm.caching.caching import Cache
 from litellm.types.caching import LiteLLMCacheType
 
+from GenerateKeywordCards2.association_predictor import PredictorType
 from GenerateKeywordCards2.get_root_directory import get_root_directory
 
 from .swow import SWOWAssociations
@@ -404,7 +405,8 @@ class SwowEmbeddingComparison:
 
 def compare_with_swow(
     embeddings: WordEmbeddings,
-    predictor: Callable[[str, str], bool] | None,
+    predictor: PredictorType | None,
+    predictor_threshold: float,
     swow: SWOWAssociations,
     word: str,
     count: int,
@@ -419,7 +421,9 @@ def compare_with_swow(
         embedding_neighbors = [w for w, _ in embeddings.nearest(word, count)]
     else:
         embedding_neighbors = [
-            w for w in embeddings.words if word != w and predictor(word, w)
+            w
+            for w in embeddings.words
+            if word != w and predictor(word, w, predictor_threshold)
         ]
 
     word_associations = swow.associations[word]

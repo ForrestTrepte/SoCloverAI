@@ -17,7 +17,7 @@ def _fitted_predictor() -> RegressionAssociationPredictor:
 def test_regression_predictor_threshold_can_be_tuned() -> None:
     predictor = _fitted_predictor()
 
-    assert predictor("word", "associated") is True
+    assert predictor("word", "associated", 0.5) is True
     assert predictor("word", "associated", 0.9) is False
 
 
@@ -36,5 +36,5 @@ def test_regression_predictor_model_round_trip(tmp_path: Path) -> None:
         predictor.embeddings, str(model_path)
     )
 
-    assert loaded_predictor("word", "associated") is True
+    assert loaded_predictor("word", "associated", 0.5) is True
     assert loaded_predictor("word", "associated", 0.9) is False
