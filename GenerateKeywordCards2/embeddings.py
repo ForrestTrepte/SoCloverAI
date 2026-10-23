@@ -13,7 +13,7 @@ import asyncio
 import time
 from dataclasses import dataclass
 from pathlib import Path
-from typing import TYPE_CHECKING, Any, Callable, Literal, cast
+from typing import TYPE_CHECKING, Any, cast
 
 import litellm
 import numpy as np
@@ -21,10 +21,7 @@ from litellm import aembedding
 from litellm.caching.caching import Cache
 from litellm.types.caching import LiteLLMCacheType
 
-from GenerateKeywordCards2.association_predictor import PredictorType
 from GenerateKeywordCards2.get_root_directory import get_root_directory
-
-from .swow import SWOWAssociations
 
 try:
     from . import notes
@@ -375,91 +372,3 @@ class WordEmbeddings:
                 weight = float(similarity_matrix[i, j])
                 graph.add_edge(word, neighbor_word, weight=weight)
         return graph
-
-
-@dataclass(frozen=True)
-class SwowEmbeddingComparison:
-    word: str
-    embedding_neighbors: list[str]
-    swow_responses: list[str]
-
-    @property
-    def overlap(self) -> list[str]:
-        return [w for w in self.embedding_neighbors if w in self.swow_responses]
-
-    @property
-    def embed_only(self) -> list[str]:
-        return [w for w in self.embedding_neighbors if w not in self.swow_responses]
-
-    @property
-    def swow_only(self) -> list[str]:
-        return [w for w in self.swow_responses if w not in self.embedding_neighbors]
-
-    @property
-    def jaccard(self) -> float:
-        union_size = len(set(self.embedding_neighbors) | set(self.swow_responses))
-        if union_size == 0:
-            return 0.0
-        return len(self.overlap) / union_size
-
-
-def compare_with_swow(
-    embeddings: WordEmbeddings,
-    predictor: PredictorType | None,
-    predictor_threshold: float,
-    swow: SWOWAssociations,
-    word: str,
-    count: int,
-    direction: Literal["forward", "backward"],
-) -> SwowEmbeddingComparison:
-    """
-    Compares a word's top embedding neighbors against its SWOW human association
-    responses (forward: cue -> response, backward: response -> cue), to gauge how
-    well embedding similarity approximates human free-association norms.
-    """
-    if predictor is None:
-        embedding_neighbors = [w for w, _ in embeddings.nearest(word, count)]
-    else:
-        embedding_neighbors = [
-            w
-            for w in embeddings.words
-            if word != w and predictor(word, w, predictor_threshold)
-        ]
-
-    word_associations = swow.associations[word]
-    responses = word_associations.get_associations(
-        direction == "forward", direction == "backward"
-    )
-    swow_responses = list(responses.keys())[:count]
-
-    return SwowEmbeddingComparison(
-        word=word,
-        embedding_neighbors=embedding_neighbors,
-        swow_responses=swow_responses,
-    )
-
-
-def summarize_swow_comparisons(
-    comparisons: list[SwowEmbeddingComparison],
-) -> None:
-    for comparison in comparisons:
-        print(f"{comparison.word}:")
-        print(
-            f"  agreement            = {len(comparison.overlap)}: {comparison.overlap}"
-        )
-        print(
-            f"  swow-only responses  = {len(comparison.swow_only)}: {sorted(comparison.swow_only)}"
-        )
-        print(
-            f"  predicted neighbors = {len(comparison.embed_only)}: {sorted(comparison.embed_only)}"
-        )
-        print(f"  jaccard              = {comparison.jaccard:.2f}")
-
-    print()
-
-    # Aggregate overlap/jaccard statistics across many compare_with_swow() results.
-    mean_overlap_count = sum(len(c.overlap) for c in comparisons) / len(comparisons)
-    print(f"Mean overlap count: {mean_overlap_count}")
-
-    mean_jaccard = sum(c.jaccard for c in comparisons) / len(comparisons)
-    print(f"Mean jaccard: {mean_jaccard}")
