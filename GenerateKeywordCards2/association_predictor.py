@@ -282,6 +282,7 @@ def plot_precision_recall_curve(
     precisions = []
     recalls = []
     peak_accuracy = 0.0
+    peak_accuracy_threshold = 0.0
     for threshold in np.arange(threshold_range[0], threshold_range[1], 0.01):
         true_positives = 0
         false_negatives = 0
@@ -307,6 +308,7 @@ def plot_precision_recall_curve(
         )
         if accuracy > peak_accuracy:
             peak_accuracy = accuracy
+            peak_accuracy_threshold = threshold
         accuracies.append(accuracy)
         precision = true_positives / (true_positives + false_positives)
         precisions.append(precision)
@@ -322,4 +324,6 @@ def plot_precision_recall_curve(
     plt.title(f"Performance of {name} with varying thresholds")
     plt.legend()
     plt.show()
-    print(f"Peak accuracy for {name}: {peak_accuracy:.4f}")
+    print(
+        f"Peak accuracy for {name}: {peak_accuracy:.4f} at threshold {peak_accuracy_threshold:.2f}"
+    )
