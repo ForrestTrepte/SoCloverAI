@@ -1,10 +1,11 @@
 import gc
 import json
 import random
+from collections.abc import Callable, Collection
 from dataclasses import dataclass
-from typing import Callable
 
 import numpy as np
+from matplotlib import pyplot as plt
 from scipy.optimize import minimize  # type: ignore[import-untyped]
 
 from GenerateKeywordCards2.embeddings import WordEmbeddings
@@ -267,3 +268,58 @@ class PredictorTrainingData:
         return RegressionAssociationPredictor(
             self.embeddings, result.x[:-1], float(result.x[-1]), feature_scale
         )
+
+
+def plot_precision_recall_curve(
+    name: str,
+    predictor: PredictorType,
+    threshold_range: tuple[float, float],
+    association_pairs: Collection[tuple[str, str]],
+    nonassociation_pairs: Collection[tuple[str, str]],
+) -> None:
+    thresholds = []
+    accuracies = []
+    precisions = []
+    recalls = []
+    peak_accuracy = 0.0
+    for threshold in np.arange(threshold_range[0], threshold_range[1], 0.01):
+        true_positives = 0
+        false_negatives = 0
+        for word_a, word_b in association_pairs:
+            prediction = predictor(word_a, word_b, threshold)
+            if prediction:
+                true_positives += 1
+            else:
+                false_negatives += 1
+
+        true_negatives = 0
+        false_positives = 0
+        for word_a, word_b in nonassociation_pairs:
+            prediction = predictor(word_a, word_b, threshold)
+            if prediction:
+                false_positives += 1
+            else:
+                true_negatives += 1
+
+        thresholds.append(threshold)
+        accuracy = (true_positives + true_negatives) / (
+            len(association_pairs) + len(nonassociation_pairs)
+        )
+        if accuracy > peak_accuracy:
+            peak_accuracy = accuracy
+        accuracies.append(accuracy)
+        precision = true_positives / (true_positives + false_positives)
+        precisions.append(precision)
+        recall = true_positives / len(association_pairs)
+        recalls.append(recall)
+
+    plt.figure(figsize=(10, 6))
+    plt.plot(thresholds, accuracies, label="Accuracy")
+    plt.plot(thresholds, precisions, label="Precision")
+    plt.plot(thresholds, recalls, label="Recall")
+    plt.xlabel("Threshold")
+    plt.ylabel("Score")
+    plt.title(f"Performance of {name} with varying thresholds")
+    plt.legend()
+    plt.show()
+    print(f"Peak accuracy for {name}: {peak_accuracy:.4f}")
