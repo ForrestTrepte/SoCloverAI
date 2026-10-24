@@ -118,7 +118,19 @@ class PredictorTrainingDataRow:
 
 
 class PredictorTrainingData:
-    def __init__(self, swow: SWOWAssociations, embeddings: WordEmbeddings):
+    def __init__(
+        self,
+        swow: SWOWAssociations,
+        embeddings: WordEmbeddings,
+        negative_weight: float | None,
+    ):
+        """
+        Training data has equal numbers of association and sampled non-association rows.
+        Each non-association row stands in for many real ones, so it is weighted by
+        negative_weight when training. That makes the fit reflect the true (rare)
+        association rate. None estimates it as (non-associated pairs) / (associated pairs);
+        1.0 gives the unweighted, balanced behavior.
+        """
         self.embeddings = embeddings
         association_rows = []
         for word_a in swow.associations:
@@ -133,6 +145,14 @@ class PredictorTrainingData:
                         is_association=True,
                     )
                 )
+
+        if negative_weight is None:
+            word_count = len(swow.associations)
+            all_pair_count = word_count * (word_count - 1)
+            negative_weight = (all_pair_count - len(association_rows)) / len(
+                association_rows
+            )
+        self.negative_weight = negative_weight
 
         nonassociation_rows: list[PredictorTrainingDataRow] = []
         seeded_random = random.Random(123)
@@ -206,6 +226,9 @@ class PredictorTrainingData:
         labels = np.array(
             [row.is_association for row in training_rows], dtype=np.float64
         )
+        # Normalize to mean 1 so the L2 penalty keeps the same relative strength as unweighted.
+        sample_weights = np.where(labels > 0, 1.0, self.negative_weight)
+        sample_weights *= len(sample_weights) / sample_weights.sum()
         del training_rows
         embedding_matrix = self.embeddings.embeddings.astype(np.float32, copy=False)
         index_bytes = idx_a.nbytes + idx_b.nbytes
@@ -213,7 +236,7 @@ class PredictorTrainingData:
             f"before fit ({len(idx_a):,} rows, {index_bytes:,} bytes of indices)"
         )
 
-        # Same objective as LogisticRegression(C=1): sum of log-loss + 0.5*|w|^2, with an
+        # Same objective as LogisticRegression(C=1) with sample weights: weighted sum of log-loss + 0.5*|w|^2, with an
         # unpenalized intercept. Rebuild features by chunk so memory stays bounded.
         chunk_size = 8192
         last_objective_params: np.ndarray | None = None
@@ -233,12 +256,13 @@ class PredictorTrainingData:
                 x *= embedding_matrix[idx_b[start:end]]
                 x *= np.float32(feature_scale)
                 y = labels[start:end]
+                sw = sample_weights[start:end]
                 z = x @ w_float32 + b_float32
                 z_float64 = z.astype(np.float64)
-                loss += float(np.sum(np.logaddexp(0.0, z_float64) - y * z_float64))
-                residual = np.float32(1.0) / (np.float32(1.0) + np.exp(-z)) - y.astype(
-                    np.float32
-                )
+                loss += float(np.sum(sw * (np.logaddexp(0.0, z_float64) - y * z_float64)))
+                residual = (
+                    np.float32(1.0) / (np.float32(1.0) + np.exp(-z)) - y.astype(np.float32)
+                ) * sw.astype(np.float32)
                 grad[:-1] += x.T @ residual
                 grad[-1] += residual.sum(dtype=np.float64)
             last_objective_params = params.copy()
