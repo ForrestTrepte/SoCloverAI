@@ -259,9 +259,12 @@ class PredictorTrainingData:
                 sw = sample_weights[start:end]
                 z = x @ w_float32 + b_float32
                 z_float64 = z.astype(np.float64)
-                loss += float(np.sum(sw * (np.logaddexp(0.0, z_float64) - y * z_float64)))
+                loss += float(
+                    np.sum(sw * (np.logaddexp(0.0, z_float64) - y * z_float64))
+                )
                 residual = (
-                    np.float32(1.0) / (np.float32(1.0) + np.exp(-z)) - y.astype(np.float32)
+                    np.float32(1.0) / (np.float32(1.0) + np.exp(-z))
+                    - y.astype(np.float32)
                 ) * sw.astype(np.float32)
                 grad[:-1] += x.T @ residual
                 grad[-1] += residual.sum(dtype=np.float64)
@@ -300,7 +303,7 @@ def plot_precision_recall_curve(
     threshold_range: tuple[float, float],
     association_pairs: Collection[tuple[str, str]],
     nonassociation_pairs: Collection[tuple[str, str]],
-) -> None:
+) -> float:
     thresholds = []
     accuracies = []
     precisions = []
@@ -348,6 +351,8 @@ def plot_precision_recall_curve(
     plt.title(f"Performance of {name} with varying thresholds")
     plt.legend()
     plt.show()
+
     print(
         f"Peak accuracy for {name}: {peak_accuracy:.4f} at threshold {peak_accuracy_threshold:.2f}"
     )
+    return peak_accuracy
