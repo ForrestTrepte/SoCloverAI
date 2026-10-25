@@ -42,15 +42,22 @@ def _log_free_memory(label: str) -> None:
     print(f"[memory] {label}: " + ", ".join(parts))
 
 
-# A Predictor type. Takes two words and a threshold, returns whether they are associated.
-PredictorType = Callable[[str, str, float], bool]
+# A Predictor type. Takes two words and a threshold.
+# If threshold is a float, returns whether they are associated.
+# If threshold is None, returns a score indicating the strength of association.
+PredictorType = Callable[[str, str, float | None], bool | float]
 
 
 def get_distance_threshold_association_predictor(
     embeddings: WordEmbeddings,
 ) -> PredictorType:
-    def predictor(word: str, associated_word: str, threshold: float) -> bool:
-        return embeddings.distance(word, associated_word) <= threshold
+    def predictor(
+        word: str, associated_word: str, threshold: float | None
+    ) -> bool | float:
+        if threshold is None:
+            return embeddings.similarity(word, associated_word)
+        else:
+            return embeddings.distance(word, associated_word) <= threshold
 
     return predictor
 
@@ -70,18 +77,23 @@ class RegressionAssociationPredictor:
         self.intercept = intercept
         self.feature_scale = feature_scale
 
-    def __call__(self, word: str, associated_word: str, threshold: float) -> bool:
-        """Predict using a probability cutoff; higher cutoffs generally favor precision."""
-        if not 0 < threshold < 1:
-            raise ValueError("threshold must be between 0 and 1")
-        logit_threshold = np.log(threshold / (1 - threshold))
+    def __call__(
+        self, word: str, associated_word: str, threshold: float | None
+    ) -> bool | float:
+        """Predict using a probability cutoff; higher cutoffs generally favor precision. Matches PredictorType behavior."""
         feature = self.embeddings.get_embedding(word) * self.embeddings.get_embedding(
             associated_word
         )
-        return bool(
-            feature * self.feature_scale @ self.weights + self.intercept
-            >= logit_threshold
-        )
+        feature_value = feature * self.feature_scale @ self.weights + self.intercept
+
+        if threshold is None:
+            return float(feature_value)
+
+        if not 0 < threshold < 1:
+            raise ValueError("threshold must be between 0 and 1")
+
+        logit_threshold = np.log(threshold / (1 - threshold))
+        return bool(feature_value >= logit_threshold)
 
     def save_model(self, file_path: str) -> None:
         with open(file_path, "w") as f:
