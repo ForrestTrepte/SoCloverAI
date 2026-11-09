@@ -82,8 +82,8 @@ real cached request from `GenerateKeywordCards2/` (set `litellm.cache = litellm.
 then `await check_familiarity_async(model)` for each model in RatingExperiments' familiarity
 cell) — these hit the checked-in `.litellm_cache`, so they cost nothing. Example failure:
 litellm 1.105.0's cache-hit path imports proxy code that needs `fastapi` (not installed), so
-litellm is capped at `<1.97` in `pyproject.toml`. Prefer upgrading within the fixed patch line
-over jumping to the latest release.
+litellm is pinned to a single minor line (currently `>=1.100.4,<1.101`) in `pyproject.toml`.
+Prefer upgrading to the lowest fixed minor line over jumping to the latest release.
 
 ### Reverting a cluster upgrade
 
@@ -108,9 +108,9 @@ with a comment explaining:
 
 Current known unfixable:
 - `diskcache` (GHSA-w8v5-vhqr-4h9v, pickle deserialization)
-- `nltk` (GHSA-8mgp-746c-j5xp, model-artifact path traversal; transitive via `word-forms`)
 
-See the comments in `RatingExperiments.ipynb` for the full risk assessments.
+See the comments in `RatingExperiments.ipynb` for the full risk assessment. When a later
+release fixes one of these, remove its entry here and its comment in the notebook.
 
 ### Permission setup
 
