@@ -1,5 +1,6 @@
 import logging
 import os
+from functools import cache
 from typing import List, Tuple
 
 import numpy as np
@@ -17,15 +18,21 @@ except ImportError:
 logger = logging.getLogger("SoCloverAI")
 init_openai()
 project_root = os.path.dirname(os.path.realpath(__file__))
-embeddings_model = OpenAIEmbeddings(model="text-embedding-ada-002")
-embeddings_store = LocalFileStore(f"{project_root}/embeddings-cache")
-embedder = CacheBackedEmbeddings.from_bytes_store(
-    embeddings_model, embeddings_store, namespace=embeddings_model.model
-)
+
+
+@cache
+def get_embedder() -> CacheBackedEmbeddings:
+    # Created lazily because OpenAIEmbeddings requires an API key at construction, and
+    # importing this module (e.g. for tests of unrelated helpers) shouldn't.
+    embeddings_model = OpenAIEmbeddings(model="text-embedding-ada-002")
+    embeddings_store = LocalFileStore(f"{project_root}/embeddings-cache")
+    return CacheBackedEmbeddings.from_bytes_store(
+        embeddings_model, embeddings_store, namespace=embeddings_model.model
+    )
 
 
 def get_embeddings(documents: List[str]) -> List[List[float]]:
-    embeddings = embedder.embed_documents(documents)
+    embeddings = get_embedder().embed_documents(documents)
     for embedding in embeddings:
         assert is_normalized(embedding)
     return embeddings

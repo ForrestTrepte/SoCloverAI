@@ -68,30 +68,86 @@ def get_swow_rows() -> list[dict[str, str]]:
 @dataclass(frozen=True)
 class WordAssociations:
     # Count of the number of times words occurred as a response to this word as a cue.
-    forward: dict[str, int]
+    forward: dict[str, float]
     # Count of the number of times words were a cue that produced this word as a response.
-    backward: dict[str, int]
+    backward: dict[str, float]
+
+    def get_associations(self, forward: bool, backward: bool) -> dict[str, float]:
+        if forward and backward:
+            combined = self.forward.copy()
+            for key, value in self.backward.items():
+                combined[key] = combined.get(key, 0) + value
+            return combined
+        elif forward:
+            return self.forward
+        elif backward:
+            return self.backward
+        else:
+            return {}
 
 
 class SWOWAssociations:
-    def __init__(self) -> None:
+    def __init__(
+        self,
+        include_multiword_associations: bool,
+        multiword_to_single_word_association_weight: float,
+    ) -> None:
         associations: defaultdict[str, WordAssociations] = defaultdict(
-            lambda: WordAssociations(defaultdict(int), defaultdict(int))
+            lambda: WordAssociations(defaultdict(float), defaultdict(float))
         )
+        self.include_multiword_associations = include_multiword_associations
+
         rows = get_swow_rows()
         for row in rows:
             cue = row["cue"]
+            assert cue
+
+            if not self.include_multiword_associations and " " in cue:
+                continue
 
             responses = []
-            non_response = "No more responses"
-            if row["R1"] != non_response:
+            non_responses = [
+                "no more responses",
+                "unknown word",
+                "onbekend wooed",
+                "onbekend wood",
+                "onbekend word",
+                "unbekanntes wort",
+            ]
+            if row["R1"].casefold() not in non_responses:
                 responses.append(row["R1"])
-            if row["R2"] != non_response:
+            if row["R2"].casefold() not in non_responses:
                 responses.append(row["R2"])
-            if row["R3"] != non_response:
+            if row["R3"].casefold() not in non_responses:
                 responses.append(row["R3"])
 
             for response in responses:
+                assert response
+                if response == cue:
+                    continue
+
+                if (
+                    multiword_to_single_word_association_weight > 0.0
+                    and " " in response
+                ):
+                    # if multiple words are in the response, distribute the association weight to each word individually
+                    for subword in response.split(" "):
+                        if not subword.strip():
+                            continue
+
+                        if subword == cue:
+                            continue
+
+                        associations[cue].forward[subword] += (
+                            multiword_to_single_word_association_weight
+                        )
+                        associations[subword].backward[cue] += (
+                            multiword_to_single_word_association_weight
+                        )
+
+                if not self.include_multiword_associations and " " in response:
+                    continue
+
                 associations[cue].forward[response] += 1
                 associations[response].backward[cue] += 1
 
@@ -113,3 +169,79 @@ class SWOWAssociations:
                 )
             )
             self.associations[word] = WordAssociations(sorted_forward, sorted_backward)
+
+        self.check_forward_backward_symmetry()
+
+    def check_forward_backward_symmetry(self) -> None:
+        for word_a, associations in self.associations.items():
+            for word_b in associations.forward:
+                assert word_a in self.associations[word_b].backward
+            for word_b in associations.backward:
+                assert word_a in self.associations[word_b].forward
+
+    def filter_out_words_without_forward_associations(
+        self, maintain_forward_backward_symmetry: bool
+    ) -> None:
+        self.check_forward_backward_symmetry()
+
+        words_to_remove = {
+            word
+            for word, word_associations in self.associations.items()
+            if not word_associations.forward
+        }
+        for word in words_to_remove:
+            del self.associations[word]
+
+        if maintain_forward_backward_symmetry:
+            for word, word_associations in self.associations.items():
+                forward_removes = {
+                    word
+                    for word in word_associations.forward
+                    if word in words_to_remove
+                }
+                for word in forward_removes:
+                    del word_associations.forward[word]
+
+            self.check_forward_backward_symmetry()
+
+    def filter_associations_by_percentage_of_all_associations(
+        self,
+        threshold_percentage: float,
+        maintain_forward_backward_symmetry: bool,
+    ) -> None:
+        pairs_to_remove = set()
+        for word, word_associations in self.associations.items():
+            all_associations = word_associations.get_associations(True, True)
+            total = sum(all_associations.values())
+            for association_word, count in all_associations.items():
+                if count / total * 100 < threshold_percentage:
+                    pairs_to_remove.add((word, association_word))
+
+        if maintain_forward_backward_symmetry:
+            # Word a's association to b may have been below the threshold while b's association to a was above the threshold.
+            # In that case, we'll keep a's association to b to maintain symmetry.
+            unsymmetric_pairs = set()
+            for word, word_association in pairs_to_remove:
+                if (word_association, word) not in pairs_to_remove:
+                    unsymmetric_pairs.add((word, word_association))
+            pairs_to_remove -= unsymmetric_pairs
+
+        for word, associations in self.associations.items():
+            forward_removes = {
+                forward_word
+                for forward_word, _ in associations.forward.items()
+                if (word, forward_word) in pairs_to_remove
+            }
+            for word_to_remove in forward_removes:
+                associations.forward.pop(word_to_remove, None)
+
+            backward_removes = {
+                backward_word
+                for backward_word, _ in associations.backward.items()
+                if (word, backward_word) in pairs_to_remove
+            }
+            for word_to_remove in backward_removes:
+                associations.backward.pop(word_to_remove, None)
+
+        if maintain_forward_backward_symmetry:
+            self.check_forward_backward_symmetry()

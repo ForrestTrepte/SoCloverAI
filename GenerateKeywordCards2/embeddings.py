@@ -1,0 +1,374 @@
+"""
+Word-embedding-based association helper, built on litellm.
+
+Two intended uses (see Associations.ipynb):
+  1. Compare embedding-derived nearest neighbors against SWOW human association
+     norms (see swow.py), to see how well embeddings approximate human associations.
+  2. Score candidate words with graph-theory-like metrics (centrality, neighbor
+     diversity) to find words whose associations span a large, diverse set of
+     other words -- good candidates for So Clover! keyword expansion.
+"""
+
+import asyncio
+import time
+from dataclasses import dataclass
+from pathlib import Path
+from typing import TYPE_CHECKING, Any, cast
+
+import litellm
+import numpy as np
+from litellm import aembedding
+from litellm.caching.caching import Cache
+from litellm.types.caching import LiteLLMCacheType
+
+from GenerateKeywordCards2.get_root_directory import get_root_directory
+
+try:
+    from . import notes
+except ImportError:
+    pass
+
+if TYPE_CHECKING:
+    import networkx as nx  # type: ignore[import-untyped]
+
+maximum_concurrent_embedding_requests = 25
+_embedding_semaphore = asyncio.Semaphore(maximum_concurrent_embedding_requests)
+
+# Provider quotas on API requests per minute, keyed by model name prefix. Only requests that
+# miss the embeddings cache count against these. Set below the real quota to leave headroom.
+# (Gemini's paid tier allows 3000 requests/minute per model.)
+maximum_uncached_requests_per_minute_by_model_prefix = {"gemini/": 2500}
+
+
+class _RateLimiter:
+    """Spaces out acquisitions evenly so that at most `per_minute` occur per minute."""
+
+    def __init__(self, per_minute: int) -> None:
+        self._interval_seconds = 60.0 / per_minute
+        self._next_slot = 0.0
+
+    async def acquire(self) -> None:
+        now = time.monotonic()
+        slot = max(now, self._next_slot)
+        self._next_slot = slot + self._interval_seconds
+        if slot > now:
+            await asyncio.sleep(slot - now)
+
+
+# Shared across calls because provider quotas are per minute, not per call.
+_rate_limiters_by_model: dict[str, _RateLimiter] = {}
+
+
+def _get_rate_limiter(model: str) -> _RateLimiter | None:
+    if model in _rate_limiters_by_model:
+        return _rate_limiters_by_model[model]
+    for (
+        prefix,
+        per_minute,
+    ) in maximum_uncached_requests_per_minute_by_model_prefix.items():
+        if model.startswith(prefix):
+            limiter = _RateLimiter(per_minute)
+            _rate_limiters_by_model[model] = limiter
+            return limiter
+    return None
+
+
+# Embeddings are cached separately from litellm's global cache (`litellm.cache`) because they are
+# large (hundreds of MB) and can be regenerated, so this directory is git-ignored while the global
+# cache stays checked in. litellm cannot route an individual call to a different cache object, so
+# embedding calls bypass the global cache and read/write this one directly.
+embeddings_cache_dir = get_root_directory() / ".litellm_embeddings_cache"
+# diskcache defaults to a 1 GiB size limit and silently evicts the oldest entries beyond it, which
+# holds only ~47k embeddings (~22 KB each).
+embeddings_cache_size_limit_bytes = 20_000_000_000
+_embeddings_cache: Cache | None = None
+
+
+def get_embeddings_cache() -> Cache:
+    global _embeddings_cache
+    if _embeddings_cache is None:
+        _embeddings_cache = Cache(
+            type=LiteLLMCacheType.DISK, disk_cache_dir=str(embeddings_cache_dir)
+        )
+        # litellm doesn't expose diskcache's size_limit, so set it on the underlying diskcache.Cache.
+        _embeddings_cache.cache.disk_cache.reset(  # type: ignore[attr-defined]
+            "size_limit", embeddings_cache_size_limit_bytes
+        )
+    return _embeddings_cache
+
+
+def set_embeddings_cache(cache: Cache | None) -> None:
+    """Replace the embeddings cache (None restores the default on-disk cache)."""
+    global _embeddings_cache
+    _embeddings_cache = cache
+
+
+def _embedding_cache_key(model: str, word: str) -> str:
+    return get_embeddings_cache().get_cache_key(model=model, input=[word])
+
+
+def _get_cached_embedding(model: str, word: str) -> dict[str, Any] | None:
+    return get_embeddings_cache().cache.get_cache(_embedding_cache_key(model, word))  # type: ignore[no-untyped-call, no-any-return]
+
+
+def is_embedding_cached(model: str, word: str) -> bool:
+    return _get_cached_embedding(model, word) is not None
+
+
+@dataclass
+class EmbeddingUsage:
+    cache_hits: int
+    cache_misses: int
+    cached_cost: float
+    uncached_cost: float
+    prompt_tokens: int
+
+    @property
+    def total_cost(self) -> float:
+        return self.cached_cost + self.uncached_cost
+
+    @classmethod
+    def zero(cls) -> "EmbeddingUsage":
+        return cls(
+            cache_hits=0,
+            cache_misses=0,
+            cached_cost=0.0,
+            uncached_cost=0.0,
+            prompt_tokens=0,
+        )
+
+    def __add__(self, other: "EmbeddingUsage") -> "EmbeddingUsage":
+        return EmbeddingUsage(
+            cache_hits=self.cache_hits + other.cache_hits,
+            cache_misses=self.cache_misses + other.cache_misses,
+            cached_cost=self.cached_cost + other.cached_cost,
+            uncached_cost=self.uncached_cost + other.uncached_cost,
+            prompt_tokens=self.prompt_tokens + other.prompt_tokens,
+        )
+
+    def __str__(self) -> str:
+        total = self.cache_hits + self.cache_misses
+        return f"{self.cache_hits}/{total} cache hits, ${self.uncached_cost:.7f} uncached cost, ${self.total_cost:.7f} total cost, {self.prompt_tokens:,} prompt tokens"
+
+
+async def _embed_one_async(model: str, word: str) -> tuple[list[float], EmbeddingUsage]:
+    from litellm.cost_calculator import completion_cost
+
+    cached = _get_cached_embedding(model, word)
+    if cached is not None:
+        usage = EmbeddingUsage(
+            cache_hits=1,
+            cache_misses=0,
+            cached_cost=cached["cost"],
+            uncached_cost=0.0,
+            prompt_tokens=cached["prompt_tokens"],
+        )
+        return cached["embedding"], usage
+
+    limiter = _get_rate_limiter(model)
+    if limiter is not None:
+        await limiter.acquire()
+    async with _embedding_semaphore:
+        # Bypass litellm's global cache; this module manages the embeddings cache itself.
+        response = await aembedding(
+            model=model, input=[word], cache={"no-cache": True, "no-store": True}
+        )
+
+    cost = completion_cost(completion_response=response, call_type="aembedding")
+    prompt_tokens = response.usage.prompt_tokens if response.usage else 0
+    embedding = response.data[0]["embedding"]
+    get_embeddings_cache().cache.set_cache(  # type: ignore[no-untyped-call]
+        _embedding_cache_key(model, word),
+        {"embedding": embedding, "cost": cost, "prompt_tokens": prompt_tokens},
+    )
+    assert is_embedding_cached(model, word)
+    usage = EmbeddingUsage(
+        cache_hits=0,
+        cache_misses=1,
+        cached_cost=0.0,
+        uncached_cost=cost,
+        prompt_tokens=prompt_tokens,
+    )
+    return embedding, usage
+
+
+async def embed_words_async(
+    model_name: str, words: list[str]
+) -> tuple[np.ndarray, EmbeddingUsage]:
+    """
+    Compute L2-normalized embeddings for a list of (distinct) words via litellm.
+
+    Requests are made one word at a time so that the embeddings cache (see
+    `get_embeddings_cache`) can dedupe at the word level as the vocabulary grows
+    across notebook runs, rather than caching whole batches keyed on the exact
+    set of words requested together.
+
+    Words that are not already cached are rate limited (see
+    `maximum_uncached_requests_per_minute_by_model_prefix`) to stay under provider quotas;
+    cached words are not throttled.
+    """
+    # CONSIDER: Switching to batches would be more efficient. Litellm seems to support batching while caching
+    #   individual items. However, the usage it returns appears not so support that granularity so that a request
+    #   for a batch would return True as cached even if only some of the items were actually cached. If that's the
+    #   case, batching would need to implement a manual cache check. Then it could keep stats and only submit the
+    #   uncached items.
+    # Update: Now that we have implemented _embed_one_async with our own caching, we could potentially switch to
+    #   batching here by checking the cache, updating the usage, and then only passing on the uncached words.
+    assert len(words) == len(set(words)), "words must be distinct"
+
+    results = await asyncio.gather(
+        *(_embed_one_async(model_name, word) for word in words)
+    )
+    raw_embeddings = np.array([embedding for embedding, _ in results], dtype=np.float64)
+    total_usage: EmbeddingUsage = sum(
+        (usage for _, usage in results), EmbeddingUsage.zero()
+    )
+
+    norms = np.linalg.norm(raw_embeddings, axis=1, keepdims=True)
+    normalized = raw_embeddings / norms
+    return normalized, total_usage
+
+
+class WordEmbeddings:
+    """
+    A vocabulary of words with L2-normalized embeddings, supporting nearest-neighbor
+    lookup and graph-theory-like centrality/diversity scoring.
+    """
+
+    def __init__(self, words: list[str], embeddings: np.ndarray) -> None:
+        assert len(words) == len(embeddings)
+        self.words = list(words)
+        self._index_by_word = {word: i for i, word in enumerate(self.words)}
+        self.embeddings = embeddings
+
+    @classmethod
+    async def from_words_async(
+        cls, model_name: str, words: list[str]
+    ) -> tuple["WordEmbeddings", EmbeddingUsage]:
+        deduped_words = list(dict.fromkeys(words))
+        embeddings, usage = await embed_words_async(model_name, deduped_words)
+        return cls(deduped_words, embeddings), usage
+
+    def __len__(self) -> int:
+        return len(self.words)
+
+    def __contains__(self, word: str) -> bool:
+        return word in self._index_by_word
+
+    def get_embedding_index(self, word: str) -> int:
+        return self._index_by_word[word]
+
+    def get_embedding(self, word: str) -> np.ndarray:
+        return cast(np.ndarray, self.embeddings[self._index_by_word[word]])
+
+    def similarity(self, word_a: str, word_b: str) -> float:
+        return float(self.get_embedding(word_a) @ self.get_embedding(word_b))
+
+    def distance(self, word_a: str, word_b: str) -> float:
+        return 1 - self.similarity(word_a, word_b)
+
+    def nearest(
+        self, word: str, count: int = 10, exclude_self: bool = True
+    ) -> list[tuple[str, float]]:
+        return self.nearest_to_embedding(
+            self.get_embedding(word),
+            count,
+            exclude_index=self._index_by_word[word] if exclude_self else None,
+        )
+
+    def nearest_to_embedding(
+        self, embedding: np.ndarray, count: int, exclude_index: int | None = None
+    ) -> list[tuple[str, float]]:
+        # CONSIDER: If this is a bottleneck, consider optimization to the current O(n log n) sort of the full list.
+        #   np.argpartition could be used to find the top-k indices in O(n) time, then sort just those k indices.
+        #   Or more sophisticated spatial data structures could be used for faster nearest-neighbor search.
+        similarities = self.embeddings @ embedding
+        if exclude_index is not None:
+            similarities = similarities.copy()
+            similarities[exclude_index] = -1.0
+        top_indices = np.argsort(similarities)[::-1][:count]
+        return [(self.words[i], float(similarities[i])) for i in top_indices]
+
+    def centrality_scores(self, k: int = 10) -> dict[str, float]:
+        """
+        Mean cosine similarity to each word's k nearest neighbors: how tightly a
+        word sits amid a well-populated region of the embedding space (hub-ness).
+        """
+        similarity_matrix = self.embeddings @ self.embeddings.T
+        np.fill_diagonal(similarity_matrix, -1.0)
+        top_k_similarities = np.partition(similarity_matrix, -k, axis=1)[:, -k:]
+        scores = top_k_similarities.mean(axis=1)
+        return dict(zip(self.words, (float(s) for s in scores)))
+
+    def neighbor_diversity_scores(self, k: int = 10) -> dict[str, float]:
+        """
+        For each word, how spread out (mutually dissimilar) its k nearest neighbors
+        are from one another: 1 - mean pairwise similarity among the neighbor set.
+
+        A word with both high centrality (many close neighbors) and high neighbor
+        diversity (those neighbors are themselves unrelated to each other) bridges
+        multiple distinct concepts -- a candidate whose associations "span a large
+        amount of diverse words".
+        """
+        similarity_matrix = self.embeddings @ self.embeddings.T
+        n = len(self.words)
+        self_excluded = similarity_matrix.copy()
+        np.fill_diagonal(self_excluded, -1.0)
+        neighbor_indices = np.argpartition(self_excluded, -k, axis=1)[:, -k:]
+
+        scores = np.empty(n)
+        for i in range(n):
+            neighbor_embeddings = self.embeddings[neighbor_indices[i]]
+            pairwise = neighbor_embeddings @ neighbor_embeddings.T
+            off_diagonal_mask = ~np.eye(k, dtype=bool)
+            scores[i] = 1.0 - pairwise[off_diagonal_mask].mean()
+        return dict(zip(self.words, (float(s) for s in scores)))
+
+    def bridging_scores(self, k: int = 10) -> dict[str, float]:
+        """
+        Combines centrality and neighbor diversity (each rank-normalized to [0, 1]
+        then averaged) into a single score for surfacing hub words whose nearest
+        neighbors span diverse regions of the embedding space.
+        """
+        centrality = self.centrality_scores(k)
+        diversity = self.neighbor_diversity_scores(k)
+
+        def rank_normalize(values: dict[str, float]) -> dict[str, float]:
+            ordered_words = sorted(values, key=lambda w: values[w])
+            n = len(ordered_words)
+            return {word: i / (n - 1) for i, word in enumerate(ordered_words)}
+
+        centrality_rank = rank_normalize(centrality)
+        diversity_rank = rank_normalize(diversity)
+        return {
+            word: (centrality_rank[word] + diversity_rank[word]) / 2
+            for word in self.words
+        }
+
+    def to_networkx_graph(self, k: int = 10) -> "nx.Graph[str]":
+        """
+        Builds an undirected weighted k-nearest-neighbor graph (edge weight = cosine
+        similarity) for use with full graph-theoretic algorithms (betweenness
+        centrality, community detection, ...) from networkx.
+
+        Requires the optional `networkx` package.
+        """
+        try:
+            import networkx as nx
+        except ImportError as e:
+            raise ImportError(
+                "to_networkx_graph requires the 'networkx' package: pip install networkx"
+            ) from e
+
+        graph = nx.Graph()
+        graph.add_nodes_from(self.words)
+        similarity_matrix = self.embeddings @ self.embeddings.T
+        self_excluded = similarity_matrix.copy()
+        np.fill_diagonal(self_excluded, -1.0)
+        neighbor_indices = np.argpartition(self_excluded, -k, axis=1)[:, -k:]
+        for i, word in enumerate(self.words):
+            for j in neighbor_indices[i]:
+                neighbor_word = self.words[j]
+                weight = float(similarity_matrix[i, j])
+                graph.add_edge(word, neighbor_word, weight=weight)
+        return graph

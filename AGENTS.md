@@ -76,6 +76,15 @@ in this project:
 
 After each cluster: run the audit script and confirm only the expected packages were changed.
 
+**Verifying litellm upgrades**: import checks and `pytest` don't exercise litellm's cache
+path, so they can pass while every notebook LLM call fails. After changing litellm, run a
+real cached request from `GenerateKeywordCards2/` (set `litellm.cache = litellm.Cache(type="disk")`,
+then `await check_familiarity_async(model)` for each model in RatingExperiments' familiarity
+cell) — these hit the checked-in `.litellm_cache`, so they cost nothing. Example failure:
+litellm 1.105.0's cache-hit path imports proxy code that needs `fastapi` (not installed), so
+litellm is pinned to a single minor line (currently `>=1.100.4,<1.101`) in `pyproject.toml`.
+Prefer upgrading to the lowest fixed minor line over jumping to the latest release.
+
 ### Reverting a cluster upgrade
 
 If `uv sync` was run with the wrong constraints, reverting `pyproject.toml` alone is not
@@ -97,8 +106,11 @@ with a comment explaining:
 - Why the risk is acceptable (or not) for this project
 - Any conditions that would change the risk assessment
 
-Current known unfixable: `diskcache` (GHSA-w8v5-vhqr-4h9v, pickle deserialization).
-See the comment in `RatingExperiments.ipynb` for the full risk assessment.
+Current known unfixable:
+- `diskcache` (GHSA-w8v5-vhqr-4h9v, pickle deserialization)
+
+See the comments in `RatingExperiments.ipynb` for the full risk assessment. When a later
+release fixes one of these, remove its entry here and its comment in the notebook.
 
 ### Permission setup
 
@@ -107,3 +119,28 @@ The audit script is permitted in `.claude/settings.json`:
 ```json
 "Bash(python3 GenerateKeywordCards2/pip_audit_with_urls.py)"
 ```
+
+## Reading Jupyter Notebooks
+
+The Read tool shows a notebook's code, markdown and short text outputs, but it doesn't show
+images. It also leaves out large outputs (it prints a `jq '.cells[N].outputs'` hint instead)
+and shows `display(Markdown(...))` results only as `<IPython.core.display.Markdown object>`. To read
+charts and tables, extract them from the `.ipynb` JSON into your scratchpad directory and
+Read each PNG:
+
+```
+python3 -c "
+import json, base64, sys
+nb, out = json.load(open(sys.argv[1])), sys.argv[2]
+for ci, cell in enumerate(nb['cells']):
+    for oi, o in enumerate(cell.get('outputs', [])):
+        d = o.get('data', {})
+        if 'image/png' in d:
+            open(f'{out}/cell{ci:02d}_out{oi}.png', 'wb').write(base64.b64decode(d['image/png']))
+        if 'text/markdown' in d:
+            print(f'--- cell {ci} markdown output ---'); print(''.join(d['text/markdown']))
+" GenerateKeywordCards2/Associations.ipynb <scratchpad_dir>
+```
+
+Cell indices are 0-based and match the `jq` hints. Outputs are only as fresh as the
+notebook's last save; if the user may have re-run cells since then, ask them to save first.
