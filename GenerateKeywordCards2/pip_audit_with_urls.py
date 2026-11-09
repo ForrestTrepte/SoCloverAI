@@ -30,21 +30,45 @@ def markdown_with_tooltip(text: str, tooltip: str) -> str:
     return result
 
 
-def pip_audit_with_urls() -> None:
-    """Helper function to display the information from pip-audit with clickable vulnerability advisory URLs"""
+def run_pip_audit(*extra_args: str) -> dict[str, Any]:
+    """Run pip-audit against OSV and return its JSON result with duplicate vulns removed.
+
+    OSV aggregates both the PyPA advisory database (what pip-audit's default PyPI service
+    reports) and the GitHub Advisory Database (what Dependabot reports), so it catches
+    advisories that haven't reached PyPI yet. OSV can report the same vulnerability more than
+    once (e.g. under both a PYSEC and a GHSA ID), so vulns whose ID or aliases overlap one
+    already seen for the same package are dropped.
+    """
     cmd = [
         "pip-audit",
+        "--vulnerability-service=osv",
         "--format=json",
         "--aliases=on",
-        "--desc=on",
         "--progress-spinner=off",
+        *extra_args,
     ]
-    json_result = subprocess.run(cmd, capture_output=True, text=True)
+    json_result = subprocess.run(cmd, capture_output=True, text=True, check=False)
     if json_result.returncode not in [0, 1]:
         raise RuntimeError(
             f"pip-audit failed with exit code {json_result.returncode}:\n{json_result.stderr}"
         )
-    dict_result = json.loads(json_result.stdout)
+    dict_result: dict[str, Any] = json.loads(json_result.stdout)
+    for dependency in dict_result["dependencies"]:
+        seen_ids: set[str] = set()
+        unique_vulns = []
+        for vuln in dependency.get("vulns", []):
+            ids = {vuln["id"], *vuln.get("aliases", [])}
+            if ids & seen_ids:
+                continue
+            seen_ids |= ids
+            unique_vulns.append(vuln)
+        dependency["vulns"] = unique_vulns
+    return dict_result
+
+
+def pip_audit_with_urls() -> None:
+    """Helper function to display the information from pip-audit with clickable vulnerability advisory URLs"""
+    dict_result = run_pip_audit("--desc=on")
 
     rows = []
     all_dependencies = set()
@@ -94,18 +118,7 @@ def pip_audit_with_urls() -> None:
 
 def pip_audit_summary() -> None:
     """Print a compact vulnerability summary for Claude's use: one line per package."""
-    cmd = [
-        "pip-audit",
-        "--format=json",
-        "--aliases=on",
-        "--progress-spinner=off",
-    ]
-    json_result = subprocess.run(cmd, capture_output=True, text=True, check=False)
-    if json_result.returncode not in [0, 1]:
-        raise RuntimeError(
-            f"pip-audit failed with exit code {json_result.returncode}:\n{json_result.stderr}"
-        )
-    dict_result = json.loads(json_result.stdout)
+    dict_result = run_pip_audit()
 
     pkgs: dict[str, dict[Any, Any]] = {}
     for dep in dict_result["dependencies"]:

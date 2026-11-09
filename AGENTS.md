@@ -37,6 +37,12 @@ python3 GenerateKeywordCards2/pip_audit_with_urls.py
 This prints one line per vulnerable package: `name  current_version -> fix_version(s)`.
 The same file's `pip_audit_with_urls()` function renders a full table for the notebook.
 
+Both run `pip-audit --vulnerability-service=osv`. pip-audit's default (PyPI) service only
+sees the PyPA advisory database, so it misses GitHub advisories until they're mirrored —
+which is what Dependabot reports from. OSV includes both, so the audit should match the
+repo's Dependabot alerts. OSV can return the same vulnerability twice (e.g. under PYSEC and
+GHSA IDs); the script drops entries whose ID or aliases overlap one already seen.
+
 ### Always raise the floor to the fix version
 
 When a scan flags a vulnerable version, bump the `pyproject.toml` floor to the fix version
